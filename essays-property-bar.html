@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property Bar Essays · RecitReady</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#F7F2E6; --paper-2:#FBF8F0; --card:#FFFDF7; --line:#E4DCC6; --line-2:#D6CBAE;
+  --ink:#2E382F; --ink-2:#5B665A; --muted:#8A917F;
+  --sage:#6F8466; --sage-d:#4D6450; --sage-dd:#36493A; --sage-l:#E7EDDF; --sage-ll:#F1F4EC;
+  --gold:#B8923A; --gold-d:#94742A; --gold-l:#F4E9CF; --gold-ll:#FAF3E2;
+  --good:#4F7A4E; --good-bg:#E4F0DE; --bad:#B4553F; --bad-bg:#F8E3DC;
+  --serif-d:"Cormorant Garamond", Georgia, serif; --serif:"Lora", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--paper);
+  background-image:radial-gradient(rgba(110,96,60,.10) .7px, transparent .8px),radial-gradient(rgba(110,96,60,.07) .6px, transparent .7px);
+  background-size:23px 23px, 37px 37px; background-position:0 0, 11px 17px;
+  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .name{font-family:var(--serif-d);font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--sage-dd);line-height:1}
+.logo .tag{font-family:var(--serif-d);font-style:italic;color:var(--gold-d);font-size:16px;line-height:1.1}
+.subject{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -18px rgba(60,70,50,.35)}
+.head{padding:18px 20px 16px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--sage-dd);background:var(--sage-l);border:1px solid #cfdac4;border-radius:8px;padding:3px 9px;margin-bottom:6px}
+h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;margin:0}
+.sub{font-family:var(--serif-d);font-style:italic;font-size:17px;color:var(--gold-d);margin-top:3px}
+.how{margin:14px 0 0;padding:10px 14px;background:var(--gold-ll);border:1px dashed #e3cf9e;border-radius:12px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.how b{color:var(--gold-d)}
+.how u{text-decoration:none;border-bottom:2px solid var(--gold);color:var(--ink);font-weight:600}
+.body{padding:18px 20px 20px}
+.opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:13.5px;color:var(--ink-2)}
+.chk{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:6px 11px;cursor:pointer;font-weight:600}
+.chk input{accent-color:var(--sage-d);width:16px;height:16px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.set{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 14px;cursor:pointer;transition:border-color .15s, transform .15s}
+.set:hover{border-color:var(--sage);transform:translateY(-1px)}
+.set .n{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.set .t{font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--sage-dd);line-height:1.35}
+.set .m{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:12.5px;color:var(--muted)}
+.best{font-weight:700;color:var(--sage-d);background:var(--sage-l);border-radius:999px;padding:1px 8px}
+.best.none{background:transparent;color:var(--muted);font-weight:500;padding:0}
+
+/* quiz */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;padding:10px 16px;background:rgba(251,248,240,.97);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+.bar .l{display:flex;align-items:center;gap:12px;min-width:0}
+.timer{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--sage-dd);background:var(--sage-ll);border:1px solid #cfdac4;border-radius:10px;padding:2px 12px;font-variant-numeric:tabular-nums;min-width:86px;text-align:center}
+.timer.warn{color:var(--gold-d);background:var(--gold-ll);border-color:#e3cf9e}
+.timer.crit{color:var(--bad);background:var(--bad-bg);border-color:#efc9bd;animation:pulse 1s infinite}
+.timer.off{font-size:14px;font-family:var(--sans);color:var(--muted)}
+@keyframes pulse{50%{opacity:.6}}
+.prog{font-size:13px;color:var(--ink-2);white-space:nowrap} .prog b{color:var(--sage-dd)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--sage)}
+.btn.pri{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.btn.pri:hover{background:var(--sage-dd)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.arm{border-color:var(--bad);color:var(--bad)}
+.qhead{padding:16px 20px 4px}
+.qhead h2{font-family:var(--serif-d);font-size:24px;margin:0;line-height:1.15}
+.qhead .c{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--gold-d);text-transform:uppercase}
+.list{padding:10px 20px 6px;display:grid;gap:12px}
+.item{border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 15px 14px}
+.item .st{display:flex;gap:10px;font-family:var(--serif);font-size:16px;line-height:1.75}
+.item .no{flex:none;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--sage-d);background:var(--sage-l);border-radius:7px;min-width:28px;height:24px;display:grid;place-items:center;margin-top:3px}
+.item u{text-decoration:none;border-bottom:2px solid var(--gold);padding:0 1px;font-weight:600;color:var(--sage-dd)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 0 38px}
+.tf{height:36px;min-width:84px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:700;letter-spacing:.06em;font-size:13px;color:var(--ink-2)}
+.tf:hover{border-color:var(--sage)}
+.tf.on[data-v="T"]{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.tf.on[data-v="F"]{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.fix{flex:1 1 220px;min-width:0;height:36px;border:1px solid #e3cf9e;background:var(--gold-ll);border-radius:9px;padding:0 11px;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.fix:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fix::placeholder{color:#b39a5c;font-style:italic}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 20px 20px}
+.note{font-size:12.5px;color:var(--muted)}
+.banner{margin:14px 20px 0;padding:10px 14px;border-radius:12px;background:var(--bad-bg);color:var(--bad);font-weight:600;font-size:14px}
+
+/* results */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:18px 20px 6px}
+.big{font-family:var(--serif-d);font-size:46px;font-weight:700;color:var(--sage-dd);line-height:1}
+.big small{font-size:24px;color:var(--muted)}
+.verdict{font-family:var(--serif);font-style:italic;color:var(--gold-d);font-size:16px}
+.meta{font-size:13px;color:var(--ink-2)}
+.filters{display:flex;gap:6px;padding:6px 20px 0;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.filters button.on{background:var(--sage-ll);border-color:var(--sage);color:var(--sage-dd)}
+.item.ok{border-left:4px solid var(--good)} .item.no-{border-left:4px solid var(--bad)}
+.res{margin:10px 0 0 38px;display:grid;gap:6px;font-size:13.5px}
+.res .row{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.res .k{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);min-width:86px}
+.pill{font-weight:700;border-radius:7px;padding:1px 8px;font-size:13px}
+.pill.g{background:var(--good-bg);color:var(--good)} .pill.b{background:var(--bad-bg);color:var(--bad)} .pill.n{background:var(--sage-ll);color:var(--ink-2)}
+.why{background:var(--sage-ll);border-left:3px solid var(--sage);border-radius:6px;padding:7px 11px;color:var(--ink-2);line-height:1.55}
+.why .src{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--gold-d)}
+.count{border:1px dashed var(--sage);background:transparent;color:var(--sage-d);border-radius:7px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer}
+.disclaimer{max-width:820px;margin:18px auto 0;padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--ink-2);text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.disclaimer b{color:var(--sage-dd)}
+[hidden]{display:none!important}
+.stmts{display:grid;gap:6px;margin-top:-2px}
+.stmt{display:flex;gap:9px;font-family:var(--serif);font-size:15.5px;line-height:1.65}
+.stmt .r{flex:none;font-family:var(--sans);font-weight:700;font-size:12px;color:var(--gold-d);background:var(--gold-ll);border:1px solid #ecdcb2;border-radius:6px;min-width:26px;height:22px;display:grid;place-items:center;margin-top:3px}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:11px 0 0 38px}
+.stmt .r{min-width:30px}
+.opt{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:7px 10px;cursor:pointer;font-size:13.5px;color:var(--ink);line-height:1.35}
+.opt:hover{border-color:var(--sage)}
+.opt b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--sage-ll);color:var(--sage-dd);font-size:12.5px}
+.opt.on{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.opt.on b{background:#fff;color:var(--sage-dd)}
+.opt.key{border-color:var(--good);background:var(--good-bg)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt[disabled]{cursor:default}
+.vt{flex:none;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:1px 7px;margin-top:4px;height:fit-content}
+.vt.t{background:var(--good-bg);color:var(--good)} .vt.f{background:var(--bad-bg);color:var(--bad)}
+.sx{margin:2px 0 4px 35px;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5}
+.sx .src{font-size:12px;font-weight:600;color:var(--gold-d)}
+@media (max-width:640px){ .stmts,.mc{margin-left:0} .mc{grid-template-columns:1fr} .sx{margin-left:35px} }
+
+@media (max-width:640px){
+  .wrap{padding:12px 10px 40px}
+  .logo .name{font-size:22px}
+  .head,.body{padding-left:14px;padding-right:14px}
+  h1{font-size:24px}
+  .list{padding:10px 10px 6px}
+  .item{padding:12px 12px 13px}
+  .item .st{font-size:15.5px}
+  .ans,.res{margin-left:0}
+  .tf{flex:1;min-width:0}
+  .fix{flex-basis:100%}
+  .bar{padding:8px 10px}
+  .timer{font-size:19px;min-width:72px;padding:2px 8px}
+  .pw{display:none}
+  .bar .btn{padding:0 11px;height:36px}
+  .qhead,.foot,.score,.filters{padding-left:14px;padding-right:14px}
+}
+
+/* essays */
+.qtext{margin:12px 20px 0;padding:14px 16px;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;font-family:var(--serif);font-size:16.5px;line-height:1.75;color:var(--ink)}
+.write{padding:12px 20px 0}
+.write textarea{width:100%;min-height:260px;resize:vertical;border:1px solid var(--line-2);background:#fff;border-radius:12px;padding:12px 14px;font:16px/1.7 var(--serif);color:var(--ink)}
+.write textarea:focus{outline:2px solid var(--sage);outline-offset:1px}
+.write textarea::placeholder{color:#a7ad9c;font-style:italic}
+.write textarea[disabled]{background:var(--paper-2);color:var(--ink-2)}
+.wc{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:6px}
+.sec{padding:14px 20px 0}
+.sec h3{font-family:var(--serif-d);font-size:21px;margin:0 0 8px;color:var(--sage-dd)}
+.mine{white-space:pre-wrap;font-family:var(--serif);font-size:15.5px;line-height:1.7;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink-2)}
+.mine.empty{font-style:italic;color:var(--muted)}
+.alac{display:grid;gap:8px}
+.ar{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:start;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+.ar .k{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);padding-top:3px}
+.ar .k b{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--gold-ll);border:1px solid #ecdcb2;margin-right:6px;font-size:12.5px;letter-spacing:0}
+.ar .v{font-family:var(--serif);font-size:15.5px;line-height:1.7}
+.ar.a .v{font-weight:600;color:var(--sage-dd)}
+.checks{display:grid;gap:7px}
+.ck{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 12px;cursor:pointer;font-size:14.5px;line-height:1.45}
+.ck input{accent-color:var(--sage-d);width:18px;height:18px;margin:1px 0 0;flex:none}
+.ck.on{background:var(--good-bg);border-color:#bcd5b4}
+.zero{margin:0;padding:10px 14px 10px 32px;background:var(--bad-bg);border:1px solid #efc9bd;border-radius:12px;color:#7d3a2a;font-size:14.5px;line-height:1.55}
+.srcs{font-size:12.5px;color:var(--ink-2);padding:12px 20px 0}
+.srcs b{color:var(--gold-d)}
+.prof{margin:10px 20px 0;padding:10px 14px;border-left:3px solid var(--gold);background:var(--gold-ll);border-radius:8px;font-family:var(--serif);font-style:italic;color:var(--ink-2);font-size:15px}
+.sumline{font-size:13px;color:var(--ink-2);margin-left:auto}
+.set .m .best.part{background:var(--gold-ll);color:var(--gold-d)}
+@media (max-width:640px){
+  .qtext{margin:10px 10px 0;font-size:16px}
+  .write,.sec,.srcs{padding-left:10px;padding-right:10px}
+  .prof{margin-left:10px;margin-right:10px}
+  .ar{grid-template-columns:1fr;gap:4px}
+  .write textarea{min-height:220px}
+}
+</style>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head>
+<body>
+<div id="rr-nav" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;padding:7px 14px">
+<a href="index.html" style="color:#fff;text-decoration:none;letter-spacing:.08em;font-family:Georgia,serif;font-size:14px">RECITREADY</a>
+<label style="display:flex;align-items:center;gap:6px;margin-left:auto;min-width:0">
+<span style="opacity:.85;font-weight:500">Switch drill</span>
+<select id="rr-switch" aria-label="Switch drill" style="max-width:62vw;font:500 13px system-ui,sans-serif;color:#2E382F;background:#FBF8F0;border:0;border-radius:7px;padding:5px 8px"><optgroup label="Codal Drills"><option value="codal-persons-and-family-relations.html">Persons and Family Relations</option><option value="codal-constitution.html">1987 Philippine Constitution</option><option value="codal-criminal-law-1.html">Criminal Law I</option><option value="codal-criminal-law-2.html">Criminal Law II</option><option value="codal-property.html">Property, Ownership and its Modifications</option><option value="codal-obligations-and-contracts.html">Obligations and Contracts</option><option value="codal-sales.html">Law on Sales</option><option value="codal-partnership-agency-trusts.html">Partnership, Agency and Trusts</option><option value="codal-corporation-code.html">Revised Corporation Code</option><option value="codal-civil-procedure.html">Civil Procedure</option><option value="codal-criminal-procedure.html">Criminal Procedure</option><option value="codal-evidence.html">Evidence</option></optgroup><optgroup label="Elements Drills"><option value="elements-criminal-law-2.html">Criminal Law II · Elements of Crimes</option></optgroup><optgroup label="Practice Quizzes"><option value="quizzes-civil-procedure-tf.html">Civil Procedure (T/F)</option><option value="quizzes-sales-tf.html">Law on Sales (T/F)</option><option value="quizzes-property-tf.html">Property (T/F)</option><option value="essays-property-bar.html" selected>Property · Bar Essays</option></optgroup><optgroup label="Procedure Maps"><option value="maps-procedure-maps.html">Procedure Maps</option></optgroup></select></label>
+<a id="rr-fs" href="#" target="_blank" rel="noopener" style="display:none;color:#fff;text-decoration:none;white-space:nowrap">Full screen ↗</a>
+</div>
+<script>(function(){var s=document.getElementById('rr-switch');s.onchange=function(){location.href=s.value;};
+try{if(window.self!==window.top){var f=document.getElementById('rr-fs');f.style.display='inline';f.href=location.href;}}catch(e){}})();</script>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#6F8466" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="22" rx="1"/><rect x="15.5" y="7" width="6.5" height="24" rx="1"/>
+          <path d="M23.5 10.5l5.6-1.6 5.7 20.6-5.6 1.6z"/><path d="M12 13v3M18.7 11.5v5M12 26h0M18.7 26.5h0"/><path d="M5 33h31"/>
+        </g>
+        <path d="M27.5 15.5c1.6-.3 2.6.6 2.9 1.7-1.6.3-2.6-.5-2.9-1.7z" fill="#B8923A"/>
+        <path d="M17.6 20.5l1.1-1.1 1.1 1.1-1.1 1.1z" fill="#B8923A"/>
+      </svg>
+      <div><div class="name">RECITREADY</div><div class="tag">Bar Room</div></div>
+    </div>
+    <div class="subject">Property · Arts. 414–475</div>
+  </div>
+
+
+  <!-- HOME -->
+  <div class="panel" id="home">
+    <div class="head">
+      <div class="badge">SITUATIONAL ESSAYS · ALAC</div>
+      <h1>Property: 25 bar-type problems, 5 minutes each</h1>
+      <div class="sub">Classification of property, ownership and accession (Civil Code Arts. 414–475)</div>
+      <div class="how"><b>How it works.</b> Pick a problem. You have five minutes to write your answer in ALAC form: <u>Answer</u>, <u>Legal basis</u>, <u>Application</u>, <u>Conclusion</u>. When time runs out, pens down: your answer locks and the suggested answer appears.<br><br>
+      <b>How I grade.</b> Each problem has four points I look for. Tick only the ones you actually wrote, in substance, not the ones you meant to write. A correct conclusion with no legal basis gets nothing. Citing the wrong article is wrong. If your answer is on the “zero credit” list, it scores zero no matter what else you wrote.</div>
+    </div>
+    <div class="body">
+      <div class="opts">
+        <label class="chk"><input type="checkbox" id="useTimer" checked> 5-minute timer</label>
+        <span class="sumline" id="sumline"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- WRITE -->
+  <div class="panel" id="essay" hidden>
+    <div class="bar">
+      <div class="l"><div class="timer" id="timer">05:00</div><div class="prog" id="prog"></div></div>
+      <div style="display:flex;gap:8px"><button class="btn ghost" id="quit">Quit</button><button class="btn pri" id="submit">Submit</button></div>
+    </div>
+    <div class="qhead"><div class="c" id="qcov"></div><h2 id="qtitle"></h2></div>
+    <div class="qtext" id="qtext"></div>
+    <div class="write">
+      <textarea id="ans" spellcheck="true" placeholder="Answer: …&#10;Legal basis: …&#10;Application: …&#10;Conclusion: …"></textarea>
+      <div class="wc"><span>Write in ALAC form. Your draft is kept on this device until you submit.</span><span id="wc">0 words</span></div>
+    </div>
+    <div class="foot"><span class="note">Submitting ends the timer and shows the suggested answer.</span><button class="btn pri" id="submit2">Submit and see the suggested answer</button></div>
+  </div>
+
+  <!-- REVIEW -->
+  <div class="panel" id="results" hidden>
+    <div class="banner" id="timeup" hidden>Time's up. Pens down. Your answer was locked as written.</div>
+    <div class="score">
+      <div class="big" id="big"></div>
+      <div><div class="verdict" id="verdict"></div><div class="meta" id="rmeta"></div></div>
+    </div>
+    <div class="prof">Compare your answer with mine, then mark yourself below. Tick a point only if it is actually in what you wrote.</div>
+    <div class="sec"><h3>Your answer</h3><div class="mine" id="mine"></div></div>
+    <div class="sec"><h3>Suggested answer</h3><div class="alac" id="alac"></div></div>
+    <div class="sec"><h3>What I check</h3><div class="checks" id="checks"></div></div>
+    <div class="sec"><h3>Zero credit if you wrote</h3><ul class="zero" id="zero"></ul></div>
+    <div class="srcs" id="srcs"></div>
+    <div class="foot">
+      <span class="note" id="savedNote">Your mark is saved on this device.</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home2">All problems</button><button class="btn" id="retake">Try again</button><button class="btn pri" id="next">Next problem</button></div>
+    </div>
+  </div>
+
+  <p class="disclaimer"><b>Study aid only.</b> These are original problems and suggested answers written from the Civil Code and the doctrines of Supreme Court decisions. They are not a substitute for the official text, your casebooks or your professors' discussions, and may contain errors. Always check against an official source before relying on them for recitations, exams or practice.</p>
+</div>
+<script>
+/* Property (Arts. 414–475) — 25 bar-type situational questions with strict ALAC suggested answers.
+   q: facts and call · A/L/P/C: Answer, Legal basis, Application, Conclusion
+   must: what the examiner checks · zero: answers that get no credit · src: authority for review */
+const ESSAYS = [
+{ topic:"House on rented land, chattel mortgage", arts:"Art. 415(1)",
+  q:"Arturo built a two-storey house on a lot he leases from Bea. To secure a loan from Carlo, Arturo executed a chattel mortgage over the house, which Carlo registered in the chattel mortgage registry. Arturo later sold the house to Dante, who knew nothing of the mortgage. Arturo defaulted. (a) Is the house real or personal property? (b) Can Carlo foreclose the chattel mortgage against Dante?",
+  A:"(a) The house is real property. (b) No. Carlo cannot enforce the chattel mortgage against Dante.",
+  L:"Buildings are immovable under Art. 415(1), even if built on land owned by another. A building is immovable by itself, apart from the land. Parties may treat a building as personal property, and they are bound by estoppel. But that treatment binds only them, not innocent third persons.",
+  P:"The house is a building adhered to the soil. That Arturo only leases the lot does not change its nature. Arturo and Carlo called it personal, so as between them the chattel mortgage is valid. Dante was not a party and did not know of it.",
+  C:"The house remains real property. The chattel mortgage binds only Arturo and Carlo. Carlo cannot foreclose it against Dante.",
+  must:["Classifies the house as immovable under Art. 415(1)","States that ownership of the land by another does not matter","Explains estoppel: the chattel mortgage binds the parties only","Concludes it does not bind Dante, an innocent third person"],
+  zero:["“Personal, because it is on rented land.”","Answering (b) without saying why the estoppel stops at the parties."],
+  src:"Art. 415(1); Tumalad v. Vicencio; Navarro v. Pineda; Prudential Bank v. Panis" },
+
+{ topic:"Machinery installed by a lessee", arts:"Art. 415(5)",
+  q:"Ely leased Fe's land for 10 years and built a rice mill there. He bolted the milling machinery to concrete foundations. (a) The lease is silent on improvements. Ely's creditor levies on the machinery as personal property. Fe objects that it is real property. Who is right? (b) Would your answer change if the lease said that all machinery would belong to Fe when the lease ends?",
+  A:"(a) The creditor is right; the machinery is personal property. (b) Yes. The machinery would be immovable.",
+  L:"Under Art. 415(5), machinery is immovable only if placed by the owner of the tenement for an industry carried on in the building or on the land, and it tends directly to meet the needs of that industry. Machinery placed by a tenant or other person with a temporary right stays movable, unless he acted as the owner's agent. If the tenant agreed that the machinery would go to the owner at the end of the lease, he is deemed to act for the owner, and the machinery is immobilized.",
+  P:"(a) Ely is a lessee, not the owner of the tenement. He did not act for Fe. Bolting the machines to the floor does not matter, because Art. 415(5) is about destination by the owner, not attachment. (b) With the clause, Ely placed the machinery for Fe's benefit, as if he were her agent.",
+  C:"(a) The machinery is personal and may be levied upon as such. (b) Under the clause, it is real property.",
+  must:["Names the requisite: placed by the owner of the tenement","States the lessee rule and its exception (agent or agreement)","Explains why bolting does not convert it","Answers (b) separately with the exception"],
+  zero:["“Real, because it is bolted to the ground.”","Answering only (a) and ignoring (b)."],
+  src:"Art. 415(5); Davao Sawmill v. Castillo (citing Valdez v. Central Altagracia)" },
+
+{ topic:"Repair equipment and real property tax", arts:"Art. 415(5) · LGC",
+  q:"Gale Transit, a bus company, owns its garage. It placed lathes, drill presses and a welding machine on cement blocks there to repair its buses. The city assessor assessed the equipment for real property tax as immovable under Art. 415(5). Gale argues the equipment is personal property under the Civil Code. Under the Civil Code, is the equipment real or personal? Briefly explain why the tax assessor may still treat it differently.",
+  A:"Under the Civil Code, the equipment is personal property.",
+  L:"Art. 415(5) immobilizes machinery only if it is for an industry or works carried on in a building or on a piece of land and tends directly to meet the needs of that industry. Equipment that is merely incidental, and could be used elsewhere, is not immobilized. For real property tax, however, the Local Government Code has its own test and does not require all the Civil Code requisites.",
+  P:"Gale's business is transportation. It is carried on along the roads, not in the garage. The repair equipment is incidental: buses could be repaired in any shop. That Gale owns the garage does not cure this.",
+  C:"Under the Civil Code the equipment is personal property. Whether it is taxable as real property is decided under the Local Government Code, not under Art. 415(5).",
+  must:["States both requisites: industry carried on in the building, and directly meets its needs","Identifies the business as transportation, not carried on in the garage","Calls the equipment incidental","Separates the Civil Code test from the tax test"],
+  zero:["“Real, because Gale owns the garage.”","Treating the tax classification as controlling the Civil Code classification."],
+  src:"Art. 415(5); Mindanao Bus Co. v. City Assessor; Caltex v. CBAA" },
+
+{ topic:"Attached in a fixed manner vs ornaments", arts:"Art. 415(3)–(4)",
+  q:"Gina owns a house. (a) She installed a water pump held to its base by bolts, which can be removed by loosening them. (b) She hung an oil painting on the living room wall with a nail. (c) Her tenant, Hugo, had a mural painted directly on the plaster of the wall he rented from her. Classify each as real or personal property.",
+  A:"(a) Personal. (b) Personal. (c) Real.",
+  L:"Under Art. 415(3), a thing is immovable if attached to an immovable so that it cannot be separated without breaking the material or deterioration of the object; it does not matter who attached it. Under Art. 415(4), statues, paintings and ornaments are immovable only if placed by the owner of the immovable in a manner that shows intent to attach them permanently.",
+  P:"(a) The pump comes off by loosening bolts, without breakage. (b) A painting on a nail shows no intent of permanent attachment. (c) The mural cannot be removed without destroying the plaster. Hugo is not the owner, but Art. 415(3) does not require the owner to have placed it.",
+  C:"The pump and the hung painting are personal. The mural is real property under Art. 415(3).",
+  must:["States the breakage test of Art. 415(3)","States the owner-and-intent test of Art. 415(4)","Notes that Art. 415(3) does not require the owner","Classifies all three"],
+  zero:["Calling the mural personal because a tenant made it.","Calling the pump real just because it is bolted."],
+  src:"Art. 415(3)–(4); Yap v. Tañada" },
+
+{ topic:"“Furniture” in a will; shares of stock", arts:"Arts. 417, 426",
+  q:"Ines's will says: “I give my furniture to my niece Jill.” Her estate includes sofas and dining sets, bookcases full of books, jewelry, and shares of stock in a family corporation whose only asset is a beach resort. (a) What passes to Jill? (b) Ines's son argues that the shares are real property because the corporation owns only land. Is he right?",
+  A:"(a) Only the sofas, dining sets and bookcases pass to Jill. (b) No. The shares are personal property.",
+  L:"When the word “furniture” is used alone, it does not include money, credits, stocks and bonds, jewelry, books and other things which do not have as their principal object the furnishing or ornamenting of a building, unless the contrary clearly appears (Art. 426). Shares of stock of agricultural, commercial and industrial entities are personal property although the entity may have real estate (Art. 417[2]).",
+  P:"Ines used “furniture” alone, and nothing in the will shows she meant more. Books, jewelry and shares do not furnish a building. The bookcases do. The corporation owns the land; the stockholder owns only shares.",
+  C:"Jill gets the sofas, dining sets and bookcases, but not the books, jewelry or shares. The shares are personal property.",
+  must:["Applies Art. 426: “furniture” used alone","Separates the bookcases from the books","Cites Art. 417(2) on shares","Distinguishes the corporation's land from the stockholder's shares"],
+  zero:["“Everything movable in the house passes.”","“Shares are real because the corporation's asset is land.”"],
+  src:"Arts. 417(2), 426" },
+
+{ topic:"Lease of a town plaza", arts:"Arts. 420, 424",
+  q:"The Municipality of San Roque leased part of its town plaza to Karl for 10 years for a restaurant. Karl paid rent for three years and built a kitchen there. A new mayor ordered him to leave. Karl insists the lease is valid and, in any case, that he must be paid for his kitchen. Rule on both claims.",
+  A:"The lease is void. Karl must vacate, and he cannot claim payment for the kitchen.",
+  L:"Squares and plazas are property for public use of municipalities (Art. 424). Property for public use is outside the commerce of man. It cannot be leased or made the object of any contract. Art. 448 protects only one who builds in good faith in the concept of owner or with the owner's valid consent.",
+  P:"The plaza was never withdrawn from public use. The municipality had no power to lease it, so Karl acquired no right. His kitchen stands on public-use property under a void lease, not on land he believed was his.",
+  C:"Karl must vacate and remove his kitchen without reimbursement under Art. 448.",
+  must:["Classifies the plaza as property for public use","States it is outside the commerce of man and cannot be leased","Concludes the lease is void","Explains why Art. 448 does not help him"],
+  zero:["“Valid because the rentals go to public funds.”","Invoking builder-in-good-faith rights without explaining why they fail."],
+  src:"Arts. 424, 448; Municipality of Cavite v. Rojas" },
+
+{ topic:"Idle embassy property", arts:"Arts. 420–422",
+  q:"The Philippines acquired a lot in a foreign capital under a reparations agreement and used it as its embassy. After the embassy moved, the lot stayed idle for 15 years. An executive agency now wants to sell it to a private buyer, arguing that it has become patrimonial through non-use. Is the agency correct?",
+  A:"No. The lot is still property of public dominion and cannot be sold.",
+  L:"Property that belongs to the State and is intended for public service is property of public dominion (Art. 420[2]). It becomes patrimonial only when it is no longer intended for public use or public service (Art. 422). The withdrawal must be made by a formal act of the executive or Congress. Mere non-use is not enough.",
+  P:"The lot was used for public service as an embassy. Nothing shows a law or formal executive declaration withdrawing it from public service. Fifteen years of non-use is only non-use.",
+  C:"The lot remains outside the commerce of man. It cannot be sold unless it is first formally converted into patrimonial property.",
+  must:["Classifies the lot under Art. 420(2): public service","States Art. 422 on conversion","Requires a formal act by the executive or Congress","Rejects non-use as a mode of conversion"],
+  zero:["“Patrimonial because it is abroad.”","“Patrimonial because it is idle.”"],
+  src:"Arts. 420(2), 422; Laurel v. Garcia; Ignacio v. Director of Lands" },
+
+{ topic:"Long possession of forest land", arts:"Arts. 420, 1113",
+  q:"Since 1980, Leo has openly, continuously and exclusively possessed a parcel inside an area classified as forest land. He fenced it, planted it with fruit trees and paid taxes on it. In 2026 he applied for registration, claiming ownership by acquisitive prescription. The State opposed. Will his application prosper?",
+  A:"No. Leo cannot acquire forest land by prescription.",
+  L:"Under the Regalian doctrine, all lands of the public domain belong to the State. Only agricultural lands of the public domain may be alienated (Const., Art. XII, Sec. 3). Forest land is intended for the development of the national wealth and is property of public dominion (Art. 420[2]). Property of public dominion cannot be acquired by prescription (Art. 1113). Classification is the executive's prerogative; the applicant must prove a positive act declaring the land alienable and disposable.",
+  P:"The land remains classified as forest. No act of the executive reclassified it. Leo's long possession, improvements and tax payments cannot change its classification.",
+  C:"Leo's possession, however long, never ripened into ownership. The application must be denied.",
+  must:["Invokes the Regalian doctrine","Classifies forest land as public dominion","States no prescription against public dominion","States that only the executive can reclassify"],
+  zero:["“Yes, 30 years of possession is enough.”","Relying on tax declarations as proof of ownership."],
+  src:"Const., Art. XII, Secs. 2–3; Arts. 420(2), 1113; Republic v. Animas" },
+
+{ topic:"Execution against municipal property", arts:"Arts. 423–424",
+  q:"Mila won a final money judgment against the Municipality of Bantay. To satisfy it, the sheriff levied on (a) the municipal police patrol cars, (b) the town plaza, and (c) a vacant lot the municipality bought with its own funds and has never used. Which levies are valid?",
+  A:"Only the levy on the vacant lot is valid.",
+  L:"Property of a municipality is either for public use or patrimonial (Art. 423). Property for public use, such as squares, is outside the commerce of man and cannot be levied upon (Art. 424). Property used for governmental purposes also cannot be levied upon, even to pay a judgment against the municipality. Patrimonial property is governed by the Civil Code and may be levied upon.",
+  P:"(a) The patrol cars are used for a governmental function, police protection. (b) The plaza is for public use. (c) The vacant lot was bought with municipal funds and is not devoted to public use or to any governmental purpose, so it is patrimonial.",
+  C:"The levies on the patrol cars and the plaza are void. The levy on the vacant lot is valid.",
+  must:["Uses the Art. 423 division","Classifies the plaza as public use","Recognizes that property for governmental purposes is exempt","Classifies the unused lot as patrimonial"],
+  zero:["“All are valid because a final judgment must be satisfied.”","“None are valid because government property can never be levied.”"],
+  src:"Arts. 423–424; Viuda de Tan Toco v. Municipal Council of Iloilo" },
+
+{ topic:"Self-help after dispossession", arts:"Arts. 429, 433",
+  q:"Nilo owns a farm. While he was abroad, Omar and other farmers entered and cultivated it peacefully for three years. On his return, Nilo hired men who bulldozed their crops and drove them out. Nilo says he was only exercising his right of self-help under Art. 429. Is he correct?",
+  A:"No. Nilo cannot invoke self-help.",
+  L:"Art. 429 allows the owner or lawful possessor to use reasonable force to repel or prevent an actual or threatened unlawful physical invasion of his property. It applies only at the time of the invasion or immediately after. Once possession has been lost, the owner must resort to judicial process (Art. 433).",
+  P:"Omar and the farmers had been in possession for three years. There was no actual or threatened invasion to repel. Nilo had already lost possession, so his remedy was a court action.",
+  C:"Nilo acted outside Art. 429. Omar and the farmers, as prior possessors, may sue him for forcible entry, even though he is the owner.",
+  must:["States the requisites of self-help","Identifies the timing element: during the invasion, not after","States that a dispossessed owner must go to court","Notes that the farmers may sue for forcible entry"],
+  zero:["“Yes, because he is the owner.”","“Yes, because the farmers were squatters.”"],
+  src:"Arts. 429, 433; German Management & Services v. CA" },
+
+{ topic:"State of necessity", arts:"Art. 432",
+  q:"A fire was spreading toward a hospital. To stop it, the barangay chief ordered the demolition of Pia's small storage shed, which stood between the fire and the hospital. Pia objected at the time. The fire was stopped. (a) Could Pia lawfully stop the demolition? (b) Can she recover the value of her shed, and from whom?",
+  A:"(a) No. (b) Yes. She may recover from the hospital owner, the person benefited.",
+  L:"Under Art. 432, the owner has no right to prohibit another's interference with his property if the interference is necessary to avert an imminent danger, and the threatened damage is much greater than the damage to the owner. The owner may demand indemnity from the person benefited.",
+  P:"The fire was an imminent danger. Demolishing the shed was necessary to stop it. The loss of a hospital is far greater than the loss of a shed. The hospital was saved by the demolition.",
+  C:"Pia had to tolerate the demolition. She may demand indemnity from the owner of the hospital.",
+  must:["States both requisites of Art. 432","Applies the comparison of damages","Concludes the owner must tolerate","Names the person benefited as the one who pays"],
+  zero:["“The barangay chief pays because he gave the order.”","“She may resist because it is her property.”"],
+  src:"Art. 432" },
+
+{ topic:"Action to recover: strength of title", arts:"Arts. 433–434",
+  q:"Quino sued Rosa to recover a parcel Rosa has occupied for years, claiming it as hers. Quino presented a tax declaration in his name with no stated boundaries, and he showed that Rosa's deed of sale was unnotarized. Rosa presented nothing else. Should Quino win?",
+  A:"No. Quino should lose.",
+  L:"In an action to recover, the property must be identified, and the plaintiff must rely on the strength of his own title, not on the weakness of the defendant's claim (Art. 434). Actual possession under claim of ownership raises a disputable presumption of ownership (Art. 433). A tax declaration alone is not conclusive proof of ownership.",
+  P:"Quino did not identify the land; his tax declaration has no boundaries. His only proof of title is a tax declaration. Showing that Rosa's deed is defective only points to the weakness of her claim. Rosa is in possession under a claim of ownership, so she is presumed owner.",
+  C:"Quino failed both requisites of Art. 434. Rosa keeps the land.",
+  must:["States both requisites of Art. 434","Applies the presumption in favor of the possessor","Rejects the tax declaration alone as proof of title","Rejects reliance on the defect in Rosa's deed"],
+  zero:["“Quino wins because Rosa's deed is defective.”","“Quino wins because he has a tax declaration.”"],
+  src:"Arts. 433–434" },
+
+{ topic:"Expropriation by a city", arts:"Art. 435 · LGC Sec. 19",
+  q:"The Sangguniang Panlungsod of Sta. Ana passed a resolution authorizing the mayor to expropriate Sol's lot for a public park. Without making any offer to Sol, the city filed a complaint, deposited 5% of the lot's value and asked for a writ of possession. Sol opposes. Rule.",
+  A:"The expropriation cannot proceed as filed. The writ of possession should be denied.",
+  L:"No person shall be deprived of property except by competent authority, for public use, and upon payment of just compensation (Art. 435). A local government may expropriate only through an ordinance, after making a valid and definite offer that the owner did not accept. It may take immediate possession only upon depositing 15% of the fair market value based on the current tax declaration (LGC, Sec. 19).",
+  P:"The city acted through a resolution, not an ordinance. It made no prior offer to Sol. It deposited only 5%. A public park is a valid public use, but the city did not comply with the requisites of its delegated power.",
+  C:"The complaint is premature and the city cannot take possession. If the requirements are not first complied with, the court shall protect Sol in her possession.",
+  must:["States Art. 435's requisites","Requires an ordinance, not a resolution","Requires a prior valid and definite offer","States the 15% deposit for immediate possession"],
+  zero:["“Valid, because a park is public use.”","Treating a resolution as enough."],
+  src:"Art. 435; Local Government Code, Sec. 19" },
+
+{ topic:"Hidden treasure", arts:"Arts. 438–439 · 566",
+  q:"(a) Tito, a carpenter hired by Uma to replace her house posts, struck a clay jar of old gold coins while digging. No one knows who buried it. (b) Vic sneaked into Uma's yard at night and found another jar. (c) Wes, a usufructuary of Uma's farm, found a third jar there while plowing. Who owns each jar?",
+  A:"(a) Uma and Tito share equally. (b) Uma owns all of it. (c) Uma and Wes share equally; Wes takes as finder, not as usufructuary.",
+  L:"Treasure is a hidden and unknown deposit of money, jewelry or other precious objects whose lawful ownership does not appear (Art. 439). It belongs to the owner of the property where it is found. If found on another's property by chance, the finder gets one-half; a trespasser gets nothing (Art. 438). A usufructuary has no right to treasure on the property; he is treated as a stranger (Art. 566).",
+  P:"The coins are hidden and their owner is unknown, so they are treasure. (a) Tito was lawfully on the property and found the jar by chance while doing his work. (b) Vic is a trespasser. (c) Wes found the jar by chance, but his usufruct gives him no right to it; he takes only as a stranger-finder.",
+  C:"(a) One-half each to Uma and Tito. (b) All to Uma. (c) One-half to Uma, as owner, and one-half to Wes, as finder. If the coins are of interest to science or the arts, the State may buy them at just price, divided the same way.",
+  must:["Defines treasure under Art. 439","States the one-half rule for a finder by chance","States that a trespasser gets nothing","Applies Art. 566 to the usufructuary"],
+  zero:["Giving Wes the owner's half because of the usufruct.","Giving Vic a share because he found it by luck."],
+  src:"Arts. 438, 439, 566" },
+
+{ topic:"Fruits and the possessor", arts:"Arts. 443–444, 544–545, 549",
+  q:"Xena possessed a mango and rice farm under a deed she honestly believed valid. She harvested mangoes in March. In June, she was served summons in Yuri's suit to recover the farm, which Yuri won. When summons was served, a rice crop was growing and the mango trees had no fruit. The trees flowered and bore fruit in July, and Xena harvested them in September. Who is entitled to (a) the March mangoes, (b) the September mangoes, and (c) the rice crop?",
+  A:"(a) Xena. (b) Yuri, but he must pay Xena's production expenses. (c) Xena and Yuri share, in proportion to the time of possession.",
+  L:"A possessor in good faith is entitled to the fruits received before his possession is legally interrupted (Art. 544). Good faith ceases at the latest upon service of summons. A possessor in bad faith must reimburse fruits received, but is entitled to the expenses of their production, gathering and preservation (Arts. 443, 549). If there are pending natural or industrial fruits when good faith ceases, the possessor shares in the expenses and the net harvest in proportion to the time of possession (Art. 545).",
+  P:"(a) The March mangoes were gathered while Xena was in good faith. (b) The September mangoes appeared and were gathered after summons, when she was already in bad faith. (c) The rice was growing when her good faith ceased.",
+  C:"Xena keeps the March mangoes. She must turn over the September mangoes, but Yuri must pay her the expenses of producing and gathering them. The rice crop is divided in proportion to the time each possessed it.",
+  must:["States when good faith ceases","Applies Art. 544 to fruits already gathered","Applies Arts. 443 and 549 to fruits gathered after summons","Applies Art. 545 to pending crops"],
+  zero:["“Yuri gets everything because he is the owner.”","Treating good faith as ending only at final judgment."],
+  src:"Arts. 443, 444, 544, 545, 549, 528" },
+
+{ topic:"Bonus to a mortgagor; dividends in usufruct", arts:"Arts. 441–442",
+  q:"(a) Zeny mortgaged her land to a bank to secure a loan of Apex Milling. Apex paid her a bonus for the risk. The bank claims the bonus as civil fruits of the mortgaged land. (b) Bea has a usufruct over shares owned by Cris. The corporation declared stock dividends. Cris claims them as part of the capital. Rule on both.",
+  A:"(a) The bank is wrong; the bonus belongs to Zeny. (b) Cris is wrong; the stock dividends belong to Bea.",
+  L:"Civil fruits are rents, the price of leases, annuities and “other similar income” derived from property (Art. 442). A mortgagee has no right to the fruits of the mortgaged property. Dividends, cash or stock, are civil fruits of the shares. A usufructuary is entitled to the civil fruits (Art. 566).",
+  P:"(a) The bonus was paid for the risk Zeny assumed, measured by the loan, not by the land. It is not income from the land. Even if it were, the bank as mortgagee has no right to fruits. (b) Stock dividends come from the corporation's profits. They are income from the shares.",
+  C:"Zeny keeps the bonus. Bea, as usufructuary, gets the stock dividends.",
+  must:["Defines civil fruits under Art. 442","States that a mortgagee has no right to fruits","Explains why the bonus is not “similar income”","Classifies stock dividends as civil fruits for the usufructuary"],
+  zero:["“The bank gets it because it is the mortgagee.”","“Stock dividends are capital.”"],
+  src:"Arts. 442, 566; Bachrach Motor Co. v. Talisay-Silay Milling; Bachrach v. Seifert" },
+
+{ topic:"Builder in good faith on the wrong lot", arts:"Art. 448",
+  q:"Dino, relying on the developer's survey, built a ₱4-million house on Lot 5, believing it was his Lot 6. Lot 5, worth ₱2 million, belongs to Ella, who learned of it only after the house was finished. Ella demands that Dino demolish the house. Dino refuses and offers to buy Lot 5. (a) Can Ella demand demolition? (b) Can Dino insist on buying the lot?",
+  A:"(a) No. (b) No. The choice belongs to Ella.",
+  L:"When both builder and landowner are in good faith, Art. 448 gives the landowner two options: appropriate the building after paying the indemnity under Arts. 546 and 548, or oblige the builder to pay the price of the land, unless the land is considerably more valuable than the building. The landowner must choose one. He cannot refuse both and demand demolition. The option is his, not the builder's. Good faith is presumed (Art. 527).",
+  P:"Dino believed the lot was his; Ella did not know of the construction. Both are in good faith. The land (₱2M) is not considerably more valuable than the house (₱4M), so Dino may be compelled to buy.",
+  C:"Ella must choose: pay Dino for the house (he keeps possession until paid) or make him buy Lot 5 at its market value at the time of payment. She may demand removal only if she chooses to sell and Dino fails to pay.",
+  must:["Establishes good faith of both","States the two options of Art. 448","States that the option belongs to the landowner","Rejects demolition as a first option"],
+  zero:["“Ella may demand demolition because it is her land.”","“Dino may choose because his house is worth more.”"],
+  src:"Arts. 448, 527, 546; Depra v. Dumlao; Ignacio v. Hilario; Tecnogas Philippines v. CA" },
+
+{ topic:"Builder who fails to pay the price", arts:"Art. 448",
+  q:"Fred, a builder in good faith, put up a house on Gia's lot. Gia chose to make Fred buy the lot, and Fred agreed. Two years passed, and Fred has not paid. Fred still lives in the house rent-free and says he may keep it until Gia pays him for it. (a) Is Fred right? (b) What may Gia do?",
+  A:"(a) No. (b) Gia may demand removal of the house, have the land and house sold to collect the price, or keep Fred as a lessee.",
+  L:"Under Art. 448, the right of retention belongs to a builder in good faith whose house the landowner chooses to appropriate. When the landowner instead chooses to sell the land, the builder is the one who must pay, so he has no right of retention. If the builder fails to pay, the landowner may demand removal of the improvement, or treat the price as a money debt and have the land and improvement sold, or leave things as they are as lessor and lessee. The landowner does not automatically become owner of the house.",
+  P:"Gia chose the second option. Fred agreed but has not paid for two years. He cannot claim retention because Gia is not the one who owes.",
+  C:"Fred has lost any right to stay without paying. Gia may proceed with any of the three remedies. She does not become owner of the house by Fred's default alone.",
+  must:["Identifies that the landowner chose to sell","States that retention belongs only to the builder who is to be paid","Lists the landowner's remedies","Notes that ownership of the house does not pass automatically"],
+  zero:["“Gia automatically owns the house.”","“Fred may stay until paid.”"],
+  src:"Art. 448; Ignacio v. Hilario; Bernardo v. Bataclan; Filipinas Colleges v. Timbang" },
+
+{ topic:"Builder in bad faith", arts:"Arts. 449–452",
+  q:"While Hana's suit to annul his title was pending, Ivo built a warehouse on the disputed lot. Hana won. Ivo now claims (a) the value of the warehouse, (b) the cost of a riprap wall he built to stop the river from eroding the lot, and (c) the right to stay until he is paid. Rule on each claim.",
+  A:"(a) Denied. (b) Granted. (c) Denied.",
+  L:"One who builds after a suit questioning his right is filed builds in bad faith. A builder in bad faith loses what he built without indemnity (Art. 449). The landowner may instead demand demolition at the builder's expense or compel him to buy the land, and in either case recover damages (Arts. 450–451). The builder in bad faith is reimbursed only for necessary expenses for the preservation of the land (Art. 452). The right of retention belongs only to a possessor in good faith (Art. 546).",
+  P:"Ivo built knowing his title was in dispute, so he built in bad faith. The riprap wall preserved the land itself from erosion; Hana would have had to spend for it anyway.",
+  C:"Ivo gets nothing for the warehouse and cannot stay. Hana must reimburse the cost of the riprap wall. Hana may keep the warehouse, order its demolition at Ivo's cost, or make Ivo buy the lot, with damages in any case.",
+  must:["Establishes bad faith from building during litigation","States Art. 449 loss without indemnity","Lists the landowner's options plus damages","Limits reimbursement to necessary expenses for the land; no retention"],
+  zero:["Granting the value of the warehouse to avoid unjust enrichment.","Granting retention to a builder in bad faith."],
+  src:"Arts. 449–452, 546; Mindanao Academy v. Yap; Felices v. Iriola" },
+
+{ topic:"Both in bad faith", arts:"Arts. 453, 448",
+  q:"Jun knew the lot belonged to Kim but built a house on it anyway. Kim lived next door and watched the construction for eight months without objecting. Kim now wants the house demolished at Jun's expense and damages. Rule.",
+  A:"Kim cannot demand demolition or damages. Their rights are as if both acted in good faith.",
+  L:"If both the builder and the landowner acted in bad faith, their rights are the same as though both acted in good faith (Art. 453). The landowner is in bad faith whenever the act was done with his knowledge and without opposition. Art. 448 then governs: the landowner may appropriate after paying indemnity, or require the builder to buy the land, unless the land is considerably more valuable.",
+  P:"Jun built knowing the land was not his: bad faith. Kim knew of the construction and did not object: also bad faith. The bad faith of one neutralizes the other's.",
+  C:"Kim must choose between paying for the house and making Jun buy the lot. Demolition and damages are not available to him.",
+  must:["Establishes Jun's bad faith","Establishes Kim's bad faith under Art. 453, par. 2","States the neutralization rule","Applies Art. 448's options"],
+  zero:["Applying Arts. 449–451 because Jun knew.","Ignoring Kim's silence."],
+  src:"Arts. 453, 448" },
+
+{ topic:"Lessee's improvements", arts:"Art. 1678 · Art. 448",
+  q:"Lani leased Mon's lot for five years and, with Mon's permission, built a two-storey store on it. When the lease ended, Mon asked her to leave. Lani claims she is a builder in good faith under Art. 448, so Mon must either pay her the full value of the store or sell her the lot. Is she right?",
+  A:"No. Art. 448 does not apply to her; Art. 1678 does.",
+  L:"Art. 448 applies only to one who builds in the concept of owner, believing the land is his or claiming title. A lessee knows the land is not his. His improvements are governed by Art. 1678: if the improvements are useful and made in good faith, the lessor may appropriate them by paying one-half of their value at the end of the lease. If the lessor refuses, the lessee may remove them, without causing more damage than necessary.",
+  P:"Lani is a lessee. She never claimed to own the lot. Permission to build does not make her a builder in the concept of owner.",
+  C:"Mon cannot be forced to sell. He may keep the store by paying Lani one-half of its value; otherwise Lani may remove it.",
+  must:["States why Art. 448 does not apply to lessees","Cites Art. 1678","States the one-half rule","States the lessee's right of removal"],
+  zero:["Applying Art. 448 because Mon consented.","Granting full reimbursement."],
+  src:"Arts. 448, 1678; Geminiano v. CA" },
+
+{ topic:"Builder uses a third person's materials", arts:"Arts. 449–450, 455",
+  q:"Nico knew the lot belonged to Oli, but he built a house on it anyway, using lumber and cement bought on credit from Pat. Pat did not know where the materials would be used. Oli knew nothing of the construction. Nico has no other property. (a) Oli chose to keep the house. Can Pat collect the value of the materials from Oli? (b) Would your answer change if Oli had instead demanded the demolition of the house?",
+  A:"(a) Yes, but only subsidiarily. (b) Yes. Oli would then owe Pat nothing.",
+  L:"A builder in bad faith loses what he built without right to indemnity (Art. 449). The landowner may instead demand demolition at the builder's expense (Art. 450). If the materials belong to a third person who has not acted in bad faith, the landowner answers subsidiarily for their value, and only if the one who used them has no property with which to pay (Art. 455). This does not apply if the landowner makes use of his right under Art. 450.",
+  P:"Nico built in bad faith; Oli was in good faith. Pat did not act in bad faith. Nico, who used the materials and is primarily liable, has no property. In (a), Oli appropriated the house under Art. 449 and profits from the materials. In (b), Oli used his right under Art. 450.",
+  C:"(a) Oli keeps the house without paying Nico, but he must pay Pat the value of the materials because Nico cannot. (b) Oli owes Pat nothing; Pat's recourse is against Nico alone.",
+  must:["Establishes Nico's bad faith and Oli's good faith","States that the builder is primarily liable to the owner of the materials","States the subsidiary liability and the insolvency condition","Applies the Art. 450 exception in (b)"],
+  zero:["Making Oli primarily liable to Pat.","Saying Oli owes Pat nothing in (a) because Nico was in bad faith."],
+  src:"Arts. 449, 450, 455" },
+
+{ topic:"Alluvion and acquisitive prescription", arts:"Art. 457",
+  q:"From 1970 to 1990, Quina's titled riverside lot gradually gained 1,000 square meters from deposits brought by the river current. She never registered the added area. Since 1994, Rico has openly and continuously occupied the new strip in the concept of owner, without title. Quina sued Rico in 2026. Who owns the strip?",
+  A:"Rico.",
+  L:"Accretion gradually received by land adjoining a river bank from the effects of the current belongs to the riparian owner (Art. 457), automatically. But alluvion does not become registered land merely because the adjoining land is titled. Unless registered, it may be acquired by third persons through acquisitive prescription: 10 years with good faith and just title, or 30 years without (Arts. 1134, 1137).",
+  P:"The deposits were gradual and caused by the river current, so Quina became owner. She never registered the strip, so it is not protected by her title. Rico has no title, so he needs 30 years. From 1994 to 2026 is 32 years.",
+  C:"Rico acquired the strip by extraordinary acquisitive prescription. Quina's title does not cover it.",
+  must:["States the requisites of alluvion","States that ownership is automatic","States that alluvion is not automatically registered","Computes the correct prescriptive period"],
+  zero:["“Quina, because her land is titled.”","Using 10 years when there is no just title."],
+  src:"Arts. 457, 1134, 1137; Grande v. CA; Reynante v. CA" },
+
+{ topic:"Change of river course; avulsion", arts:"Arts. 459, 461–462",
+  q:"(a) After a strong flood, a river abandoned its bed between Sam's and Tess's lands and cut a new channel through Uri's farm, taking 3 hectares. The old bed is 2 hectares. The government did nothing to restore the river. Sam, Tess and Uri all claim the old bed. (b) In the same flood, the current tore away a known 500-square-meter portion of Vina's land and deposited it on Wil's land. Vina has done nothing for three years. Rule on both.",
+  A:"(a) Uri owns the old bed. (b) Wil now owns the portion.",
+  L:"River beds abandoned through a natural change of course belong ipso facto to the owners whose lands are occupied by the new course, in proportion to the area lost. Owners along the old bed may acquire it by paying its value, which may not exceed the value of the area occupied by the new bed (Art. 461). The new bed becomes public dominion (Art. 462). When the current segregates a known portion and transfers it to another estate, the original owner keeps it only if he removes it within two years (Art. 459).",
+  P:"(a) The change was natural, and the river was not restored. Uri alone lost land. (b) Vina's portion is known and identifiable, but she did not remove it within two years.",
+  C:"(a) Uri owns the 2-hectare old bed; Sam and Tess may buy it at a price not exceeding the value of Uri's 3 hectares. The new channel is public dominion. (b) Vina lost the portion; it belongs to Wil.",
+  must:["Applies Art. 461 to the old bed","States the right of riparian owners to buy, with the price cap","States that the new bed is public dominion","Applies the two-year removal period in avulsion"],
+  zero:["Giving the old bed to Sam and Tess as riparian owners.","Saying Vina only had to claim, not remove."],
+  src:"Arts. 459, 461, 462; Water Code (P.D. 1067), Art. 58" },
+
+{ topic:"Adjunction and specification", arts:"Arts. 466–475",
+  q:"(a) Xia, in bad faith, set Yna's ₱100,000 diamond on her own ₱5,000 gold ring. (b) Zed, in good faith, carved Abe's ₱10,000 narra block into a statue that won a national award and is now worth ₱300,000. (c) Bo, in bad faith, did the same with another of Abe's blocks. Rule on each.",
+  A:"(a) Yna may choose payment of the diamond's value or its separation even if the ring is destroyed, plus damages either way. (b) Zed owns the statue and pays Abe ₱10,000. (c) Abe cannot take the statue; he gets the value of the narra plus damages.",
+  L:"The principal is the thing to which the other was united as an ornament (Art. 467). If the owner of the principal acted in bad faith, the owner of the accessory may choose between its value and separation even if the principal is destroyed, with damages in both cases (Art. 470). One who in good faith makes a thing of a different kind from another's material keeps it and pays for the material (Art. 474). If bad faith intervened, the owner of the material may take the work without paying or demand the value of the material plus damages, but he cannot take it if its artistic value is considerably more than the material (Art. 474). Sentimental value is considered (Art. 475).",
+  P:"(a) The diamond was set as an ornament, so the ring is the principal, even though the diamond is worth more. Xia, its owner, acted in bad faith. (b) Zed acted in good faith, and the material is not more valuable than the statue. (c) Bo acted in bad faith, but the statue's artistic value far exceeds the narra.",
+  C:"(a) Yna chooses value or separation, plus damages. (b) Zed keeps the statue and pays for the narra. (c) Abe recovers the narra's value plus damages only.",
+  must:["Identifies the ring as principal under the purpose test","Applies Art. 470, par. 2 to the bad-faith owner of the principal","Applies Art. 474, par. 1 to the good-faith maker","Applies the artistic-value exception to the bad-faith maker"],
+  zero:["Calling the diamond the principal because it is worth more.","Giving Abe the statue in (c)."],
+  src:"Arts. 467, 470, 474, 475" }
+];
+
+(function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const LIMIT = 5 * 60, KEY = "rr-property-essay-best", DKEY = "rr-property-essay-draft-", TOTAL = ESSAYS.length;
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set(k, v){ try { localStorage.setItem(k, v); } catch(e){} },
+    del(k){ try { localStorage.removeItem(k); } catch(e){} }
+  };
+  let best = {}; try { best = JSON.parse(store.get(KEY) || "{}") || {}; } catch(e){ best = {}; }
+  const saveBest = () => store.set(KEY, JSON.stringify(best));
+  let cur = null;
+
+  function showHome(){
+    if (cur) clearInterval(cur.tick);
+    $("#home").hidden = false; $("#essay").hidden = true; $("#results").hidden = true;
+    $("#grid").innerHTML = ESSAYS.map((e,i) => {
+      const b = best[i], max = e.must.length;
+      const tag = b == null ? `<span class="best none">Not attempted</span>` : `<span class="best ${b < max ? "part" : ""}">Best ${b}/${max}</span>`;
+      return `<button class="set" data-i="${i}"><span class="n">Problem ${i+1} · ${esc(e.arts)}</span><span class="t">${esc(e.topic)}</span>
+        <span class="m"><span>5 min</span>${tag}</span></button>`;
+    }).join("");
+    const done = Object.keys(best).length;
+    const pts = Object.entries(best).reduce((a,[i,v]) => a + v, 0), max = Object.keys(best).reduce((a,i) => a + ESSAYS[i].must.length, 0);
+    $("#sumline").textContent = done ? `${done} of ${TOTAL} attempted · ${pts}/${max} points on your best tries` : `${TOTAL} problems`;
+    window.scrollTo({top:0});
+  }
+
+  function words(t){ return (t.trim().match(/\S+/g) || []).length; }
+
+  function start(i){
+    const e = ESSAYS[i];
+    if (cur) clearInterval(cur.tick);
+    cur = { i, timed: $("#useTimer").checked, deadline: Date.now() + LIMIT*1000, done:false };
+    $("#home").hidden = true; $("#results").hidden = true; $("#essay").hidden = false;
+    $("#qcov").textContent = `Problem ${i+1} · ${e.arts}`;
+    $("#qtitle").textContent = e.topic;
+    $("#qtext").textContent = e.q;
+    $("#prog").innerHTML = `Problem <b>${i+1}</b>/${TOTAL}`;
+    const ta = $("#ans"); ta.disabled = false; ta.value = store.get(DKEY + i) || "";
+    $("#wc").textContent = words(ta.value) + " words";
+    $("#quit").textContent = "Quit"; $("#quit").classList.remove("arm");
+    if (cur.timed) { tick(); cur.tick = setInterval(tick, 250); } else { $("#timer").textContent = "No timer"; $("#timer").className = "timer off"; }
+    window.scrollTo({top:0});
+    setTimeout(() => { try { ta.focus({preventScroll:true}); } catch(_){} }, 50);
+  }
+
+  function tick(){
+    const left = Math.max(0, Math.round((cur.deadline - Date.now())/1000)), t = $("#timer");
+    t.textContent = `${String(Math.floor(left/60)).padStart(2,"0")}:${String(left%60).padStart(2,"0")}`;
+    t.className = "timer" + (left <= 30 ? " crit" : left <= 90 ? " warn" : "");
+    if (left <= 0) submit(true);
+  }
+
+  function submit(auto){
+    if (!cur || cur.done) return; cur.done = true;
+    clearInterval(cur.tick);
+    const e = ESSAYS[cur.i], ta = $("#ans");
+    cur.text = ta.value; ta.disabled = true;
+    cur.used = cur.timed ? Math.min(LIMIT, LIMIT - Math.max(0, Math.round((cur.deadline - Date.now())/1000))) : null;
+    store.del(DKEY + cur.i);
+    cur.hits = e.must.map(() => false);
+    $("#timeup").hidden = !auto;
+    $("#rmeta").textContent = `Problem ${cur.i+1} · ${e.topic}` + (cur.used != null ? ` · time used ${Math.floor(cur.used/60)}:${String(cur.used%60).padStart(2,"0")}` : "") + ` · ${words(cur.text)} words`;
+    $("#checks").innerHTML = e.must.map((m,k) => `<label class="ck"><input type="checkbox" data-k="${k}"><span>${esc(m)}</span></label>`).join("");
+    $("#zero").innerHTML = e.zero.map(z => `<li>${esc(z)}</li>`).join("");
+    const mine = $("#mine"); mine.textContent = cur.text.trim() || "(You did not write anything.)"; mine.classList.toggle("empty", !cur.text.trim());
+    const rows = [["a","A","Answer",e.A],["l","L","Legal basis",e.L],["p","A","Application",e.P],["c","C","Conclusion",e.C]];
+    $("#alac").innerHTML = rows.map(([c,l,k,v]) => `<div class="ar ${c}"><div class="k"><b>${l}</b>${k}</div><div class="v">${esc(v)}</div></div>`).join("");
+    $("#srcs").innerHTML = `<b>Review:</b> ${esc(e.src)}`;
+    $("#next").hidden = cur.i >= TOTAL - 1;
+    mark();
+    $("#essay").hidden = true; $("#results").hidden = false;
+    window.scrollTo({top:0});
+  }
+
+  function mark(){
+    const e = ESSAYS[cur.i], n = cur.hits.filter(Boolean).length, max = e.must.length;
+    $("#big").innerHTML = `${n}<small>/${max}</small>`;
+    $("#verdict").textContent = !cur.text.trim() ? "No answer, no points." : n === max ? "That is a passing answer. Do it again under time." : n === max - 1 ? "Close. One missing point costs you at the bar." : n >= max/2 ? "Half an answer is not an answer." : "Read the codal again, then rewrite this one.";
+    if (best[cur.i] == null || n > best[cur.i]) { best[cur.i] = n; saveBest(); }
+  }
+
+  $("#grid").addEventListener("click", e => { const b = e.target.closest(".set"); if (b) start(+b.dataset.i); });
+  $("#ans").addEventListener("input", e => { $("#wc").textContent = words(e.target.value) + " words"; if (cur && !cur.done) store.set(DKEY + cur.i, e.target.value); });
+  $("#checks").addEventListener("change", e => {
+    const c = e.target.closest("input[data-k]"); if (!c) return;
+    cur.hits[+c.dataset.k] = c.checked; c.closest(".ck").classList.toggle("on", c.checked); mark();
+  });
+  $("#submit").addEventListener("click", () => submit(false));
+  $("#submit2").addEventListener("click", () => submit(false));
+  $("#quit").addEventListener("click", () => {
+    const q = $("#quit");
+    if (!q.classList.contains("arm")) { q.classList.add("arm"); q.textContent = "Tap again to quit"; setTimeout(() => { q.classList.remove("arm"); q.textContent = "Quit"; }, 3000); return; }
+    showHome();
+  });
+  $("#retake").addEventListener("click", () => start(cur.i));
+  $("#next").addEventListener("click", () => start(Math.min(TOTAL - 1, cur.i + 1)));
+  $("#home2").addEventListener("click", showHome);
+  window.__rr = () => cur;
+  showHome();
+})();
+</script>
+<div style="font:13px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;color:#5B665A;text-align:center;padding:14px 16px 22px">
+<a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSevIs1UsXAis_NB8qKYjPxivTeN8Dr-HQ0Tyqonnw5Try-xoQ/viewform?usp=pp_url&amp;entry.174327743=Property+%28bar+essays%29" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
+<a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script><script>(function(){
+  function drill(){ var s=document.getElementById('rr-switch'); return s && s.selectedIndex>=0 ? s.options[s.selectedIndex].text : document.title; }
+  function send(extra){ try{ var p={drill_name: drill()}; for (var k in extra) p[k]=extra[k]; gtag('event','drill_completed',p); }catch(e){} }
+  var r=document.getElementById('result');
+  if (r){ var was=r.classList.contains('show');
+    new MutationObserver(function(){ var now=r.classList.contains('show'); if(now && !was) send({}); was=now; }).observe(r,{attributes:true,attributeFilter:['class']}); }
+  var q=document.getElementById('results');
+  if (q){ var hid=q.hidden;
+    new MutationObserver(function(){ if(hid && !q.hidden){ var m=document.getElementById('rmeta'); send({quiz_set: m ? (m.textContent.split(' · ')[0]||'') : ''}); } hid=q.hidden; }).observe(q,{attributes:true,attributeFilter:['hidden']}); }
+})();</script></body>
+</html>

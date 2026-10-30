@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Property Four-Statement Quiz · RecitReady</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#F7F2E6; --paper-2:#FBF8F0; --card:#FFFDF7; --line:#E4DCC6; --line-2:#D6CBAE;
+  --ink:#2E382F; --ink-2:#5B665A; --muted:#8A917F;
+  --sage:#6F8466; --sage-d:#4D6450; --sage-dd:#36493A; --sage-l:#E7EDDF; --sage-ll:#F1F4EC;
+  --gold:#B8923A; --gold-d:#94742A; --gold-l:#F4E9CF; --gold-ll:#FAF3E2;
+  --good:#4F7A4E; --good-bg:#E4F0DE; --bad:#B4553F; --bad-bg:#F8E3DC;
+  --serif-d:"Cormorant Garamond", Georgia, serif; --serif:"Lora", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--paper);
+  background-image:radial-gradient(rgba(110,96,60,.10) .7px, transparent .8px),radial-gradient(rgba(110,96,60,.07) .6px, transparent .7px);
+  background-size:23px 23px, 37px 37px; background-position:0 0, 11px 17px;
+  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .name{font-family:var(--serif-d);font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--sage-dd);line-height:1}
+.logo .tag{font-family:var(--serif-d);font-style:italic;color:var(--gold-d);font-size:16px;line-height:1.1}
+.subject{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -18px rgba(60,70,50,.35)}
+.head{padding:18px 20px 16px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--sage-dd);background:var(--sage-l);border:1px solid #cfdac4;border-radius:8px;padding:3px 9px;margin-bottom:6px}
+h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;margin:0}
+.sub{font-family:var(--serif-d);font-style:italic;font-size:17px;color:var(--gold-d);margin-top:3px}
+.how{margin:14px 0 0;padding:10px 14px;background:var(--gold-ll);border:1px dashed #e3cf9e;border-radius:12px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.how b{color:var(--gold-d)}
+.how u{text-decoration:none;border-bottom:2px solid var(--gold);color:var(--ink);font-weight:600}
+.body{padding:18px 20px 20px}
+.opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:13.5px;color:var(--ink-2)}
+.chk{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:6px 11px;cursor:pointer;font-weight:600}
+.chk input{accent-color:var(--sage-d);width:16px;height:16px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.set{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 14px;cursor:pointer;transition:border-color .15s, transform .15s}
+.set:hover{border-color:var(--sage);transform:translateY(-1px)}
+.set .n{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.set .t{font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--sage-dd);line-height:1.35}
+.set .m{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:12.5px;color:var(--muted)}
+.best{font-weight:700;color:var(--sage-d);background:var(--sage-l);border-radius:999px;padding:1px 8px}
+.best.none{background:transparent;color:var(--muted);font-weight:500;padding:0}
+
+/* quiz */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;padding:10px 16px;background:rgba(251,248,240,.97);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+.bar .l{display:flex;align-items:center;gap:12px;min-width:0}
+.timer{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--sage-dd);background:var(--sage-ll);border:1px solid #cfdac4;border-radius:10px;padding:2px 12px;font-variant-numeric:tabular-nums;min-width:86px;text-align:center}
+.timer.warn{color:var(--gold-d);background:var(--gold-ll);border-color:#e3cf9e}
+.timer.crit{color:var(--bad);background:var(--bad-bg);border-color:#efc9bd;animation:pulse 1s infinite}
+.timer.off{font-size:14px;font-family:var(--sans);color:var(--muted)}
+@keyframes pulse{50%{opacity:.6}}
+.prog{font-size:13px;color:var(--ink-2);white-space:nowrap} .prog b{color:var(--sage-dd)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--sage)}
+.btn.pri{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.btn.pri:hover{background:var(--sage-dd)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.arm{border-color:var(--bad);color:var(--bad)}
+.qhead{padding:16px 20px 4px}
+.qhead h2{font-family:var(--serif-d);font-size:24px;margin:0;line-height:1.15}
+.qhead .c{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--gold-d);text-transform:uppercase}
+.list{padding:10px 20px 6px;display:grid;gap:12px}
+.item{border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 15px 14px}
+.item .st{display:flex;gap:10px;font-family:var(--serif);font-size:16px;line-height:1.75}
+.item .no{flex:none;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--sage-d);background:var(--sage-l);border-radius:7px;min-width:28px;height:24px;display:grid;place-items:center;margin-top:3px}
+.item u{text-decoration:none;border-bottom:2px solid var(--gold);padding:0 1px;font-weight:600;color:var(--sage-dd)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 0 38px}
+.tf{height:36px;min-width:84px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:700;letter-spacing:.06em;font-size:13px;color:var(--ink-2)}
+.tf:hover{border-color:var(--sage)}
+.tf.on[data-v="T"]{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.tf.on[data-v="F"]{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.fix{flex:1 1 220px;min-width:0;height:36px;border:1px solid #e3cf9e;background:var(--gold-ll);border-radius:9px;padding:0 11px;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.fix:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fix::placeholder{color:#b39a5c;font-style:italic}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 20px 20px}
+.note{font-size:12.5px;color:var(--muted)}
+.banner{margin:14px 20px 0;padding:10px 14px;border-radius:12px;background:var(--bad-bg);color:var(--bad);font-weight:600;font-size:14px}
+
+/* results */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:18px 20px 6px}
+.big{font-family:var(--serif-d);font-size:46px;font-weight:700;color:var(--sage-dd);line-height:1}
+.big small{font-size:24px;color:var(--muted)}
+.verdict{font-family:var(--serif);font-style:italic;color:var(--gold-d);font-size:16px}
+.meta{font-size:13px;color:var(--ink-2)}
+.filters{display:flex;gap:6px;padding:6px 20px 0;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.filters button.on{background:var(--sage-ll);border-color:var(--sage);color:var(--sage-dd)}
+.item.ok{border-left:4px solid var(--good)} .item.no-{border-left:4px solid var(--bad)}
+.res{margin:10px 0 0 38px;display:grid;gap:6px;font-size:13.5px}
+.res .row{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.res .k{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);min-width:86px}
+.pill{font-weight:700;border-radius:7px;padding:1px 8px;font-size:13px}
+.pill.g{background:var(--good-bg);color:var(--good)} .pill.b{background:var(--bad-bg);color:var(--bad)} .pill.n{background:var(--sage-ll);color:var(--ink-2)}
+.why{background:var(--sage-ll);border-left:3px solid var(--sage);border-radius:6px;padding:7px 11px;color:var(--ink-2);line-height:1.55}
+.why .src{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--gold-d)}
+.count{border:1px dashed var(--sage);background:transparent;color:var(--sage-d);border-radius:7px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer}
+.disclaimer{max-width:820px;margin:18px auto 0;padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--ink-2);text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.disclaimer b{color:var(--sage-dd)}
+[hidden]{display:none!important}
+.stmts{display:grid;gap:6px;margin-top:-2px}
+.stmt{display:flex;gap:9px;font-family:var(--serif);font-size:15.5px;line-height:1.65}
+.stmt .r{flex:none;font-family:var(--sans);font-weight:700;font-size:12px;color:var(--gold-d);background:var(--gold-ll);border:1px solid #ecdcb2;border-radius:6px;min-width:26px;height:22px;display:grid;place-items:center;margin-top:3px}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:11px 0 0 38px}
+.stmt .r{min-width:30px}
+.opt{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:7px 10px;cursor:pointer;font-size:13.5px;color:var(--ink);line-height:1.35}
+.opt:hover{border-color:var(--sage)}
+.opt b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--sage-ll);color:var(--sage-dd);font-size:12.5px}
+.opt.on{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.opt.on b{background:#fff;color:var(--sage-dd)}
+.opt.key{border-color:var(--good);background:var(--good-bg)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt[disabled]{cursor:default}
+.vt{flex:none;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:1px 7px;margin-top:4px;height:fit-content}
+.vt.t{background:var(--good-bg);color:var(--good)} .vt.f{background:var(--bad-bg);color:var(--bad)}
+.sx{margin:2px 0 4px 35px;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5}
+.sx .src{font-size:12px;font-weight:600;color:var(--gold-d)}
+@media (max-width:640px){ .stmts,.mc{margin-left:0} .mc{grid-template-columns:1fr} .sx{margin-left:35px} }
+
+@media (max-width:640px){
+  .wrap{padding:12px 10px 40px}
+  .logo .name{font-size:22px}
+  .head,.body{padding-left:14px;padding-right:14px}
+  h1{font-size:24px}
+  .list{padding:10px 10px 6px}
+  .item{padding:12px 12px 13px}
+  .item .st{font-size:15.5px}
+  .ans,.res{margin-left:0}
+  .tf{flex:1;min-width:0}
+  .fix{flex-basis:100%}
+  .bar{padding:8px 10px}
+  .timer{font-size:19px;min-width:72px;padding:2px 8px}
+  .pw{display:none}
+  .bar .btn{padding:0 11px;height:36px}
+  .qhead,.foot,.score,.filters{padding-left:14px;padding-right:14px}
+}
+</style>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head>
+<body>
+<div id="rr-nav" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;padding:7px 14px">
+<a href="index.html" style="color:#fff;text-decoration:none;letter-spacing:.08em;font-family:Georgia,serif;font-size:14px">RECITREADY</a>
+<label style="display:flex;align-items:center;gap:6px;margin-left:auto;min-width:0">
+<span style="opacity:.85;font-weight:500">Switch drill</span>
+<select id="rr-switch" aria-label="Switch drill" style="max-width:62vw;font:500 13px system-ui,sans-serif;color:#2E382F;background:#FBF8F0;border:0;border-radius:7px;padding:5px 8px"><optgroup label="Codal Drills"><option value="codal-persons-and-family-relations.html">Persons and Family Relations</option><option value="codal-constitution.html">1987 Philippine Constitution</option><option value="codal-criminal-law-1.html">Criminal Law I</option><option value="codal-criminal-law-2.html">Criminal Law II</option><option value="codal-property.html">Property, Ownership and its Modifications</option><option value="codal-obligations-and-contracts.html">Obligations and Contracts</option><option value="codal-sales.html">Law on Sales</option><option value="codal-partnership-agency-trusts.html">Partnership, Agency and Trusts</option><option value="codal-corporation-code.html">Revised Corporation Code</option><option value="codal-civil-procedure.html">Civil Procedure</option><option value="codal-criminal-procedure.html">Criminal Procedure</option><option value="codal-evidence.html">Evidence</option></optgroup><optgroup label="Elements Drills"><option value="elements-criminal-law-2.html">Criminal Law II · Elements of Crimes</option></optgroup><optgroup label="Practice Quizzes"><option value="quizzes-civil-procedure-tf.html">Civil Procedure (T/F)</option><option value="quizzes-sales-tf.html">Law on Sales (T/F)</option><option value="quizzes-property-tf.html" selected>Property (T/F)</option><option value="essays-property-bar.html">Property · Bar Essays</option></optgroup><optgroup label="Procedure Maps"><option value="maps-procedure-maps.html">Procedure Maps</option></optgroup></select></label>
+<a id="rr-fs" href="#" target="_blank" rel="noopener" style="display:none;color:#fff;text-decoration:none;white-space:nowrap">Full screen ↗</a>
+</div>
+<script>(function(){var s=document.getElementById('rr-switch');s.onchange=function(){location.href=s.value;};
+try{if(window.self!==window.top){var f=document.getElementById('rr-fs');f.style.display='inline';f.href=location.href;}}catch(e){}})();</script>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#6F8466" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="22" rx="1"/><rect x="15.5" y="7" width="6.5" height="24" rx="1"/>
+          <path d="M23.5 10.5l5.6-1.6 5.7 20.6-5.6 1.6z"/><path d="M12 13v3M18.7 11.5v5M12 26h0M18.7 26.5h0"/><path d="M5 33h31"/>
+        </g>
+        <path d="M27.5 15.5c1.6-.3 2.6.6 2.9 1.7-1.6.3-2.6-.5-2.9-1.7z" fill="#B8923A"/>
+        <path d="M17.6 20.5l1.1-1.1 1.1 1.1-1.1 1.1z" fill="#B8923A"/>
+      </svg>
+      <div><div class="name">RECITREADY</div><div class="tag">Quiz Room</div></div>
+    </div>
+    <div class="subject">Property · Arts. 414–475</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="panel" id="home">
+    <div class="head">
+      <div class="badge">FOUR-STATEMENT TRUE OR FALSE</div>
+      <h1>Property: 150 questions in 10 timed sets</h1>
+      <div class="sub">Classification of property, ownership and accession (Civil Code Arts. 414–475), with Supreme Court doctrines</div>
+      <div class="how"><b>How to answer.</b> Each question has four statements, I to IV. Decide which of them are true, then pick the choice that lists exactly the true ones. A choice may also say that all or none of the statements are true. Each set has 15 questions and a 12-minute timer, and it submits itself when time runs out. Every attempt draws a new combination and order from the set's 60 statements.</div>
+    </div>
+    <div class="body">
+      <div class="opts">
+        <label class="chk"><input type="checkbox" id="useTimer" checked> 12-minute timer</label>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz" hidden>
+    <div class="bar">
+      <div class="l"><div class="timer" id="timer">12:00</div><div class="prog" id="prog"></div></div>
+      <div style="display:flex;gap:8px"><button class="btn ghost" id="quit">Quit</button><button class="btn pri" id="submit">Submit</button></div>
+    </div>
+    <div class="qhead"><div class="c" id="qcov"></div><h2 id="qtitle"></h2></div>
+    <div class="list" id="list"></div>
+    <div class="foot"><span class="note" id="unans"></span><button class="btn pri" id="submit2">Submit answers</button></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="panel" id="results" hidden>
+    <div class="banner" id="timeup" hidden>Time's up. Your answers were submitted automatically.</div>
+    <div class="score">
+      <div class="big" id="big"></div>
+      <div><div class="verdict" id="verdict"></div><div class="meta" id="rmeta"></div></div>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button><button data-f="wrong">Wrong only</button>
+    </div>
+    <div class="list" id="rlist"></div>
+    <div class="foot">
+      <span class="note">Each statement shows whether it is true or false, with the reason and the source.</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home2">All sets</button><button class="btn pri" id="retake">Retake this set</button></div>
+    </div>
+  </div>
+
+  <p class="disclaimer"><b>Study aid only.</b> These are original statements written from the Civil Code and the doctrines of Supreme Court decisions. They are not a substitute for the official text, your casebooks or your professors' discussions, and may contain errors. Always check against an official source before relying on them for recitations, exams or practice.</p>
+</div>
+<script>
+/* Property (Civil Code Arts. 414–475) — Four-Statement True or False. Sets 1–5.
+   Each statement: [text, explanation, source]. T = true, F = false.
+   Codal provisions and Supreme Court doctrines only; doctrines stated directly, no case names in the statements. */
+const SETS_A = [
+{ t:"Property in general and immovables (Art. 415)", c:"Arts. 414–415",
+T:[
+["All things which are or may be the object of appropriation are considered either immovable or movable property.","","Art. 414"],
+["A thing need not be presently appropriated to be property; it is enough that it may be the object of appropriation.","","Art. 414"],
+["Land, buildings, roads and constructions of all kinds adhered to the soil are immovable property.","","Art. 415(1)"],
+["A building is immovable by itself, separate and distinct from the land on which it stands.","The Code lists “buildings” separately from “land.”","Art. 415(1); Lopez v. Orosa; Prudential Bank v. Panis"],
+["A building constructed on land owned by another is still immovable property.","","Art. 415(1); Prudential Bank v. Panis"],
+["A real estate mortgage may be constituted on a building separately from the land on which it stands.","","Prudential Bank v. Panis"],
+["Parties who treat a house as personal property in a chattel mortgage are estopped from later claiming that it is real property.","","Tumalad v. Vicencio; Navarro v. Pineda"],
+["A chattel mortgage on a building, though valid between the parties, does not bind innocent third persons.","","Tumalad v. Vicencio; Standard Oil v. Jaranillo"],
+["The inscription of a sale of a building in the chattel mortgage registry has no effect as a registration of real property.","","Leung Yee v. Strong Machinery"],
+["The Register of Deeds may not refuse to record a chattel mortgage on a building on the ground that the building is real property; the duty to record is ministerial.","","Standard Oil v. Jaranillo"],
+["A house that has been demolished ceases to be immovable, and its materials are personal property.","","Bicerra v. Teneza"],
+["Trees, plants and growing fruits are immovable while they are attached to the land or form an integral part of an immovable.","","Art. 415(2)"],
+["Growing crops, though immovable under the Civil Code, may be treated as personal property for purposes of a chattel mortgage and attachment.","","Sibal v. Valdez"],
+["Under Art. 415(3), a thing is immovable if it is attached to an immovable so that it cannot be separated without breaking the material or deterioration of the object.","","Art. 415(3)"],
+["A water pump that can be detached from a house by merely loosening its bolts is not immovable under Art. 415(3).","It can be separated without breaking or deterioration.","Yap v. Tañada"],
+["Unlike Art. 415(4), Art. 415(3) does not require that the thing be attached by the owner of the immovable.","","Art. 415(3)–(4)"],
+["Statues, reliefs and paintings are immovable if placed on lands or in buildings by the owner of the immovable in a manner that reveals the intention to attach them permanently.","","Art. 415(4)"],
+["Animal houses, pigeon-houses, beehives and fish ponds placed or preserved by their owner with the intention of permanent attachment are immovable, and the animals in them are included.","","Art. 415(6)"],
+["Fertilizer actually used on a piece of land is immovable property.","","Art. 415(7)"],
+["Mines, quarries and slag dumps are immovable only while the matter thereof forms part of the bed.","","Art. 415(8)"],
+["Waters, whether running or stagnant, are immovable property.","","Art. 415(8)"],
+["Docks and structures which, though floating, are intended by their nature and object to remain at a fixed place on a river, lake or coast are immovable.","","Art. 415(9)"],
+["Contracts for public works are immovable property.","","Art. 415(10)"],
+["Servitudes and other real rights over immovable property are themselves immovable.","","Art. 415(10)"],
+["A real estate mortgage, being a real right over an immovable, is real property.","","Art. 415(10)"],
+["Minerals extracted from a mine become personal property.","They are immovable only while they form part of the bed.","Art. 415(8); Art. 416(4)"],
+["A vessel is personal property, but because of its value it partakes of the nature of real property in some respects, such that the rules on double sale of realty have been applied to it.","","Rubiso v. Rivera"],
+["Steel towers of an electric company, removable without breakage and not used for an industry carried on in a building or on land, are personal property under the Civil Code.","","Board of Assessment Appeals v. Meralco"],
+["The classification of a thing as immovable is a legal one; things movable by nature may be immovable by law.","Art. 415 includes things movable by nature, such as machinery and statues.","Art. 415(4)–(5)"],
+["Roads constructed on land are immovable even if made of materials that were once movable.","","Art. 415(1)"]
+],
+F:[
+["A building constructed on rented land is personal property because the builder does not own the land.","The building is immovable regardless of who owns the land.","Art. 415(1); Prudential Bank v. Panis"],
+["A chattel mortgage over a house converts the house into personal property as to all persons.","Only the parties are estopped; innocent third persons are not bound.","Tumalad v. Vicencio"],
+["A purchaser in good faith of a house is bound by an earlier agreement of its owner and a creditor to treat the house as personal property.","The estoppel binds only the parties.","Tumalad v. Vicencio; Leung Yee v. Strong Machinery"],
+["Things attached to an immovable in a fixed manner are immovable only if the owner of the immovable placed them there.","That requirement belongs to Art. 415(4), not 415(3).","Art. 415(3)"],
+["Paintings hung by a lessee on the walls of a leased building with intent to keep them there permanently are immovable under Art. 415(4).","They must be placed by the owner of the immovable.","Art. 415(4)"],
+["Under Art. 415(4), objects for ornamentation are immovable only if they cannot be separated without breaking the material.","Art. 415(4) looks to the owner's intent of permanent attachment; breakage is the test of Art. 415(3).","Art. 415(3)–(4)"],
+["Growing fruits remain immovable even after they are gathered.","They are immovable only while attached.","Art. 415(2)"],
+["Trees remain immovable even after they are cut down, since they came from the land.","Once cut, they are movable.","Art. 415(2)"],
+["Growing crops can never be the object of a chattel mortgage, since they are immovable under Art. 415(2).","They may be treated as personal property for chattel mortgage and attachment.","Sibal v. Valdez"],
+["Minerals remain immovable even after they have been extracted from the mine.","Only while the matter forms part of the bed.","Art. 415(8)"],
+["Fertilizer stored in a bodega on the farm is immovable because it is intended for use on the land.","Only fertilizer actually used on the land is immovable.","Art. 415(7)"],
+["Docks are immovable only if they are attached to the soil.","Docks and structures are immovable “though floating,” if meant to stay at a fixed place.","Art. 415(9)"],
+["Floating structures are always movable, since they do not adhere to the soil.","Those intended to remain at a fixed place on a river, lake or coast are immovable.","Art. 415(9)"],
+["Servitudes over movable property are immovable under Art. 415(10).","Only servitudes and real rights over immovable property.","Art. 415(10)"],
+["Water drawn from a river and stored in a tank remains immovable property.","Water is immovable while in its natural bed; once drawn and stored it can be moved without impairing the realty.","Art. 415(8); Art. 416(4)"],
+["The Register of Deeds may refuse to record a chattel mortgage on a building because buildings are real property.","Recording is ministerial.","Standard Oil v. Jaranillo"],
+["Anything bolted to a building is immovable under Art. 415(3).","Not if it can be separated without breaking the material or deterioration of the object.","Yap v. Tañada"],
+["Whether a thing is immovable depends solely on whether it can physically be moved.","Machinery, statues and fertilizer may be immovable though physically movable.","Art. 415(4)–(7)"],
+["Real rights over immovables are personal property because they are incorporeal.","They are immovable.","Art. 415(10)"],
+["The animals in a pigeon-house that is immovable remain movable property.","The animals in these places are included.","Art. 415(6)"],
+["A house built on another's land with the owner's consent is movable because it can be dismantled.","A building is immovable.","Art. 415(1)"],
+["Constructions are immovable under Art. 415(1) even if they merely rest on the soil without adhering to it.","They must be “adhered to the soil.”","Art. 415(1)"],
+["Only things already appropriated are property; things that may still be appropriated are not.","Art. 414 covers things which “are or may be” the object of appropriation.","Art. 414"],
+["The parties' designation of a building as personal property in their contract fixes its nature for all purposes and against all persons.","It binds only them, by estoppel.","Tumalad v. Vicencio; Leung Yee v. Strong Machinery"],
+["Steel towers of an electric company were held immovable as constructions adhered to the soil.","They were held personal property.","Board of Assessment Appeals v. Meralco"],
+["Vessels are immovable property because of their great value.","They are movables that partake of the nature of realty in some respects.","Rubiso v. Rivera"],
+["Animal houses and fish ponds are immovable even if the owner placed them only temporarily.","The owner must intend them to be permanently attached.","Art. 415(6)"],
+["Contracts for the construction of private residences are immovable under Art. 415(10).","Art. 415(10) speaks of contracts for public works.","Art. 415(10)"],
+["Once a building is separately mortgaged from the land, it becomes personal property.","It remains immovable, and the mortgage is a real estate mortgage.","Prudential Bank v. Panis"],
+["The materials of a demolished house remain immovable because the house was immovable.","Once demolished, the materials are personal property.","Bicerra v. Teneza"]
+]},
+
+{ t:"Machinery, movables and the words “furniture” and “muebles”", c:"Art. 415(5) · Arts. 416–418 · Art. 426",
+T:[
+["Machinery is immovable under Art. 415(5) only if placed by the owner of the tenement for an industry or works carried on in a building or on a piece of land.","","Art. 415(5)"],
+["The machinery must tend directly to meet the needs of the industry or works for Art. 415(5) to apply.","","Art. 415(5)"],
+["Machinery placed by a lessee on leased land remains personal property, unless the lessee acted as the agent of the owner.","","Davao Sawmill v. Castillo"],
+["Machinery placed by a tenant under a contract that it will belong to the owner at the end of the lease becomes immovable.","The tenant is treated as acting for the owner.","Davao Sawmill v. Castillo (citing Valdez v. Central Altagracia)"],
+["Machinery placed by a usufructuary does not become immovable under Art. 415(5), unless he acted for the owner.","Only the owner of the tenement immobilizes by destination.","Davao Sawmill v. Castillo"],
+["Equipment that is merely incidental to a business, and could be used elsewhere, is not immovable under Art. 415(5).","","Mindanao Bus Co. v. City Assessor"],
+["The repair equipment of a bus company kept in its garage is personal property, because a transportation business is not carried on in a building or on a piece of land.","","Mindanao Bus Co. v. City Assessor"],
+["Machinery need not be physically attached to the building to be immovable under Art. 415(5).","Art. 415(5) rests on destination, not on attachment.","Art. 415(5)"],
+["Machinery essential to a sugar central, though bought after the central was mortgaged, may be covered by the real estate mortgage.","","Berkenkotter v. Cu Unjieng"],
+["A real estate mortgage that expressly covers after-acquired machinery need not also be registered as a chattel mortgage to bind that machinery.","","People's Bank & Trust v. Dahican Lumber"],
+["Parties who treat machinery bolted to the floor as personal property in their contract are estopped from claiming it is real property.","","Makati Leasing v. Wearever Textile"],
+["Machinery treated by the parties as personal property in their contract may be the subject of a writ of replevin against them.","","Serg's Products v. PCI Leasing"],
+["For real property tax, machinery is classified under the Local Government Code, which does not require that it be placed by the owner of the tenement.","","Caltex v. CBAA; FELS Energy v. Province of Batangas"],
+["Personal property includes movables susceptible of appropriation which are not included in Art. 415.","","Art. 416(1)"],
+["Real property which a special provision of law considers personalty is personal property.","","Art. 416(2)"],
+["Forces of nature brought under control by science are personal property.","","Art. 416(3)"],
+["In general, all things which can be transported from place to place without impairment of the real property to which they are fixed are personal property.","","Art. 416(4)"],
+["Electricity may be the object of theft.","","U.S. v. Carlos"],
+["The business of providing telecommunication services is personal property that may be the object of theft.","","Laurel v. Abrogar"],
+["Obligations and actions which have for their object movables or demandable sums are personal property.","","Art. 417(1)"],
+["Shares of stock of agricultural, commercial and industrial entities are personal property even if the entity owns real estate.","","Art. 417(2)"],
+["Shares of stock, being personal property, may be given as security for an obligation.","","Art. 417(2); Chua Guan v. Samahang Magsasaka"],
+["A promissory note is personal property, even if the debt is secured by a real estate mortgage.","","Art. 417(1); Art. 415(10)"],
+["Consumable movables are those which cannot be used in a manner appropriate to their nature without being consumed.","","Art. 418"],
+["Whether a thing is consumable depends on its nature, while whether it is fungible depends on the intention of the parties.","","Art. 418; Art. 1936"],
+["Consumable goods may be the object of commodatum when the purpose of the contract is not their consumption, as when they are lent for exhibition.","","Art. 1936"],
+["When the word “furniture” is used alone, it does not include money, credits, jewelry, books or clothing.","","Art. 426"],
+["“Furniture” used alone may include stocks and bonds if the individual declaration clearly shows that intent.","","Art. 426"],
+["The expression “immovable things or property” in a law or individual declaration includes the things enumerated in Chapter 1 on immovable property.","","Art. 426"],
+["Sawmill machinery installed in the building where the sawing is done is real property, so its execution sale requires the notice prescribed for real property.","","Ago v. CA"]
+],
+F:[
+["Machinery placed by a lessee on leased land becomes immovable once bolted to cement foundations.","It stays personal unless the lessee acted for the owner.","Davao Sawmill v. Castillo"],
+["Any machinery placed by the owner of a building is immovable, even if it is merely incidental to the business.","It must tend directly to meet the needs of the industry.","Art. 415(5); Mindanao Bus Co. v. City Assessor"],
+["Cash registers and typewriters of a restaurant are immovable because they are used in the business carried on in the building.","They are incidental, not essential, to the industry.","Art. 415(5); Mindanao Bus Co. v. City Assessor"],
+["Machinery is immovable under Art. 415(5) only if it cannot be separated from the building without breakage.","That is the test of Art. 415(3); Art. 415(5) rests on destination.","Art. 415(3), (5)"],
+["“Intended by the owner of the tenement” is satisfied if the owner of the machinery placed it, even if he does not own the land or building.","The owner of the tenement must place it.","Art. 415(5); Davao Sawmill v. Castillo"],
+["The estoppel of parties who treat machinery as personal property binds innocent third persons.","It binds only the parties.","Makati Leasing v. Wearever Textile; Serg's Products v. PCI Leasing"],
+["Repair tools of a transportation company become immovable if placed on cement blocks in its garage.","The business is not carried on in the garage; the tools are incidental.","Mindanao Bus Co. v. City Assessor"],
+["Machinery bought after a sugar central was mortgaged is excluded from the real estate mortgage because it was personal property when the mortgage was made.","Being essential to the central, it is covered.","Berkenkotter v. Cu Unjieng"],
+["A real estate mortgage over after-acquired machinery is ineffective unless the machinery is also registered under a chattel mortgage.","No separate chattel registration is needed.","People's Bank & Trust v. Dahican Lumber"],
+["Machinery placed by a tenant who agreed that it would pass to the owner at the end of the lease remains personal property even as to that tenant.","It becomes immovable.","Davao Sawmill v. Castillo"],
+["Under the Local Government Code, machinery is real property for tax purposes only if placed by the owner of the tenement.","The LGC test does not require this.","Caltex v. CBAA"],
+["Gas station pumps and tanks are exempt from real property tax because they can be removed without breakage.","They were held taxable as real property.","Caltex v. CBAA"],
+["Steel towers of an electric company are machinery for an industry carried on in a building, hence immovable.","They were held personal property.","Board of Assessment Appeals v. Meralco"],
+["Electricity cannot be stolen because it is not a corporeal thing.","It may be stolen.","U.S. v. Carlos"],
+["The business of providing telecommunication services is not personal property and cannot be the object of theft.","It is personal property that may be stolen.","Laurel v. Abrogar"],
+["Forces of nature are not property even when brought under control by science, since they are intangible.","They are personal property.","Art. 416(3)"],
+["Real property can never be treated as personal property by law.","A special law may treat realty as personalty.","Art. 416(2)"],
+["Things transportable without impairment of the realty to which they are fixed are immovable because they are fixed to the realty.","They are personal property.","Art. 416(4)"],
+["Shares of stock in a corporation whose only asset is land are real property.","They are personal property although the entity has real estate.","Art. 417(2)"],
+["An action to recover a sum of money is real property if the debt is secured by a real estate mortgage.","The credit is personal; only the mortgage is real.","Art. 417(1); Art. 415(10)"],
+["A half-interest in a business is real property if the business is carried on in a building.","It is personal property.","Art. 417; Stochecker v. Ramirez"],
+["“Consumable” and “fungible” mean the same thing under the Civil Code.","Consumability depends on nature; fungibility on the parties' intent.","Art. 418; Art. 1936"],
+["A consumable thing can never be the object of commodatum.","It can, if the purpose is not its consumption.","Art. 1936"],
+["Movables are classified as consumable or non-consumable only by agreement of the parties.","The classification depends on their nature.","Art. 418"],
+["When the word “furniture” is used alone in a will, it includes the testator's books and jewelry.","It does not, unless the context clearly shows otherwise.","Art. 426"],
+["“Furniture” used alone can never include stocks, even if the declaration expressly says so.","It may, where the contrary clearly appears.","Art. 426"],
+["“Movable things or property” in a law includes the things enumerated in Art. 415.","It includes those in Chapter 2 on movable property.","Art. 426"],
+["Personal property under Art. 416(1) includes movables enumerated in Art. 415.","It covers movables not included in Art. 415.","Art. 416(1)"],
+["A promissory note becomes real property once it is secured by a real estate mortgage.","The note stays personal; the mortgage is real.","Art. 417(1); Art. 415(10)"],
+["Sawmill machinery installed in the building where sawing is done may be sold on execution with only the notice required for personal property.","It is real property; the notice for realty is required.","Ago v. CA"]
+]},
+
+{ t:"Public dominion, patrimonial and private property", c:"Arts. 419–425",
+T:[
+["Property is either of public dominion or of private ownership.","","Art. 419"],
+["Roads, canals, rivers, torrents, ports and bridges constructed by the State, banks, shores and roadsteads are property of public dominion intended for public use.","","Art. 420(1)"],
+["Property belonging to the State that is not for public use but is intended for some public service is property of public dominion.","","Art. 420(2)"],
+["Property intended for the development of the national wealth is property of public dominion.","","Art. 420(2)"],
+["All property of the State which is not of the character stated in Art. 420 is patrimonial property.","","Art. 421"],
+["Property of public dominion, when no longer intended for public use or public service, forms part of the patrimonial property of the State.","","Art. 422"],
+["Only the executive or the legislature, not the courts, may declare that property of public dominion is no longer needed for public use or service.","","Ignacio v. Director of Lands"],
+["Mere non-use of property of public dominion does not convert it into patrimonial property; a formal act of withdrawal is required.","","Laurel v. Garcia"],
+["Property of public dominion is outside the commerce of man and cannot be the object of a lease.","","Municipality of Cavite v. Rojas"],
+["Property of public dominion is not subject to acquisitive prescription.","","Art. 1113"],
+["Property of the State or its subdivisions that is patrimonial may be acquired by prescription.","","Art. 1113"],
+["Land of public dominion erroneously included in a Torrens title remains public, and the title is void as to it.","","Martinez v. CA"],
+["Airport lands and buildings, as ports constructed by the State, are property of public dominion.","","MIAA v. CA"],
+["The collection of fees for the use of property intended for public use does not remove its public character.","","MIAA v. CA"],
+["Canals constructed by a private owner on his own land for his own use are private property.","Art. 420 covers canals “constructed by the State.”","Santos v. Moreno"],
+["A creek is property of public dominion, and a compromise awarding it to a private person is void.","","Maneclang v. IAC"],
+["Private land that becomes part of the sea or shore through the action of the waters becomes property of public dominion.","","Government v. Cabangis"],
+["Foreshore and submerged lands reclaimed by the State remain inalienable until classified as alienable and declared no longer needed for public service.","","Chavez v. PEA and Amari"],
+["Private corporations may not acquire alienable lands of the public domain, except by lease.","","Const., Art. XII, Sec. 3; Chavez v. PEA and Amari"],
+["Of the lands of the public domain, only agricultural lands may be alienated.","","Const., Art. XII, Sec. 3"],
+["Possession of forest land, however long, does not ripen into private ownership.","","Republic v. Animas; Art. 1113"],
+["Under the Regalian doctrine, one who claims that public land has become private must prove a positive act of the government declaring it alienable and disposable.","","Republic v. Tri-Plus Corp."],
+["The property of provinces, cities and municipalities is divided into property for public use and patrimonial property.","","Art. 423"],
+["Provincial roads, city and municipal streets, squares, fountains, public waters and promenades are property for public use of local governments.","","Art. 424"],
+["Public works for public service paid for by a province, city or municipality are its property for public use.","","Art. 424"],
+["City streets, being property for public use, cannot be leased by the city for flea markets.","","Macasiano v. Diokno; Dacanay v. Asistio"],
+["Property of a municipality devoted to governmental purposes cannot be levied upon to satisfy a money judgment against it.","","Viuda de Tan Toco v. Municipal Council of Iloilo"],
+["Property held by a local government that was not acquired with its own funds is held in trust for the State, and Congress may dispose of it without compensation.","","Salas v. Jarencio; Rabuco v. Villegas"],
+["Property of private ownership includes all property belonging to private persons, individually or collectively.","","Art. 425"],
+["Aliens may not acquire private lands except by hereditary succession.","","Const., Art. XII, Sec. 7; Krivenko v. Register of Deeds"]
+],
+F:[
+["A local government may lease part of its plaza to a private person, provided the rentals go to public funds.","A plaza is for public use and outside the commerce of man.","Municipality of Cavite v. Rojas"],
+["Property of public dominion becomes patrimonial once it has not been used for public purposes for a long time.","A formal act of withdrawal is required.","Laurel v. Garcia"],
+["Courts may declare in a land registration case that property of public dominion is no longer needed for public use.","Only the executive or the legislature may.","Ignacio v. Director of Lands"],
+["Canals constructed by private persons on their private land are property of public dominion, because Art. 420 lists canals.","Art. 420 covers canals constructed by the State.","Santos v. Moreno"],
+["Property of public dominion may be acquired by prescription after thirty years of possession.","It is not subject to prescription.","Art. 1113"],
+["Government buildings intended for public service are patrimonial property because the public at large cannot use them.","They are property of public dominion.","Art. 420(2)"],
+["Natural resources, not being for public use, are patrimonial property of the State.","They are public dominion, for the development of the national wealth.","Art. 420(2)"],
+["Public land titled under the Torrens system becomes private once the period to review the decree has lapsed.","The title is void as to land of public dominion.","Martinez v. CA"],
+["Airport lands are patrimonial property because the airport authority charges fees for their use.","Fees do not remove their public character.","MIAA v. CA"],
+["Lands reclaimed from the sea by the State automatically become alienable patrimonial property.","They must be classified as alienable and declared no longer needed for public service.","Chavez v. PEA and Amari"],
+["Private corporations may buy alienable lands of the public domain.","They may only lease them.","Const., Art. XII, Sec. 3"],
+["Patrimonial property of the State, like property of public dominion, can never be acquired by prescription.","Patrimonial property may be.","Art. 1113"],
+["Courts may classify public lands as agricultural in the course of a land registration case.","Classification is an executive prerogative.","Const., Art. XII, Sec. 3; Republic v. Animas"],
+["A city may lease portions of its streets to vendors for a flea market.","Streets are for public use and outside commerce.","Macasiano v. Diokno"],
+["Open and continuous possession of forest land for thirty years ripens into ownership.","Forest land is not alienable and cannot be acquired by prescription.","Republic v. Animas"],
+["Property for public use of a local government may be acquired by prescription, since a local government is not the State.","It is outside the commerce of man like State public dominion.","Arts. 424, 1113"],
+["Patrimonial property of a local government can never be sold or leased.","It is governed by the Civil Code and may be disposed of.","Art. 424"],
+["The State holds property of public dominion in its private capacity, as any owner would.","That describes patrimonial property.","Arts. 420–421"],
+["Private land invaded by the sea and turned into shore remains private property of its owner.","It becomes public dominion.","Government v. Cabangis"],
+["When the State reclaims land that had become part of the sea, ownership reverts to its former private owner.","Reclamation does not revive private ownership.","Government v. Cabangis"],
+["A town plaza is patrimonial property of the municipality.","It is property for public use.","Art. 424"],
+["Property held by a local government but not shown to have been acquired with its own funds is presumed its patrimonial property, which Congress cannot transfer without compensation.","It is presumed held in trust for the State.","Salas v. Jarencio"],
+["Embassy property becomes patrimonial once the embassy moves elsewhere and the lot is left idle, without need of any formal act.","Non-use alone does not convert it.","Laurel v. Garcia"],
+["A creek converted into a fishpond becomes the private property of the one who converted it.","The creek remains public dominion.","Maneclang v. IAC"],
+["Property of private ownership excludes property held collectively by co-owners or corporations.","Art. 425 includes property held individually or collectively.","Art. 425"],
+["A road built by a private person on his own land with his own funds is property of public use under Art. 420.","It is private property.","Art. 425; Cuaycong v. Benedicto"],
+["Aliens may acquire private lands by purchase if the seller is a Filipino citizen.","Only by hereditary succession.","Const., Art. XII, Sec. 7"],
+["Ports constructed by private persons are property of public dominion under Art. 420(1).","The article speaks of ports constructed by the State.","Art. 420(1)"],
+["Property of public dominion may be attached in a suit against the government.","It is outside the commerce of man and not subject to levy.","Art. 420; Tufexis v. Olaguera"],
+["A person claiming private ownership of public land need not prove that it was declared alienable and disposable if he has a tax declaration.","He must prove a positive act of the government.","Republic v. Tri-Plus Corp."]
+]},
+
+{ t:"Ownership: attributes, self-help, limits and recovery", c:"Arts. 427–434",
+T:[
+["Ownership may be exercised over things or rights.","","Art. 427"],
+["The owner has the right to enjoy and dispose of a thing, without other limitations than those established by law.","","Art. 428"],
+["The owner has a right of action against the holder and possessor of the thing in order to recover it.","","Art. 428"],
+["The owner or lawful possessor of a thing has the right to exclude any person from its enjoyment and disposal.","","Art. 429"],
+["The owner or lawful possessor may use such force as may be reasonably necessary to repel or prevent an actual or threatened unlawful physical invasion or usurpation of his property.","","Art. 429"],
+["Self-help may be used only at the time of an actual or threatened dispossession, not after possession has already been lost.","","German Management & Services v. CA"],
+["An owner who has already lost possession must resort to judicial process to recover the property.","","Art. 433; German Management & Services v. CA"],
+["A lawful possessor who is not the owner may also invoke the doctrine of self-help.","","Art. 429"],
+["Every owner may enclose or fence his land by walls, ditches, live or dead hedges or other means, without detriment to servitudes constituted on it.","","Art. 430"],
+["The owner of a thing cannot use it in such a manner as to injure the rights of a third person.","","Art. 431"],
+["The owner has no right to prohibit another's interference with his thing if the interference is necessary to avert an imminent danger and the threatened damage is much greater than the damage to the owner.","","Art. 432"],
+["In a state of necessity, the owner may demand indemnity from the person benefited.","","Art. 432"],
+["Actual possession under claim of ownership raises a disputable presumption of ownership.","","Art. 433"],
+["The true owner must resort to judicial process for the recovery of the property.","","Art. 433"],
+["In an action to recover, the property must be identified.","","Art. 434"],
+["In an action to recover, the plaintiff must rely on the strength of his title and not on the weakness of the defendant's claim.","","Art. 434"],
+["Tax declarations and realty tax receipts are not conclusive evidence of ownership, but together with actual possession they are good indicia of possession in the concept of owner.","","Art. 434; settled doctrine"],
+["Accion publiciana is a plenary action to recover the better right of possession, brought after one year from dispossession.","","Rule 70; settled doctrine"],
+["Accion reivindicatoria is an action to recover ownership, which includes recovery of possession as its consequence.","","Art. 428; Heirs of Yusingco v. Busilak"],
+["Actions for forcible entry and unlawful detainer must be brought within one year.","","Rule 70, Sec. 1"],
+["In an ejectment case, the court may resolve ownership only provisionally, to determine possession, and that ruling does not bar an action involving title.","","Rule 70, Secs. 16 and 18"],
+["Even an owner may be ousted in an ejectment suit by a prior peaceful possessor.","","Pajuyo v. CA"],
+["Two occupants with no title to the land may sue each other for ejectment on the basis of prior possession.","","Pajuyo v. CA"],
+["An owner who forcibly ousts a person in prior peaceful possession may himself be sued for forcible entry.","","Rule 70; German Management & Services v. CA"],
+["In forcible entry, the plaintiff must prove prior physical possession.","","Rule 70, Sec. 1"],
+["In unlawful detainer, the defendant's possession was lawful at the start and became unlawful when his right to possess ended.","","Rule 70, Sec. 1"],
+["Ownership of returnable bottles sold to consumers together with their contents passes to the buyers; what the law prohibits is only their use in a manner that infringes the manufacturer's mark.","","Distilleria Washington v. La Tondeña Distillers"],
+["A prohibition in a deed of donation against alienating the property for a hundred years is an unreasonable restriction on ownership and is deemed not imposed.","","Roman Catholic Archbishop of Manila v. CA; Art. 727"],
+["Self-help cannot be used against a sheriff's lawful levy, since Art. 429 allows force only against an unlawful invasion.","","Art. 429"],
+["An applicant for replevin must state the actual market value of the property in his affidavit.","","Rule 60, Sec. 2(d)"]
+],
+F:[
+["Ownership may be exercised only over corporeal things.","It may be exercised over things or rights.","Art. 427"],
+["The owner's right to dispose of his thing is absolute and admits of no limitation.","It is subject to limitations established by law.","Art. 428"],
+["Only the owner, and not a mere lawful possessor, may exclude others from the thing.","The lawful possessor may too.","Art. 429"],
+["An owner may use self-help to retake land from occupants who have possessed it peacefully for years.","Self-help applies only to actual or threatened dispossession; he must go to court.","German Management & Services v. CA"],
+["Under the doctrine of self-help, the owner may use any degree of force so long as his property is being invaded.","Only such force as is reasonably necessary.","Art. 429"],
+["The right to fence one's land may be exercised even to the detriment of servitudes constituted on it.","It must be without detriment to servitudes.","Art. 430"],
+["In a state of necessity, the owner may demand indemnity only from the person who actually interfered with his property.","He demands it from the person benefited.","Art. 432"],
+["The owner may prohibit interference with his property to avert a danger even if the threatened damage is much greater than his own.","He has no right to prohibit it.","Art. 432"],
+["Art. 432 applies even if the threatened damage is smaller than the damage to the owner from the interference.","The threatened damage must be much greater.","Art. 432"],
+["Any possession, including possession as a tenant, raises a presumption of ownership.","Only actual possession under claim of ownership does.","Art. 433"],
+["The presumption of ownership arising from possession under claim of ownership is conclusive.","It is disputable.","Art. 433"],
+["The true owner may take back his property by force from one who possesses it under a claim of ownership.","He must resort to judicial process.","Art. 433"],
+["In an action to recover, the plaintiff may win by showing that the defendant's title is defective.","He must rely on the strength of his own title.","Art. 434"],
+["In an action to recover land, the area stated in the title prevails over the boundaries.","The boundaries define the land.","Art. 434; settled doctrine"],
+["Tax declarations, by themselves, are conclusive proof of ownership.","They are only indicia of possession in the concept of owner.","Art. 434; settled doctrine"],
+["Accion publiciana must be filed within one year from dispossession.","That is the period for ejectment; accion publiciana is brought after the year.","Rule 70; settled doctrine"],
+["Forcible entry must be filed within one year from the last demand to vacate.","The year runs from entry, or from discovery if by stealth; the last demand is for unlawful detainer.","Rule 70, Sec. 1"],
+["A ruling on ownership in an ejectment case is conclusive in a later action involving title.","It is provisional and does not bar that action.","Rule 70, Sec. 18"],
+["An owner can never be ejected from his own property through an ejectment suit.","A prior peaceful possessor may oust even the owner.","Pajuyo v. CA"],
+["Occupants without title cannot sue each other for ejectment, since neither has a right to the land.","They may, on the basis of prior possession.","Pajuyo v. CA"],
+["In forcible entry, the plaintiff need not prove prior physical possession.","He must.","Rule 70, Sec. 1"],
+["In unlawful detainer, the defendant's possession was unlawful from the very beginning.","That describes forcible entry.","Rule 70, Sec. 1"],
+["Accion reivindicatoria must be filed within one year from dispossession.","It may be filed any time, subject to acquisitive prescription.","Art. 434; settled doctrine"],
+["Real actions involving land are always within the RTC's jurisdiction, regardless of assessed value.","First-level courts hear them if the assessed value does not exceed P400,000.","B.P. 129, as amended by R.A. 11576"],
+["An owner may use his property in any manner, so long as he does not violate a penal statute.","He cannot use it so as to injure the rights of third persons.","Art. 431"],
+["A donor may validly prohibit the donee from alienating the donated land for a hundred years.","The restriction is unreasonable and deemed not imposed.","Roman Catholic Archbishop of Manila v. CA"],
+["Returnable bottles sold to consumers with their contents remain owned by the manufacturer, so a junk dealer who buys them acquires no ownership.","Ownership passed with the sale.","Distilleria Washington v. La Tondeña Distillers"],
+["An owner may use reasonable force to prevent a sheriff from carrying out a lawful levy on his property.","Self-help applies only against an unlawful invasion.","Art. 429"],
+["An owner whose property is interfered with in a state of necessity may lawfully resist the interference.","He has no right to prohibit it.","Art. 432"],
+["The right to destroy one's thing allows an owner to burn his house in a crowded district.","He cannot use his thing to injure the rights of others.","Art. 431"]
+]},
+
+{ t:"Eminent domain, police power, surface rights and hidden treasure", c:"Arts. 435–440",
+T:[
+["No person shall be deprived of his property except by competent authority, for public use, and always upon payment of just compensation.","","Art. 435"],
+["If the requirements for taking are not first complied with, the courts shall protect and, in a proper case, restore the owner in his possession.","","Art. 435"],
+["When property is condemned or seized by competent authority in the interest of health, safety or security, the owner is not entitled to compensation unless he shows that the condemnation or seizure is unjustified.","","Art. 436"],
+["Just compensation is the fair market value of the property at the time of the taking or of the filing of the complaint, whichever came first.","","Rule 67, Sec. 4; settled doctrine"],
+["The determination of just compensation is a judicial function; statutory formulas are only guides.","","EPZA v. Dulay"],
+["Public use includes public advantage or benefit, such as socialized housing.","","Sumulong v. Guerrero"],
+["There may be a taking even without transfer of title, when the owner is deprived of the beneficial enjoyment of his property for more than a momentary period.","","Republic v. Vda. de Castellvi"],
+["A local government exercising eminent domain must act through an ordinance and must first make a valid and definite offer that the owner did not accept.","","Local Government Code, Sec. 19"],
+["A local government may take immediate possession upon depositing fifteen percent of the fair market value based on the current tax declaration.","","Local Government Code, Sec. 19"],
+["Congress may delegate the power of eminent domain to local governments and public utilities.","","Settled doctrine; Local Government Code, Sec. 19"],
+["If the public purpose of an expropriation is abandoned, the former owner may seek reconveyance upon returning the compensation he received.","","MCIAA v. Lozada"],
+["Zoning ordinances, as an exercise of police power, may prevail over restrictions in a private deed of sale.","","Ortigas & Co. v. Feati Bank"],
+["Structures built without authority on public streets may be removed as nuisances without compensation.","","Art. 436; City of Manila v. Garcia"],
+["The owner of a parcel of land is the owner of its surface and of everything under it.","","Art. 437"],
+["The landowner may build, plant and excavate on his land as he deems proper, without detriment to servitudes and subject to special laws and ordinances.","","Art. 437"],
+["The landowner cannot complain of the reasonable requirements of aerial navigation.","","Art. 437"],
+["Minerals under private land belong to the State, and the landowner cannot extract them without the State's permission.","","Const., Art. XII, Sec. 2; Art. 437"],
+["The airspace above a condominium building forms part of its common areas and does not belong to the owner of the topmost unit.","","Leviste Management v. Legaspi Towers 200"],
+["Hidden treasure belongs to the owner of the land, building or other property on which it is found.","","Art. 438"],
+["When treasure is discovered by chance on the property of another, one-half of it goes to the finder.","","Art. 438"],
+["When treasure is discovered by chance on property of the State or any of its subdivisions, the finder gets one-half.","","Art. 438"],
+["A finder who is a trespasser is not entitled to any share of the treasure.","","Art. 438"],
+["If the things found are of interest to science or the arts, the State may acquire them at their just price, divided in the same proportion as the treasure.","","Art. 438"],
+["Treasure is any hidden and unknown deposit of money, jewelry or other precious objects, the lawful ownership of which does not appear.","","Art. 439"],
+["Money hidden by an owner who can be identified is not treasure.","Its lawful ownership appears.","Art. 439"],
+["A usufructuary has no right to treasure found on the property in usufruct; if he finds it, he is treated as a stranger.","","Art. 566"],
+["The ownership of property gives the right by accession to everything produced by it, or incorporated or attached to it, naturally or artificially.","","Art. 440"],
+["Accession is not among the modes of acquiring ownership enumerated in Art. 712.","","Art. 712"],
+["The destruction of goods that are a menace to public health generally gives the owner no right to compensation.","","Art. 436"],
+["For national government infrastructure projects, the government obtains immediate possession by paying the owner one hundred percent of the BIR zonal value.","","R.A. 10752, Sec. 6"]
+],
+F:[
+["Just compensation may be fixed conclusively by statute or executive decree.","Its determination is judicial.","EPZA v. Dulay"],
+["Public use is limited to actual use by the public at large, so expropriation for socialized housing is invalid.","Public use includes public advantage or benefit.","Sumulong v. Guerrero"],
+["Property condemned in the interest of public health must always be paid for.","No compensation, unless the condemnation is unjustified.","Art. 436"],
+["An owner whose property was seized in the interest of safety cannot claim compensation even if the seizure was unjustified.","He may, if he shows it was unjustified.","Art. 436"],
+["A private person may seize another's property in the interest of public health without liability under Art. 436.","Art. 436 speaks of condemnation or seizure by competent authority.","Art. 436"],
+["Just compensation is the market value of the property at the time judgment is rendered.","It is the value at the time of taking or filing, whichever came first.","Rule 67, Sec. 4"],
+["A local government may expropriate through a mere resolution of its sanggunian.","An ordinance is required.","Local Government Code, Sec. 19"],
+["A local government may expropriate without first offering to buy the property.","A prior valid and definite offer is required.","Local Government Code, Sec. 19"],
+["For national infrastructure projects, the government obtains immediate possession by depositing only fifteen percent of the fair market value in the tax declaration.","That is the rule for local governments; R.A. 10752 requires payment of the BIR zonal value.","R.A. 10752, Sec. 6; Local Government Code, Sec. 19"],
+["Once property is expropriated, the former owner has no recourse even if the public purpose is abandoned.","He may seek reconveyance upon returning the compensation.","MCIAA v. Lozada"],
+["Zoning ordinances cannot override restrictions in a private deed because of the non-impairment clause.","Police power prevails over contracts.","Ortigas & Co. v. Feati Bank"],
+["The power of eminent domain belongs only to the national government and cannot be delegated.","Congress may delegate it.","Local Government Code, Sec. 19"],
+["Police power takes private property because it is useful to the public, and so requires just compensation.","That describes eminent domain; police power regulates or destroys noxious property.","Arts. 435–436"],
+["The owner whose property is taken without just compensation may only claim payment; the courts cannot restore him in possession.","The courts may, in a proper case, restore him.","Art. 435"],
+["A taking in eminent domain requires transfer of title to the expropriator.","Deprivation of beneficial enjoyment suffices.","Republic v. Vda. de Castellvi"],
+["A landowner owns everything above his land without limit and may prevent aircraft from flying over it.","He cannot complain of the reasonable requirements of aerial navigation.","Art. 437"],
+["A landowner may freely extract minerals under his land, since he owns everything under the surface.","Minerals belong to the State.","Const., Art. XII, Sec. 2"],
+["Art. 437 allows a landowner to excavate on his land without regard to servitudes constituted on it.","It must be without detriment to servitudes.","Art. 437"],
+["The owner of the topmost condominium unit owns the airspace above the building and may build on it.","The airspace is a common area.","Leviste Management v. Legaspi Towers 200"],
+["Hidden treasure always belongs entirely to the finder.","It belongs to the owner of the property; a finder by chance gets one-half.","Art. 438"],
+["A trespasser who finds treasure by chance is entitled to one-half.","A trespasser gets nothing.","Art. 438"],
+["Treasure found by chance on land of a municipality belongs entirely to the municipality.","The finder gets one-half.","Art. 438"],
+["Treasure found by a landowner on his own land is divided equally with the State.","It belongs entirely to him.","Art. 438"],
+["Treasure includes any hidden deposit of precious objects, even if its lawful owner is known.","Its lawful ownership must not appear.","Art. 439"],
+["When the things found are of interest to science or the arts, the State may take them without paying.","The State pays their just price.","Art. 438"],
+["When treasure is found by chance on another's property, the landowner keeps it all and the finder gets a reward of one-tenth.","The finder gets one-half.","Art. 438"],
+["A usufructuary who finds treasure on the land in usufruct gets the owner's share as well, since he has the right to enjoy the land.","He has no right to the treasure as usufructuary; he is treated as a stranger.","Art. 566"],
+["Accession is a separate mode of acquiring ownership listed in Art. 712.","Art. 712 does not list it.","Art. 712"],
+["The right of accession extends only to things naturally attached to the property.","It covers things attached naturally or artificially.","Art. 440"],
+["Taxation, as a limitation on ownership, requires the payment of just compensation.","Just compensation belongs to eminent domain.","Art. 435"]
+]}
+];
+
+/* Property (Civil Code Arts. 414–475) — Four-Statement True or False. Sets 6–10. */
+const SETS_B = [
+{ t:"Accession discreta: the right to the fruits", c:"Arts. 440–444",
+T:[
+["To the owner belong the natural, industrial and civil fruits.","","Art. 441"],
+["Natural fruits are the spontaneous products of the soil, and the young and other products of animals.","","Art. 442"],
+["Industrial fruits are those produced by lands of any kind through cultivation or labor.","","Art. 442"],
+["Civil fruits are the rents of buildings, the price of leases of lands and other property, and the amount of perpetual or life annuities or other similar income.","","Art. 442"],
+["Milk, wool and eggs are natural fruits.","They are “other products of animals.”","Art. 442"],
+["Palay harvested from cultivated land is an industrial fruit.","","Art. 442"],
+["He who receives the fruits has the obligation to pay the expenses made by a third person in their production, gathering and preservation.","","Art. 443"],
+["The duty to pay production expenses rests on the principle that no one may enrich himself at another's expense.","","Art. 443; Art. 22"],
+["Only such natural or industrial fruits as are manifest or born are considered fruits.","","Art. 444"],
+["With respect to animals, it is sufficient that the young are in the womb of the mother, although unborn.","","Art. 444"],
+["Where the male and female animals belong to different owners, the young belong to the owner of the mother, absent a contrary agreement.","","U.S. v. Caballero"],
+["Ungathered fruits are immovable property while they remain attached to the land.","","Art. 415(2)"],
+["A possessor in good faith is entitled to the fruits received before his possession is legally interrupted.","","Art. 544"],
+["Natural and industrial fruits are deemed received by the possessor in good faith from the time they are gathered or severed.","","Art. 544"],
+["Civil fruits are deemed to accrue daily and belong to the possessor in good faith in that proportion.","","Art. 544"],
+["Rentals for a month shared by two persons are divided according to the number of days each was entitled to the fruits.","Civil fruits accrue daily.","Art. 544; Wait v. Williams"],
+["If there are pending natural or industrial fruits when good faith ceases, the possessor shares in the expenses of cultivation and the net harvest in proportion to the time of his possession.","","Art. 545"],
+["A possessor in bad faith must reimburse the fruits received and those which the legitimate possessor could have received.","","Art. 549"],
+["A possessor in bad faith who returns the fruits is still entitled to be paid the expenses of their production, gathering and preservation.","","Arts. 443, 549"],
+["The usufructuary is entitled to all the natural, industrial and civil fruits of the property in usufruct.","","Art. 566"],
+["In antichresis, the creditor acquires the right to receive the fruits of an immovable, applying them first to interest and then to principal.","","Art. 2132"],
+["A mortgagee has no right to the fruits of the mortgaged property.","","Bachrach Motor Co. v. Talisay-Silay Milling"],
+["A bonus paid to a landowner for mortgaging his land to secure another's debt is not a civil fruit of the land.","It is compensation for the risk he took, not income derived from the land.","Bachrach Motor Co. v. Talisay-Silay Milling"],
+["Dividends, whether in cash or in stock, are civil fruits of the shares.","","Bachrach v. Seifert"],
+["Stock dividends declared on shares held in usufruct belong to the usufructuary.","","Bachrach v. Seifert; Art. 566"],
+["A final judgment awarding “natural and civil fruits” does not include industrial fruits.","The kinds of fruits are technical terms.","Pamintuan v. Garcia"],
+["The right of accession with respect to what is produced by property is called accession discreta.","","Art. 440; Book II, Title II, Ch. 2, Sec. 1"],
+["The owner's right to receive the fruits is an attribute of ownership.","","Arts. 428, 441"],
+["The amount of a life annuity is a civil fruit.","","Art. 442"],
+["A possessor in good faith need not return the fruits he received before his possession was legally interrupted.","","Art. 544"]
+],
+F:[
+["Natural fruits include only the spontaneous products of the soil, not the products of animals.","They include the young and other products of animals.","Art. 442"],
+["Industrial fruits include goods manufactured in a factory.","They are produced by lands through cultivation or labor.","Art. 442"],
+["Civil fruits are limited to the rents of buildings.","They also include lease prices of land and other property, annuities and similar income.","Art. 442"],
+["Rents of buildings are natural fruits.","They are civil fruits.","Art. 442"],
+["The amount of a life annuity is not a fruit, since it is not produced by a thing.","It is a civil fruit.","Art. 442"],
+["Eggs are industrial fruits because poultry requires human care.","They are natural fruits, as products of animals.","Art. 442"],
+["Grass that grows by itself on uncultivated land is an industrial fruit.","It is a natural fruit.","Art. 442"],
+["Natural fruits exist as fruits as soon as the tree that will bear them is planted.","Only those manifest or born are fruits.","Art. 444"],
+["The young of animals are considered fruits only once born.","It suffices that they are in the womb.","Art. 444"],
+["Where the male and female animals have different owners, the young belong to the owner of the sire.","They belong to the owner of the mother.","U.S. v. Caballero"],
+["One who receives fruits need not pay the expenses of their production if he did not authorize them.","Art. 443 imposes the obligation on whoever receives the fruits.","Art. 443"],
+["The owner who receives the fruits must pay production expenses only if the value of the fruits exceeds the expenses.","Art. 443 imposes no such condition.","Art. 443"],
+["The obligation under Art. 443 binds only the owner, not other persons who receive the fruits.","It binds “he who receives the fruits.”","Art. 443"],
+["A mortgagee is entitled to the fruits of the mortgaged land.","He has no right to them.","Bachrach Motor Co. v. Talisay-Silay Milling"],
+["A bonus paid to a landowner for mortgaging his land to secure another's loan is a civil fruit that belongs to the mortgagee.","It is not a civil fruit.","Bachrach Motor Co. v. Talisay-Silay Milling"],
+["Stock dividends are part of the capital and belong to the naked owner, not the usufructuary.","They are civil fruits and go to the usufructuary.","Bachrach v. Seifert"],
+["A possessor in good faith must return the fruits already received once he is defeated in the action.","He keeps the fruits received before his possession was legally interrupted.","Art. 544"],
+["Civil fruits are deemed received only when they are actually paid.","They accrue daily.","Art. 544"],
+["Pending crops when good faith ceases belong entirely to the owner of the land, without any share for the possessor in good faith.","The possessor shares in proportion to the time of his possession.","Art. 545"],
+["A possessor in bad faith keeps the fruits he received but must pay rent.","He must reimburse the fruits.","Art. 549"],
+["A possessor in bad faith who returns the fruits cannot recover any of the expenses of producing them.","He is entitled to the expenses under Art. 443.","Arts. 443, 549"],
+["A possessor in bad faith reimburses only the fruits he actually received.","Also those the legitimate possessor could have received.","Art. 549"],
+["The usufructuary is entitled only to natural fruits, not to civil fruits.","He is entitled to all three kinds.","Art. 566"],
+["An antichretic creditor becomes owner of the immovable if the debt is not paid at maturity.","Ownership does not pass by mere non-payment; any stipulation to the contrary is void.","Art. 2137"],
+["A final judgment awarding “natural and civil fruits” automatically includes industrial fruits.","It does not.","Pamintuan v. Garcia"],
+["Accession discreta refers to things incorporated into or attached to the property.","That is accession continua; discreta refers to what is produced.","Art. 440"],
+["The right to the fruits is not an attribute of ownership but a separate real right.","It is part of the right to enjoy.","Arts. 428, 441"],
+["Fruits belong to the owner only if he personally cultivated the land.","They belong to the owner subject to the rights of others, such as a possessor in good faith or usufructuary.","Arts. 441, 544, 566"],
+["Pending civil fruits are immovable property because they come from a building.","Art. 415(2) covers growing fruits attached to land; rents are personal property.","Art. 415(2); Art. 417(1)"],
+["Civil fruits accrue to a possessor in good faith only at the end of each month.","They accrue daily.","Art. 544"]
+]},
+
+{ t:"Accession industrial: general rules and builder in good faith", c:"Arts. 445–448 · 526–527 · 546–548",
+T:[
+["Whatever is built, planted or sown on the land of another, and the improvements or repairs made on it, belong to the owner of the land, subject to the articles that follow.","","Art. 445"],
+["All works, sowing and planting are presumed made by the owner and at his expense, unless the contrary is proved.","","Art. 446"],
+["In accession industrial, the land is always the principal and what is built, planted or sown is the accessory.","","Art. 445"],
+["The landowner who builds on his land with another's materials must pay their value.","","Art. 447"],
+["A landowner who used another's materials in bad faith must also pay damages.","","Art. 447"],
+["The owner of the materials may remove them only if he can do so without injury to the work constructed.","","Art. 447"],
+["If the landowner acted in bad faith, the owner of the materials may remove them in any event, with a right to damages.","","Art. 447"],
+["A builder is in good faith if he believes the land is his and is unaware of any flaw in his title.","","Art. 526"],
+["Good faith is always presumed, and one who alleges bad faith must prove it.","","Art. 527"],
+["A registered owner is not presumed to know the precise boundaries of his land, so the encroachment of his building on the next lot does not by itself make him a builder in bad faith.","","Tecnogas Philippines v. CA"],
+["When both builder and landowner are in good faith, the landowner may appropriate the works after paying the indemnity under Arts. 546 and 548.","","Art. 448"],
+["When both are in good faith, the landowner may instead oblige the builder or planter to pay the price of the land, and the sower to pay the proper rent.","","Art. 448"],
+["The builder or planter cannot be obliged to buy the land if its value is considerably more than that of the building or trees.","","Art. 448"],
+["When the builder cannot be made to buy, he pays reasonable rent if the landowner does not appropriate; the parties fix the terms, and the court fixes them if they disagree.","","Art. 448"],
+["The option under Art. 448 belongs to the landowner, not to the builder.","","Art. 448; Depra v. Dumlao"],
+["The landowner cannot refuse both options under Art. 448 and simply demand the removal of the building.","","Ignacio v. Hilario; Depra v. Dumlao"],
+["The landowner may demand removal only if he chose to sell the land and the builder failed to pay the price.","","Ignacio v. Hilario"],
+["A builder in good faith may retain the land and the building until he is reimbursed.","","Art. 546"],
+["The indemnity for a building appropriated under Art. 448 is based on the current market value of the improvement.","","Pecson v. CA"],
+["The price of the land that a builder in good faith is made to pay is its prevailing market value at the time of payment.","","Ballatan v. CA"],
+["Ownership of the improvement passes to the landowner only upon payment of the indemnity.","","Art. 448; Art. 546"],
+["If a builder who agreed to buy the land fails to pay, the landowner does not automatically become owner of the building.","","Filipinas Colleges v. Timbang"],
+["Art. 448 applies to one who builds with the landowner's knowledge and consent, as when relatives build on family land with the owner's permission.","","Spouses Aquino v. Aguilar"],
+["Art. 448 applies to a co-owner whose house, after partition, turns out to stand partly on the share of another co-owner.","","Fernandez del Campo v. Abesia"],
+["Necessary expenses are refunded to every possessor, but only the possessor in good faith may retain the thing until paid.","","Art. 546"],
+["For useful expenses, the person who defeated the possessor in good faith may choose to refund the amount spent or to pay the increase in value of the thing.","","Art. 546"],
+["Expenses for pure luxury are not refunded, but the possessor in good faith may remove the ornaments if no injury is caused and the successor does not choose to pay their value.","","Art. 548"],
+["Before the landowner makes his choice under Art. 448, he cannot eject the builder in good faith.","","Art. 448; Art. 546"],
+["Good faith does not necessarily exclude negligence, which gives rise to damages under Art. 2176.","","Art. 456"],
+["The landowner's option under Art. 448 extends to the sower, who may be made to pay the proper rent.","","Art. 448"]
+],
+F:[
+["Works on land are presumed made by a stranger unless the owner proves that he made them.","They are presumed made by the owner and at his expense.","Art. 446"],
+["The presumption that works are made by the owner and at his expense is conclusive.","It yields to proof to the contrary.","Art. 446"],
+["In accession industrial, a building worth more than the land is the principal.","The land is always the principal.","Art. 445"],
+["Art. 445 covers constructions and plantings but not repairs made on the land of another.","It expressly includes improvements and repairs.","Art. 445"],
+["A landowner who builds in good faith with another's materials acquires them without paying their value.","He must pay their value.","Art. 447"],
+["The owner of materials used in good faith by the landowner may always remove them, even if the work is destroyed.","Only if he can do so without injury to the work.","Art. 447"],
+["Art. 447 governs a builder who builds on another's land with his own materials.","Art. 447 governs a landowner who builds with another's materials; Art. 448 governs the builder on another's land.","Arts. 447–448"],
+["A builder on another's titled land is presumed to be in bad faith because he is charged with notice of the title.","Good faith is presumed; a registered owner is not presumed to know his exact boundaries.","Art. 527; Tecnogas Philippines v. CA"],
+["Under Art. 448, the builder in good faith may choose between buying the land and being paid for the building.","The choice belongs to the landowner.","Art. 448"],
+["The landowner may refuse both options under Art. 448 and demand that the building be demolished.","He must choose one of the two.","Ignacio v. Hilario; Depra v. Dumlao"],
+["A builder in good faith may be made to buy the land even if its value is considerably more than that of the building.","He then pays reasonable rent instead.","Art. 448"],
+["When the builder cannot be made to buy the land, he must vacate without paying any rent.","He pays reasonable rent if the owner does not appropriate.","Art. 448"],
+["The terms of the forced lease under Art. 448 are fixed by the landowner alone.","By agreement, and by the court if they disagree.","Art. 448"],
+["Under Art. 448, the sower in good faith may be compelled to buy the land.","The sower pays the proper rent.","Art. 448"],
+["Under Art. 448, the landowner becomes owner of the building upon its completion, without need of payment.","Ownership passes only upon payment of the indemnity.","Art. 448; Art. 546"],
+["A builder in good faith who has not yet been reimbursed may be ejected before payment.","He has the right of retention.","Art. 546"],
+["The indemnity for a building appropriated under Art. 448 is its original cost of construction.","It is the current market value of the improvement.","Pecson v. CA"],
+["The price of the land a builder is made to pay is its value at the time construction began.","It is the prevailing market value at the time of payment.","Ballatan v. CA"],
+["If a builder who agreed to buy the land fails to pay, the landowner automatically becomes owner of the building.","He does not.","Filipinas Colleges v. Timbang"],
+["A builder who agreed to buy the land but failed to pay keeps his right to retain the land and building.","Having failed to pay, he loses the right of retention.","Bernardo v. Bataclan"],
+["One who builds with the landowner's consent can never invoke Art. 448, since he does not claim to own the land.","Art. 448 has been applied to builders with the owner's consent.","Spouses Aquino v. Aguilar"],
+["Necessary expenses are refunded only to the possessor in good faith.","They are refunded to every possessor; only the right of retention is limited to good faith.","Art. 546"],
+["For useful expenses, the possessor in good faith chooses between the amount spent and the increase in value.","The one who defeated him makes the choice.","Art. 546"],
+["Expenses for pure luxury must be refunded to the possessor in good faith.","They are not refunded.","Art. 548"],
+["A possessor in good faith may remove luxurious ornaments even if the principal thing is injured.","Only if no injury is caused.","Art. 548"],
+["Good faith excludes negligence, so a builder in good faith can never be liable for damages.","Good faith does not necessarily exclude negligence.","Art. 456"],
+["Negligence of a builder in good faith converts him into a builder in bad faith.","Negligence gives rise only to damages under Art. 2176.","Art. 456"],
+["The landowner who learns of the encroachment after the building is finished may treat the builder as being in bad faith from the start.","Later awareness does not retroactively make the construction one in bad faith.","Tecnogas Philippines v. CA"],
+["Under Art. 447, a landowner in good faith must pay damages in addition to the value of the materials.","Damages are due only if he acted in bad faith.","Art. 447"],
+["Once the landowner chooses to appropriate the building under Art. 448, he need not pay the builder until he is able to.","The builder may retain the property until paid.","Art. 546"]
+]},
+
+{ t:"Builder in bad faith, mutual bad faith and third-party materials", c:"Arts. 449–456 · 1678 · 579",
+T:[
+["He who builds, plants or sows in bad faith on the land of another loses what is built, planted or sown without right to indemnity.","","Art. 449"],
+["The landowner may demand the demolition of the work or the removal of the planting or sowing, at the expense of the one who built, planted or sowed in bad faith.","","Art. 450"],
+["The landowner may compel the builder or planter in bad faith to pay the price of the land, and the sower the proper rent.","","Art. 450"],
+["The landowner may compel a builder in bad faith to buy the land even if its value is considerably more than that of the building.","The limit in Art. 448 does not apply.","Art. 450"],
+["In the cases of Arts. 449 and 450, the landowner is entitled to damages from the builder, planter or sower.","","Art. 451"],
+["The builder, planter or sower in bad faith is entitled to reimbursement for the necessary expenses of preservation of the land.","","Art. 452"],
+["A builder in bad faith has no right to retain the land until reimbursed.","The right of retention belongs to the possessor in good faith.","Art. 546; Art. 452"],
+["If both the builder and the landowner acted in bad faith, their rights are the same as though both had acted in good faith.","","Art. 453"],
+["The landowner is in bad faith whenever the act was done with his knowledge and without opposition on his part.","","Art. 453"],
+["When both are in bad faith, the landowner must choose between appropriating with indemnity and requiring the builder to buy the land.","Art. 448 applies.","Arts. 453, 448"],
+["When the landowner acted in bad faith and the builder proceeded in good faith, Art. 447 applies.","","Art. 454"],
+["When the landowner is in bad faith and the builder in good faith, the builder may remove what he built in any event, with damages.","","Arts. 454, 447"],
+["If the materials, plants or seeds belong to a third person who has not acted in bad faith, the landowner answers subsidiarily for their value, only if the one who used them has no property with which to pay.","","Art. 455"],
+["The landowner's subsidiary liability for a third person's materials does not apply if he demands demolition or compels the builder to buy the land under Art. 450.","","Art. 455"],
+["If the builder has paid the owner of the materials, he may demand from the landowner the value of the materials and labor.","","Art. 455"],
+["The builder who used a third person's materials is primarily liable to that person for their value.","The landowner's liability is only subsidiary.","Art. 455"],
+["One who builds on land after a suit questioning his title has been filed builds in bad faith.","","Mindanao Academy v. Yap; Felices v. Iriola"],
+["A successor who enlarges a house while bound by a judgment against his predecessors builds in bad faith.","","Santos v. Mojica"],
+["A lessee who introduces useful improvements is governed by Art. 1678, not by Art. 448.","","Geminiano v. CA; Art. 1678"],
+["Under Art. 1678, the lessor may appropriate useful improvements by paying the lessee one-half of their value at the time the lease ends.","","Art. 1678"],
+["Under Art. 1678, if the lessor refuses to reimburse, the lessee may remove the useful improvements even though the principal thing may suffer damage, but without causing more impairment than necessary.","","Art. 1678"],
+["A lessee cannot compel the lessor to sell him the leased land on the ground that he built on it.","","Geminiano v. CA; Art. 1678"],
+["A usufructuary may remove improvements he made if this can be done without damage to the property, but he has no right to be indemnified for them.","","Art. 579"],
+["The usufructuary may set off the improvements he made against damages he caused to the property.","","Art. 580"],
+["Art. 448 has been applied by analogy where an owner built on his land and later lost the land through an execution sale.","","Pecson v. CA"],
+["Art. 448 applies only to a builder who builds in the concept of owner or with the owner's consent.","","Geminiano v. CA; Spouses Aquino v. Aguilar"],
+["The builder in bad faith cannot recover the value of what he built even if the landowner keeps it.","","Art. 449"],
+["Under Art. 450, the sower in bad faith may be compelled to pay the proper rent.","","Art. 450"],
+["The rules in Arts. 447 to 455 do not exclude liability for damages based on negligence.","","Art. 456"],
+["A landowner who knows that another is building on his land and does not object is in bad faith.","","Art. 453"]
+],
+F:[
+["A builder in bad faith is entitled to the value of the building if the landowner decides to keep it.","He loses it without right to indemnity.","Art. 449"],
+["A builder in bad faith may retain the land until he is reimbursed for his necessary expenses.","He has no right of retention.","Art. 546; Art. 452"],
+["The landowner may demand demolition of works built in bad faith, but at his own expense.","At the expense of the builder.","Art. 450"],
+["A builder in bad faith cannot be compelled to buy the land if it is considerably more valuable than the building.","That limit is only for builders in good faith.","Arts. 448, 450"],
+["The landowner may recover damages from the builder in bad faith only if he chooses demolition.","He is entitled to damages in either case.","Art. 451"],
+["A builder in bad faith is entitled to reimbursement of useful expenses.","Only necessary expenses for preservation of the land.","Art. 452"],
+["A builder in bad faith may recover the necessary expenses he spent to preserve the building.","Only expenses to preserve the land.","Art. 452"],
+["When both builder and landowner are in bad faith, the builder loses the building without indemnity.","They are treated as both in good faith.","Art. 453"],
+["When both are in bad faith, the landowner may demand demolition at the builder's expense.","Art. 448 applies; he must choose between appropriating and selling.","Arts. 453, 448"],
+["A landowner who knows that another is building on his land but does nothing is in good faith, since he did not participate.","He is in bad faith if he knew and did not oppose.","Art. 453"],
+["When the landowner is in bad faith and the builder in good faith, Art. 448 applies.","Art. 447 applies.","Art. 454"],
+["When the landowner is in bad faith and the builder in good faith, the builder may remove the works only if the land suffers no injury.","He may remove them in any event, with damages.","Arts. 454, 447"],
+["When the landowner is in bad faith and the builder in good faith, the builder may only be paid the value of the works and cannot remove them.","He may also remove them in any event.","Arts. 454, 447"],
+["A third person whose materials were used in good faith may proceed against the landowner first, even if the builder can pay.","The landowner is liable only subsidiarily.","Art. 455"],
+["The landowner answers subsidiarily for a third person's materials even when he demands demolition under Art. 450.","Art. 455 does not apply then.","Art. 455"],
+["A builder who has paid the owner of the materials cannot recover anything from the landowner.","He may demand the value of the materials and labor.","Art. 455"],
+["The protection of Art. 455 extends to an owner of materials who acted in bad faith.","It covers only a third person who has not acted in bad faith.","Art. 455"],
+["A builder in bad faith may recover all expenses he made on the land.","Only necessary expenses for preservation of the land.","Art. 452"],
+["One who builds while a suit to annul his title is pending is in good faith, since no final judgment has been rendered.","He builds in bad faith.","Mindanao Academy v. Yap"],
+["A lessee who builds on the leased land is a builder in good faith entitled to the rights under Art. 448.","Art. 1678 governs lessees.","Geminiano v. CA"],
+["Under Art. 1678, the lessor who wants to keep useful improvements must reimburse their full value.","One-half of their value.","Art. 1678"],
+["A lessee may compel the lessor to sell the land if the improvements are worth more than the land.","He cannot.","Geminiano v. CA"],
+["A lessee is entitled to reimbursement for ornamental improvements under Art. 1678.","He is not, though he may remove them if no damage is caused and the lessor does not choose to keep them by paying their value.","Art. 1678"],
+["A usufructuary is entitled to indemnity for useful improvements he made on the property.","He has no right to indemnity.","Art. 579"],
+["Art. 448 cannot be applied even by analogy where an owner built on his land and later lost the land at an execution sale.","It has been so applied.","Pecson v. CA"],
+["Under Art. 450, the landowner may compel the sower in bad faith to buy the land.","The sower pays the proper rent.","Art. 450"],
+["A landowner who keeps what was built in bad faith must pay its value, less damages.","He keeps it without indemnity, plus damages.","Arts. 449, 451"],
+["A builder who builds on another's land with the owner's knowledge and without his opposition loses the building without indemnity.","The landowner is then in bad faith too, and both are treated as in good faith.","Art. 453"],
+["The landowner's liability for a third person's materials is primary and solidary with the builder.","It is subsidiary.","Art. 455"],
+["The builder in bad faith may recover the value of the building if the landowner did not suffer any damage.","He loses it without indemnity regardless.","Art. 449"]
+]},
+
+{ t:"Accession natural: the action of waters", c:"Arts. 457–465 · Water Code, Art. 58",
+T:[
+["To the owners of lands adjoining the banks of rivers belong the accretion which they gradually receive from the effects of the current of the waters.","","Art. 457"],
+["For alluvion, the deposit must be gradual and imperceptible, result from the action of the waters of the river, and be on land adjacent to the river bank.","","Art. 457; Heirs of Navarro v. IAC"],
+["Land formed by sawdust dumped into a creek is not alluvion under Art. 457.","Accretion must result from the natural action of the waters.","Vda. de Nazareno v. CA"],
+["Land formed by the action of the sea is foreshore land of the public domain, not alluvion belonging to the adjoining owner.","","Heirs of Navarro v. IAC"],
+["The riparian owner's ownership of alluvion is automatic and needs no act of possession.","","Art. 457"],
+["Alluvion does not become registered land merely because the adjoining land is covered by a Torrens title.","","Grande v. CA"],
+["Unregistered alluvion may be acquired by third persons through acquisitive prescription.","","Grande v. CA; Reynante v. CA"],
+["Banks of rivers are property of public dominion.","","Art. 420(1)"],
+["The owners of estates adjoining ponds or lagoons do not acquire the land left dry by the natural decrease of the waters.","","Art. 458"],
+["The owners of estates adjoining ponds or lagoons do not lose the land inundated by them in extraordinary floods.","","Art. 458"],
+["When the current of a river, creek or torrent segregates a known portion of land and transfers it to another estate, the original owner retains ownership if he removes it within two years.","","Art. 459"],
+["The two-year period in avulsion is a period to remove the segregated portion, not merely to claim it.","","Art. 459"],
+["Trees uprooted and carried away by the current belong to the owner of the land where they are cast, if the owners do not claim them within six months.","","Art. 460"],
+["Owners who claim uprooted trees must pay the expenses of gathering them or putting them in a safe place.","","Art. 460"],
+["River beds abandoned through a natural change in the course of the waters belong ipso facto to the owners whose lands are occupied by the new course, in proportion to the area lost.","","Art. 461"],
+["Owners of lands adjoining the old bed may acquire it by paying its value, which shall not exceed the value of the area occupied by the new bed.","","Art. 461"],
+["The abandoned river bed goes to the owners whose lands the river now occupies, not to the owners along the old bed.","","Art. 461; Celestial v. Cachopero"],
+["A river bed that simply dries up, without the river changing its course, remains property of public dominion.","","Ronquillo v. CA"],
+["When a river changing its course by natural causes opens a new bed through a private estate, the new bed becomes property of public dominion.","","Art. 462"],
+["When the current of a river divides itself into branches and leaves a piece of land isolated, the owner retains his ownership.","","Art. 463"],
+["The owner also retains ownership of a portion of land separated from his estate by the current.","","Art. 463"],
+["Islands formed on the seas within Philippine jurisdiction, on lakes, and on navigable or floatable rivers belong to the State.","","Art. 464"],
+["Islands formed by successive accumulation of alluvial deposits in non-navigable and non-floatable rivers belong to the owners of the nearest margins or banks.","","Art. 465"],
+["An island formed in the middle of a non-navigable river is divided longitudinally in halves between the owners of both margins.","","Art. 465"],
+["If a single island is more distant from one margin than from the other, the owner of the nearer margin is its sole owner.","","Art. 465"],
+["Under the Water Code, owners whose lands are occupied by a river's new course cannot compel the government to restore the river to its former bed.","","Water Code (P.D. 1067), Art. 58"],
+["Under the Water Code, the affected owners may restore the river to its old bed at their own expense, with a permit, if the work begins within two years from the change of course.","","Water Code (P.D. 1067), Art. 58"],
+["Avulsion may be caused by a river, a creek or a torrent.","","Art. 459"],
+["Accretion caused by man-made structures such as fishpond dikes is not alluvion under Art. 457.","","Republic v. CA and Tancinco; Vda. de Nazareno v. CA"],
+["The six-month period under Art. 460 is a period within which the owners must claim the uprooted trees.","","Art. 460"]
+],
+F:[
+["Accretion along the seashore belongs to the owner of the adjoining land.","It is foreshore land of the public domain.","Heirs of Navarro v. IAC"],
+["The riparian owner acquires the alluvion only upon registering it.","Ownership is automatic; registration only protects it.","Art. 457; Grande v. CA"],
+["Alluvion automatically becomes part of the adjoining registered land and can no longer be acquired by prescription.","Unless registered, it is subject to prescription.","Grande v. CA"],
+["Land formed by sawdust dumped by sawmills along a creek belongs to the riparian owner by accretion.","Artificial deposits are not alluvion.","Vda. de Nazareno v. CA"],
+["Alluvion requires a sudden and perceptible deposit.","It must be gradual and imperceptible.","Art. 457"],
+["Avulsion involves a gradual and imperceptible deposit of soil.","Avulsion is a sudden segregation of a known portion.","Art. 459"],
+["Owners of estates adjoining ponds acquire the land left dry by the natural decrease of the waters.","They do not.","Art. 458"],
+["Owners of estates adjoining lagoons lose the land inundated in extraordinary floods.","They do not lose it.","Art. 458"],
+["In avulsion, the original owner must claim the segregated portion within six months.","He must remove it within two years.","Art. 459"],
+["In avulsion, the original owner keeps the segregated portion indefinitely, whether or not he removes it.","Only if he removes it within two years.","Art. 459"],
+["Art. 459 applies only to rivers, not to creeks or torrents.","It covers rivers, creeks and torrents.","Art. 459"],
+["Uprooted trees carried by the current must be removed by their owners within two years.","They must be claimed within six months.","Art. 460"],
+["Uprooted trees belong at once to the owner of the land where they are cast, without any period for the owners to claim them.","The owners have six months to claim them.","Art. 460"],
+["Owners who claim their uprooted trees need not pay the expenses of gathering them.","They must pay those expenses.","Art. 460"],
+["River beds abandoned through a natural change of course belong to the State.","They belong ipso facto to the owners whose lands the new course occupies.","Art. 461"],
+["An abandoned river bed belongs to the owners of the lands along the old bed.","It belongs to the owners whose lands the new course occupies.","Art. 461; Celestial v. Cachopero"],
+["Owners whose lands are occupied by the new course acquire the old bed only upon a judicial declaration.","They acquire it ipso facto.","Art. 461"],
+["Owners along the old bed may acquire it only by paying whatever price the new owners demand.","The price may not exceed the value of the area occupied by the new bed.","Art. 461"],
+["Owners whose lands are occupied by a river's new course are entitled to compensation from the government in addition to the old bed.","They receive no compensation, only the old bed.","Water Code (P.D. 1067), Art. 58"],
+["A dried-up river bed, where the river has not changed course, belongs to the adjoining owners.","It remains public dominion.","Ronquillo v. CA"],
+["A new bed opened by a river through a private estate remains the property of the estate's owner.","It becomes public dominion.","Art. 462"],
+["When a river divides into branches and isolates a piece of land, the isolated land belongs to the State.","The owner retains it.","Art. 463"],
+["Islands formed in navigable rivers belong to the owners of the nearest banks.","They belong to the State.","Art. 464"],
+["Islands formed in lakes belong to the owners of the adjoining lands.","They belong to the State.","Art. 464"],
+["An island formed in the middle of a non-navigable river belongs to the State.","It is divided between the owners of both margins.","Art. 465"],
+["An island formed in a non-navigable river belongs wholly to the owner of whichever bank first occupies it.","It goes to the nearer margin, or is divided in halves if in the middle.","Art. 465"],
+["Islands formed on the seas within Philippine jurisdiction belong to the first person to occupy them.","They belong to the State.","Art. 464"],
+["A Torrens title protects the registered owner against the loss of land through gradual erosion by a river.","Registration does not protect against the natural incidents of land bordering streams.","Art. 457; settled doctrine"],
+["A riparian owner who does not take possession of the alluvion within two years loses it to the State.","Ownership is automatic; there is no such period.","Art. 457"],
+["The new bed opened by a river through private land becomes public dominion only if the river is navigable.","Art. 462 makes no such distinction.","Art. 462"]
+]},
+
+{ t:"Accession on movables: adjunction, mixture and specification", c:"Arts. 466–475",
+T:[
+["When two movables belonging to different owners are, without bad faith, united to form a single object, the owner of the principal acquires the accessory, indemnifying its former owner for its value.","","Art. 466"],
+["The principal thing is that to which the other has been united as an ornament, or for its use or perfection.","","Art. 467"],
+["If the principal cannot be determined by the purpose test, the thing of greater value is the principal.","","Art. 468"],
+["As between two things of equal value, the one of greater volume is the principal.","","Art. 468"],
+["In painting and sculpture, writings, printed matter, engravings and lithographs, the board, metal, stone, canvas, paper or parchment is the accessory.","","Art. 468"],
+["Where a diamond is set on a ring as an ornament, the ring is the principal even if the diamond is worth more.","The purpose test comes before the value test.","Arts. 467–468"],
+["When the things united can be separated without injury, their owners may demand separation.","","Art. 469"],
+["If the thing united for the use, embellishment or perfection of the other is much more precious than the principal, its owner may demand separation even if the principal suffers some injury.","","Art. 469"],
+["If the owner of the accessory made the incorporation in bad faith, he loses the accessory and must indemnify the owner of the principal for damages.","","Art. 470"],
+["If the owner of the principal acted in bad faith, the owner of the accessory may choose between being paid its value and having his thing separated, even if the principal must be destroyed.","","Art. 470"],
+["When the owner of the principal acted in bad faith, the owner of the accessory is entitled to damages whichever remedy he chooses.","","Art. 470"],
+["If either owner made the incorporation with the knowledge and without the objection of the other, their rights are determined as though both acted in good faith.","","Art. 470"],
+["The owner of material employed without his consent may demand a thing equal in kind and value and in all other respects, or its price according to expert appraisal.","","Art. 471"],
+["The choice of indemnity in kind or in price under Art. 471 applies when the material was used without the owner's consent.","","Art. 471"],
+["If two things are mixed by the will of their owners, or by chance and cannot be separated without injury, each owner acquires a right proportional to his part, considering the value of the things mixed.","","Art. 472"],
+["Palay of two owners mixed by chance in a warehouse makes them co-owners of the mixture in proportion to their shares.","","Art. 472; Santos v. Bernabe"],
+["If the mixture is caused by the will of only one owner acting in good faith, the owners' rights are determined by the rule on mixture by common will or by chance.","","Art. 473"],
+["One who causes a mixture in bad faith loses his thing and must pay damages to the owner of the other thing.","","Art. 473"],
+["One who in bad faith drives another's cattle into his own herd so that they can no longer be told apart loses his own cattle in the mixture.","","Siari Valley Estate v. Lucasan; Art. 473"],
+["One who in good faith uses another's material to make a thing of a different kind appropriates the new thing, indemnifying the owner of the material for its value.","","Art. 474"],
+["If the material is more precious or of more value than the transformed thing, its owner may appropriate the new thing after paying for the work, or demand indemnity for the material.","","Art. 474"],
+["If bad faith intervened in making the thing, the owner of the material may appropriate the work without paying the maker, or demand the value of the material plus damages.","","Art. 474"],
+["The owner of the material cannot appropriate the work if its value, for artistic or scientific reasons, is considerably more than that of the material.","","Art. 474"],
+["In the rules on accession on movables, sentimental value shall be duly appreciated.","","Art. 475"],
+["Specification may involve only the material of one other person, transformed by the maker's labor.","","Art. 474"],
+["A person who in good faith sews a suit from another's cloth owns the suit but must pay for the cloth.","","Art. 474"],
+["One who writes on another's paper owns the writing, the paper being the accessory.","","Art. 468"],
+["Specification applies even if the maker used another's material only in part.","","Art. 474"],
+["In mixture, there is no principal and accessory; each owner takes a share in proportion to value.","","Art. 472"],
+["The right to separation under Art. 469 does not depend on bad faith.","","Art. 469"]
+],
+F:[
+["In adjunction, the thing of greater value is always the principal.","The purpose test of Art. 467 comes first.","Arts. 467–468"],
+["Between two things united, the volume test is applied before the value test.","Value comes before volume.","Art. 468"],
+["In painting, the canvas is the principal if it is worth more than the painting.","The canvas is always the accessory.","Art. 468"],
+["Where a diamond is set on a ring as an ornament, the diamond is the principal because it is worth more.","The ring is the principal under the purpose test.","Art. 467"],
+["One who paints on another's canvas loses the painting to the owner of the canvas.","The canvas is the accessory.","Art. 468"],
+["Once two things are united, their owners can never demand separation.","They may if separation causes no injury.","Art. 469"],
+["The owner of a much more precious accessory may demand its separation even if the principal is destroyed, though both acted in good faith.","Only if the principal suffers “some injury”; destruction is allowed only against an owner of the principal in bad faith.","Arts. 469–470"],
+["The owner of a much more precious accessory may demand separation only if no injury results.","He may demand it even if the principal suffers some injury.","Art. 469"],
+["The owner of the accessory who incorporated it in bad faith may still demand its value.","He loses it and must pay damages.","Art. 470"],
+["If the owner of the principal acted in bad faith, the owner of the accessory may only demand its value, not separation.","He may also demand separation even if the principal is destroyed.","Art. 470"],
+["When the owner of the principal acted in bad faith, the owner of the accessory gets damages only if he chooses separation.","Damages are due in both cases.","Art. 470"],
+["When one owner made the incorporation with the other's knowledge and without objection, the one who knew is treated as in bad faith.","Both are treated as in good faith.","Art. 470"],
+["In adjunction in good faith, the owner of the principal acquires the accessory without indemnity.","He must pay its value.","Art. 466"],
+["Indemnity for material used without consent must always be paid in money.","It may also be a thing equal in kind and value.","Art. 471"],
+["Indemnity in kind may be satisfied with a thing of the same kind but of lesser value.","It must be equal in kind and value and in all other respects.","Art. 471"],
+["Mixture by chance makes the owners co-owners in equal shares, regardless of value.","In proportion to the value of their parts.","Art. 472"],
+["In mixture, the owner of the thing of greater value becomes sole owner and pays the other.","Each acquires a proportional right.","Art. 472"],
+["When one owner causes a mixture in good faith, he becomes sole owner of the mixture upon paying the other.","The rule of proportional co-ownership applies.","Art. 473"],
+["One who causes a mixture in bad faith keeps his share in the mixture but must pay damages.","He loses his thing and pays damages.","Art. 473"],
+["Mixture by the will of both owners is governed by the rule for mixtures caused by one owner in bad faith.","It is governed by Art. 472.","Art. 472"],
+["In specification, the owner of the material always becomes owner of the new thing.","A maker in good faith appropriates it.","Art. 474"],
+["If the material is more precious than the transformed thing, the maker in good faith still keeps the new thing.","The owner of the material may choose to take it after paying for the work.","Art. 474"],
+["If bad faith intervened, the owner of the material may always appropriate the work without paying.","Not if the work is worth considerably more for artistic or scientific reasons.","Art. 474"],
+["A renowned sculptor who in bad faith carves another's marble into a masterpiece loses the statue to the marble's owner without payment.","The owner of the marble gets only its value plus damages.","Art. 474"],
+["When the maker acted in bad faith, the owner of the material who takes the work must pay the maker for his labor.","He takes it without paying anything.","Art. 474"],
+["Sentimental value is disregarded, since indemnity is based only on market value.","Sentimental value shall be duly appreciated.","Art. 475"],
+["Specification requires at least two things belonging to different owners.","It may involve only another's material and the maker's labor.","Art. 474"],
+["Art. 474 applies only if the maker used the whole of another's material.","It applies to material used in whole or in part.","Art. 474"],
+["In mixture, the principal is the thing of greater value.","Mixture has no principal; owners share in proportion.","Art. 472"],
+["Separation of things united may be demanded only when one of the owners acted in bad faith.","It may be demanded whenever separation causes no injury.","Art. 469"]
+]}
+];
+const SETS = SETS_A.concat(SETS_B);
+
+(function(){
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const N = 15, LIMIT = 12 * 60, KEY = "rr-property-4stmt-best", ROM = ["I","II","III","IV"], LET = ["A","B","C","D"];
+  let best = {}; try { best = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { best = {}; }
+  const saveBest = () => { try { localStorage.setItem(KEY, JSON.stringify(best)); } catch(e){} };
+  const shuffle = a => { a = a.slice(); for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random()*(k+1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
+  // a subset of {I..IV} is a 4-bit mask
+  const label = m => {
+    const xs = ROM.filter((_, k) => m & (1 << k));
+    if (!xs.length) return "None of the statements";
+    if (xs.length === 4) return "All of the statements";
+    if (xs.length === 1) return xs[0] + " only";
+    return xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1] + " only";
+  };
+  const dist = (a, b) => { let x = a ^ b, c = 0; while (x){ c += x & 1; x >>= 1; } return c; };
+  function options(key){
+    const near = shuffle([...Array(16).keys()].filter(m => m !== key && dist(m, key) === 1));
+    const mid = shuffle([...Array(16).keys()].filter(m => m !== key && dist(m, key) === 2));
+    const picks = [key, near[0], near[1], Math.random() < 0.5 ? mid[0] : near[2]];
+    return shuffle(picks);
+  }
+  let cur = null;
+
+  function showHome(){
+    $("#home").hidden = false; $("#quiz").hidden = true; $("#results").hidden = true;
+    $("#grid").innerHTML = SETS.map((s,i) => {
+      const b = best[i];
+      return `<button class="set" data-i="${i}"><span class="n">Set ${i+1} · ${esc(s.c)}</span><span class="t">${esc(s.t)}</span>
+        <span class="m"><span>${N} questions · 12 min</span>${b != null ? `<span class="best">Best ${b}/${N}</span>` : `<span class="best none">Not taken</span>`}</span></button>`;
+    }).join("");
+    window.scrollTo({top:0});
+  }
+
+  function build(i){
+    const s = SETS[i];
+    const pool = shuffle(s.T.map(x => [...x, true]).concat(s.F.map(x => [...x, false])));
+    const qs = [];
+    for (let k = 0; k < N; k++){
+      const st = pool.slice(4*k, 4*k + 4);
+      const key = st.reduce((m, x, n) => x[3] ? m | (1 << n) : m, 0);
+      qs.push({st, key, opts: options(key)});
+    }
+    return qs;
+  }
+
+  function start(i){
+    const s = SETS[i];
+    cur = { set:i, qs: build(i), ans: Array(N).fill(null), timed: $("#useTimer").checked, deadline: Date.now() + LIMIT*1000 };
+    $("#home").hidden = true; $("#results").hidden = true; $("#quiz").hidden = false;
+    $("#qcov").textContent = `Set ${i+1} · ${s.c}`;
+    $("#qtitle").textContent = s.t;
+    $("#list").innerHTML = cur.qs.map((q,n) => `<div class="item" data-n="${n}">
+        <div class="st"><span class="no">${n+1}</span><span class="stmts">${q.st.map((x,k) => `<span class="stmt"><span class="r">${ROM[k]}</span><span>${esc(x[0])}</span></span>`).join("")}</span></div>
+        <div class="mc">${q.opts.map((m,k) => `<button class="opt" data-v="${m}"><b>${LET[k]}</b>${label(m)}</button>`).join("")}</div></div>`).join("");
+    $("#quit").textContent = "Quit"; $("#quit").classList.remove("arm");
+    updateProg(); clearInterval(cur.tick);
+    if (cur.timed) { tick(); cur.tick = setInterval(tick, 250); } else { $("#timer").textContent = "No timer"; $("#timer").className = "timer off"; }
+    window.scrollTo({top:0});
+  }
+
+  function tick(){
+    const left = Math.max(0, Math.round((cur.deadline - Date.now())/1000)), t = $("#timer");
+    t.textContent = `${String(Math.floor(left/60)).padStart(2,"0")}:${String(left%60).padStart(2,"0")}`;
+    t.className = "timer" + (left <= 60 ? " crit" : left <= 180 ? " warn" : "");
+    if (left <= 0) submit(true);
+  }
+
+  function updateProg(){
+    const done = cur.ans.filter(x => x != null).length;
+    $("#prog").innerHTML = `<b>${done}</b>/${N} <span class="pw">answered</span>`;
+    const un = N - done;
+    $("#unans").textContent = un ? `${un} question${un>1?"s":""} unanswered` : "All questions answered";
+  }
+
+  function submit(auto){
+    if (cur.done) return; cur.done = true;
+    clearInterval(cur.tick);
+    $("#quiz").hidden = true; $("#results").hidden = false; $("#timeup").hidden = !auto;
+    cur.used = cur.timed ? Math.min(LIMIT, LIMIT - Math.max(0, Math.round((cur.deadline - Date.now())/1000))) : null;
+    cur.score = cur.qs.filter((q,n) => cur.ans[n] === q.key).length;
+    if (best[cur.set] == null || cur.score > best[cur.set]) { best[cur.set] = cur.score; saveBest(); }
+    renderResults("all"); window.scrollTo({top:0});
+  }
+
+  function renderResults(filter){
+    const s = SETS[cur.set], score = cur.score;
+    $("#big").innerHTML = `${score}<small>/${N}</small>`;
+    const pct = score/N;
+    $("#verdict").textContent = pct >= .9 ? "Recit-ready." : pct >= .75 ? "Solid. Review the misses below." : pct >= .5 ? "Getting there. Read the explanations, then retake." : "Back to the codal for this one, then retake.";
+    $("#rmeta").textContent = `Set ${cur.set+1} · ${s.c}` + (cur.used != null ? ` · time used ${Math.floor(cur.used/60)}:${String(cur.used%60).padStart(2,"0")}` : "");
+    $$("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === filter));
+    const stmt = (r, x) => `<span class="stmt"><span class="r">${r}</span><span>${esc(x[0])}</span><span class="vt ${x[3]?"t":"f"}">${x[3]?"TRUE":"FALSE"}</span></span>
+      <div class="sx">${x[1] ? esc(x[1]) + " " : ""}<span class="src">${esc(x[2])}</span></div>`;
+    $("#rlist").innerHTML = cur.qs.map((q,n) => ({q,n,ok: cur.ans[n] === q.key})).filter(r => filter === "all" || !r.ok).map(({q,n,ok}) => {
+      const mine = cur.ans[n];
+      const letterOf = m => LET[q.opts.indexOf(m)];
+      return `<div class="item ${ok?"ok":"no-"}"><div class="st"><span class="no">${n+1}</span><span class="stmts">${q.st.map((x,k) => stmt(ROM[k], x)).join("")}</span></div>
+        <div class="mc">${q.opts.map((m,k) => `<button class="opt ${m===q.key?"key":""} ${m===mine&&!ok?"bad":""}" disabled><b>${LET[k]}</b>${label(m)}</button>`).join("")}</div>
+        <div class="res"><div class="row"><span class="k">Your answer</span>${mine != null ? `<span class="pill ${ok?"g":"b"}">${letterOf(mine)}</span>` : '<span class="pill n">No answer</span>'} <span class="k" style="min-width:0;margin-left:10px">Answer</span><span class="pill g">${letterOf(q.key)} · ${label(q.key)}</span></div></div></div>`;
+    }).join("") || `<p class="note" style="padding:0 2px">Nothing here. Nice.</p>`;
+  }
+
+  $("#grid").addEventListener("click", e => { const b = e.target.closest(".set"); if (b) start(+b.dataset.i); });
+  $("#list").addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    const box = b.closest(".item"), n = +box.dataset.n;
+    cur.ans[n] = +b.dataset.v;
+    box.querySelectorAll(".opt").forEach(x => x.classList.toggle("on", x === b));
+    updateProg();
+  });
+  $("#submit").addEventListener("click", () => submit(false));
+  $("#submit2").addEventListener("click", () => submit(false));
+  $("#quit").addEventListener("click", () => {
+    const q = $("#quit");
+    if (!q.classList.contains("arm")) { q.classList.add("arm"); q.textContent = "Tap again to quit"; setTimeout(() => { q.classList.remove("arm"); q.textContent = "Quit"; }, 3000); return; }
+    clearInterval(cur.tick); showHome();
+  });
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderResults(b.dataset.f); });
+  $("#retake").addEventListener("click", () => start(cur.set));
+  $("#home2").addEventListener("click", showHome);
+  window.__rr = () => cur;
+  showHome();
+})();
+</script>
+<div style="font:13px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;color:#5B665A;text-align:center;padding:14px 16px 22px">
+<a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSevIs1UsXAis_NB8qKYjPxivTeN8Dr-HQ0Tyqonnw5Try-xoQ/viewform?usp=pp_url&amp;entry.174327743=Property+%28T%2FF+quiz%29" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
+<a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script><script>(function(){
+  function drill(){ var s=document.getElementById('rr-switch'); return s && s.selectedIndex>=0 ? s.options[s.selectedIndex].text : document.title; }
+  function send(extra){ try{ var p={drill_name: drill()}; for (var k in extra) p[k]=extra[k]; gtag('event','drill_completed',p); }catch(e){} }
+  var r=document.getElementById('result');
+  if (r){ var was=r.classList.contains('show');
+    new MutationObserver(function(){ var now=r.classList.contains('show'); if(now && !was) send({}); was=now; }).observe(r,{attributes:true,attributeFilter:['class']}); }
+  var q=document.getElementById('results');
+  if (q){ var hid=q.hidden;
+    new MutationObserver(function(){ if(hid && !q.hidden){ var m=document.getElementById('rmeta'); send({quiz_set: m ? (m.textContent.split(' · ')[0]||'') : ''}); } hid=q.hidden; }).observe(q,{attributes:true,attributeFilter:['hidden']}); }
+})();</script></body>
+</html>

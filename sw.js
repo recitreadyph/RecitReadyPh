@@ -1,6 +1,6 @@
-/* RecitReady offline mode. Version: 20261030174711 */
-const CACHE = "rr-20261030174711";
-const PRE = ["./", "codal-civil-procedure.html", "codal-constitution.html", "codal-corporation-code.html", "codal-criminal-law-1.html", "codal-criminal-law-2.html", "codal-criminal-procedure.html", "codal-evidence.html", "codal-obligations-and-contracts.html", "codal-partnership-agency-trusts.html", "codal-persons-and-family-relations.html", "codal-property.html", "codal-sales.html", "elements-criminal-law-2.html", "index.html", "maps-procedure-maps.html", "quizzes-civil-procedure-tf.html", "quizzes-sales-tf.html", "support.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
+/* RecitReady offline mode. Version: 20261030190448 */
+const CACHE = "rr-20261030190448";
+const PRE = ["./", "codal-civil-procedure.html", "codal-constitution.html", "codal-corporation-code.html", "codal-criminal-law-1.html", "codal-criminal-law-2.html", "codal-criminal-procedure.html", "codal-evidence.html", "codal-obligations-and-contracts.html", "codal-partnership-agency-trusts.html", "codal-persons-and-family-relations.html", "codal-property.html", "codal-sales.html", "elements-criminal-law-2.html", "essays-property-bar.html", "index.html", "maps-procedure-maps.html", "quizzes-civil-procedure-tf.html", "quizzes-property-tf.html", "quizzes-sales-tf.html", "support.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "apple-touch-icon.png"];
 const FONT_CACHE = "rr-fonts";
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => Promise.all(PRE.map(u => c.add(u).catch(() => null)))).then(() => self.skipWaiting()));
