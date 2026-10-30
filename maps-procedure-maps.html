@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Procedure Maps · RecitReady</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#F7F2E6; --paper-2:#FBF8F0; --card:#FFFDF7; --line:#E4DCC6; --line-2:#D6CBAE;
+  --ink:#2E382F; --ink-2:#5B665A; --muted:#8A917F;
+  --sage:#6F8466; --sage-d:#4D6450; --sage-dd:#36493A; --sage-l:#E7EDDF; --sage-ll:#F1F4EC;
+  --gold:#B8923A; --gold-d:#94742A; --gold-l:#F4E9CF; --gold-ll:#FAF3E2;
+  --bad:#B4553F; --bad-bg:#F8E3DC; --bad-l:#FBEFEA;
+  --serif-d:"Cormorant Garamond", Georgia, serif;
+  --serif:"Lora", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{scroll-behavior:smooth}
+body{
+  background-color:var(--paper);
+  background-image:radial-gradient(rgba(110,96,60,.10) .7px, transparent .8px),radial-gradient(rgba(110,96,60,.07) .6px, transparent .7px);
+  background-size:23px 23px, 37px 37px; background-position:0 0, 11px 17px;
+  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+button{font:inherit;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 60px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .name{font-family:var(--serif-d);font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--sage-dd);line-height:1}
+.logo .tag{font-family:var(--serif-d);font-style:italic;color:var(--gold-d);font-size:16px;line-height:1.1}
+.subject{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -18px rgba(60,70,50,.35)}
+.head{padding:18px 20px 14px;border-bottom:1px solid var(--line)}
+.row1{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--sage-dd);background:var(--sage-l);border:1px solid #cfdac4;border-radius:8px;padding:3px 9px;margin-bottom:6px}
+h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;margin:0;color:var(--ink)}
+.sub{font-family:var(--serif-d);font-style:italic;font-size:17px;color:var(--gold-d);margin-top:3px}
+.seg{display:inline-flex;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{border:0;background:transparent;padding:7px 15px;border-radius:9px;cursor:pointer;color:var(--ink-2);font-weight:500;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--sage-dd);font-weight:700;box-shadow:0 1px 3px rgba(60,70,50,.18)}
+.tools{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;margin-top:14px}
+.legend{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.legend .lm i{background:var(--sage)} .legend .ls i{background:var(--gold)} .legend .lx i{background:var(--bad)}
+.legend .la i{background:transparent;border:1.5px dashed var(--gold-d)}
+.tbtns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--sage)}
+.btn.on{background:var(--gold-ll);border-color:#e3cf9e;color:var(--gold-d)}
+.btn[hidden]{display:none}
+
+/* stage strip */
+.strip{position:sticky;top:0;z-index:5;background:rgba(251,248,240,.96);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);padding:9px 14px;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin}
+.strip a{flex:none;display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:var(--ink-2);font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 11px 4px 4px}
+.strip a b{display:inline-grid;place-items:center;width:21px;height:21px;border-radius:50%;background:var(--sage-l);color:var(--sage-dd);font-size:11.5px}
+.strip a.cur{border-color:var(--sage);color:var(--sage-dd);background:var(--sage-ll)}
+.strip a.cur b{background:var(--sage-d);color:#fff}
+
+/* flow */
+.flow{padding:22px 20px 8px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:0 14px;position:relative;scroll-margin-top:62px}
+.rail{position:relative;display:flex;justify-content:center}
+.rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:repeating-linear-gradient(var(--line-2) 0 6px,transparent 6px 10px)}
+.step:first-child .rail::before{top:18px}
+.step:last-child .rail::before{bottom:auto;height:18px}
+.dot{position:relative;z-index:1;width:36px;height:36px;border-radius:50%;background:var(--sage-d);color:#fff;display:grid;place-items:center;font-family:var(--serif-d);font-weight:700;font-size:19px;box-shadow:0 0 0 4px var(--card)}
+.card{border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:14px 16px 16px;margin-bottom:22px;min-width:0}
+.step-h{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap}
+.step-h h2{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--sage-dd);margin:0;line-height:1.35}
+.cite{font-size:12px;font-weight:600;letter-spacing:.03em;color:var(--gold-d);white-space:nowrap}
+.desc{font-family:var(--serif);font-size:15px;line-height:1.65;color:var(--ink);margin:8px 0 0}
+
+/* periods */
+.pl{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.pl li{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 10px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 10px 6px 6px}
+.pv{display:inline-flex;align-items:baseline;gap:5px;min-width:96px;justify-content:center;border:1px solid #e3d3a8;background:var(--gold-ll);border-radius:8px;padding:3px 9px;font-family:var(--serif);color:var(--gold-d);cursor:default}
+.pv .n{font-weight:600;font-size:17px;line-height:1.2}
+.pv .u{font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.02em}
+.pt{font-size:13.5px;line-height:1.45;color:var(--ink)}
+.pc{font-size:11.5px;color:var(--muted);text-align:right;white-space:nowrap}
+.quiz .pv{cursor:pointer;background:var(--sage-ll);border-style:dashed;border-color:var(--sage)}
+.quiz .pv .n{color:transparent;position:relative;min-width:1.4em;display:inline-block;text-align:center}
+.quiz .pv .n::after{content:"?";position:absolute;inset:0;color:var(--sage-d)}
+.quiz .pv.shown{background:var(--gold-ll);border-style:solid;border-color:#e3d3a8}
+.quiz .pv.shown .n{color:var(--gold-d)} .quiz .pv.shown .n::after{content:none}
+
+/* notes */
+.nt{display:flex;gap:9px;font-size:13px;line-height:1.55;color:var(--ink-2);border-radius:9px;padding:8px 12px;margin-top:10px}
+.nt .ic{flex:none;font-weight:700;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;padding-top:2px}
+.nt.tip{background:var(--sage-ll);border-left:3px solid var(--sage)} .nt.tip .ic{color:var(--sage-d)}
+.nt.amend,.nt.warn{background:var(--gold-ll);border:1.5px dashed #d9bf7f} .nt.amend .ic,.nt.warn .ic{color:var(--gold-d)}
+
+/* decisions */
+.dec{margin-top:14px;border-top:1px dashed var(--line-2);padding-top:12px}
+.q{display:flex;gap:10px;align-items:flex-start;font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.45}
+.dia{flex:none;width:15px;height:15px;transform:rotate(45deg);border:2px solid var(--gold);background:var(--gold-l);margin:4px 3px 0;border-radius:2px}
+.brs{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:10px;padding-left:24px}
+.br{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--sage);border-radius:10px;padding:9px 12px 11px;min-width:0;display:flex;flex-direction:column}
+.br .bl{font-weight:700;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-d);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.br .bl::before{content:"";width:14px;height:2px;background:currentColor}
+.br p{margin:0;font-size:13.5px;line-height:1.55;color:var(--ink)}
+.br.side{border-top-color:var(--gold)} .br.side .bl{color:var(--gold-d)}
+.br.stop{border-top-color:var(--bad)} .br.stop .bl{color:var(--bad)}
+.br .pl li{grid-template-columns:auto 1fr;padding:5px 8px 5px 5px}
+.br .pl .pc{grid-column:2;text-align:left;margin-top:-3px}
+.br .pv{min-width:86px}
+.go{margin-top:9px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--sage-dd);text-decoration:none;background:var(--sage-ll);border:1px solid #cfdac4;border-radius:999px;padding:3px 11px}
+.go:hover{background:var(--sage-l)}
+.end{margin-top:9px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--bad);background:var(--bad-l);border:1px solid #efc9bd;border-radius:999px;padding:3px 11px}
+.end::before{content:"";width:7px;height:7px;background:currentColor;border-radius:1px}
+.br.main .end{color:var(--sage-dd);background:var(--sage-ll);border-color:#cfdac4}
+.br.side .end{color:var(--gold-d);background:var(--gold-ll);border-color:#e3cf9e}
+.dnote{margin-left:24px}
+.flash{animation:fl 1.4s ease}
+@keyframes fl{0%,40%{box-shadow:0 0 0 3px var(--gold)}100%{box-shadow:0 0 0 0 transparent}}
+
+.foot{padding:4px 20px 18px;font-size:12.5px;color:var(--muted);text-align:center}
+.disclaimer{max-width:820px;margin:18px auto 0;padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--ink-2);text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.disclaimer b{color:var(--sage-dd)}
+
+@media (max-width:640px){
+  .wrap{padding:12px 10px 40px}
+  .logo .name{font-size:22px}
+  .head{padding:14px 14px 12px}
+  h1{font-size:23px}
+  .seg{width:100%} .seg button{flex:1;padding:7px 8px}
+  .flow{padding:16px 10px 4px}
+  .step{grid-template-columns:26px 1fr;gap:0 8px}
+  .dot{width:26px;height:26px;font-size:15px;box-shadow:0 0 0 3px var(--card)}
+  .step:first-child .rail::before{top:13px}
+  .card{padding:12px 12px 14px}
+  .pl li{grid-template-columns:auto 1fr}
+  .pc{grid-column:2;text-align:left;margin-top:-3px}
+  .pv{min-width:84px}
+  .brs{padding-left:0;grid-template-columns:1fr}
+  .dnote{margin-left:0}
+}
+</style>
+</head>
+<body>
+<div id="rr-fs" style="display:none;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;text-align:center;padding:8px 12px">
+<a href="#" target="_blank" rel="noopener" style="color:#fff;text-decoration:none">Open this drill in full screen ↗</a></div>
+<script>(function(){try{if(window.self!==window.top){var b=document.getElementById('rr-fs');b.style.display='block';b.firstElementChild.href=location.href;}}catch(e){}})();</script>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#6F8466" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="22" rx="1"/><rect x="15.5" y="7" width="6.5" height="24" rx="1"/>
+          <path d="M23.5 10.5l5.6-1.6 5.7 20.6-5.6 1.6z"/><path d="M12 13v3M18.7 11.5v5M12 26h0M18.7 26.5h0"/><path d="M5 33h31"/>
+        </g>
+        <path d="M27.5 15.5c1.6-.3 2.6.6 2.9 1.7-1.6.3-2.6-.5-2.9-1.7z" fill="#B8923A"/>
+        <path d="M17.6 20.5l1.1-1.1 1.1 1.1-1.1 1.1z" fill="#B8923A"/>
+      </svg>
+      <div><div class="name">RECITREADY</div><div class="tag">Procedure Maps</div></div>
+    </div>
+    <div class="subject">Reglementary Periods · Flow Map</div>
+  </div>
+
+  <div class="panel">
+    <div class="head">
+      <div class="row1">
+        <div>
+          <div class="badge" id="badge">CIVIL PROCEDURE</div>
+          <h1 id="title"></h1>
+          <div class="sub" id="sub"></div>
+        </div>
+        <div class="seg" role="group" aria-label="Choose map">
+          <button data-map="civil" aria-pressed="true">Civil Procedure</button>
+          <button data-map="criminal" aria-pressed="false">Criminal Procedure</button>
+        </div>
+      </div>
+      <div class="tools">
+        <div class="legend">
+          <span class="lm"><i></i>Main path</span><span class="ls"><i></i>Side path</span><span class="lx"><i></i>Adverse / ends</span><span class="la"><i></i>Amendment or caution</span>
+        </div>
+        <div class="tbtns">
+          <button class="btn" id="quiz" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9.1 9a3 3 0 015.8 1c0 2-3 3-3 3"/><path d="M12 17h0"/><circle cx="12" cy="12" r="10"/></svg>Quiz me: hide periods</button>
+          <button class="btn" id="reveal" hidden>Reveal all</button>
+        </div>
+      </div>
+    </div>
+    <nav class="strip" id="strip" aria-label="Stages"></nav>
+    <div class="flow" id="flow"></div>
+    <div class="foot" id="count"></div>
+  </div>
+
+  <p class="disclaimer"><b>Study aid only.</b> These maps summarize the Rules of Court and related issuances in our own words to help you memorize the flow and the periods. They are not a substitute for the official text, your casebooks or your professors' discussions, and may contain errors or miss later amendments. Always check an official source before relying on them for recitations, exams or practice.</p>
+</div>
+<script>
+/* Procedure maps — content. Periods: [value, unit, what/when, cite]. Summaries are in our own words. */
+const MAPS = {
+civil: {
+  label: "Civil Procedure",
+  title: "From complaint to execution",
+  sub: "Ordinary civil action · 2019 Amended Rules of Civil Procedure",
+  steps: [
+  { id:"c1", short:"Complaint", title:"File the complaint", cite:"Rule 1 §5 · Rule 7 §6",
+    desc:"The action is commenced when the original complaint is filed in court and the docket fees are paid. Attach the judicial affidavits of your witnesses and your documentary and object evidence.",
+    decisions:[
+      { q:"Is it a small claims or summary procedure case in a first-level court?",
+        br:[
+          { k:"alt", l:"Yes", t:"It follows the 2022 Rules on Expedited Procedures (A.M. No. 08-8-7-SC), not the ordinary steps below. A small claims decision is final and unappealable.",
+            p:[["30","cal. days","Answer (summary procedure), from service of summons","2022 Rules"],
+               ["10","cal. days","Response (small claims), non-extendible, from receipt of summons","2022 Rules"],
+               ["30","cal. days","Small claims hearing, not later than, from filing of the Statement of Claim","2022 Rules"],
+               ["24","hours","Small claims decision, from termination of the hearing","2022 Rules"],
+               ["15","cal. days","Appeal (summary procedure), from receipt of judgment","2022 Rules"]],
+            end:"Separate track" },
+          { k:"yes", l:"No", t:"Ordinary civil action. Continue to the next step.", go:"c2" }
+        ]}
+    ]},
+
+  { id:"c2", short:"Summons", title:"Court acts on the complaint", cite:"Rule 14 §1 · Rule 9 §1",
+    p:[["5","cal. days","Court directs the clerk to issue summons, from receipt of the complaint and proof of payment of fees","R14 §1"]],
+    decisions:[
+      { q:"Is the complaint dismissible on its face? (no jurisdiction over the subject matter, litis pendentia, res judicata, prescription)",
+        br:[
+          { k:"no2", l:"Yes", t:"The court dismisses it on its own. Res judicata or prescription bars refiling, so the remedy is appeal (R15 §13). Lack of jurisdiction or litis pendentia is without prejudice: refile, or Rule 65 (R41 §1(g)).", end:"Case dismissed" },
+          { k:"yes2", l:"No", t:"The clerk issues the summons.", go:"c3" }
+        ]}
+    ]},
+
+  { id:"c3", short:"Service", title:"Serve the summons", cite:"Rule 14 §§3, 20",
+    p:[["30","cal. days","Sheriff or process server completes service, from issuance and receipt of the summons","R14 §20"],
+       ["5","cal. days","Server files the return, from service","R14 §20"]],
+    decisions:[
+      { q:"Was the defendant served?",
+        br:[
+          { k:"yes", l:"Yes", t:"The defendant's period to respond starts running from service.", go:"c4" },
+          { k:"no", l:"No", t:"The court orders the plaintiff to cause service by other means; failing to comply means dismissal without prejudice (R14 §3). An alias summons may also be asked for, which is a non-litigious motion.",
+            p:[["5","cal. days","Court resolves a non-litigious motion (e.g., alias summons), from receipt","R15 §4"]], go:"c3", goLabel:"Serve again" }
+        ]}
+    ]},
+
+  { id:"c4", short:"Answer", title:"Defendant responds", cite:"Rules 11, 12, 15",
+    p:[["30","cal. days","Answer, from service of summons","R11 §1"],
+       ["60","cal. days","Answer of a foreign private juridical entity served through the designated government official, from its receipt of summons","R11 §2"],
+       ["30","cal. days","Maximum extension to answer, and only one motion for extension is allowed","R11 §11"]],
+    notes:[
+      { k:"tip", t:"A motion for extension is allowed only for the answer. Extensions to file any other pleading are prohibited (R11 §11; R15 §12(e))." },
+      { k:"tip", t:"Before the answer or a motion for summary judgment is served, the plaintiff may drop the case by notice of dismissal. This is without prejudice, unless it is the second such dismissal (R17 §1)." }
+    ],
+    decisions:[
+      { q:"Is the complaint too vague to answer properly?",
+        br:[
+          { k:"alt", l:"Yes", t:"Move for a bill of particulars before answering. After the bill is served or the motion is denied, answer within the period left when you filed the motion, but never less than 5 calendar days.",
+            p:[["5","cal. days","Minimum time left to answer after the bill is served or the motion is denied","R12 §5"]] },
+          { k:"yes", l:"No", t:"Proceed to the answer." }
+        ]},
+      { q:"Does the defendant file a motion to dismiss?",
+        br:[
+          { k:"alt", l:"Yes", t:"Allowed only on 4 grounds: no jurisdiction over the subject matter, litis pendentia, res judicata, prescription (R15 §12(a)). It is a litigious motion. If granted, the case is dismissed and the remedy is appeal (with prejudice if res judicata or prescription, R15 §13). If denied, the order is interlocutory, so the defendant files the answer.",
+            p:[["5","cal. days","Opposition to a litigious motion, from receipt","R15 §5(c)"],
+               ["15","cal. days","Court resolves, from receipt of the opposition or lapse of the period to file it","R15 §5(c)"]] },
+          { k:"yes", l:"No", t:"File the answer and put every other defense in it as an affirmative defense (R8 §12)." }
+        ],
+        note:{ k:"warn", t:"The 2019 Rules deleted old Rule 16, including its rule that after a motion to dismiss is denied, the defendant answers within the balance of the period (at least 5 days). Follow the period the court sets, and check how your professor treats this." } },
+      { q:"Did the defendant answer on time?",
+        br:[
+          { k:"no", l:"No", t:"On motion of the plaintiff, with notice and proof of the failure to answer, the defendant is declared in default. The court renders judgment, or may require the plaintiff to present evidence. To lift the default, file a motion under oath any time after notice and before judgment, showing fraud, accident, mistake or excusable negligence (FAME) and a meritorious defense (R9 §3).", go:"c11", goLabel:"Judgment" },
+          { k:"yes", l:"Yes", t:"Proceed.", go:"c5" }
+        ]}
+    ]},
+
+  { id:"c5", short:"Aff. defenses", title:"Court rules on affirmative defenses", cite:"Rule 8 §12",
+    desc:"Grounds: no jurisdiction over the person, improper venue, no legal capacity to sue, no cause of action, non-compliance with a condition precedent, plus the defenses under Rule 6 §5(b). Grounds not raised are waived.",
+    p:[["30","cal. days","Court resolves the 5 listed grounds on its own, from filing of the answer","R8 §12(c)"],
+       ["15","cal. days","Summary hearing on the other affirmative defenses, within, from filing of the answer","R8 §12(d)"],
+       ["30","cal. days","Court resolves those other defenses, from termination of the summary hearing","R8 §12(d)"]],
+    decisions:[
+      { q:"Is an affirmative defense granted?",
+        br:[
+          { k:"no2", l:"Yes", t:"The complaint is dismissed. If the ground bars refiling, the remedy is appeal (R15 §13).", end:"Case dismissed" },
+          { k:"yes2", l:"No", t:"A denial cannot be the subject of a motion for reconsideration, certiorari, prohibition or mandamus. Raise it on appeal after judgment (R8 §12(e); R15 §12(b)–(c)).", go:"c6" }
+        ]}
+    ]},
+
+  { id:"c6", short:"Reply", title:"Reply and answers to other claims", cite:"Rule 6 §10 · Rule 11 §§3–6",
+    desc:"A reply is allowed only if the answer attaches an actionable document. Otherwise, new matters in the answer are deemed controverted.",
+    p:[["15","cal. days","Reply, from service of the answer","R11 §6"],
+       ["20","cal. days","Answer to a counterclaim or cross-claim, from service","R11 §4"],
+       ["30","cal. days","Answer to a complaint amended as a matter of right, from service","R11 §3"],
+       ["15","cal. days","Answer to a complaint amended with leave, from notice of the order admitting it","R11 §3"]]},
+
+  { id:"c7", short:"Pre-trial", title:"Pre-trial", cite:"Rule 18 §§1–7, 10",
+    p:[["5","cal. days","Branch clerk issues the notice of pre-trial, from filing of the last responsive pleading","R18 §1"],
+       ["60","cal. days","Pre-trial must be set not later than, from filing of the last responsive pleading","R18 §1"],
+       ["3","cal. days","Pre-trial briefs must be received at least, before the pre-trial","R18 §6"],
+       ["10","cal. days","Pre-trial order is issued, from termination of the pre-trial","R18 §7"]],
+    notes:[{ k:"tip", t:"Missing the mediation or JDR setting counts as missing the pre-trial (R18 §3). Failing to file the pre-trial brief has the same effect as failing to appear (R18 §6)." }],
+    decisions:[
+      { q:"Did both parties and their counsel appear?",
+        br:[
+          { k:"no", l:"Plaintiff absent", t:"The action is dismissed, with prejudice unless the court orders otherwise.", end:"Case dismissed" },
+          { k:"alt", l:"Defendant absent", t:"The plaintiff presents evidence ex parte, and the court renders judgment on that evidence.",
+            p:[["10","cal. days","Ex parte presentation of evidence, within, from termination of the pre-trial","R18 §5"]], go:"c11", goLabel:"Judgment" },
+          { k:"yes", l:"Both present", t:"Proceed." }
+        ]},
+      { q:"Is there still a genuine issue of fact?",
+        br:[
+          { k:"alt", l:"No", t:"The court, on its own, submits the case for judgment on the pleadings (Rule 34) or summary judgment (Rule 35). That order is not subject to appeal or certiorari.",
+            p:[["90","cal. days","Judgment, from termination of the pre-trial","R18 §10"],
+               ["5","cal. days","Comment and opposing affidavits to a motion for summary judgment, non-extendible, from receipt","R35 §3"]], go:"c11", goLabel:"Judgment" },
+          { k:"yes", l:"Yes", t:"The parties are referred to mediation.", go:"c8" }
+        ]}
+    ]},
+
+  { id:"c8", short:"CAM / JDR", title:"Court-annexed mediation and JDR", cite:"Rule 18 §§8–9",
+    p:[["30","cal. days","Court-annexed mediation, maximum, with no extension","R18 §8"],
+       ["15","cal. days","Judicial dispute resolution, non-extendible, from notice that mediation failed","R18 §9"]],
+    desc:"JDR happens only if the judge believes settlement is still possible, and it is held before another court.",
+    decisions:[
+      { q:"Did the parties settle?",
+        br:[
+          { k:"alt", l:"Yes", t:"Compromise agreement, then a judgment on compromise, which is immediately executory.", end:"Case ends" },
+          { k:"yes", l:"No", t:"Trial proceeds on the dates in the pre-trial order.", go:"c9" }
+        ]}
+    ]},
+
+  { id:"c9", short:"Plaintiff's evid.", title:"Trial: plaintiff's evidence", cite:"Rule 30 §1 · Rule 33",
+    desc:"Direct testimony is by judicial affidavit, followed immediately by cross-examination. Postponements are prohibited except for acts of God, force majeure or a witness's duly proven physical inability (R18 §7; R15 §12(f)).",
+    p:[["30","cal. days","Initial presentation of the plaintiff's evidence, not later than, after termination of the pre-trial","R30 §1(a)(i)"],
+       ["90","cal. days","Plaintiff's whole presentation, which includes the JDR period (3 months)","R30 §1(a)(i)"]],
+    decisions:[
+      { q:"After the plaintiff rests, does the defendant file a demurrer to evidence?",
+        br:[
+          { k:"alt", l:"Yes", t:"It is a litigious motion under Rule 15 (R33 §2). If granted, the case is dismissed; but if the dismissal is reversed on appeal, the defendant loses the right to present evidence (R33 §1). If denied, there is no appeal or certiorari before judgment, and the defendant presents evidence.",
+            p:[["5","cal. days","Opposition to the demurrer, from receipt","R15 §5(c)"],
+               ["15","cal. days","Court resolves the demurrer, from receipt of the opposition or lapse of the period","R15 §5(c)"]] },
+          { k:"yes", l:"No", t:"The defendant presents evidence.", go:"c10" }
+        ]}
+    ]},
+
+  { id:"c10", short:"Defendant's evid.", title:"Trial: defendant's evidence and rebuttal", cite:"Rule 30 §1",
+    p:[["30","cal. days","Initial presentation of the defendant's evidence, not later than, after the ruling on the plaintiff's formal offer","R30 §1(a)(ii)"],
+       ["90","cal. days","Defendant's whole presentation (3 months)","R30 §1(a)(ii)"],
+       ["90","cal. days","Third-party claims, counterclaims and cross-claims, maximum total","R30 §1(a)(iii)"],
+       ["30","cal. days","Rebuttal evidence, if allowed","R30 §1(a)(iv)"],
+       ["300","cal. days","All parties' evidence, maximum (10 months)","R30 §1(b)"],
+       ["180","cal. days","All evidence, maximum, if there is no third-party claim, counterclaim or cross-claim (6 months)","R30 §1(b)"]]},
+
+  { id:"c11", short:"Judgment", title:"Judgment", cite:"Rule 30 §1(c) · Rule 37",
+    p:[["90","cal. days","Court decides and serves copies, from submission of the case for resolution, with or without memoranda","R30 §1(c)"]],
+    decisions:[
+      { q:"Does the losing party move for a new trial or reconsideration?",
+        br:[
+          { k:"alt", l:"Yes", t:"Grounds for a new trial: FAME, or newly discovered evidence. Grounds for reconsideration: excessive damages, insufficient evidence, or a decision contrary to law. A pro forma motion does not stop the appeal period, and no second motion for reconsideration is allowed. A denial cannot itself be appealed; appeal the judgment, with a fresh 15 days (Neypes).",
+            p:[["15","days","File within the period to appeal, from notice of judgment; no extension is allowed","R37 §1; R41 §3"],
+               ["30","days","Court resolves, from submission of the motion","R37 §4"],
+               ["15","days","Fresh period to appeal, from notice of the denial","Neypes v. CA"]], go:"c12", goLabel:"Appeal" },
+          { k:"yes", l:"No", t:"Decide whether to appeal.", go:"c12" }
+        ]}
+    ]},
+
+  { id:"c12", short:"Appeal", title:"Appeal", cite:"Rules 40–45",
+    desc:"Pay the appellate docket fees within the same period. The mode depends on which court decided and what questions are raised.",
+    p:[["15","days","Notice of appeal: MTC to RTC, and RTC (original jurisdiction) to CA, from notice of judgment","R40 §2; R41 §3"],
+       ["30","days","Notice of appeal plus record on appeal (special proceedings, multiple appeals)","R40 §2; R41 §3"],
+       ["48","hours","Appeal in habeas corpus cases","R41 §3"],
+       ["15","days","Petition for review to the CA, RTC in its appellate jurisdiction (+15, then +15 more only for the most compelling reason)","R42 §1"],
+       ["15","days","Petition for review to the CA from quasi-judicial agencies (+15, then +15 more only for the most compelling reason)","R43 §4"],
+       ["15","days","Petition for review on certiorari to the SC, pure questions of law (+30 extension)","R45 §2"]],
+    decisions:[
+      { q:"Was an appeal perfected on time?",
+        br:[
+          { k:"alt", l:"Yes", t:"The appellate court reviews. Execution pending appeal is allowed only for good reasons, stated in a special order after hearing (R39 §2)." },
+          { k:"yes", l:"No", t:"The judgment becomes final and executory and is entered. The date of finality is the date of entry (R36 §2).", go:"c13" }
+        ]}
+    ]},
+
+  { id:"c13", short:"Execution", title:"Finality and execution", cite:"Rule 39 §§1, 6",
+    desc:"Execution issues as a matter of right once the period to appeal lapses without a perfected appeal. A motion for a writ of execution is non-litigious (R15 §4).",
+    p:[["5","years","Execution by motion, from entry of judgment","R39 §6"],
+       ["10","years","Action to revive the judgment, after the 5 years and before prescription","R39 §6; Civil Code Art. 1144"]]},
+
+  { id:"c14", short:"Last resorts", title:"Remedies once the ordinary ones are gone", cite:"Rules 38, 47, 65",
+    p:[["60","days","Petition for relief (FAME), from learning of the judgment…","R38 §3"],
+       ["6","months","…and not more than this, from entry of judgment","R38 §3"],
+       ["4","years","Annulment of judgment for extrinsic fraud, from discovery (lack of jurisdiction: before laches or estoppel)","R47 §3"],
+       ["60","days","Certiorari, prohibition or mandamus, from notice of the judgment or order, or of the denial of the MR or new trial","R65 §4"]],
+    notes:[{ k:"tip", t:"Annulment of judgment is available only when a new trial, appeal, petition for relief and other remedies can no longer be used, through no fault of the petitioner (R47 §1)." }]}
+  ]
+},
+
+criminal: {
+  label: "Criminal Procedure",
+  title: "From complaint to final judgment",
+  sub: "Rules 110–127 · with the Continuous Trial Guidelines and the 2024 DOJ-NPS Rules",
+  steps: [
+  { id:"k1", short:"Institution", title:"Institute the criminal action", cite:"Rule 110 §1 · Rule 112 §§1, 7, 9",
+    desc:"File the complaint with the proper officer for preliminary investigation, or, for offenses that don't need one, with the prosecutor or directly with the MTC. In Manila and other chartered cities, file with the prosecutor unless the charter says otherwise. Filing interrupts prescription.",
+    decisions:[
+      { q:"Was the respondent lawfully arrested without a warrant?",
+        br:[
+          { k:"alt", l:"Yes", t:"An inquest is held instead of a preliminary investigation. The person must be delivered to the proper judicial authority within the Art. 125 RPC periods. They may ask for a preliminary investigation before the case is filed, but must waive Art. 125 with counsel present (they can still apply for bail).",
+            p:[["12","hours","Art. 125: light penalties","RPC Art. 125"],
+               ["18","hours","Art. 125: correctional penalties","RPC Art. 125"],
+               ["36","hours","Art. 125: afflictive or capital penalties","RPC Art. 125"],
+               ["15","days","Preliminary investigation requested after waiving Art. 125 must end, from its start","R112 §7"],
+               ["5","days","Ask for a preliminary investigation after the case was filed without one, from learning of the filing","R112 §7"]], go:"k3", goLabel:"Information filed" },
+          { k:"yes", l:"No", t:"Check whether a preliminary investigation is required." }
+        ]},
+      { q:"Is the penalty at least 4 years, 2 months and 1 day, regardless of the fine?",
+        br:[
+          { k:"yes", l:"Yes", t:"A preliminary investigation is required.", go:"k2" },
+          { k:"alt", l:"No", t:"No preliminary investigation. If filed with the prosecutor, the prosecutor acts on the complainant's affidavits. If filed with the MTC, the judge evaluates the evidence and dismisses if there is no probable cause; the judge may first ask for more evidence. Offenses under summary procedure follow the 2022 Expedited Rules.",
+            p:[["10","days","Prosecutor acts on the complaint, from filing","R112 §9(a)"],
+               ["10","days","MTC judge evaluates, from filing","R112 §9(b)"],
+               ["10","days","Additional evidence if the judge requires it, from notice","R112 §9(b)"]], go:"k3", goLabel:"In court" }
+        ],
+        note:{ k:"amend", t:"For DOJ prosecutors, the threshold is now 6 years and 1 day. Under the 2024 DOJ-NPS Rules (D.C. No. 015, s. 2024), a regular preliminary investigation covers only offenses punishable by at least 6 years and 1 day, regardless of fine. Lower offenses go to D.C. No. 028, s. 2024: summary investigation for penalties up to 1 year or a fine, and expedited preliminary investigation for 1 year and 1 day to 6 years in cases within the first-level courts. Rule 112 §1's 4 years, 2 months and 1 day is still the codal text and applies where the DOJ rules don't, such as to other investigating officers." } }
+    ]},
+
+  { id:"k2", short:"Prelim. inv.", title:"Preliminary investigation", cite:"Rule 112 §§3–4",
+    p:[["10","days","Investigating officer dismisses or issues a subpoena, from filing of the complaint","R112 §3(b)"],
+       ["10","days","Counter-affidavit, from receipt of the subpoena","R112 §3(c)"],
+       ["10","days","Clarificatory hearing held within, from submission of counter-affidavits or lapse of the period","R112 §3(e)"],
+       ["5","days","Clarificatory hearing must end within","R112 §3(e)"],
+       ["10","days","Officer determines whether there is sufficient ground, after the investigation","R112 §3(f)"],
+       ["5","days","Records forwarded to the provincial or city prosecutor, from the resolution","R112 §4"],
+       ["10","days","Head of office acts on the resolution, from receipt","R112 §4"]],
+    notes:[
+      { k:"tip", t:"No motion to dismiss in place of a counter-affidavit. If the respondent can't be subpoenaed or doesn't answer, the officer resolves on the complainant's evidence (R112 §3(c)–(d))." },
+      { k:"amend", t:"2024 DOJ-NPS Rules (DOJ D.C. No. 015, s. 2024) for DOJ prosecutors: the standard is a prima facie case with reasonable certainty of conviction. The preliminary investigation is resolved within 60 calendar days (extendible by 30), and the head of office acts within 10 calendar days. Parts of Rule 112 inconsistent with these rules are deemed repealed (A.M. No. 24-02-09-SC), and the SC upheld the DOJ rules in Meking v. Remulla (G.R. No. 280455, Nov. 11, 2025)." },
+      { k:"amend", t:"Since 2005, first-level court judges no longer conduct preliminary investigations (A.M. No. 05-8-26-SC). Your codal text still has the old §5 on investigating judges, so your §§6–9 are §§5–8 in the amended Rule 112." }
+    ],
+    decisions:[
+      { q:"Does the prosecutor find sufficient ground to file the case?",
+        br:[
+          { k:"no", l:"No", t:"The complaint is dismissed. The complainant may move for reconsideration, or petition the Secretary of Justice for review (R112 §4, last paragraph).",
+            p:[["15","days","Motion for reconsideration of the prosecutor's resolution, from receipt","DOJ-NPS Rules"],
+               ["15","days","Petition for review to the Secretary of Justice, from receipt of the resolution or the denial of the MR","DOJ D.C. No. 70 (2000)"]] },
+          { k:"yes", l:"Yes", t:"With the head of office's written approval, the information is filed in court. The respondent may also seek DOJ review; a pending petition can suspend the arraignment (R116 §11(c)).", go:"k3" }
+        ]}
+    ]},
+
+  { id:"k3", short:"Probable cause", title:"Judge determines probable cause; bail", cite:"Rule 112 §6 (§5 as amended) · Rule 114",
+    p:[["10","days","Judge personally evaluates the prosecutor's resolution and evidence, from filing of the information","R112 §6(a)"],
+       ["5","days","Prosecutor presents additional evidence if the judge is in doubt, from notice","R112 §6(a)"],
+       ["30","days","Issue of probable cause resolved, from filing of the information","R112 §6(a)"]],
+    decisions:[
+      { q:"Does the judge find probable cause?",
+        br:[
+          { k:"no2", l:"No", t:"The judge dismisses the case.", end:"Case dismissed" },
+          { k:"yes2", l:"Yes", t:"A warrant of arrest issues, or a commitment order if the accused is already detained. No warrant is needed for an offense punishable by fine only (R112 §6(c)). The court acquires jurisdiction over the person upon arrest or voluntary surrender." }
+        ]},
+      { q:"Is the offense punishable by death, reclusion perpetua or life imprisonment?",
+        br:[
+          { k:"alt", l:"Yes", t:"There is no bail when the evidence of guilt is strong, so a bail hearing is required (R114 §7).",
+            p:[["30","cal. days","Bail petition heard and resolved, non-extendible, from the first hearing","Continuous Trial Guidelines"],
+               ["20","cal. days","Same, in drug cases","Continuous Trial Guidelines"]] },
+          { k:"yes", l:"No", t:"Bail is a matter of right before conviction (R114 §4).", go:"k4" }
+        ]}
+    ]},
+
+  { id:"k4", short:"Pre-arraignment", title:"Before arraignment: motions", cite:"Rule 116 §§9, 11 · Rule 117",
+    desc:"Before arraignment, the accused may move for a bill of particulars (R116 §9), move to quash at any time before entering a plea (R117 §1), or move to suspend the arraignment (R116 §11): unsound mental condition, prejudicial question, or a petition for review pending with the DOJ or the Office of the President.",
+    p:[["60","days","Maximum suspension of arraignment while a petition for review is pending, from its filing","R116 §11(c)"],
+       ["10","cal. days","Comment on a meritorious motion, non-extendible","Continuous Trial Guidelines"],
+       ["10","cal. days","Court resolves the motion, after the comment period","Continuous Trial Guidelines"]],
+    decisions:[
+      { q:"Does the accused move to quash?",
+        br:[
+          { k:"alt", l:"Yes", t:"If the defect can be cured, the court orders an amendment (R117 §4). If the motion is sustained, the court may order a new information (§5); the dismissal bars another prosecution only if the ground was extinction of liability or double jeopardy (§6). If denied, the accused enters a plea and raises the issue on appeal after judgment." },
+          { k:"yes", l:"No", t:"Grounds not raised are waived, except: no offense charged, no jurisdiction over the offense, extinction of liability, and double jeopardy (R117 §9).", go:"k5" }
+        ]}
+    ]},
+
+  { id:"k5", short:"Arraignment", title:"Arraignment and plea", cite:"Rule 116 §§1–4",
+    p:[["30","days","Arraignment, from the court acquiring jurisdiction over the accused (time a motion to quash or for a bill of particulars is pending is excluded)","R116 §1(g)"],
+       ["3","days","Detained accused: case raffled and records sent to the judge, from filing of the information","R116 §1(e)"],
+       ["10","days","Detained accused: arraignment, from the raffle","R116 §1(e)"],
+       ["10","days","Detained accused: pre-trial, after arraignment","R116 §1(e)"]],
+    notes:[{ k:"amend", t:"The Continuous Trial Guidelines (A.M. No. 15-06-10-SC, 2017) set arraignment and pre-trial within 10 calendar days from the court's receipt of the case for a detained accused, and within 30 calendar days from acquiring jurisdiction for one who is not detained." }],
+    decisions:[
+      { q:"What is the plea?",
+        br:[
+          { k:"alt", l:"Guilty", t:"For a capital offense, the court conducts a searching inquiry and still requires the prosecution to prove guilt and the precise degree of culpability (§3). For a non-capital offense, the court may receive evidence to fix the penalty (§4). Plea bargaining to a lesser included offense needs the consent of the offended party and the prosecutor (§2).", go:"k8", goLabel:"Judgment" },
+          { k:"yes", l:"Not guilty", t:"Also entered when the accused refuses to plead, makes a conditional plea, or pleads guilty but presents exculpatory evidence (§1(c)–(d)).", go:"k6" }
+        ]}
+    ]},
+
+  { id:"k6", short:"Pre-trial", title:"Pre-trial", cite:"Rule 118",
+    desc:"Covers plea bargaining, stipulation of facts, marking of evidence, waiver of objections, and modification of the order of trial. Agreements must be in writing and signed by the accused and counsel, or they can't be used against the accused (§2). The pre-trial order controls the trial (§4).",
+    p:[["30","days","Pre-trial, after arraignment and within, from the court acquiring jurisdiction over the accused","R118 §1"]]},
+
+  { id:"k7", short:"Trial", title:"Trial", cite:"Rule 119 §§1–2, 9, 11, 23",
+    desc:"Order of trial: prosecution, then defense, then rebuttal and sur-rebuttal (§11). If the accused is not brought to trial within the time limits, they may move to dismiss before trial; failing to do so waives the right (§9).",
+    p:[["15","days","Accused's minimum time to prepare for trial, after a plea of not guilty","R119 §1"],
+       ["30","days","Trial must start, from receipt of the pre-trial order","R119 §1"],
+       ["180","days","Entire trial period, maximum, from the first day of trial","R119 §2"]],
+    notes:[{ k:"tip", t:"A provisional dismissal needs the accused's express consent and notice to the offended party. It becomes permanent after 1 year (penalty of up to 6 years, or a fine) or 2 years (penalty over 6 years) without revival (R117 §8)." }],
+    decisions:[
+      { q:"After the prosecution rests, does the accused file a demurrer to evidence?",
+        br:[
+          { k:"alt", l:"With leave", t:"If granted, it is an acquittal: double jeopardy bars an appeal, leaving only Rule 65 for grave abuse. If denied, the accused presents evidence. Denial of the leave or of the demurrer cannot be reviewed by appeal or certiorari before judgment (§23).",
+            p:[["5","days","Motion for leave, non-extendible, after the prosecution rests","R119 §23"],
+               ["5","days","Prosecution's opposition to the leave, non-extendible, from receipt","R119 §23"],
+               ["10","days","Demurrer, non-extendible, from notice that leave was granted","R119 §23"],
+               ["10","days","Prosecution's opposition to the demurrer, from receipt","R119 §23"],
+               ["30","cal. days","Court resolves the demurrer","Continuous Trial Guidelines"]] },
+          { k:"no", l:"Without leave", t:"The accused waives the right to present evidence. If the demurrer is denied, judgment is rendered on the prosecution's evidence alone.", go:"k8", goLabel:"Judgment" },
+          { k:"yes", l:"No demurrer", t:"Defense evidence, then rebuttal and sur-rebuttal. The case is then submitted for decision.", go:"k8" }
+        ]}
+    ]},
+
+  { id:"k8", short:"Judgment", title:"Judgment and promulgation", cite:"Rule 120 §§6–7",
+    p:[["90","cal. days","Promulgation of judgment, from submission of the case for decision","Continuous Trial Guidelines"],
+       ["15","days","Accused convicted in absentia (absent without justifiable cause) may surrender and move for leave to use the remedies, from promulgation","R120 §6"]],
+    decisions:[
+      { q:"Is the accused acquitted?",
+        br:[
+          { k:"yes2", l:"Yes", t:"The acquittal is final and immediately executory. Double jeopardy bars an appeal by the prosecution; only Rule 65 is available, for grave abuse of discretion amounting to lack of jurisdiction.", end:"Case ends" },
+          { k:"no2", l:"No, convicted", t:"See the remedies after conviction.", go:"k9" }
+        ]}
+    ]},
+
+  { id:"k9", short:"Post-conviction", title:"Remedies after conviction", cite:"Rules 121–122 · P.D. 968",
+    p:[["15","days","Motion for new trial or reconsideration, before the judgment becomes final, from promulgation","R121 §1; R122 §6"],
+       ["10","cal. days","Court resolves it, from the prosecution's comment","Continuous Trial Guidelines"],
+       ["15","days","Appeal, from promulgation or notice of the final order","R122 §6"],
+       ["30","days","Appellant's brief in the CA, from notice that the evidence is attached to the record","R124 §3"]],
+    notes:[
+      { k:"amend", t:"Rule 122 §6 says only the balance of the period runs after the MR is denied, but under Yu v. Samson-Tatad (2011) the accused gets a fresh 15 days to appeal." },
+      { k:"amend", t:"Since 2004 (A.M. No. 00-5-03-SC, following People v. Mateo), appeals in reclusion perpetua or life imprisonment cases go to the Court of Appeals by notice of appeal, not straight to the SC as your codal text of §3(c) says. The death penalty is prohibited by R.A. 9346." }
+    ],
+    decisions:[
+      { q:"Will the accused apply for probation? (maximum penalty not over 6 years)",
+        br:[
+          { k:"alt", l:"Yes", t:"Apply within the period to perfect an appeal. Filing an appeal bars probation, unless the appellate court reduces the penalty to a probationable one (R.A. 10707). Applying for probation makes the judgment final (R120 §7).",
+            p:[["15","days","Application for probation, within the period to perfect an appeal","P.D. 968, as amended by R.A. 10707"]], end:"Judgment final" },
+          { k:"yes", l:"No", t:"Decide whether to appeal." }
+        ]},
+      { q:"Does the accused appeal?",
+        br:[
+          { k:"alt", l:"Yes", t:"MTC to RTC, and RTC (original jurisdiction) to CA: notice of appeal. RTC (appellate jurisdiction) to CA: petition for review under Rule 42. Reclusion perpetua or life imprisonment: notice of appeal to the CA. Pure questions of law: Rule 45 to the SC (R122 §3)." },
+          { k:"yes", l:"No", t:"The judgment becomes final when the appeal period lapses, when the sentence is partly or fully served, when the accused waives appeal in writing, or when the accused applies for probation (R120 §7).", end:"Judgment final" }
+        ]}
+    ]}
+  ]
+}
+};
+
+(function(){
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const TONE = {yes:"main", yes2:"main", no:"stop", no2:"stop", alt:"side"};
+  let cur = "civil", quiz = false;
+  try { const h = location.hash.slice(1); if (MAPS[h]) cur = h; else { const v = localStorage.getItem("rr-map"); if (MAPS[v]) cur = v; } } catch(e){}
+
+  function periods(list){
+    if (!list || !list.length) return "";
+    return '<ul class="pl">' + list.map(([v,u,t,c]) =>
+      `<li><span class="pv" role="button" tabindex="-1" aria-label="${esc(v+' '+u)}"><span class="n">${esc(v)}</span><span class="u">${esc(u)}</span></span><span class="pt">${esc(t)}</span><span class="pc">${esc(c)}</span></li>`).join("") + "</ul>";
+  }
+  function note(n){
+    const lab = {tip:"Note", amend:"Amendment", warn:"Caution"}[n.k] || "Note";
+    return `<div class="nt ${n.k}"><span class="ic">${lab}</span><span>${esc(n.t)}</span></div>`;
+  }
+  function render(){
+    const m = MAPS[cur], idx = {};
+    m.steps.forEach((s,i) => idx[s.id] = i + 1);
+    $("#badge").textContent = m.label.toUpperCase();
+    $("#title").textContent = m.title;
+    $("#sub").textContent = m.sub;
+    document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.map === cur));
+    $("#strip").innerHTML = m.steps.map((s,i) => `<a href="#${s.id}" data-id="${s.id}"><b>${i+1}</b>${esc(s.short)}</a>`).join("");
+    let total = 0;
+    $("#flow").innerHTML = m.steps.map((s,i) => {
+      total += (s.p||[]).length;
+      let h = `<section class="step" id="${s.id}"><div class="rail"><div class="dot">${i+1}</div></div><div class="card">`;
+      h += `<div class="step-h"><h2>${esc(s.title)}</h2><span class="cite">${esc(s.cite||"")}</span></div>`;
+      if (s.desc) h += `<p class="desc">${esc(s.desc)}</p>`;
+      h += periods(s.p);
+      (s.notes||[]).forEach(n => h += note(n));
+      (s.decisions||[]).forEach(d => {
+        h += `<div class="dec"><div class="q"><span class="dia" aria-hidden="true"></span><span>${esc(d.q)}</span></div><div class="brs">`;
+        d.br.forEach(b => {
+          total += (b.p||[]).length;
+          h += `<div class="br ${TONE[b.k]||"main"}"><div class="bl">${esc(b.l)}</div><p>${esc(b.t)}</p>${periods(b.p)}`;
+          if (b.go) h += `<a class="go" href="#${b.go}">→ Step ${idx[b.go]} · ${esc(b.goLabel || m.steps[idx[b.go]-1].short)}</a>`;
+          if (b.end) h += `<span class="end">${esc(b.end)}</span>`;
+          h += `</div>`;
+        });
+        h += `</div>${d.note ? '<div class="dnote">' + note(d.note) + "</div>" : ""}</div>`;
+      });
+      return h + `</div></section>`;
+    }).join("");
+    $("#count").textContent = `${m.steps.length} stages · ${total} reglementary periods`;
+    setQuiz(quiz);
+    observe();
+  }
+  function setQuiz(on){
+    quiz = on;
+    $("#flow").classList.toggle("quiz", on);
+    $("#quiz").classList.toggle("on", on);
+    $("#quiz").setAttribute("aria-pressed", on);
+    $("#reveal").hidden = !on;
+    document.querySelectorAll(".pv").forEach(p => { p.classList.remove("shown"); p.tabIndex = on ? 0 : -1; });
+  }
+  let io;
+  function observe(){
+    if (io) io.disconnect();
+    if (!("IntersectionObserver" in window)) return;
+    const links = {}; document.querySelectorAll("#strip a").forEach(a => links[a.dataset.id] = a);
+    io = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) {
+        Object.values(links).forEach(a => a.classList.remove("cur"));
+        const a = links[e.target.id]; if (a) { a.classList.add("cur"); const st = $("#strip"); st.scrollTo({left: a.offsetLeft - st.clientWidth/2 + a.offsetWidth/2, behavior:"smooth"}); }
+      }});
+    }, {rootMargin:"-45% 0px -50% 0px"});
+    document.querySelectorAll(".step").forEach(s => io.observe(s));
+  }
+  document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+    cur = b.dataset.map; try { localStorage.setItem("rr-map", cur); history.replaceState(null, "", "#" + cur); } catch(e){}
+    render(); window.scrollTo({top:0});
+  }));
+  $("#quiz").addEventListener("click", () => setQuiz(!quiz));
+  $("#reveal").addEventListener("click", () => document.querySelectorAll(".pv").forEach(p => p.classList.add("shown")));
+  document.addEventListener("click", e => {
+    const pv = e.target.closest(".pv"); if (pv && quiz) pv.classList.toggle("shown");
+    const go = e.target.closest("a.go, #strip a"); if (go) {
+      e.preventDefault(); const t = document.getElementById(go.getAttribute("href").slice(1));
+      if (t) { t.scrollIntoView({behavior:"smooth", block:"start"}); const c = t.querySelector(".card"); c.classList.remove("flash"); void c.offsetWidth; c.classList.add("flash"); }
+    }
+  });
+  document.addEventListener("keydown", e => { const pv = e.target.closest && e.target.closest(".pv"); if (pv && quiz && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pv.classList.toggle("shown"); } });
+  render();
+})();
+</script>
+<div style="font:13px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;color:#5B665A;text-align:center;padding:14px 16px 22px">
+<a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
+<a href="https://sites.google.com/view/recit-ready/report-an-error" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
+<a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
+</body>
+</html>

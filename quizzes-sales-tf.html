@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sales Two-Statement Quiz · RecitReady</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#F7F2E6; --paper-2:#FBF8F0; --card:#FFFDF7; --line:#E4DCC6; --line-2:#D6CBAE;
+  --ink:#2E382F; --ink-2:#5B665A; --muted:#8A917F;
+  --sage:#6F8466; --sage-d:#4D6450; --sage-dd:#36493A; --sage-l:#E7EDDF; --sage-ll:#F1F4EC;
+  --gold:#B8923A; --gold-d:#94742A; --gold-l:#F4E9CF; --gold-ll:#FAF3E2;
+  --good:#4F7A4E; --good-bg:#E4F0DE; --bad:#B4553F; --bad-bg:#F8E3DC;
+  --serif-d:"Cormorant Garamond", Georgia, serif; --serif:"Lora", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--paper);
+  background-image:radial-gradient(rgba(110,96,60,.10) .7px, transparent .8px),radial-gradient(rgba(110,96,60,.07) .6px, transparent .7px);
+  background-size:23px 23px, 37px 37px; background-position:0 0, 11px 17px;
+  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .name{font-family:var(--serif-d);font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--sage-dd);line-height:1}
+.logo .tag{font-family:var(--serif-d);font-style:italic;color:var(--gold-d);font-size:16px;line-height:1.1}
+.subject{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -18px rgba(60,70,50,.35)}
+.head{padding:18px 20px 16px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--sage-dd);background:var(--sage-l);border:1px solid #cfdac4;border-radius:8px;padding:3px 9px;margin-bottom:6px}
+h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;margin:0}
+.sub{font-family:var(--serif-d);font-style:italic;font-size:17px;color:var(--gold-d);margin-top:3px}
+.how{margin:14px 0 0;padding:10px 14px;background:var(--gold-ll);border:1px dashed #e3cf9e;border-radius:12px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.how b{color:var(--gold-d)}
+.how u{text-decoration:none;border-bottom:2px solid var(--gold);color:var(--ink);font-weight:600}
+.body{padding:18px 20px 20px}
+.opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:13.5px;color:var(--ink-2)}
+.chk{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:6px 11px;cursor:pointer;font-weight:600}
+.chk input{accent-color:var(--sage-d);width:16px;height:16px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.set{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 14px;cursor:pointer;transition:border-color .15s, transform .15s}
+.set:hover{border-color:var(--sage);transform:translateY(-1px)}
+.set .n{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.set .t{font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--sage-dd);line-height:1.35}
+.set .m{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:12.5px;color:var(--muted)}
+.best{font-weight:700;color:var(--sage-d);background:var(--sage-l);border-radius:999px;padding:1px 8px}
+.best.none{background:transparent;color:var(--muted);font-weight:500;padding:0}
+
+/* quiz */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;padding:10px 16px;background:rgba(251,248,240,.97);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+.bar .l{display:flex;align-items:center;gap:12px;min-width:0}
+.timer{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--sage-dd);background:var(--sage-ll);border:1px solid #cfdac4;border-radius:10px;padding:2px 12px;font-variant-numeric:tabular-nums;min-width:86px;text-align:center}
+.timer.warn{color:var(--gold-d);background:var(--gold-ll);border-color:#e3cf9e}
+.timer.crit{color:var(--bad);background:var(--bad-bg);border-color:#efc9bd;animation:pulse 1s infinite}
+.timer.off{font-size:14px;font-family:var(--sans);color:var(--muted)}
+@keyframes pulse{50%{opacity:.6}}
+.prog{font-size:13px;color:var(--ink-2);white-space:nowrap} .prog b{color:var(--sage-dd)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--sage)}
+.btn.pri{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.btn.pri:hover{background:var(--sage-dd)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.arm{border-color:var(--bad);color:var(--bad)}
+.qhead{padding:16px 20px 4px}
+.qhead h2{font-family:var(--serif-d);font-size:24px;margin:0;line-height:1.15}
+.qhead .c{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--gold-d);text-transform:uppercase}
+.list{padding:10px 20px 6px;display:grid;gap:12px}
+.item{border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 15px 14px}
+.item .st{display:flex;gap:10px;font-family:var(--serif);font-size:16px;line-height:1.75}
+.item .no{flex:none;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--sage-d);background:var(--sage-l);border-radius:7px;min-width:28px;height:24px;display:grid;place-items:center;margin-top:3px}
+.item u{text-decoration:none;border-bottom:2px solid var(--gold);padding:0 1px;font-weight:600;color:var(--sage-dd)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 0 38px}
+.tf{height:36px;min-width:84px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:700;letter-spacing:.06em;font-size:13px;color:var(--ink-2)}
+.tf:hover{border-color:var(--sage)}
+.tf.on[data-v="T"]{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.tf.on[data-v="F"]{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.fix{flex:1 1 220px;min-width:0;height:36px;border:1px solid #e3cf9e;background:var(--gold-ll);border-radius:9px;padding:0 11px;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.fix:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fix::placeholder{color:#b39a5c;font-style:italic}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 20px 20px}
+.note{font-size:12.5px;color:var(--muted)}
+.banner{margin:14px 20px 0;padding:10px 14px;border-radius:12px;background:var(--bad-bg);color:var(--bad);font-weight:600;font-size:14px}
+
+/* results */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:18px 20px 6px}
+.big{font-family:var(--serif-d);font-size:46px;font-weight:700;color:var(--sage-dd);line-height:1}
+.big small{font-size:24px;color:var(--muted)}
+.verdict{font-family:var(--serif);font-style:italic;color:var(--gold-d);font-size:16px}
+.meta{font-size:13px;color:var(--ink-2)}
+.filters{display:flex;gap:6px;padding:6px 20px 0;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.filters button.on{background:var(--sage-ll);border-color:var(--sage);color:var(--sage-dd)}
+.item.ok{border-left:4px solid var(--good)} .item.no-{border-left:4px solid var(--bad)}
+.res{margin:10px 0 0 38px;display:grid;gap:6px;font-size:13.5px}
+.res .row{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.res .k{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);min-width:86px}
+.pill{font-weight:700;border-radius:7px;padding:1px 8px;font-size:13px}
+.pill.g{background:var(--good-bg);color:var(--good)} .pill.b{background:var(--bad-bg);color:var(--bad)} .pill.n{background:var(--sage-ll);color:var(--ink-2)}
+.why{background:var(--sage-ll);border-left:3px solid var(--sage);border-radius:6px;padding:7px 11px;color:var(--ink-2);line-height:1.55}
+.why .src{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--gold-d)}
+.count{border:1px dashed var(--sage);background:transparent;color:var(--sage-d);border-radius:7px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer}
+.disclaimer{max-width:820px;margin:18px auto 0;padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--ink-2);text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.disclaimer b{color:var(--sage-dd)}
+[hidden]{display:none!important}
+.stmts{display:grid;gap:6px;margin-top:-2px}
+.stmt{display:flex;gap:9px;font-family:var(--serif);font-size:15.5px;line-height:1.65}
+.stmt .r{flex:none;font-family:var(--sans);font-weight:700;font-size:12px;color:var(--gold-d);background:var(--gold-ll);border:1px solid #ecdcb2;border-radius:6px;min-width:26px;height:22px;display:grid;place-items:center;margin-top:3px}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:11px 0 0 38px}
+.opt{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:7px 10px;cursor:pointer;font-size:13.5px;color:var(--ink);line-height:1.35}
+.opt:hover{border-color:var(--sage)}
+.opt b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--sage-ll);color:var(--sage-dd);font-size:12.5px}
+.opt.on{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.opt.on b{background:#fff;color:var(--sage-dd)}
+.opt.key{border-color:var(--good);background:var(--good-bg)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt[disabled]{cursor:default}
+.vt{flex:none;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:1px 7px;margin-top:4px;height:fit-content}
+.vt.t{background:var(--good-bg);color:var(--good)} .vt.f{background:var(--bad-bg);color:var(--bad)}
+.sx{margin:2px 0 4px 35px;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5}
+.sx .src{font-size:12px;font-weight:600;color:var(--gold-d)}
+@media (max-width:640px){ .stmts,.mc{margin-left:0} .mc{grid-template-columns:1fr} .sx{margin-left:35px} }
+
+@media (max-width:640px){
+  .wrap{padding:12px 10px 40px}
+  .logo .name{font-size:22px}
+  .head,.body{padding-left:14px;padding-right:14px}
+  h1{font-size:24px}
+  .list{padding:10px 10px 6px}
+  .item{padding:12px 12px 13px}
+  .item .st{font-size:15.5px}
+  .ans,.res{margin-left:0}
+  .tf{flex:1;min-width:0}
+  .fix{flex-basis:100%}
+  .bar{padding:8px 10px}
+  .timer{font-size:19px;min-width:72px;padding:2px 8px}
+  .pw{display:none}
+  .bar .btn{padding:0 11px;height:36px}
+  .qhead,.foot,.score,.filters{padding-left:14px;padding-right:14px}
+}
+</style>
+</head>
+<body>
+<div id="rr-fs" style="display:none;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;text-align:center;padding:8px 12px">
+<a href="#" target="_blank" rel="noopener" style="color:#fff;text-decoration:none">Open this drill in full screen ↗</a></div>
+<script>(function(){try{if(window.self!==window.top){var b=document.getElementById('rr-fs');b.style.display='block';b.firstElementChild.href=location.href;}}catch(e){}})();</script>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#6F8466" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="22" rx="1"/><rect x="15.5" y="7" width="6.5" height="24" rx="1"/>
+          <path d="M23.5 10.5l5.6-1.6 5.7 20.6-5.6 1.6z"/><path d="M12 13v3M18.7 11.5v5M12 26h0M18.7 26.5h0"/><path d="M5 33h31"/>
+        </g>
+        <path d="M27.5 15.5c1.6-.3 2.6.6 2.9 1.7-1.6.3-2.6-.5-2.9-1.7z" fill="#B8923A"/>
+        <path d="M17.6 20.5l1.1-1.1 1.1 1.1-1.1 1.1z" fill="#B8923A"/>
+      </svg>
+      <div><div class="name">RECITREADY</div><div class="tag">Quiz Room</div></div>
+    </div>
+    <div class="subject">Law on Sales · Arts. 1458–1524</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="panel" id="home">
+    <div class="head">
+      <div class="badge">TWO-STATEMENT TRUE OR FALSE</div>
+      <h1>Law on Sales: 200 questions in 10 timed sets</h1>
+      <div class="sub">Civil Code Arts. 1458–1524 · codal provisions and case doctrines</div>
+      <div class="how"><b>How to answer.</b> Each question has two statements. Decide whether each one is true or false, then choose: <b>A</b> both are true, <b>B</b> both are false, <b>C</b> only Statement I is true, or <b>D</b> only Statement II is true. Each set has 20 questions and a 15-minute timer, and it submits itself when time runs out. Every attempt draws new pairings and a new order from the set's 40 statements.</div>
+    </div>
+    <div class="body">
+      <div class="opts">
+        <label class="chk"><input type="checkbox" id="useTimer" checked> 15-minute timer</label>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz" hidden>
+    <div class="bar">
+      <div class="l"><div class="timer" id="timer">15:00</div><div class="prog" id="prog"></div></div>
+      <div style="display:flex;gap:8px"><button class="btn ghost" id="quit">Quit</button><button class="btn pri" id="submit">Submit</button></div>
+    </div>
+    <div class="qhead"><div class="c" id="qcov"></div><h2 id="qtitle"></h2></div>
+    <div class="list" id="list"></div>
+    <div class="foot"><span class="note" id="unans"></span><button class="btn pri" id="submit2">Submit answers</button></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="panel" id="results" hidden>
+    <div class="banner" id="timeup" hidden>Time's up. Your answers were submitted automatically.</div>
+    <div class="score">
+      <div class="big" id="big"></div>
+      <div><div class="verdict" id="verdict"></div><div class="meta" id="rmeta"></div></div>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button><button data-f="wrong">Wrong only</button>
+    </div>
+    <div class="list" id="rlist"></div>
+    <div class="foot">
+      <span class="note">Each statement shows whether it is true or false, with the reason and the source.</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home2">All sets</button><button class="btn pri" id="retake">Retake this set</button></div>
+    </div>
+  </div>
+
+  <p class="disclaimer"><b>Study aid only.</b> These are original statements written from the Civil Code text and the doctrines of Supreme Court decisions. They are not a substitute for the official text, your casebooks or your professors' discussions, and may contain errors. Always check against an official source before relying on them for recitations, exams or practice.</p>
+</div>
+<script>
+/* Law on Sales — Two-Statement True or False (MCQ), Arts. 1458–1524.
+   Original statements written from the Civil Code text and Supreme Court doctrines (doctrines stated directly, no case names in the statements).
+   Each set: T = 20 true statements, F = 20 false statements: [statement, explanation, source].
+   The app pairs them into 20 questions: 5 both-true, 5 both-false, 5 I-true/II-false, 5 I-false/II-true. */
+const SETS = [
+{ t:"Nature of sale; sale vs. contract to sell", c:"Art. 1458",
+T:[
+["By the contract of sale, one party obligates himself to transfer the ownership of and to deliver a determinate thing, and the other to pay a price certain in money or its equivalent.","This is the codal definition.","Art. 1458"],
+["A contract of sale may be absolute or conditional.","Art. 1458, last sentence.","Art. 1458"],
+["Under the new Civil Code, the seller must transfer ownership of the thing sold, not merely deliver it.","The Code Commission rejected the old rule of mere delivery.","Arts. 1458, 1495; Code Commission"],
+["Sale is consensual, bilateral, onerous, commutative, nominate and principal.","These are its characteristics.","Arts. 1458, 1475"],
+["In a contract to sell, full payment of the price is a positive suspensive condition.","Until it happens, the seller's obligation to convey does not arise.","Ursal v. CA; Keppel Bank v. Adao"],
+["In a contract of sale, non-payment of the price is a negative resolutory condition.","Title has passed; non-payment only lets the seller resolve the contract.","Serrano v. Caguiat"],
+["A deed is an absolute sale where it neither reserves title until full payment nor gives the seller a right to rescind unilaterally on default.","Absent either stipulation, ownership passes on delivery.","Dignos v. CA; Heirs of Mascuñana v. CA"],
+["A deed labeled a \"Deed of Conditional Sale\" may be absolute in nature.","The stipulations, not the label, control.","Dignos v. CA"],
+["Where the seller reserves no ownership and the only obstacle to an absolute deed is the seller's own act, the agreement is a conditional contract of sale.","This was the holding on the Receipt of Down Payment.","Coronel v. CA"],
+["A definite agreement on the manner of payment of the price is essential to a perfected sale.","The manner of payment goes into the price itself.","Toyota Shaw v. CA; Velasco v. CA"],
+["A right of first refusal is neither a perfected sale, nor an option, nor an offer.","It is a preparatory juridical relation.","Ang Yu Asuncion v. CA"],
+["Registration of a sale of land is not needed for its validity between the parties.","Registration only binds third persons.","Heirs of Manlapat v. CA"],
+["A buyer under a contract to sell who wants to compel conveyance must make both a tender of payment and a consignation.","Tender alone is not enough.","Torcuator v. Bernabe; Ursal v. CA"],
+["In a contract to sell, the seller who retains ownership may eject a buyer who cannot prove full payment.","No title ever passed to the buyer.","Keppel Bank v. Adao"],
+["The suspensive condition in a contract to sell need not be full payment; it may be any other stipulated condition.","A forfeiture-and-resale clause is in substance a reservation of title.","PNB v. CA (G.R. No. 119580)"],
+["Consent vitiated by error or fraud makes a sale voidable.","The sale is valid until annulled.","Vda. de Ape v. CA"],
+["In a contract of sale, the unpaid seller may rescind under Art. 1191 instead of suing for the price.","Non-payment is a breach of a reciprocal obligation.","Carrascoso v. CA"],
+["A writing that merely acknowledges delivery and states a price, without an agreement to transfer ownership and definite terms of payment, perfects neither a sale nor a contract to sell.","Essential terms are missing.","Sps. Edrada v. Sps. Ramos"],
+["A deed using words of present conveyance, without reservation of ownership or a right of unilateral cancellation, is a contract of sale.","Non-payment then gives only specific performance or rescission.","Akang v. Municipality of Isulan"],
+["Motive, unlike cause, does not affect the validity of a sale.","Cause is essential; motive is not.","Art. 1351"]
+],
+F:[
+["Sale is a real contract, perfected only upon delivery of the thing.","Sale is consensual: perfected by consent on the thing and the price; delivery consummates it.","Arts. 1458, 1475"],
+["Sale is aleatory by nature.","It is commutative; it is aleatory only by way of exception, as in the sale of a hope.","Art. 1458"],
+["In a contract to sell, the buyer's non-payment is a breach that allows rescission under Art. 1191.","It is the failure of a positive suspensive condition, not a breach; there is nothing to rescind.","Ong v. CA; Nabus v. Pacson"],
+["Art. 1544 on double sales applies where the first transaction was only a contract to sell.","With no prior sale, Art. 1544 does not apply.","Nabus v. Pacson; Cruz v. Fernando"],
+["In a contract to sell, the owner's later sale or mortgage of the property to a third person is void.","It is valid, since the seller is still the owner; the buyer has only a personal action.","Ursal v. CA"],
+["In a double sale of immovables, a second buyer who registers first prevails even if he registered after learning of the first sale.","Registration with knowledge of the first sale is in bad faith and counts for nothing; good faith must exist at registration.","Coronel v. CA"],
+["Money given while the parties are still negotiating, before the owner accepts the offer, is earnest money that perfects the sale.","Earnest money presupposes a perfected sale.","First Optima Realty v. Securitron"],
+["The holder of a right of first refusal may compel the owner, by specific performance, to execute a deed of sale in his favor.","Ang Yu allows damages, not specific performance.","Ang Yu Asuncion v. CA"],
+["Registration of a sale is required for its validity even between the parties.","It is valid between the parties, their heirs and persons with actual notice without registration.","Heirs of Manlapat v. CA"],
+["The seller's want of registered title at perfection makes the sale void.","It does not impair the sale.","Heirs of Mascuñana v. CA"],
+["A clause making the balance payable once the lot is titled in the vendee's name turns the sale into a contract to sell.","It merely fixes the manner and time of payment.","Heirs of Mascuñana v. CA"],
+["In a contract to sell, a tender of payment without consignation suffices to compel the seller to convey.","Both tender and consignation are required.","Torcuator v. Bernabe"],
+["A sale is void, not merely voidable, when consent is vitiated by fraud.","Vitiated consent makes it voidable.","Vda. de Ape v. CA; Art. 1390"],
+["Upon rescission under Art. 1191, each party keeps what he received and the contract ends only for the future.","Rescission undoes the contract as if never made; each party restores what he received.","Carrascoso v. CA"],
+["In a contract of sale, the seller retains ownership until full payment unless otherwise stipulated.","Ownership passes on delivery unless title is expressly reserved.","Arts. 1477, 1478"],
+["A contract of sale depends on another contract for its existence and validity.","Sale is a principal contract.","Art. 1458"],
+["Without a definite agreement on the manner of payment, the sale is still perfected and the court fixes the terms.","No sale is perfected; courts cannot supply essential terms.","Toyota Shaw v. CA; Boston Bank v. Manalo"],
+["The label \"conditional sale\" controls over the actual stipulations of the deed.","Substance controls over the label.","Dignos v. CA"],
+["Under a contract to sell, title passes to the buyer upon delivery of the property, even before full payment.","Ownership is reserved until full payment, notwithstanding delivery.","Ursal v. CA"],
+["Motive, like cause, affects the validity of a sale.","Motive does not affect validity; cause does.","Art. 1351"]
+]},
+
+{ t:"The object of the sale", c:"Arts. 1459–1465",
+T:[
+["The thing sold must be licit, and the vendor must have the right to transfer its ownership at the time it is delivered.","Art. 1459.","Art. 1459"],
+["A seller need not own the thing at perfection; it is enough that he can transfer ownership at delivery.","Hence future goods may be sold.","Art. 1459"],
+["A sale of property of public dominion is void.","Things outside the commerce of men cannot be sold.","Martinez v. CA; Arts. 1347, 1409"],
+["A thing is determinate when it is particularly designated or physically segregated from all others of the same class.","Art. 1460.","Art. 1460"],
+["The object is determinate if, at perfection, it can be made determinate without a new or further agreement between the parties.","Art. 1460, second sentence.","Art. 1460"],
+["The object of a sale of land need not be described by metes and bounds if the deed refers to a pre-existing plan.","It can be made determinate without a new agreement.","Pio Sian Melliza v. City of Iloilo"],
+["A lot described by its adjoining boundaries is determinate even though its exact area still awaits survey.","The boundaries identify it.","Heirs of San Andres v. Rodriguez"],
+["Things having a potential existence may be the object of a contract of sale.","Art. 1461.","Art. 1461"],
+["The efficacy of the sale of a mere hope or expectancy is deemed subject to the condition that the thing will come into existence.","Art. 1461.","Art. 1461"],
+["Goods to be manufactured, raised or acquired by the seller after perfection are called future goods.","Art. 1462.","Art. 1462"],
+["There may be a sale of goods whose acquisition by the seller depends upon a contingency that may or may not happen.","Art. 1462.","Art. 1462"],
+["The sole owner of a thing may sell an undivided interest in it.","Art. 1463.","Art. 1463"],
+["In a sale of an undivided share of a specific mass of fungible goods, the buyer becomes owner in common of a share proportionate to the quantity bought.","Art. 1464.","Art. 1464"],
+["Things subject to a resolutory condition may be the object of a contract of sale.","Art. 1465.","Art. 1465"],
+["A co-heir may validly sell his undivided share, but the sale binds only his own interest.","He transfers only what he owns.","Vagilidad v. Vagilidad"],
+["A sale of future inheritance is void.","Art. 1347 forbids contracts on future inheritance.","Art. 1347"],
+["In a lump-sum sale of a specific mass, the determinate object is the mass itself, and the stated quantity is a mere estimate.","The mass is the object.","Gaite v. Fonacier"],
+["A mortgagor must be the absolute owner of the thing mortgaged, so a mortgage over a portion he already sold is void as to that portion.","Art. 2085.","Heirs of Manlapat v. CA"],
+["Where only the seller is at fault in a void sale, the buyer may recover what he paid.","Art. 1412(2).","Cavite Development Bank v. Lim"],
+["The sale of a sweepstakes ticket is emptio spei, and the sale stands even if the ticket does not win.","The hope itself is sold.","Art. 1461"]
+],
+F:[
+["The vendor must have the right to transfer ownership at the time the contract is perfected.","The right is required at the time of delivery.","Art. 1459"],
+["A sale of a thing the seller does not yet own at perfection is void.","It is valid if the seller can transfer ownership at delivery.","Art. 1459"],
+["A sale of property of public dominion becomes valid after a long chain of good-faith transfers.","It is void from the beginning, however long the chain.","Martinez v. CA"],
+["The object of a sale of land must always be described by metes and bounds.","It is enough that it can be made determinate without a new agreement.","Pio Sian Melliza v. City of Iloilo"],
+["The sale of a vain hope or expectancy is valid but aleatory.","It is void.","Art. 1461"],
+["In emptio rei speratae, the sale stands even if the thing hoped for never comes into existence.","That describes emptio spei; in emptio rei speratae there is no sale if the thing does not come to exist.","Art. 1461"],
+["Only existing goods owned or possessed by the seller may be the subject of a sale.","Future goods may also be sold.","Art. 1462"],
+["A co-owner cannot sell his undivided share without the consent of the other co-owners.","He may alienate his share; the sale binds only his interest.","Vagilidad v. Vagilidad; Art. 493"],
+["If the mass contains less than the quantity bought, the sale is void.","The buyer owns the whole mass, and the seller makes good the deficiency.","Art. 1464"],
+["Under Art. 1465, only things subject to a suspensive condition may be the object of a sale.","Art. 1465 speaks of things subject to a resolutory condition.","Art. 1465"],
+["A sale of future inheritance may be ratified after the decedent's death.","A void contract cannot be ratified.","Arts. 1347, 1409"],
+["A co-heir's sale of property he merely expects to inherit validly conveys the property to the buyer.","It conveys nothing.","Heirs of Arturo Reyes v. Socco-Beltran"],
+["A mortgagor need not be the absolute owner of the thing mortgaged.","Art. 2085 requires absolute ownership and free disposal.","Heirs of Manlapat v. CA"],
+["A stipulation tying payment to an event certain to happen is a suspensive condition.","It is a term affecting only demandability.","Gaite v. Fonacier"],
+["An unregistered sale prevails over an innocent purchaser for value who relied on the face of a Torrens title.","It binds only the parties and their privies.","NGA v. IAC (G.R. No. L-68741)"],
+["Things outside the commerce of men may be sold if the buyer is in good faith.","They cannot be the object of any contract.","Art. 1347; Martinez v. CA"],
+["A thing is determinate only if it has already been physically delivered to the buyer.","Designation or segregation suffices.","Art. 1460"],
+["To be determinate, the object must be identified in a new agreement after perfection.","It must be identifiable without a new or further agreement.","Art. 1460"],
+["The sole owner of a thing cannot sell an undivided interest in it.","Art. 1463 allows it.","Art. 1463"],
+["In a sale of an undivided share of a mass of fungible goods, the buyer acquires no right until his share is separated from the mass.","He becomes owner in common at once.","Art. 1464"]
+]},
+
+{ t:"Sale vs. other contracts; the price", c:"Arts. 1466–1474",
+T:[
+["In construing a contract with features of both sale and agency to sell, the essential clauses of the whole instrument are considered.","Art. 1466.","Art. 1466"],
+["Where the dealer must pay a fixed price for the goods whether or not he resells them, the contract is a sale.","That obligation marks a sale.","Quiroga v. Parsons Hardware"],
+["In an agency to sell, the agent receives the goods not as his own property but for the principal's account.","Ownership stays with the principal.","Quiroga v. Parsons Hardware"],
+["Retention of ownership by the consignor, together with control over the resale price and terms, indicates an agency to sell.","These mark agency over sale.","Art. 1466; Quiroga v. Parsons Hardware"],
+["A contract for an article that the vendor ordinarily manufactures for the general market is a sale, whether or not it is on hand.","Art. 1467.","Art. 1467"],
+["Goods manufactured specially upon the customer's order and not for the general market are the object of a contract for a piece of work.","Art. 1467.","Art. 1467"],
+["A contract for a piece of work is still governed by the Sales provisions on warranty against hidden defects.","Art. 1714.","CIR v. Engineering Equipment"],
+["If the consideration is partly money and partly another thing, the manifest intention of the parties governs.","Art. 1468, first sentence.","Art. 1468"],
+["If the intention is unclear, it is a barter if the value of the thing exceeds the money.","Art. 1468.","Art. 1468"],
+["The price is certain if it is fixed with reference to another thing certain.","Art. 1469.","Art. 1469"],
+["If the third person fixing the price acted in bad faith or by mistake, the courts may fix the price.","Art. 1469.","Art. 1469"],
+["Gross inadequacy of price does not affect a sale, except as it indicates a defect in consent or that the parties intended a donation or other contract.","Art. 1470.","Art. 1470"],
+["A simulated price makes the sale void, though the act may be shown to be a donation or other contract.","Art. 1471.","Art. 1471"],
+["The price of securities or grain is certain when it is the price the thing would have on a definite day or in a particular exchange or market.","Art. 1472.","Art. 1472"],
+["If the price fixed by one party is accepted by the other, the sale is perfected.","Art. 1473.","Art. 1473"],
+["Where the price cannot be determined but the thing was delivered to and appropriated by the buyer, he must pay a reasonable price.","Art. 1474.","Art. 1474"],
+["A price is certain where the contract itself supplies a basis or measure for ascertaining it.","Art. 1469.","Boston Bank v. Manalo"],
+["One who in bad faith prevents the agreed appraisal of the price cannot invoke its indeterminability and is liable for the actual value.","He frustrated the condition.","Robles v. Lizarraga Hermanos"],
+["A sale with a false or fictitious consideration is void and inexistent.","Arts. 1409(3), 1353.","Bagnas v. CA"],
+["Gross inadequacy of price is not a ground to set aside an execution sale where the judgment debtor may still redeem.","A low price makes redemption easier.","G.R. No. L-30871"]
+],
+F:[
+["A contract is classified by the name the parties give it.","It is classified by its essential clauses, not its label.","Quiroga v. Parsons Hardware"],
+["A clause declaring that the dealer is \"not an agent\" conclusively makes the contract a sale.","Such a clause cannot override the substance of the transaction.","Art. 1466"],
+["Goods made in the ordinary course of business for the general market are the object of a contract for a piece of work if not on hand when the contract is made.","It is a sale whether on hand or not.","Art. 1467"],
+["Air-conditioning systems engineered to each customer's building plans, which would not exist but for the order, are the object of a contract of sale.","Goods made specially upon the customer's order are the object of a contract for a piece of work.","CIR v. Engineering Equipment"],
+["Furniture made in the ordinary course of business, which would have been sold to others anyway, is the object of a contract for a piece of work.","Goods made for the general market in the ordinary course of business are the object of a sale.","CIR v. Arnoldus Carpentry Shop"],
+["If the intention is unclear and the thing given is worth more than the money, the transaction is a sale.","It is a barter in that case.","Art. 1468"],
+["If the designated third person is unwilling to fix the price, the court fixes it.","The contract is inefficacious unless the parties later agree on the price.","Art. 1469"],
+["If one party prevents the third person from fixing the price, the contract is automatically void.","The party not in fault has the remedies of a buyer or seller against the party in fault.","Art. 1469"],
+["Gross inadequacy of price, by itself, annuls a sale.","It must show a defect in consent, which must be alleged and proved.","Askay v. Cosalan; Art. 1470"],
+["A simulated price makes the sale voidable.","It makes the sale void.","Art. 1471"],
+["The fixing of the price may be left to the discretion of the buyer.","It can never be left to one of the contracting parties.","Art. 1473"],
+["Where the price cannot be determined, the buyer who received and appropriated the thing pays whatever price the seller demands.","He pays a reasonable price.","Art. 1474"],
+["What is a reasonable price under Art. 1474 is a question of law.","It is a question of fact.","Art. 1474"],
+["A price fixed at a certain amount above the market price on a definite day is uncertain.","It is certain, provided the amount is certain.","Art. 1472"],
+["Lesion or inadequacy of cause invalidates a contract even without fraud, mistake or undue influence.","Art. 1355 requires fraud, mistake or undue influence.","Bautista v. CA; Art. 1355"],
+["Courts may supply material terms that the parties left to future agreement.","Where an essential term is left open, no obligation arises.","Boston Bank v. Manalo"],
+["A sale grounded on a debt that does not exist is valid because the deed recites a price.","It is without cause and produces no effect.","Doles v. Angeles; Art. 1352"],
+["Heirs cannot recover property conveyed by their predecessor through a sale with a fictitious price.","The void conveyance never left his patrimony; the heirs may recover.","Bagnas v. CA"],
+["A hard bargain coupled with mere inadequacy of price is enough to cancel a contract, even if both parties could judge for themselves.","It is not a sufficient ground.","Askay v. Cosalan"],
+["Where the consideration is partly money and partly another thing, the transaction is always a barter.","Intention governs; if unclear, the relative values decide.","Art. 1468"]
+]},
+
+{ t:"Perfection, auctions, options, risk, earnest money", c:"Arts. 1475–1482",
+T:[
+["A sale is perfected at the moment of a meeting of minds upon the thing and the price.","Art. 1475.","Art. 1475"],
+["From perfection, the parties may reciprocally demand performance, subject to the law governing the form of contracts.","Art. 1475.","Art. 1475"],
+["Where goods are auctioned in lots, each lot is the subject of a separate contract of sale.","Art. 1476(1).","Art. 1476"],
+["An auction sale is perfected when the auctioneer announces it by the fall of the hammer or in another customary manner.","Art. 1476(2).","Art. 1476"],
+["Until the fall of the hammer, any bidder may retract his bid.","Art. 1476(2).","Art. 1476"],
+["A right to bid may be reserved expressly by or on behalf of the seller, unless law or stipulation provides otherwise.","Art. 1476(3).","Art. 1476"],
+["Ownership of the thing sold passes upon its actual or constructive delivery.","Art. 1477.","Art. 1477"],
+["The parties may stipulate that ownership will not pass until the price is fully paid.","Art. 1478.","Art. 1478"],
+["A promise to buy and sell a determinate thing for a price certain is reciprocally demandable.","Art. 1479, first paragraph.","Art. 1479"],
+["An accepted unilateral promise to buy or sell binds the promisor if supported by a consideration distinct from the price.","Art. 1479, second paragraph.","Art. 1479"],
+["An option is a sale of the right to purchase, not of the property itself.","The price cannot be its consideration.","Eulogio v. Sps. Apeles"],
+["A non-monetary consideration for an option must be clearly specified as such in the option contract.","Advance rentals consumed by occupation are rent, not option money.","Bible Baptist Church v. CA"],
+["Fungible things sold by weight, number or measure are not at the vendee's risk until weighed, counted or measured and delivered, unless he incurred delay.","Art. 1480.","Art. 1480"],
+["In a sale by sample as well as description, the bulk of the goods must correspond with both.","Art. 1481.","Art. 1481"],
+["Earnest money is part of the price and proof of the perfection of the contract.","Art. 1482.","Art. 1482"],
+["Earnest money cannot be forfeited without a clear and express stipulation.","Otherwise it must be returned upon rescission.","Goldenrod v. CA"],
+["Art. 1482 creates only a disputable presumption.","It may be rebutted.","PNB v. CA (G.R. No. 119580)"],
+["An owner offering property at auction may reserve the right to reject any and all bids.","Bidders submit to the stated conditions.","Art. 1476; G.R. No. L-23630"],
+["A purchase order becomes an accepted offer, perfecting the sale, once the seller supplies the goods ordered.","Art. 1475.","Manila Mining v. Tan"],
+["Where offer, acceptance, a determinate object and a price certain concur in one instrument, there is a perfected sale, whatever its label.","It is not a mere option.","Villamor v. CA"]
+],
+F:[
+["A sale is perfected only upon the execution of a public instrument.","It is perfected by consent; the form affects only enforceability or convenience.","Art. 1475"],
+["A bidder at an auction may no longer retract his bid once it is made.","He may retract until the fall of the hammer.","Art. 1476(2)"],
+["An auctioneer may withdraw the goods even if the auction was announced to be without reserve.","Withdrawal is allowed only if the auction is not without reserve.","Art. 1476(2)"],
+["Without notice of a reserved right to bid, the seller may lawfully bid through another person.","It is unlawful, and the buyer may treat the sale as fraudulent.","Art. 1476(4)"],
+["Ownership passes to the buyer upon perfection of the contract.","It passes upon actual or constructive delivery.","Art. 1477"],
+["The parties cannot stipulate that ownership passes only upon full payment of the price.","Art. 1478 allows it.","Art. 1478"],
+["An accepted unilateral promise to sell binds the promisor even without a consideration distinct from the price.","A distinct consideration is required.","Art. 1479"],
+["Option money forms part of the purchase price.","It is distinct from the price; earnest money is part of the price.","Arts. 1479, 1482"],
+["Advance rentals consumed by the lessee's occupation qualify as option money.","They are rent, not option money.","Bible Baptist Church v. CA"],
+["A right of first refusal in a lease is void without a consideration distinct from the price.","The consideration for the lease covers the grant.","PUP v. Golden Horizon Realty"],
+["A right to repurchase granted after the sale is a conventional redemption.","It must be reserved in the same instrument; granted later it is only a promise to sell.","Diamante v. CA; Art. 1601"],
+["Fungible things sold by weight are at the buyer's risk from perfection, even before they are weighed.","Not until weighed, counted or measured and delivered.","Art. 1480"],
+["In a sale by sample as well as description, correspondence with the sample alone is enough.","The bulk must also match the description.","Art. 1481"],
+["The seller may forfeit earnest money at will when the sale falls through.","Forfeiture needs a clear and express stipulation.","Goldenrod v. CA"],
+["A deposit to be applied to the price only if the seller later approves the sale is earnest money.","Art. 1482 presupposes a perfected sale.","Manila Metal Container v. PNB"],
+["Giving earnest money, by itself, proves perfection even if the manner of payment was never agreed upon.","It is the concurrence of the essential elements, not the earnest money, that proves perfection.","San Miguel Properties v. Huang"],
+["An acceptance that varies the terms of the offer perfects the sale.","It is a counter-offer.","Art. 1319; Manila Metal Container v. PNB"],
+["Under the cognition theory, a contract by letter is perfected when the acceptance is mailed.","It is perfected when the offeror learns of the acceptance.","Art. 1319"],
+["A qualified acceptance reserving details for later negotiation perfects a sale.","It is a counter-offer.","Yuvienco v. Dacuycuy"],
+["A right of first refusal can arise from long possession as lessee alone.","It must be granted by law or clearly embodied in a written contract.","Sen Po Ek Marketing v. Martinez"]
+]},
+
+{ t:"Form, Statute of Frauds, Recto Law", c:"Arts. 1483–1488",
+T:[
+["A sale may be oral, written, partly both, or inferred from the conduct of the parties.","Art. 1483.","Art. 1483"],
+["A sale of land in a private instrument is valid and binding between the parties.","Art. 1358 is for convenience only.","Dalion v. CA"],
+["Either party to a valid sale of land in a private instrument may compel the other to execute a public instrument.","Art. 1357.","Dalion v. CA"],
+["The public instrument required by Art. 1358 is only for convenience.","It does not affect validity.","Sps. Caoili v. CA"],
+["The Statute of Frauds covers a sale of real property or an interest therein regardless of price.","Art. 1403(2)(e).","Art. 1403(2)"],
+["The Statute of Frauds covers a sale of goods at a price of P500 or more.","Art. 1403(2)(d).","Art. 1403(2)"],
+["Partial payment accepted by the seller takes an oral sale of land out of the Statute of Frauds.","Part performance removes it.","Vda. de Jomoc v. CA"],
+["The note or memorandum required by the Statute of Frauds may be pieced together from two or more writings.","Letters and telegrams may suffice.","Paredes v. Espino"],
+["An instrument absolute in form may be shown by parol evidence to be a mere security for a debt.","The test is whether a debt continues to exist.","Cuyugan v. Santos"],
+["In an installment sale of personal property, the seller may exact fulfillment of the obligation should the buyer fail to pay.","Art. 1484(1).","Art. 1484"],
+["Cancellation of an installment sale of personal property requires failure to pay two or more installments.","Art. 1484(2).","Art. 1484"],
+["A seller who forecloses the chattel mortgage has no further action for the unpaid balance.","Art. 1484(3).","Art. 1484"],
+["The remedies under Art. 1484 are alternative, not cumulative.","Choosing one bars the others.","Magna Financial v. Colarina"],
+["The bar against recovering the balance attaches only upon actual foreclosure and sale of the chattel at public auction.","Mere repossession does not trigger it.","De la Cruz v. Asian Consumer (G.R. No. 94828)"],
+["Art. 1484 applies to leases of personal property with option to buy when the lessor has deprived the lessee of possession.","Art. 1485.","Art. 1485"],
+["A financial lease that is in substance an installment sale falls under Arts. 1484 and 1485, even without an express option to buy.","Substance governs.","PCI Leasing v. Giraffe-X"],
+["A stipulation that installments paid will not be returned is valid insofar as it is not unconscionable.","Art. 1486.","Art. 1486"],
+["Absent stipulation, the vendor bears the expenses for the execution and registration of the sale.","Art. 1487.","Art. 1487"],
+["The expropriation of property for public use is governed by special laws.","Art. 1488.","Art. 1488"],
+["The defense of the Statute of Frauds is waived if not timely objected to.","The contract is merely unenforceable.","Art. 1405"]
+],
+F:[
+["A sale of land must be in a public instrument to be valid.","A private instrument is valid between the parties.","Dalion v. CA"],
+["Non-compliance with the Statute of Frauds makes the sale void.","It makes the sale unenforceable.","Art. 1403(2)"],
+["The Statute of Frauds applies to executed contracts.","It applies only to executory contracts.","Iñigo v. Estate of Maloto"],
+["The memorandum required by the Statute of Frauds must be a single document signed by both parties.","It may consist of several writings and must be signed by the party charged.","Paredes v. Espino; Art. 1403(2)"],
+["The memorandum of an installment sale of land need not state the terms of payment.","It must state them.","Yuvienco v. Dacuycuy"],
+["The Recto Law applies to installment sales of real property.","It covers personal property.","Art. 1484"],
+["The seller may cancel an installment sale of personal property once the buyer fails to pay one installment.","Failure to pay two or more installments is required.","Art. 1484(2)"],
+["After foreclosing the chattel mortgage, the seller may sue the buyer for the deficiency.","He has no further action for the unpaid balance.","Art. 1484(3)"],
+["An agreement allowing the seller to recover the deficiency after foreclosure is valid if the buyer consents.","Any agreement to the contrary is void.","Art. 1484"],
+["A seller may foreclose the chattel mortgage and at the same time sue for the unpaid price.","The remedies are alternative.","Magna Financial v. Colarina"],
+["The Recto Law applies to a straight-term sale where the balance is payable in full on a single date.","It does not apply; there are no installments.","Levy Hermanos v. Gervacio"],
+["An initial cash payment counts as an installment under the Recto Law.","It is not an installment.","Levy Hermanos v. Gervacio"],
+["A lessor who recovered the leased movable by replevin may still collect the accrued rentals.","He is bound by Art. 1484 and may not.","Elisco Tool v. CA"],
+["A lease of personal property with option to buy is outside Art. 1485 because the parties called it a lease.","Art. 1485 reaches contracts purporting to be leases.","Art. 1485; PCI Leasing v. Giraffe-X"],
+["A stipulation forfeiting installments already paid is void in all cases.","It is valid unless unconscionable.","Art. 1486"],
+["Absent stipulation, the buyer bears the expenses for the execution and registration of the sale.","The vendor bears them.","Art. 1487"],
+["Parol evidence can never show that a deed of absolute sale is merely a security for a debt.","It can, if the proof is clear and convincing.","Cuyugan v. Santos"],
+["The expropriation of property is governed by the Civil Code provisions on sales.","It is governed by special laws.","Art. 1488"],
+["The Statute of Frauds bars proof of an oral sale even after the price was paid and the buyer acted as owner.","Executed contracts are outside the Statute.","Iñigo v. Estate of Maloto"],
+["A sale of goods priced at P400 must be in writing to be enforceable.","The Statute covers sales of goods at P500 or more.","Art. 1403(2)(d)"]
+]},
+
+{ t:"Capacity and special disqualifications", c:"Arts. 1489–1492",
+T:[
+["All persons authorized to obligate themselves may enter into a contract of sale, saving the modifications in the articles that follow.","Art. 1489.","Art. 1489"],
+["A minor to whom necessaries are sold and delivered must pay a reasonable price for them.","Art. 1489.","Art. 1489"],
+["The necessaries referred to in Art. 1489 are the items of support under Art. 290.","Sustenance, dwelling, clothing, medical attendance, education and transportation.","Art. 1489"],
+["A sale by a person incapacitated to give consent is voidable.","Art. 1390(1).","Art. 1489; Art. 1390"],
+["Spouses may sell property to each other if a separation of property was agreed upon in the marriage settlements.","Art. 1490(1).","Art. 1490"],
+["Spouses may sell property to each other if there has been a judicial separation of property.","Art. 1490(2).","Art. 1490"],
+["The prohibition on sales between spouses extends to common-law spouses.","It rests on public policy.","Ching v. Goyanko"],
+["A sale between spouses in violation of Art. 1490 is void and cannot be ratified.","Arts. 1352, 1409.","Ching v. Goyanko"],
+["A wife's sale of conjugal land without her husband's consent is voidable, not void.","It is annullable at the husband's instance, and valid until annulled.","Felipe v. Aldon"],
+["A guardian cannot buy his ward's property even at a public or judicial auction.","Art. 1491(1).","Art. 1491"],
+["An agent may buy property entrusted to him for sale if the principal consents.","Art. 1491(2).","Art. 1491; Pelayo v. Perez"],
+["The Art. 1491 prohibitions apply even if the purchase is made through another person.","\"In person or through the mediation of another.\"","Art. 1491; Philippine Trust Co. v. Roldan"],
+["The purchase of government property by the wife of the official entrusted with it falls within Art. 1491.","The wife acts in his name.","Maharlika Publishing v. Tagle"],
+["Lawyers cannot acquire, even by assignment, property in litigation in which they take part by virtue of their profession.","Art. 1491(5).","Art. 1491"],
+["A contingent fee contract payable after judgment does not violate Art. 1491(5).","The ban covers only transfers while the case is pending.","Fabillo v. IAC"],
+["Property is in litigation from the moment it becomes subject to the judicial action of the judge.","Not only when contested.","Vda. de Gurrea v. Suplico"],
+["Litigation is not terminated while a petition for certiorari is pending.","A purchase in that period is malpractice.","Valencia v. Cabanting"],
+["The prohibitions of Arts. 1490 and 1491 apply to sales in legal redemption, compromises and renunciations.","Art. 1492.","Art. 1492"],
+["A wife's consent to the sale of conjugal property may be implied, as when she signs the deed as a witness.","Consent may be shown by acts.","Pelayo v. Perez"],
+["Aliens may buy movables but are constitutionally barred from acquiring private land, except by hereditary succession.","Aliens are disqualified from land, not from contracting.","1987 Const., Art. XII, Sec. 7"]
+],
+F:[
+["A minor to whom necessaries are sold and delivered must pay the contract price.","He pays a reasonable price.","Art. 1489"],
+["A sale where both parties are incapacitated is voidable.","It is unenforceable.","Art. 1403(3)"],
+["Spouses may freely sell property to each other under the absolute community regime.","The exceptions are only agreed or judicial separation of property.","Art. 1490"],
+["A sale between common-law spouses is valid because Art. 1490 speaks only of husband and wife.","The prohibition extends to them.","Ching v. Goyanko"],
+["A sale between spouses in violation of Art. 1490 may be ratified by them.","It is void and cannot be ratified.","Ching v. Goyanko"],
+["A wife's sale of conjugal land without her husband's consent may be annulled at the wife's own instance.","Only the husband (or the heirs) may seek annulment, not the wife who sold.","Felipe v. Aldon"],
+["A guardian may buy his ward's property at a public auction.","Not even at a public or judicial auction.","Art. 1491(1)"],
+["An agent may buy his principal's property entrusted to him for sale, even without the principal's consent, if the price is fair.","The principal's consent is required.","Art. 1491(2)"],
+["A guardian's purchase of the ward's property through an intermediary is valid unless collusion or a prior agreement between them is proven.","The purchase through another is annullable even without proof of collusion or prior agreement.","Philippine Trust Co. v. Roldan"],
+["An executor may buy the estate's property under his administration at a judicial auction.","He cannot, even at auction.","Art. 1491(3)"],
+["The Art. 1491 ban on public officers does not apply to judges who take part in the sale.","It expressly applies to judges and government experts.","Art. 1491(4)"],
+["A purchase of government property by the spouse of the public officer entrusted with its administration is merely voidable.","The spouse acts in the officer's name, and the sale is void.","Maharlika Publishing v. Tagle"],
+["A lawyer may buy property in a case he is handling if he buys it at a public auction.","The ban applies even at public or judicial auction.","Art. 1491(5)"],
+["Property becomes \"in litigation\" only once an answer contests the claim.","It is in litigation once it becomes subject to the judge's judicial action.","Vda. de Gurrea v. Suplico"],
+["A lawyer may validly buy property involved in a case he handled once the judgment becomes final, even while a petition for certiorari is pending.","Litigation is not terminated while certiorari is pending; the purchase is prohibited and is malpractice.","Valencia v. Cabanting"],
+["\"Others specially disqualified by law\" in Art. 1491(6) covers aliens constitutionally barred from owning land.","Under ejusdem generis it covers only those disqualified by a fiduciary relationship.","Smith, Bell & Co. v. Register of Deeds"],
+["Art. 1492 makes the prohibitions of Arts. 1490 and 1491 inapplicable to compromises.","It extends them to compromises.","Art. 1492"],
+["Under Arts. 166 and 173 of the old Civil Code, a sale of conjugal property without the wife's consent is void.","It is voidable, annullable by the wife within ten years.","Pelayo v. Perez"],
+["Art. 1491(2) still bars the agent's purchase even if the principals themselves signed the deed.","The principals' consent lifts the bar.","Pelayo v. Perez"],
+["An implied trust in favor of a buyer arises from her own uncorroborated testimony that she paid the price.","An implied trust requires proof that the claimant paid the price; uncorroborated testimony is not enough.","Ching v. Goyanko"]
+]},
+
+{ t:"Loss of the thing; delivery and its modes", c:"Arts. 1493–1501",
+T:[
+["If the thing sold was entirely lost at the time of perfection, the contract is without any effect.","Art. 1493.","Art. 1493"],
+["If the thing was lost only in part at perfection, the vendee may withdraw, or take the rest and pay a proportionate price.","Art. 1493.","Art. 1493"],
+["Where specific goods have partly perished without the seller's knowledge, the buyer may treat the sale as avoided.","Art. 1494(1).","Art. 1494"],
+["The vendor is bound to transfer ownership of, deliver and warrant the thing sold.","Art. 1495.","Art. 1495"],
+["The vendee acquires ownership from delivery in the ways in Arts. 1497 to 1501, or in any other manner signifying that possession is transferred.","Art. 1496.","Art. 1496"],
+["The thing is delivered when it is placed in the control and possession of the vendee.","Art. 1497.","Art. 1497"],
+["Execution of a public instrument is equivalent to delivery, unless the contrary appears or can clearly be inferred from the deed.","Art. 1498.","Art. 1498"],
+["Movables may be delivered by delivering the keys of the place where they are stored.","Art. 1498.","Art. 1498"],
+["Delivery by mere agreement, when the thing cannot be transferred at the time of sale, is traditio longa manu.","Art. 1499.","Art. 1499"],
+["Traditio brevi manu takes place when the buyer already has the thing in his possession for another reason.","Art. 1499.","Art. 1499"],
+["In constitutum possessorium, the seller keeps possession in a different capacity, such as lessee.","Art. 1500.","Art. 1500"],
+["Incorporeal property may be delivered by the execution of a public instrument.","Art. 1501.","Art. 1501"],
+["A public instrument raises only a prima facie presumption of delivery.","It yields where the buyer is not placed in control.","APT v. T.J. Enterprises"],
+["Where a third person's adverse possession prevents the buyer from taking control, the public instrument is not delivery.","Fiction yields to reality.","Addison v. Felix"],
+["A vendor without control over the thing cannot deliver it by executing a public instrument.","He has nothing to transfer.","APT v. T.J. Enterprises"],
+["An \"as-is-where-is\" clause does not excuse the vendor from delivering.","It describes only the thing's condition and location.","APT v. T.J. Enterprises"],
+["Ownership of personal property cannot pass to the prejudice of third persons except by delivery.","A sale without delivery gives only a creditor's rights.","Kuenzle & Streiff v. Macke & Chandler"],
+["Delivery may be constructive, as when a manuscript is placed at the publisher's disposal.","Physical handing over is not needed.","Albert v. University Publishing"],
+["The seller's failure to eject occupants is not a ground for rescission if it was not stipulated as a condition.","Rescission needs a substantial breach.","Power Commercial v. CA"],
+["Between the parties, registration is not needed to transfer ownership under a deed of sale of Torrens land.","Registration protects against third persons.","Phil. Suburban Dev. Corp. v. Auditor General"]
+],
+F:[
+["If the thing was entirely lost at perfection, the buyer must still pay the price.","The contract is without any effect.","Art. 1493"],
+["If the thing was partly lost at perfection, the buyer must take the remaining part at the full price.","He may withdraw or pay a proportionate price.","Art. 1493"],
+["Under Art. 1494, the buyer may hold the sale valid as to the undeteriorated goods even if the sale is indivisible.","This option requires a divisible sale.","Art. 1494(2)"],
+["The vendor's obligation is merely to deliver; he need not transfer ownership.","He must transfer ownership, deliver and warrant.","Art. 1495"],
+["Ownership passes upon payment of the price, regardless of delivery.","It passes by delivery.","Art. 1496"],
+["Execution of a public instrument is delivery even if the deed itself shows a contrary intention.","Not if the contrary appears or can clearly be inferred.","Art. 1498"],
+["Traditio brevi manu takes place when the seller remains in possession as lessee.","That is constitutum possessorium.","Arts. 1499, 1500"],
+["Constitutum possessorium takes place when the buyer already holds the thing as depositary.","That is brevi manu.","Arts. 1499, 1500"],
+["Traditio longa manu requires the physical handing over of the thing.","It is by mere consent or agreement.","Art. 1499"],
+["A public instrument conclusively proves delivery.","It raises only a prima facie presumption.","APT v. T.J. Enterprises"],
+["Where a third person's claim prevents the buyer from taking possession under a public instrument, the buyer's only remedy is specific performance.","There is no delivery, so the buyer may choose rescission with return of the price, interest and damages, or specific performance.","Addison v. Felix"],
+["Where rescission for non-delivery is by law, conventional interest is due on the price returned.","Only legal interest is due.","Addison v. Felix"],
+["A buyer under a notarized deed of sale who never obtained possession may recover the land, as owner, from a third person in possession.","Without delivery no ownership passes; the buyer's action is against the seller.","Danguilan v. IAC"],
+["Constructive delivery by public instrument discharges the vendor's duty to deliver, even if the vendor himself later blocks the buyer's enjoyment of the property.","Fiction yields to reality; the vendor must still deliver and transfer ownership.","Engreso v. De la Cruz"],
+["An unrecorded private bill of sale without delivery prevails over an execution purchaser.","The execution purchaser acquired good title.","Kuenzle & Streiff v. Macke & Chandler"],
+["A private instrument of sale is a mode of transferring ownership.","It is not; payment without delivery does not pass ownership.","Arts. 712, 1497, 1498"],
+["A buyer may rescind the sale because the seller failed to eject the occupants, even if ejectment was never stipulated as a condition.","Rescission needs a substantial breach; an unstipulated ejectment is not a condition of the sale.","Power Commercial v. CA"],
+["Breach of the warranty against eviction requires only that a third person claim the property.","It requires deprivation by final judgment, on a prior right, with the vendor impleaded.","Power Commercial v. CA"],
+["Before delivery, the buyer has a real right over the thing sold that he can assert against the seller's attaching creditor.","He has only a personal right to demand delivery.","Bar Q&A (Art. 1496)"],
+["A buyer who has not been placed in control of the thing may recover it from a lawful possessor because he paid the price.","Without delivery he is not the owner and has no real right.","Bar Q&A (Arts. 1164, 1496)"]
+]},
+
+{ t:"Sale or return, reservation of title, risk, non-owners", c:"Arts. 1502–1506",
+T:[
+["In a sale or return, ownership passes to the buyer on delivery.","Art. 1502.","Art. 1502"],
+["In a sale or return, the buyer may revest ownership in the seller by returning the goods within the time fixed or, if none, within a reasonable time.","Art. 1502.","Art. 1502"],
+["In a sale on approval, ownership passes when the buyer signifies approval or does another act adopting the transaction.","Art. 1502(1).","Art. 1502"],
+["In a sale on approval, a buyer who keeps the goods without notice of rejection becomes owner when the fixed time for return expires.","Art. 1502(2).","Art. 1502"],
+["What is a reasonable time under Art. 1502 is a question of fact.","Art. 1502.","Art. 1502"],
+["The seller may reserve ownership of specific goods notwithstanding delivery to the buyer or to a carrier.","Art. 1503.","Art. 1503"],
+["Where the bill of lading makes the goods deliverable to the seller or his agent, the seller reserves ownership.","Art. 1503.","Art. 1503"],
+["Where the bill of lading is to the buyer's order but the seller keeps it, the seller reserves only a right to possession.","Art. 1503.","Art. 1503"],
+["A buyer who does not honor the bill of exchange sent with the bill of lading must return the bill of lading.","Art. 1503.","Art. 1503"],
+["Unless otherwise agreed, goods remain at the seller's risk until ownership is transferred to the buyer.","Res perit domino.","Art. 1504"],
+["Where ownership is retained merely to secure the buyer's performance, the goods are at the buyer's risk from delivery.","Art. 1504(1).","Art. 1504"],
+["Where actual delivery is delayed through a party's fault, the goods are at that party's risk.","Art. 1504(2).","Art. 1504"],
+["A stipulation making the buyer bear any loss, even by fortuitous event, though title stays with the seller, is valid.","Art. 1174 allows it.","Sun Brothers v. Perez"],
+["A buyer's money obligation is not extinguished by the fortuitous loss of the goods.","The obligation is generic (Art. 1263).","Gaisano Cagayan v. ICNA"],
+["A buyer from a non-owner acquires no better title than the seller had, unless the owner is by his conduct precluded from denying the seller's authority.","Art. 1505.","Art. 1505"],
+["Art. 1505 does not affect purchases made in a merchant's store, fairs or markets under the Code of Commerce and special laws.","Art. 1505(3).","Art. 1505"],
+["Art. 1505 does not affect sales under a statutory power of sale or a court order.","Art. 1505(2).","Art. 1505"],
+["A buyer in good faith and for value from a seller whose voidable title has not been avoided acquires good title.","Art. 1506.","Art. 1506"],
+["Where goods are delivered only so the buyer can choose what to buy, and there is no meeting of minds until he chooses, the transaction is a sale on approval.","Ownership passes only upon approval, when the minds meet on the object and the price.","Vallarta v. CA"],
+["Title reserved merely to secure payment does not shift the post-delivery loss to the seller.","The buyer bears it.","Lawyers Cooperative v. Tabora"]
+],
+F:[
+["In a sale or return, ownership passes only when the buyer decides to keep the goods.","It passes on delivery.","Art. 1502"],
+["In a sale on approval, ownership passes on delivery.","It passes on approval or acceptance.","Art. 1502"],
+["What is a reasonable time under Art. 1502 is a question of law.","It is a question of fact.","Art. 1502"],
+["A seller can no longer reserve ownership once the goods are delivered to a carrier.","He may, by the terms of the contract.","Art. 1503"],
+["Where the bill of lading is to the buyer's order but the seller keeps it, the seller reserves ownership.","He reserves only a right to possession.","Art. 1503"],
+["A buyer who wrongfully keeps the bill of lading after dishonoring the bill of exchange acquires added rights.","He acquires no added right.","Art. 1503"],
+["Goods are at the buyer's risk only after actual delivery, even if ownership has already passed.","Once ownership passes, they are at his risk whether delivered or not.","Art. 1504"],
+["Where ownership is retained merely to secure payment, the goods are at the seller's risk after delivery.","They are at the buyer's risk.","Art. 1504(1)"],
+["Where delivery is delayed through the buyer's fault, the seller bears the risk.","The party in fault bears it.","Art. 1504(2)"],
+["A buyer who assumed the risk after delivery is excused from paying the price if the goods are destroyed by fortuitous event while title is reserved to secure payment.","Goods are at the buyer's risk from delivery when title is reserved only as security, and a money debt is not extinguished by fortuitous event.","Lawyers Cooperative v. Tabora"],
+["Where the buyer agreed to bear any loss after delivery, the seller's retention of title shifts the loss to the seller if the goods are destroyed by fire.","A stipulation putting all loss on the buyer is valid under Art. 1174; he must still pay.","Sun Brothers v. Perez"],
+["An insurance policy covering a seller's \"book debts\" insures the goods delivered, not the buyers' unpaid accounts.","Such a policy insures the seller's unpaid accounts, not the goods.","Gaisano Cagayan v. ICNA"],
+["A third person's foreseeable refusal to release goods in its possession is a fortuitous event that excuses the vendor from delivering.","A foreseeable event with human participation is not fortuitous; the vendor remains liable.","APT v. T.J. Enterprises"],
+["Under Art. 1505, a buyer from a non-owner acquires good title whenever he is in good faith.","He acquires no better title than the seller had, save the exceptions.","Art. 1505"],
+["Art. 1505 overrides factors' acts and recording laws.","It does not affect them.","Art. 1505(1)"],
+["Under Art. 1506, a buyer in good faith acquires good title from a seller whose title is void.","Art. 1506 covers voidable titles.","Art. 1506"],
+["Under Art. 1506, the buyer acquires good title even if he gave no value.","He must buy for value.","Art. 1506"],
+["Goods taken by a buyer who never pays become his upon delivery, even if the seller never meant to pass ownership before payment and the sale was not made in a market.","Ownership did not pass because the seller never intended it to pass before payment, and the market exception of Art. 1505 did not apply.","Masiclat v. Centeno"],
+["A check given when the buyer finally chooses goods delivered on approval is issued for a pre-existing obligation.","In a sale on approval, the obligation arises upon approval, so the check is not for a pre-existing debt.","Vallarta v. CA"],
+["In a sale on approval, ownership passes on delivery and reverts upon return of the goods.","That describes a sale or return.","Art. 1502"]
+]},
+
+{ t:"Documents of title", c:"Arts. 1507–1520",
+T:[
+["A document of title stating that the goods will be delivered to bearer or to the order of a named person is negotiable.","Art. 1507.","Art. 1507"],
+["A negotiable document deliverable to bearer may be negotiated by delivery.","Art. 1508(1).","Art. 1508"],
+["An order document indorsed in blank or to bearer may be negotiated by delivery.","Art. 1508(2).","Art. 1508"],
+["A holder of a bearer document may indorse it to a specified person, after which only that indorsee's indorsement can negotiate it.","Art. 1508.","Art. 1508"],
+["An order document is negotiated by the indorsement of the person to whose order the goods are deliverable.","Art. 1509.","Art. 1509"],
+["An indorsement may be in blank, to bearer or to a specified person.","Art. 1509.","Art. 1509"],
+["A negotiable document marked \"non-negotiable\" may nevertheless be negotiated by the holder.","Art. 1510.","Art. 1510"],
+["A non-negotiable document may be transferred by delivery to a purchaser or donee.","Art. 1511.","Art. 1511"],
+["A negotiable document of title may be negotiated by its owner.","Art. 1512(1).","Art. 1512"],
+["A person to whom a negotiable document is duly negotiated acquires the title the negotiator had or could convey to a purchaser in good faith for value.","Art. 1513(1).","Art. 1513"],
+["A person to whom a negotiable document is duly negotiated acquires the bailee's direct obligation to hold the goods for him.","Art. 1513(2).","Art. 1513"],
+["A transferee of a document of title that was not negotiated acquires, as against the transferor, title to the goods.","Art. 1514.","Art. 1514"],
+["Before notice to the bailee, a transferee's title under a non-negotiable document may be defeated by a levy by the transferor's creditor.","Art. 1514.","Art. 1514"],
+["A transferee for value of an order document that needs the transferor's indorsement may compel him to indorse it.","Art. 1515.","Art. 1515"],
+["One who negotiates a document of title for value warrants that he has a legal right to negotiate it.","Art. 1516(2).","Art. 1516"],
+["An indorser is not liable for the bailee's failure to fulfill its obligations.","Art. 1517.","Art. 1517"],
+["Negotiation is valid despite the negotiator's breach of duty, if the holder paid value in good faith without notice.","Art. 1518.","Art. 1518"],
+["Goods covered by a negotiable document cannot be attached while with the bailee unless the document is surrendered or its negotiation is enjoined.","Art. 1519.","Art. 1519"],
+["A creditor of the owner of a negotiable document may get court aid, by injunction and otherwise, to reach the document.","Art. 1520.","Art. 1520"],
+["An incorrect description of the goods does not destroy a warehouse receipt's negotiability where it is clear which goods are meant.","Cagayan vs. Isabela tobacco.","American Foreign Banking v. Herridge"]
+],
+F:[
+["A document deliverable only to a specified person, not to his order, is negotiable.","It must be deliverable to bearer or to order.","Art. 1507"],
+["An order document not yet indorsed may be negotiated by mere delivery.","It needs indorsement.","Arts. 1508, 1509"],
+["Once indorsed to a specified person, a document can no longer be negotiated.","It may be negotiated again by that person's indorsement.","Art. 1509"],
+["Marking a negotiable document \"non-negotiable\" destroys its negotiability.","It remains negotiable.","Art. 1510"],
+["Indorsing a non-negotiable document gives the transferee the rights of one to whom a document was duly negotiated.","It gives no additional right.","Art. 1511"],
+["Only the owner may negotiate a negotiable document of title.","A person entrusted with it may, under Art. 1512(2).","Art. 1512"],
+["A transferee of a non-negotiable document acquires the bailee's direct obligation even without notifying the bailee.","Notice to the bailee is needed.","Art. 1514"],
+["A transferee's title under a non-negotiable document cannot be defeated by a later sale by the transferor that is notified to the bailee.","Before notice, it can be so defeated.","Art. 1514"],
+["Where the transferor's indorsement is essential, the negotiation takes effect when the document is delivered, not when it is indorsed.","It takes effect when the indorsement is actually made.","Art. 1515"],
+["A transferee for value who did not get the transferor's indorsement has no right to compel it.","He may compel the indorsement.","Art. 1515"],
+["One who negotiates a document for value warrants that the bailee will perform its obligations.","He gives no such warranty; the indorser is not liable for the bailee.","Arts. 1516, 1517"],
+["An indorser is liable for the failures of previous indorsers.","He is not.","Art. 1517"],
+["Negotiation is void if the owner lost the document by theft, even if the holder took it for value in good faith.","Theft does not impair it in that case.","Art. 1518"],
+["Goods covered by a negotiable document may be levied upon while in the bailee's possession, without surrender of the document.","The document must first be surrendered or its negotiation enjoined.","Art. 1519"],
+["The bailee may be compelled to deliver the goods before the document is surrendered or impounded.","He cannot be compelled.","Art. 1519"],
+["A creditor of the owner of a negotiable document has no remedy other than an ordinary levy.","Courts may aid him by injunction and otherwise.","Art. 1520"],
+["An owner who entrusts a bearer document of title to another may annul that person's negotiation of it to a holder in good faith for value.","Between two innocent persons, the one who made the loss possible bears it.","Siy Long Bieng v. HSBC"],
+["A mere misdescription of the goods makes a warehouse receipt non-negotiable, even where there is no doubt which goods are meant.","A misdescription does not destroy negotiability when the goods meant are clear.","American Foreign Banking v. Herridge"],
+["One who negotiates a document of title for value does not warrant its genuineness.","He warrants that it is genuine.","Art. 1516(1)"],
+["A negotiable document entrusted to another may be negotiated by him only if he holds a written power of attorney from the owner.","Art. 1512(2) turns on the document's terms or form, not a written power.","Art. 1512"]
+]},
+
+{ t:"Place, quantity and manner of delivery", c:"Arts. 1521–1524",
+T:[
+["Whether the buyer takes the goods or the seller sends them depends on the contract, express or implied.","Art. 1521.","Art. 1521"],
+["Absent contract or usage, the place of delivery is the seller's place of business, or if none, his residence.","Art. 1521.","Art. 1521"],
+["For specific goods that both parties knew were in another place at the time of sale, that place is the place of delivery.","Art. 1521.","Art. 1521"],
+["A seller bound to send the goods, with no time fixed, must send them within a reasonable time.","Art. 1521.","Art. 1521"],
+["Where a third person holds the goods, there is no delivery until he acknowledges to the buyer that he holds them for the buyer.","Art. 1521.","Art. 1521"],
+["A demand or tender of delivery at an unreasonable hour may be treated as ineffectual.","Art. 1521.","Art. 1521"],
+["Unless otherwise agreed, the seller bears the expenses of putting the goods into a deliverable state.","Art. 1521.","Art. 1521"],
+["Where the seller delivers less than the quantity contracted, the buyer may reject the goods.","Art. 1522.","Art. 1522"],
+["A buyer who accepts a short delivery, knowing the seller will not perform in full, pays at the contract rate.","Art. 1522.","Art. 1522"],
+["A buyer who used a short delivery before knowing the seller would not perform in full is liable only for its fair value to him.","Art. 1522.","Art. 1522"],
+["Where a larger quantity is delivered, the buyer may accept the contracted goods and reject the rest.","Art. 1522.","Art. 1522"],
+["Where the subject matter is indivisible, the buyer may reject the whole of the goods.","Art. 1522.","Art. 1522"],
+["Delivery to a carrier for transmission to the buyer is delivery to the buyer, whether or not the buyer named the carrier.","Art. 1523.","Art. 1523"],
+["The seller must make a reasonable contract with the carrier on the buyer's behalf, unless otherwise authorized.","Art. 1523.","Art. 1523"],
+["A seller who fails to give the buyer notice so he can insure the goods bears the risk during transit.","Art. 1523.","Art. 1523"],
+["The vendor is not bound to deliver if the vendee has not paid the price, or if no period for payment was fixed.","Art. 1524.","Art. 1524"],
+["Where a c.i.f. contract and the surrounding circumstances show that delivery is to be made at the buyer's port, the seller bears the loss in transit.","Delivery and transfer of ownership take place at the destination, so the risk in transit stays with the seller.","Behn, Meyer & Co. v. Yangco"],
+["When no delivery time is fixed or the terms are indefinite, time is not of the essence and delivery is due within a reasonable time.","\"As soon as possible\" means a reasonable time.","Smith, Bell & Co. v. Matti"],
+["A buyer who accepts late goods \"subject to verification\" waives the delay.","He treated the contract as still in force.","Lorenzo Shipping v. BJ Marthel"],
+["A seller who claims he was ready to deliver must prove it.","The bare claim is not enough.","Visayan Distributors v. Flores"]
+],
+F:[
+["Absent agreement or usage, the place of delivery is the buyer's residence.","It is the seller's place of business, or his residence.","Art. 1521"],
+["A seller bound to send the goods, with no time fixed, must send them immediately.","Within a reasonable time.","Art. 1521"],
+["Where a third person holds the goods, the seller has delivered once he tells the buyer where the goods are.","The third person must acknowledge to the buyer that he holds them for the buyer.","Art. 1521"],
+["What is a reasonable hour for tender of delivery is a question of law.","It is a question of fact.","Art. 1521"],
+["Unless otherwise agreed, the buyer bears the expenses of putting the goods into a deliverable state.","The seller bears them.","Art. 1521"],
+["A buyer who accepts a short delivery, knowing the seller will not perform in full, pays only the fair value of the goods.","He pays at the contract rate.","Art. 1522"],
+["A buyer who accepts the whole of a larger delivery pays only for the quantity in the contract.","He pays for the whole at the contract rate.","Art. 1522"],
+["Where conforming goods are mixed with others, the buyer must accept or reject all of them, even if the subject matter is divisible.","He may accept the conforming goods and reject the rest.","Art. 1522"],
+["Delivery to a carrier the buyer did not name is never delivery to the buyer.","It is, whether named by the buyer or not.","Art. 1523"],
+["If the seller fails to make a reasonable contract with the carrier and the goods are lost, the buyer must still treat delivery to the carrier as delivery to himself.","He may decline to, or hold the seller liable in damages.","Art. 1523"],
+["A seller who fails to give the buyer notice so he can insure the goods shifts the transit risk to the buyer.","The goods are at the seller's risk.","Art. 1523"],
+["The vendor must deliver even if the price is unpaid and no period for payment was fixed.","Art. 1524 excuses him.","Art. 1524"],
+["Even where a period for payment has been fixed, the vendor may refuse to deliver until the price is paid.","Art. 1524 excuses delivery only if the price is unpaid and no period for payment was fixed.","Florendo v. Foz"],
+["Where foreign buyers paid the freight and insurance and the shipping documents were presented to a local bank under their letters of credit, ownership passes only when the goods arrive abroad.","Ownership passes in the place of shipment in that case; consignment to the seller's order does not change this.","Bislig Bay Lumber v. Collector; Butuan Sawmill v. CTA"],
+["Under \"F.O.B. destination,\" ownership passes when the goods are shipped.","It passes when they reach the destination.","Art. 1523"],
+["A promise to deliver \"as soon as possible\" means immediate delivery.","It means within a reasonable time.","Smith, Bell & Co. v. Matti"],
+["Where the delivery terms were indefinite and depended on contingencies such as shipping space, the seller is in delay once the goods arrive later than the buyer expected.","Indefinite terms mean delivery within a reasonable time, and a seller who did all in his power is not in delay.","Smith, Bell & Co. v. Matti"],
+["A supplier's quotation promising delivery within two months makes time of the essence, even if the buyer's purchase orders state no delivery date.","A quotation is only a negotiation-stage offer; with no delivery date in the orders, time is not of the essence.","Lorenzo Shipping v. BJ Marthel"],
+["A buyer's insolvency, even if not judicially declared, excuses the seller from delivering without warning.","Insolvency must be proven, and the seller must clearly warn the buyer.","Visayan Distributors v. Flores"],
+["A seller who bound himself to deliver by a fixed date, liable in all eventualities, is excused by delays in securing export licenses and shipping priority.","An unconditional undertaking binds the seller in all eventualities; such delays are no excuse.","Republic v. Litton & Co."]
+]}
+];
+
+(function(){
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const LIMIT = 15 * 60, KEY = "rr-sales-2stmt-best";
+  const OPTS = [["A","Both statements are true"],["B","Both statements are false"],["C","Only Statement I is true"],["D","Only Statement II is true"]];
+  let best = {}; try { best = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { best = {}; }
+  const saveBest = () => { try { localStorage.setItem(KEY, JSON.stringify(best)); } catch(e){} };
+  const shuffle = a => { a = a.slice(); for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random()*(k+1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
+  const keyOf = (a, b) => a && b ? "A" : !a && !b ? "B" : a ? "C" : "D";
+  let cur = null;
+
+  function showHome(){
+    $("#home").hidden = false; $("#quiz").hidden = true; $("#results").hidden = true;
+    $("#grid").innerHTML = SETS.map((s,i) => {
+      const b = best[i];
+      return `<button class="set" data-i="${i}"><span class="n">Set ${i+1} · ${esc(s.c)}</span><span class="t">${esc(s.t)}</span>
+        <span class="m"><span>20 questions · 15 min</span>${b != null ? `<span class="best">Best ${b}/20</span>` : `<span class="best none">Not taken</span>`}</span></button>`;
+    }).join("");
+    window.scrollTo({top:0});
+  }
+
+  function build(i){
+    const s = SETS[i], T = shuffle(s.T.map(x => [...x, true])), F = shuffle(s.F.map(x => [...x, false]));
+    const q = [];
+    for (let k = 0; k < 5; k++) q.push([T[2*k], T[2*k+1]]);          // both true
+    for (let k = 0; k < 5; k++) q.push([F[2*k], F[2*k+1]]);          // both false
+    for (let k = 0; k < 5; k++) q.push([T[10+k], F[k+10]]);          // I true, II false
+    for (let k = 0; k < 5; k++) q.push([F[15+k], T[15+k]]);          // I false, II true
+    return shuffle(q).map(([a,b]) => ({a, b, key: keyOf(a[3], b[3])}));
+  }
+
+  function start(i){
+    const s = SETS[i];
+    cur = { set:i, qs: build(i), ans: Array(20).fill(null), timed: $("#useTimer").checked, deadline: Date.now() + LIMIT*1000 };
+    $("#home").hidden = true; $("#results").hidden = true; $("#quiz").hidden = false;
+    $("#qcov").textContent = `Set ${i+1} · ${s.c}`;
+    $("#qtitle").textContent = s.t;
+    $("#list").innerHTML = cur.qs.map((q,n) => `<div class="item" data-n="${n}" data-key="${q.key}">
+        <div class="st"><span class="no">${n+1}</span><span class="stmts"><span class="stmt"><span class="r">I</span><span>${esc(q.a[0])}</span></span><span class="stmt"><span class="r">II</span><span>${esc(q.b[0])}</span></span></span></div>
+        <div class="mc">${OPTS.map(([l,t]) => `<button class="opt" data-v="${l}"><b>${l}</b>${t}</button>`).join("")}</div></div>`).join("");
+    $("#quit").textContent = "Quit"; $("#quit").classList.remove("arm");
+    updateProg(); clearInterval(cur.tick);
+    if (cur.timed) { tick(); cur.tick = setInterval(tick, 250); } else { $("#timer").textContent = "No timer"; $("#timer").className = "timer off"; }
+    window.scrollTo({top:0});
+  }
+
+  function tick(){
+    const left = Math.max(0, Math.round((cur.deadline - Date.now())/1000)), t = $("#timer");
+    t.textContent = `${String(Math.floor(left/60)).padStart(2,"0")}:${String(left%60).padStart(2,"0")}`;
+    t.className = "timer" + (left <= 60 ? " crit" : left <= 180 ? " warn" : "");
+    if (left <= 0) submit(true);
+  }
+
+  function updateProg(){
+    const done = cur.ans.filter(Boolean).length;
+    $("#prog").innerHTML = `<b>${done}</b>/20 <span class="pw">answered</span>`;
+    const un = 20 - done;
+    $("#unans").textContent = un ? `${un} question${un>1?"s":""} unanswered` : "All questions answered";
+  }
+
+  function submit(auto){
+    if (cur.done) return; cur.done = true;
+    clearInterval(cur.tick);
+    $("#quiz").hidden = true; $("#results").hidden = false; $("#timeup").hidden = !auto;
+    cur.used = cur.timed ? Math.min(LIMIT, LIMIT - Math.max(0, Math.round((cur.deadline - Date.now())/1000))) : null;
+    cur.score = cur.qs.filter((q,n) => cur.ans[n] === q.key).length;
+    if (best[cur.set] == null || cur.score > best[cur.set]) { best[cur.set] = cur.score; saveBest(); }
+    renderResults("all"); window.scrollTo({top:0});
+  }
+
+  function renderResults(filter){
+    const s = SETS[cur.set], score = cur.score;
+    $("#big").innerHTML = `${score}<small>/20</small>`;
+    const pct = score/20;
+    $("#verdict").textContent = pct >= .9 ? "Recit-ready." : pct >= .75 ? "Solid. Review the misses below." : pct >= .5 ? "Getting there. Read the explanations, then retake." : "Back to the codal for this one, then retake.";
+    $("#rmeta").textContent = `Set ${cur.set+1} · ${s.c}` + (cur.used != null ? ` · time used ${Math.floor(cur.used/60)}:${String(cur.used%60).padStart(2,"0")}` : "");
+    $$("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === filter));
+    const stmt = (r, x) => `<span class="stmt"><span class="r">${r}</span><span>${esc(x[0])}</span><span class="vt ${x[3]?"t":"f"}">${x[3]?"TRUE":"FALSE"}</span></span>
+      <div class="sx">${esc(x[1])} <span class="src">${esc(x[2])}</span></div>`;
+    $("#rlist").innerHTML = cur.qs.map((q,n) => ({q,n,ok: cur.ans[n] === q.key})).filter(r => filter === "all" || !r.ok).map(({q,n,ok}) => {
+      const mine = cur.ans[n];
+      return `<div class="item ${ok?"ok":"no-"}"><div class="st"><span class="no">${n+1}</span><span class="stmts">${stmt("I", q.a)}${stmt("II", q.b)}</span></div>
+        <div class="mc">${OPTS.map(([l,t]) => `<button class="opt ${l===q.key?"key":""} ${l===mine&&!ok?"bad":""}" disabled><b>${l}</b>${t}</button>`).join("")}</div>
+        <div class="res"><div class="row"><span class="k">Your answer</span>${mine ? `<span class="pill ${ok?"g":"b"}">${mine}</span>` : '<span class="pill n">No answer</span>'} <span class="k" style="min-width:0;margin-left:10px">Answer</span><span class="pill g">${q.key}</span></div></div></div>`;
+    }).join("") || `<p class="note" style="padding:0 2px">Nothing here. Nice.</p>`;
+  }
+
+  $("#grid").addEventListener("click", e => { const b = e.target.closest(".set"); if (b) start(+b.dataset.i); });
+  $("#list").addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    const box = b.closest(".item"), n = +box.dataset.n;
+    cur.ans[n] = b.dataset.v;
+    box.querySelectorAll(".opt").forEach(x => x.classList.toggle("on", x === b));
+    updateProg();
+  });
+  $("#submit").addEventListener("click", () => submit(false));
+  $("#submit2").addEventListener("click", () => submit(false));
+  $("#quit").addEventListener("click", () => {
+    const q = $("#quit");
+    if (!q.classList.contains("arm")) { q.classList.add("arm"); q.textContent = "Tap again to quit"; setTimeout(() => { q.classList.remove("arm"); q.textContent = "Quit"; }, 3000); return; }
+    clearInterval(cur.tick); showHome();
+  });
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderResults(b.dataset.f); });
+  $("#retake").addEventListener("click", () => start(cur.set));
+  $("#home2").addEventListener("click", showHome);
+  showHome();
+})();
+</script>
+<div style="font:13px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;color:#5B665A;text-align:center;padding:14px 16px 22px">
+<a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
+<a href="https://sites.google.com/view/recit-ready/report-an-error" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
+<a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
+</body>
+</html>

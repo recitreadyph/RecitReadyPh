@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Civil Procedure Four-Statement Quiz · RecitReady</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+:root{
+  --paper:#F7F2E6; --paper-2:#FBF8F0; --card:#FFFDF7; --line:#E4DCC6; --line-2:#D6CBAE;
+  --ink:#2E382F; --ink-2:#5B665A; --muted:#8A917F;
+  --sage:#6F8466; --sage-d:#4D6450; --sage-dd:#36493A; --sage-l:#E7EDDF; --sage-ll:#F1F4EC;
+  --gold:#B8923A; --gold-d:#94742A; --gold-l:#F4E9CF; --gold-ll:#FAF3E2;
+  --good:#4F7A4E; --good-bg:#E4F0DE; --bad:#B4553F; --bad-bg:#F8E3DC;
+  --serif-d:"Cormorant Garamond", Georgia, serif; --serif:"Lora", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background-color:var(--paper);
+  background-image:radial-gradient(rgba(110,96,60,.10) .7px, transparent .8px),radial-gradient(rgba(110,96,60,.07) .6px, transparent .7px);
+  background-size:23px 23px, 37px 37px; background-position:0 0, 11px 17px;
+  color:var(--ink); font-family:var(--sans); font-size:15px; line-height:1.5; -webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+.wrap{max-width:900px;margin:0 auto;padding:18px 16px 60px}
+.brand{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo .name{font-family:var(--serif-d);font-weight:700;font-size:26px;letter-spacing:.04em;color:var(--sage-dd);line-height:1}
+.logo .tag{font-family:var(--serif-d);font-style:italic;color:var(--gold-d);font-size:16px;line-height:1.1}
+.subject{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 10px 30px -18px rgba(60,70,50,.35)}
+.head{padding:18px 20px 16px;border-bottom:1px solid var(--line)}
+.badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:.08em;color:var(--sage-dd);background:var(--sage-l);border:1px solid #cfdac4;border-radius:8px;padding:3px 9px;margin-bottom:6px}
+h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;margin:0}
+.sub{font-family:var(--serif-d);font-style:italic;font-size:17px;color:var(--gold-d);margin-top:3px}
+.how{margin:14px 0 0;padding:10px 14px;background:var(--gold-ll);border:1px dashed #e3cf9e;border-radius:12px;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.how b{color:var(--gold-d)}
+.how u{text-decoration:none;border-bottom:2px solid var(--gold);color:var(--ink);font-weight:600}
+.body{padding:18px 20px 20px}
+.opts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px;font-size:13.5px;color:var(--ink-2)}
+.chk{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:6px 11px;cursor:pointer;font-weight:600}
+.chk input{accent-color:var(--sage-d);width:16px;height:16px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.set{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 14px;cursor:pointer;transition:border-color .15s, transform .15s}
+.set:hover{border-color:var(--sage);transform:translateY(-1px)}
+.set .n{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);text-transform:uppercase}
+.set .t{font-family:var(--serif);font-weight:600;font-size:15.5px;color:var(--sage-dd);line-height:1.35}
+.set .m{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:12.5px;color:var(--muted)}
+.best{font-weight:700;color:var(--sage-d);background:var(--sage-l);border-radius:999px;padding:1px 8px}
+.best.none{background:transparent;color:var(--muted);font-weight:500;padding:0}
+
+/* quiz */
+.bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;padding:10px 16px;background:rgba(251,248,240,.97);backdrop-filter:blur(4px);border-bottom:1px solid var(--line);border-radius:18px 18px 0 0}
+.bar .l{display:flex;align-items:center;gap:12px;min-width:0}
+.timer{font-family:var(--serif);font-weight:600;font-size:22px;color:var(--sage-dd);background:var(--sage-ll);border:1px solid #cfdac4;border-radius:10px;padding:2px 12px;font-variant-numeric:tabular-nums;min-width:86px;text-align:center}
+.timer.warn{color:var(--gold-d);background:var(--gold-ll);border-color:#e3cf9e}
+.timer.crit{color:var(--bad);background:var(--bad-bg);border-color:#efc9bd;animation:pulse 1s infinite}
+.timer.off{font-size:14px;font-family:var(--sans);color:var(--muted)}
+@keyframes pulse{50%{opacity:.6}}
+.prog{font-size:13px;color:var(--ink-2);white-space:nowrap} .prog b{color:var(--sage-dd)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--sage)}
+.btn.pri{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.btn.pri:hover{background:var(--sage-dd)}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn.arm{border-color:var(--bad);color:var(--bad)}
+.qhead{padding:16px 20px 4px}
+.qhead h2{font-family:var(--serif-d);font-size:24px;margin:0;line-height:1.15}
+.qhead .c{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--gold-d);text-transform:uppercase}
+.list{padding:10px 20px 6px;display:grid;gap:12px}
+.item{border:1px solid var(--line);background:var(--paper-2);border-radius:14px;padding:13px 15px 14px}
+.item .st{display:flex;gap:10px;font-family:var(--serif);font-size:16px;line-height:1.75}
+.item .no{flex:none;font-family:var(--sans);font-weight:700;font-size:13px;color:var(--sage-d);background:var(--sage-l);border-radius:7px;min-width:28px;height:24px;display:grid;place-items:center;margin-top:3px}
+.item u{text-decoration:none;border-bottom:2px solid var(--gold);padding:0 1px;font-weight:600;color:var(--sage-dd)}
+.ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:10px 0 0 38px}
+.tf{height:36px;min-width:84px;border-radius:9px;border:1px solid var(--line-2);background:var(--card);cursor:pointer;font-weight:700;letter-spacing:.06em;font-size:13px;color:var(--ink-2)}
+.tf:hover{border-color:var(--sage)}
+.tf.on[data-v="T"]{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.tf.on[data-v="F"]{background:var(--gold-d);border-color:var(--gold-d);color:#fff}
+.fix{flex:1 1 220px;min-width:0;height:36px;border:1px solid #e3cf9e;background:var(--gold-ll);border-radius:9px;padding:0 11px;font-family:var(--serif);font-size:15px;color:var(--ink)}
+.fix:focus{outline:2px solid var(--gold);outline-offset:1px}
+.fix::placeholder{color:#b39a5c;font-style:italic}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 20px 20px}
+.note{font-size:12.5px;color:var(--muted)}
+.banner{margin:14px 20px 0;padding:10px 14px;border-radius:12px;background:var(--bad-bg);color:var(--bad);font-weight:600;font-size:14px}
+
+/* results */
+.score{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:18px 20px 6px}
+.big{font-family:var(--serif-d);font-size:46px;font-weight:700;color:var(--sage-dd);line-height:1}
+.big small{font-size:24px;color:var(--muted)}
+.verdict{font-family:var(--serif);font-style:italic;color:var(--gold-d);font-size:16px}
+.meta{font-size:13px;color:var(--ink-2)}
+.filters{display:flex;gap:6px;padding:6px 20px 0;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.filters button.on{background:var(--sage-ll);border-color:var(--sage);color:var(--sage-dd)}
+.item.ok{border-left:4px solid var(--good)} .item.no-{border-left:4px solid var(--bad)}
+.res{margin:10px 0 0 38px;display:grid;gap:6px;font-size:13.5px}
+.res .row{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.res .k{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);min-width:86px}
+.pill{font-weight:700;border-radius:7px;padding:1px 8px;font-size:13px}
+.pill.g{background:var(--good-bg);color:var(--good)} .pill.b{background:var(--bad-bg);color:var(--bad)} .pill.n{background:var(--sage-ll);color:var(--ink-2)}
+.why{background:var(--sage-ll);border-left:3px solid var(--sage);border-radius:6px;padding:7px 11px;color:var(--ink-2);line-height:1.55}
+.why .src{display:block;margin-top:3px;font-size:12px;font-weight:600;color:var(--gold-d)}
+.count{border:1px dashed var(--sage);background:transparent;color:var(--sage-d);border-radius:7px;padding:1px 9px;font-size:12.5px;font-weight:600;cursor:pointer}
+.disclaimer{max-width:820px;margin:18px auto 0;padding:12px 16px;font-size:12.5px;line-height:1.6;color:var(--ink-2);text-align:center;background:var(--card);border:1px solid var(--line);border-radius:12px}
+.disclaimer b{color:var(--sage-dd)}
+[hidden]{display:none!important}
+.stmts{display:grid;gap:6px;margin-top:-2px}
+.stmt{display:flex;gap:9px;font-family:var(--serif);font-size:15.5px;line-height:1.65}
+.stmt .r{flex:none;font-family:var(--sans);font-weight:700;font-size:12px;color:var(--gold-d);background:var(--gold-ll);border:1px solid #ecdcb2;border-radius:6px;min-width:26px;height:22px;display:grid;place-items:center;margin-top:3px}
+.mc{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:11px 0 0 38px}
+.stmt .r{min-width:30px}
+.opt{display:flex;align-items:center;gap:9px;text-align:left;border:1px solid var(--line-2);background:var(--card);border-radius:10px;padding:7px 10px;cursor:pointer;font-size:13.5px;color:var(--ink);line-height:1.35}
+.opt:hover{border-color:var(--sage)}
+.opt b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--sage-ll);color:var(--sage-dd);font-size:12.5px}
+.opt.on{background:var(--sage-d);border-color:var(--sage-d);color:#fff}
+.opt.on b{background:#fff;color:var(--sage-dd)}
+.opt.key{border-color:var(--good);background:var(--good-bg)}
+.opt.bad{border-color:var(--bad);background:var(--bad-bg)}
+.opt[disabled]{cursor:default}
+.vt{flex:none;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:1px 7px;margin-top:4px;height:fit-content}
+.vt.t{background:var(--good-bg);color:var(--good)} .vt.f{background:var(--bad-bg);color:var(--bad)}
+.sx{margin:2px 0 4px 35px;font-family:var(--sans);font-size:13px;color:var(--ink-2);line-height:1.5}
+.sx .src{font-size:12px;font-weight:600;color:var(--gold-d)}
+@media (max-width:640px){ .stmts,.mc{margin-left:0} .mc{grid-template-columns:1fr} .sx{margin-left:35px} }
+
+@media (max-width:640px){
+  .wrap{padding:12px 10px 40px}
+  .logo .name{font-size:22px}
+  .head,.body{padding-left:14px;padding-right:14px}
+  h1{font-size:24px}
+  .list{padding:10px 10px 6px}
+  .item{padding:12px 12px 13px}
+  .item .st{font-size:15.5px}
+  .ans,.res{margin-left:0}
+  .tf{flex:1;min-width:0}
+  .fix{flex-basis:100%}
+  .bar{padding:8px 10px}
+  .timer{font-size:19px;min-width:72px;padding:2px 8px}
+  .pw{display:none}
+  .bar .btn{padding:0 11px;height:36px}
+  .qhead,.foot,.score,.filters{padding-left:14px;padding-right:14px}
+}
+</style>
+</head>
+<body>
+<div id="rr-fs" style="display:none;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;text-align:center;padding:8px 12px">
+<a href="#" target="_blank" rel="noopener" style="color:#fff;text-decoration:none">Open this drill in full screen ↗</a></div>
+<script>(function(){try{if(window.self!==window.top){var b=document.getElementById('rr-fs');b.style.display='block';b.firstElementChild.href=location.href;}}catch(e){}})();</script>
+
+<div class="wrap">
+  <div class="brand">
+    <div class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#6F8466" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="22" rx="1"/><rect x="15.5" y="7" width="6.5" height="24" rx="1"/>
+          <path d="M23.5 10.5l5.6-1.6 5.7 20.6-5.6 1.6z"/><path d="M12 13v3M18.7 11.5v5M12 26h0M18.7 26.5h0"/><path d="M5 33h31"/>
+        </g>
+        <path d="M27.5 15.5c1.6-.3 2.6.6 2.9 1.7-1.6.3-2.6-.5-2.9-1.7z" fill="#B8923A"/>
+        <path d="M17.6 20.5l1.1-1.1 1.1 1.1-1.1 1.1z" fill="#B8923A"/>
+      </svg>
+      <div><div class="name">RECITREADY</div><div class="tag">Quiz Room</div></div>
+    </div>
+    <div class="subject">Civil Procedure · Rules 1–35</div>
+  </div>
+
+  <!-- HOME -->
+  <div class="panel" id="home">
+    <div class="head">
+      <div class="badge">FOUR-STATEMENT TRUE OR FALSE</div>
+      <h1>Civil Procedure: 200 questions in 10 timed sets</h1>
+      <div class="sub">2019 Amended Rules (Rules 1–35), Expedited Procedures, and Supreme Court doctrines</div>
+      <div class="how"><b>How to answer.</b> Each question has four statements, I to IV. Decide which of them are true, then pick the choice that lists exactly the true ones. A choice may also say that all or none of the statements are true. Each set has 20 questions and a 15-minute timer, and it submits itself when time runs out. Every attempt draws a new combination and order from the set's 80 statements.</div>
+    </div>
+    <div class="body">
+      <div class="opts">
+        <label class="chk"><input type="checkbox" id="useTimer" checked> 15-minute timer</label>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="panel" id="quiz" hidden>
+    <div class="bar">
+      <div class="l"><div class="timer" id="timer">15:00</div><div class="prog" id="prog"></div></div>
+      <div style="display:flex;gap:8px"><button class="btn ghost" id="quit">Quit</button><button class="btn pri" id="submit">Submit</button></div>
+    </div>
+    <div class="qhead"><div class="c" id="qcov"></div><h2 id="qtitle"></h2></div>
+    <div class="list" id="list"></div>
+    <div class="foot"><span class="note" id="unans"></span><button class="btn pri" id="submit2">Submit answers</button></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="panel" id="results" hidden>
+    <div class="banner" id="timeup" hidden>Time's up. Your answers were submitted automatically.</div>
+    <div class="score">
+      <div class="big" id="big"></div>
+      <div><div class="verdict" id="verdict"></div><div class="meta" id="rmeta"></div></div>
+    </div>
+    <div class="filters" id="filters">
+      <button data-f="all" class="on">All</button><button data-f="wrong">Wrong only</button>
+    </div>
+    <div class="list" id="rlist"></div>
+    <div class="foot">
+      <span class="note">Each statement shows whether it is true or false, with the reason and the source.</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="home2">All sets</button><button class="btn pri" id="retake">Retake this set</button></div>
+    </div>
+  </div>
+
+  <p class="disclaimer"><b>Study aid only.</b> These are original statements written from the Rules of Court, the Rules on Expedited Procedures and the doctrines of Supreme Court decisions. They are not a substitute for the official text, your casebooks or your professors' discussions, and may contain errors. Always check against an official source before relying on them for recitations, exams or practice.</p>
+</div>
+<script>
+/* Civil Procedure I — Four-Statement True or False. Sets 1–5.
+   Each statement: [text, explanation, source]. T = true, F = false. Doctrines stated directly; no case names in statements. */
+const SETS_A = [
+{ t:"General principles, jurisdiction and Rule 1", c:"Rule 1 · Rule 144 · docket fees · jurisdiction",
+T:[
+["The Rules of Court apply in all courts, except as otherwise provided by the Supreme Court.","","Rule 1, Sec. 2"],
+["A civil action is one by which a party sues another for the enforcement or protection of a right, or the prevention or redress of a wrong.","","Rule 1, Sec. 3(a)"],
+["Both ordinary and special civil actions are governed by the rules for ordinary civil actions, subject to the specific rules for special civil actions.","","Rule 1, Sec. 3(a)"],
+["A special proceeding is a remedy by which a party seeks to establish a status, a right, or a particular fact.","","Rule 1, Sec. 3(c)"],
+["The Rules of Court do not apply to election, land registration, cadastral, naturalization and insolvency cases, except by analogy or in a suppletory character.","","Rule 1, Sec. 4"],
+["A civil action is commenced by the filing of the original complaint in court.","","Rule 1, Sec. 5"],
+["As to an additional defendant impleaded in a later pleading, the action is commenced on the date that later pleading is filed, even if the motion for its admission is denied.","","Rule 1, Sec. 5"],
+["The Rules are liberally construed to secure a just, speedy and inexpensive disposition of every action and proceeding.","","Rule 1, Sec. 6"],
+["The 2019 Amendments govern cases filed after May 1, 2020, and pending proceedings, unless their application would not be feasible or would work injustice.","","Rule 144"],
+["Procedural rules may be applied to actions pending at the time of their promulgation.","Procedural laws are retroactive in that sense.","Sun Insurance v. Asuncion"],
+["A case is deemed filed only upon payment of the docket fees.","","Manchester Development v. CA"],
+["Absent intent to defraud, docket fees may be paid within a reasonable time, but never beyond the prescriptive or reglementary period.","","Sun Insurance v. Asuncion"],
+["Fees on claims awarded but not specified in the pleading become a lien on the judgment.","","Sun Insurance v. Asuncion"],
+["Full payment of appellate docket fees within the reglementary period is mandatory and jurisdictional.","","Gipa v. Southern Luzon Institute"],
+["A letter asking a judge to intervene is not a pleading and does not commence an action.","","Monsanto v. Lim"],
+["Jurisdiction over the subject matter is conferred only by law.","","Bilag v. Ay-Ay"],
+["Jurisdiction is determined by the law in force at the commencement of the action.","","Anama v. Citibank"],
+["Jurisdiction is determined by the allegations of the complaint and the reliefs sought, not by the caption.","","Barangay Mayamot v. Antipolo City"],
+["A judgment rendered by a court without jurisdiction over the subject matter is void and may be attacked at any time.","","Bilag v. Ay-Ay"],
+["A court without jurisdiction over the subject matter can only dismiss the action.","","Bilag v. Ay-Ay"],
+["In actions involving title to or possession of real property, the assessed value must be alleged in the complaint.","Silence may result in dismissal for lack of jurisdiction.","Padlan v. Dinglasan"],
+["Actions for specific performance or for breach of contract are incapable of pecuniary estimation.","","Iniego v. Purganan"],
+["To determine whether an action is capable of pecuniary estimation, the court looks at the principal relief sought.","","Barangay Mayamot v. Antipolo City"],
+["Where damages are the main cause of action, damages of whatever kind are counted for jurisdiction, excluding attorney's fees, interest, litigation expenses and costs.","","Mangaliag v. Catubig-Pastoral"],
+["An action to revive a judgment is a new action, incapable of pecuniary estimation and within the RTC's exclusive original jurisdiction.","Even if the judgment came from the CA.","Anama v. Citibank"],
+["Errors committed by a court that has jurisdiction are errors of judgment, correctible by appeal.","","Salvador v. Patricia, Inc."],
+["Under the doctrine of primary jurisdiction, the court suspends the case pending the agency's determination of matters within its expertise.","","PT&T v. Smart"],
+["A party who invoked the court's jurisdiction and sought affirmative relief, and raised lack of jurisdiction only after an adverse decision and unreasonable delay, may be barred by estoppel by laches.","","Tijam v. Sibonghanoy"],
+["Estoppel by laches against raising lack of jurisdiction applies only in exceptional circumstances similar to those in which it was first applied.","","Mangaliag v. Catubig-Pastoral"],
+["Unlike venue, jurisdiction over the subject matter cannot be waived or conferred by consent.","","Anama v. Citibank"],
+["Hierarchy of courts is a constitutional imperative, not a mere policy.","","GIOS-Samar v. DOTC"],
+["Direct resort to the Supreme Court is limited to questions of law, even in constitutional cases.","","GIOS-Samar v. DOTC"],
+["A case becomes moot when a supervening event removes the practical value of a judgment.","","Ifurung v. Carpio Morales"],
+["The exceptions to mootness allow, but do not require, the Supreme Court to decide a moot case.","","Ifurung v. Carpio Morales"],
+["A pleading must allege ultimate facts; conclusions of law do not state a cause of action.","","Ifurung v. Carpio Morales"],
+["Rule 65 is a proper vehicle to challenge the constitutionality of a governmental act under the Court's expanded jurisdiction.","","Ifurung v. Carpio Morales"],
+["An RTC cannot enjoin a co-equal quasi-judicial agency acting within its authority.","Doctrine of non-interference.","PT&T v. Smart"],
+["An action to annul a deed is personal when the plaintiff still holds title and possession.","It is real if the plaintiff seeks to recover title or possession.","Racpan v. Barroga-Haigh"],
+["Actions coupled with provisional remedies are exempt from prior barangay conciliation.","","Racpan v. Barroga-Haigh"],
+["An action for damages based on quasi-delict is capable of pecuniary estimation, and jurisdiction depends on the total damages claimed.","","Mangaliag v. Catubig-Pastoral"]
+],
+F:[
+["The Rules of Court apply directly, not merely by analogy, to land registration and naturalization proceedings.","They apply only by analogy or suppletorily.","Rule 1, Sec. 4"],
+["A criminal action is one by which a private complainant sues another for an act punishable by law.","It is the State that prosecutes.","Rule 1, Sec. 3(b)"],
+["A special proceeding is a remedy to enforce or protect a right or to redress a wrong.","That is a civil action; a special proceeding establishes a status, right or particular fact.","Rule 1, Sec. 3"],
+["Special civil actions are governed exclusively by their own rules and never by the rules for ordinary civil actions.","The rules for ordinary civil actions apply, subject to the specific rules.","Rule 1, Sec. 3(a)"],
+["A civil action is commenced upon service of summons on the defendant.","It is commenced by filing the original complaint.","Rule 1, Sec. 5"],
+["As to a defendant impleaded in a later pleading, the action is deemed commenced on the filing of the original complaint.","It is commenced on the filing of the later pleading.","Rule 1, Sec. 5"],
+["If the motion to admit a pleading impleading an additional defendant is denied, the action is never commenced as to him.","It is commenced on filing irrespective of the denial.","Rule 1, Sec. 5"],
+["The Rules of Court are strictly construed against the party invoking them.","They are liberally construed.","Rule 1, Sec. 6"],
+["The 2019 Amendments apply to pending cases even where the court finds their application would work injustice.","The former procedure governs in that case.","Rule 144"],
+["Mere filing of the complaint, without payment of the docket fees, vests the trial court with jurisdiction.","Payment, not mere filing, vests jurisdiction.","Sun Insurance v. Asuncion"],
+["Non-payment of docket fees may be cured by amending the complaint to reduce the claim.","Amendment cannot cure the defect.","Manchester Development v. CA"],
+["The amount of damages needs to be specified only in the prayer, not in the body, of the pleading.","It must be specified in both.","Manchester Development v. CA"],
+["Late payment of docket fees always results in dismissal, even if made in good faith within the prescriptive period.","Good-faith payment within the prescriptive period does not warrant dismissal.","Heirs of Hinog v. Melicor"],
+["The rules on docket fees laid down in the leading cases do not apply to third-party complaints.","They apply to third-party complaints.","Ballatan v. CA"],
+["Unpaid fees on damages that arise after the filing of the complaint oust the court of jurisdiction.","They become a lien on the judgment award.","Ballatan v. CA"],
+["Payment of appellate docket fees beyond the reglementary period is a mere technicality that is always excused.","It is mandatory and jurisdictional; liberality requires an explanation.","Gipa v. Southern Luzon Institute"],
+["An administrative directive of the Supreme Court may confer jurisdiction over a case on a court.","An administrative directive cannot confer jurisdiction.","Monsanto v. Lim"],
+["Jurisdiction over the subject matter may be conferred by agreement of the parties.","It is conferred only by law.","Anama v. Citibank"],
+["Jurisdiction is determined by the law in force when judgment is rendered.","By the law in force at the commencement of the action.","Anama v. Citibank"],
+["The caption of the complaint controls in determining the nature of the action and the court's jurisdiction.","The allegations and reliefs control, not the caption.","Barangay Mayamot v. Antipolo City"],
+["Lack of jurisdiction over the subject matter is waived if not raised in the answer.","It may be raised at any stage.","Bilag v. Ay-Ay"],
+["A judgment rendered without jurisdiction over the subject matter is merely voidable and becomes valid if not appealed.","It is void and may be attacked at any time.","Bilag v. Ay-Ay"],
+["In real actions, the complaint need not allege the assessed value, which the court may determine at trial.","The assessed value must be alleged.","Padlan v. Dinglasan"],
+["An action for specific performance is capable of pecuniary estimation.","It is incapable of pecuniary estimation.","Iniego v. Purganan"],
+["In computing the jurisdictional amount, attorney's fees and litigation expenses are included.","They are excluded.","Mangaliag v. Catubig-Pastoral"],
+["An action to revive a judgment of the Court of Appeals must be filed in the Court of Appeals.","It is a new action within the RTC's jurisdiction.","Anama v. Citibank"],
+["Errors of judgment committed by a court with jurisdiction are correctible by certiorari under Rule 65.","They are correctible by appeal.","Salvador v. Patricia, Inc."],
+["Under the doctrine of primary jurisdiction, the court must dismiss the case and let the agency decide.","The court suspends, not dismisses, the case.","PT&T v. Smart"],
+["Lack of jurisdiction over the subject matter can never be barred by estoppel, under any circumstances.","Estoppel by laches applies in exceptional circumstances.","Tijam v. Sibonghanoy"],
+["Hierarchy of courts is a mere policy that the Supreme Court may disregard whenever the parties request.","It is a constitutional imperative.","GIOS-Samar v. DOTC"],
+["The Supreme Court will take up factual issues on direct resort when the case is of transcendental importance.","It will not, regardless of transcendental importance.","GIOS-Samar v. DOTC"],
+["Where an exception to mootness is present, the Court is bound to decide the moot case.","The exceptions permit but do not compel a ruling.","Ifurung v. Carpio Morales"],
+["Allegations that are conclusions of law suffice to state a cause of action.","Ultimate facts must be alleged.","Ifurung v. Carpio Morales"],
+["An RTC may enjoin a co-equal quasi-judicial agency acting within its authority.","It cannot (non-interference).","PT&T v. Smart"],
+["An action to annul a deed is always a real action, even when the plaintiff still holds title and possession.","It is personal in that case.","Racpan v. Barroga-Haigh"],
+["An action coupled with a provisional remedy must first undergo barangay conciliation.","It is exempt.","Racpan v. Barroga-Haigh"],
+["An action for damages based on quasi-delict is incapable of pecuniary estimation.","It is capable of pecuniary estimation.","Mangaliag v. Catubig-Pastoral"],
+["The Supreme Court receives evidence at first instance in any original action filed before it.","The only instance is the review of martial law or suspension of the writ under Art. VII, Sec. 18.","GIOS-Samar v. DOTC"],
+["Hierarchy of courts, locus standi and joinder of parties can never be relaxed, even for issues of transcendental importance.","They may yield for transcendental importance.","Ifurung v. Carpio Morales"],
+["Procedural rules can never be applied to actions already pending when they were promulgated.","They apply to pending actions.","Sun Insurance v. Asuncion"]
+]},
+
+{ t:"Cause of action and parties (I)", c:"Rule 2 · Rule 3, Secs. 1–11",
+T:[
+["Every ordinary civil action must be based on a cause of action.","","Rule 2, Sec. 1"],
+["A cause of action is the act or omission by which a party violates a right of another.","","Rule 2, Sec. 2"],
+["The elements of a cause of action are a right of the plaintiff, a correlative obligation of the defendant, and an act or omission violating that right.","","Soloil v. PCA"],
+["A party may not institute more than one suit for a single cause of action.","","Rule 2, Sec. 3"],
+["If two or more suits are filed on the same cause of action, the filing of one or a judgment on the merits in one is a ground to dismiss the others.","","Rule 2, Sec. 4"],
+["One primary right and one wrong make one cause of action, however many reliefs are sought.","","Decena v. Piquero"],
+["A party may join, in the alternative or otherwise, as many causes of action as he has against an opposing party, subject to conditions.","","Rule 2, Sec. 5"],
+["Joinder of causes of action must comply with the rules on joinder of parties.","","Rule 2, Sec. 5(a)"],
+["Joinder of causes of action shall not include special civil actions or actions governed by special rules.","","Rule 2, Sec. 5(b)"],
+["Causes of action between the same parties that pertain to different venues or jurisdictions may be joined in the RTC if one of them falls within its jurisdiction and venue lies there.","","Rule 2, Sec. 5(c)"],
+["Where all the claims are principally for money, the aggregate amount is the test of jurisdiction.","Totality rule.","Rule 2, Sec. 5(d); Pantranco v. Standard Insurance"],
+["Misjoinder of causes of action is not a ground for dismissal.","","Rule 2, Sec. 6"],
+["A misjoined cause of action may be severed on motion of a party or on the court's own initiative.","","Rule 2, Sec. 6"],
+["Failure to state a cause of action concerns the sufficiency of the allegations, while lack of cause of action concerns the sufficiency of the evidence.","","Soloil v. PCA; Roa v. Sps. Sy"],
+["In testing whether a complaint states a cause of action, the allegations are hypothetically admitted.","","Soloil v. PCA"],
+["In testing the sufficiency of a cause of action, the court may consider the annexes to the complaint.","","Soloil v. PCA"],
+["Under the 2019 Rules, failure to state a cause of action is raised as an affirmative defense, not by motion to dismiss.","","Roa v. Sps. Sy"],
+["Moving for a bill of particulars implicitly admits that the complaint states a cause of action.","","Roa v. Sps. Sy"],
+["The remedy against the denial of a motion to dismiss is to answer, go to trial and appeal; certiorari lies only for grave abuse of discretion.","","RCA of San Fernando v. Soriano"],
+["An action whose object is to nullify a certificate of title is a direct attack on the title.","","RCA of San Fernando v. Soriano"],
+["Only natural or juridical persons, or entities authorized by law, may be parties in a civil action.","","Rule 3, Sec. 1"],
+["The term plaintiff may refer to a counter-claimant, a cross-claimant or a third-party plaintiff.","","Rule 3, Sec. 1"],
+["A real party in interest is one who stands to be benefited or injured by the judgment, or who is entitled to the avails of the suit.","","Rule 3, Sec. 2"],
+["A real party in interest must have a present, substantial interest, not a mere expectancy or incidental interest.","","Miranda v. Carreon"],
+["Where a representative sues, the beneficiary is included in the title of the case and deemed the real party in interest.","","Rule 3, Sec. 3"],
+["An agent acting in his own name for an undisclosed principal may sue without joining the principal, unless the contract involves things belonging to the principal.","","Rule 3, Sec. 3"],
+["Husband and wife shall sue or be sued jointly, except as provided by law.","","Rule 3, Sec. 4"],
+["A minor may sue or be sued with the assistance of his father, mother, guardian, or a guardian ad litem.","","Rule 3, Sec. 5"],
+["Permissive joinder requires a right to relief arising from the same transaction or series of transactions and a common question of law or fact.","","Rule 3, Sec. 6"],
+["Indispensable parties are those without whom no final determination of the action can be had.","","Rule 3, Sec. 7"],
+["The absence of an indispensable party renders all subsequent proceedings void, as to both absent and present parties.","","Arcelona v. CA"],
+["Non-joinder of an indispensable party is not a ground for dismissal; dismissal follows only upon refusal to obey an order to implead.","","Heirs of Mesina v. Heirs of Fian"],
+["The non-inclusion of a necessary party does not prevent the court from proceeding with the action.","","Rule 3, Sec. 9"],
+["Failure without justifiable cause to comply with an order to include a necessary party is deemed a waiver of the claim against him.","","Rule 3, Sec. 9"],
+["A person who should be joined as plaintiff but whose consent cannot be obtained may be made a defendant, with the reason stated in the complaint.","","Rule 3, Sec. 10"],
+["Parties may be dropped or added on motion or on the court's own initiative at any stage of the action.","","Rule 3, Sec. 11"],
+["A sole proprietorship has no juridical personality; the owner is the real party in interest.","Misdesignation is a formal defect curable by amendment.","Yao Ka Sin Trading v. CA"],
+["An insurer that has fully paid the loss is the real party in interest and may sue in its own name as subrogee.","","Lorenzo Shipping v. Chubb and Sons"],
+["Capacity to sue is distinct from being a real party in interest.","","Lorenzo Shipping v. Chubb and Sons"],
+["When co-owners are sued in an action affecting the undivided whole, all co-owners are indispensable parties.","","Gonzales v. PAGCOR"]
+],
+F:[
+["A cause of action is the plaintiff's right to recover damages.","It is the act or omission violating a right of another.","Rule 2, Sec. 2"],
+["Every special proceeding must be based on a cause of action.","Rule 2 requires a cause of action for ordinary civil actions; a special proceeding establishes a status, right or fact.","Rule 2, Sec. 1; Rule 1, Sec. 3(c)"],
+["A party may file separate suits for each relief arising from a single cause of action.","He may not split a single cause of action.","Rule 2, Sec. 3"],
+["Splitting a single cause of action is allowed if the suits are filed in different courts.","It is a ground to dismiss the other suits.","Rule 2, Sec. 4"],
+["Each item of damage arising from one wrong is a separate cause of action.","Incidental damages do not create separate causes of action.","Decena v. Piquero"],
+["Joinder of causes of action may include special civil actions if they arise from the same transaction.","Special civil actions cannot be joined.","Rule 2, Sec. 5(b)"],
+["Causes of action pertaining to different jurisdictions may be joined in the MTC if one of them falls within its jurisdiction.","Such joinder is allowed only in the RTC.","Rule 2, Sec. 5(c)"],
+["Where all the claims are principally for money, the largest single claim is the test of jurisdiction.","The aggregate amount is the test.","Rule 2, Sec. 5(d)"],
+["Misjoinder of causes of action is a ground for dismissal of the entire action.","It leads to severance, not dismissal.","Rule 2, Sec. 6"],
+["A misjoined cause of action may be severed only on motion of a party, never by the court on its own.","The court may sever on its own initiative.","Rule 2, Sec. 6"],
+["Failure to state a cause of action and lack of cause of action are the same, and both are resolved on the allegations alone.","Lack of cause of action is decided on the evidence.","Roa v. Sps. Sy"],
+["In testing the sufficiency of the cause of action, the court may receive evidence on the truth of the allegations.","No evidence may be received; sufficiency, not veracity, is tested.","Soloil v. PCA"],
+["Under the 2019 Rules, failure to state a cause of action is a ground for a motion to dismiss.","It is raised as an affirmative defense.","Rule 15, Sec. 12; Roa v. Sps. Sy"],
+["The denial of a motion to dismiss may be appealed immediately.","It is interlocutory; answer, go to trial, and appeal the judgment.","RCA of San Fernando v. Soriano"],
+["Separate claims against different defendants who share no common interest may always be joined in one complaint.","They cannot be joined.","Mijares v. Piccio"],
+["An entity without juridical personality can never be a party to a civil action.","It may be sued under its common name.","Rule 3, Sec. 15"],
+["A real party in interest may have a mere expectancy or incidental interest in the suit.","The interest must be present and substantial.","Miranda v. Carreon"],
+["In an action prosecuted by a representative, the representative alone is deemed the real party in interest.","The beneficiary is the real party in interest.","Rule 3, Sec. 3"],
+["An agent acting in his own name for an undisclosed principal must always join the principal.","Only when the contract involves things belonging to the principal.","Rule 3, Sec. 3"],
+["Husband and wife must always sue or be sued separately.","They sue or are sued jointly, except as provided by law.","Rule 3, Sec. 4"],
+["A minor may sue in his own name without anyone's assistance.","He must be assisted by a parent, guardian or guardian ad litem.","Rule 3, Sec. 5"],
+["Permissive joinder requires only a common question of law, even if the claims arise from unrelated transactions.","The claims must also arise from the same transaction or series of transactions.","Rule 3, Sec. 6"],
+["Non-joinder of an indispensable party is a ground for immediate dismissal of the action.","The remedy is to implead; dismissal follows only on refusal to obey.","Heirs of Mesina v. Heirs of Fian"],
+["A judgment rendered without an indispensable party remains binding on the parties actually impleaded.","Subsequent proceedings are void as to absent and present parties.","Arcelona v. CA"],
+["Non-joinder of a necessary party prevents the court from proceeding with the action.","The court may proceed, without prejudice to the necessary party's rights.","Rule 3, Sec. 9"],
+["Failure to comply with an order to include a necessary party results in dismissal of the entire complaint.","It is a waiver of the claim against that party.","Rule 3, Sec. 9"],
+["A party whose consent to join as plaintiff cannot be obtained must be dropped from the case.","He may be made a defendant.","Rule 3, Sec. 10"],
+["Misjoinder of parties is a ground for dismissal of the action.","Neither misjoinder nor non-joinder is a ground for dismissal.","Rule 3, Sec. 11"],
+["Parties may be added only before the filing of the answer.","They may be added at any stage of the action.","Rule 3, Sec. 11"],
+["A sole proprietorship may sue in its business name as a separate juridical entity.","It has no juridical personality.","Yao Ka Sin Trading v. CA"],
+["Misdesignation of a sole proprietorship as a party is a fatal defect that cannot be cured by amendment.","It is a formal defect curable by amendment.","Yao Ka Sin Trading v. CA"],
+["An insurer that has fully paid the loss must sue in the name of the insured.","It sues in its own name as subrogee.","Lorenzo Shipping v. Chubb and Sons"],
+["The owner of damaged goods ceases to be a real party in interest once the goods are insured.","The owner is a real party in interest whether or not insured.","National Steel v. CA"],
+["Capacity to sue and being a real party in interest are one and the same requirement.","They are distinct.","Lorenzo Shipping v. Chubb and Sons"],
+["Non-joinder of parties is the same as failure to state a cause of action.","They are distinct.","Heirs of Mesina v. Heirs of Fian"],
+["In an action affecting co-owned property as a whole, it suffices to sue one co-owner as defendant.","All co-owners are indispensable as defendants.","Gonzales v. PAGCOR"],
+["A co-owner cannot sue to recover co-owned property without joining all the other co-owners.","Any co-owner may sue to recover co-owned property.","Art. 487, Civil Code; Ch. 5 doctrines"],
+["Separate individual claims, if numerous and similar, satisfy the common interest required for a class suit.","They do not qualify.","Valencia v. City of Dumaguete"],
+["A taxpayer's suit may prosper without any showing of a disbursement of public funds.","A direct, illegal disbursement of public funds is required.","Miranda v. Carreon"],
+["An unlicensed foreign corporation can never sue in Philippine courts.","It may sue on an isolated transaction, which must be affirmatively pleaded.","Commissioner of Customs v. K.M.K. Gani"]
+]},
+
+{ t:"Parties (II), standing, venue and uniform procedure", c:"Rule 3, Secs. 12–22 · Rules 4–5",
+T:[
+["A class suit requires a subject of common or general interest, parties so numerous that joining all is impracticable, and representatives sufficient to protect all.","","Rule 3, Sec. 12"],
+["In a class suit, any party in interest has the right to intervene to protect his individual interest.","","Rule 3, Sec. 12"],
+["Separate individual claims, though numerous and similar, do not support a class suit.","","Valencia v. City of Dumaguete"],
+["Minors may sue for themselves, their generation and generations yet unborn under the principle of intergenerational responsibility.","","Oposa v. Factoran"],
+["A plaintiff uncertain against whom he is entitled to relief may join several persons as defendants in the alternative.","","Rule 3, Sec. 13"],
+["A defendant whose identity is unknown may be sued as the unknown owner or heir, and the pleading must be amended once his identity is discovered.","","Rule 3, Sec. 14"],
+["Persons who enter into a transaction without organizing as a juridical entity may be sued under the name by which they are commonly known.","","Rule 3, Sec. 15"],
+["In the answer of an entity without juridical personality, the names and addresses of its members must be revealed.","","Rule 3, Sec. 15"],
+["Counsel must inform the court of a party's death within 30 days and give the name and address of the legal representative.","","Rule 3, Sec. 16"],
+["Counsel's failure to report a client's death is a ground for disciplinary action.","","Rule 3, Sec. 16"],
+["The heirs may be substituted for a deceased party without the appointment of an executor or administrator.","","Rule 3, Sec. 16"],
+["The court shall order the legal representative to appear and be substituted within 30 days from notice.","","Rule 3, Sec. 16"],
+["Only the heirs or the legal representative may be substituted for a deceased party.","","Gonzales v. PAGCOR"],
+["An action for injury to the person, as opposed to property rights, does not survive the plaintiff's death.","","Gonzales v. PAGCOR"],
+["Lack of substitution of a deceased party's heirs is a due process concern of the heirs, who alone may invoke or waive it.","","Carandang v. Heirs of De Guzman"],
+["A suit brought as a citizen, taxpayer or lawyer is personal and does not survive the party's death.","","Gonzales v. PAGCOR"],
+["An action involving a public officer in his official capacity may continue against his successor if, within 30 days after the successor takes office, a substantial need for it is shown.","","Rule 3, Sec. 17"],
+["In case of a transfer of interest, the action may continue by or against the original party unless the court orders substitution or joinder.","","Rule 3, Sec. 19"],
+["In an action on a contractual money claim, if the defendant dies before entry of final judgment, the action continues until entry of final judgment.","","Rule 3, Sec. 20"],
+["A favorable judgment on a contractual money claim against a deceased defendant is enforced through the rules on claims against the estate.","","Rule 3, Sec. 20"],
+["An indigent litigant is exempt from docket fees, which become a lien on any favorable judgment unless the court provides otherwise.","","Rule 3, Sec. 21"],
+["Any adverse party may contest a grant of indigent status at any time before the trial court renders judgment.","","Rule 3, Sec. 21"],
+["In an action involving the validity of a law or treaty, the court may require the appearance of the Solicitor General.","","Rule 3, Sec. 22"],
+["In private suits, standing is governed by the real party in interest rule.","","David v. Macapagal-Arroyo"],
+["In public suits, the direct injury test applies, but it may be relaxed for issues of transcendental importance.","","David v. Macapagal-Arroyo"],
+["Legislators have standing to challenge acts that impair the prerogatives of Congress.","","David v. Macapagal-Arroyo"],
+["The incumbent President is immune from suit during his tenure.","","David v. Macapagal-Arroyo"],
+["Actions affecting title to or possession of real property are filed where the property, or a portion of it, is situated.","","Rule 4, Sec. 1"],
+["Forcible entry and unlawful detainer actions are filed in the MTC of the place where the property is situated.","","Rule 4, Sec. 1"],
+["A personal action may be filed where the plaintiff or the defendant resides, at the plaintiff's election.","","Rule 4, Sec. 2"],
+["In a personal action against a nonresident defendant, venue may lie where he may be found.","","Rule 4, Sec. 2"],
+["If the defendant does not reside and is not found in the Philippines and the action affects the plaintiff's personal status, it may be filed where the plaintiff resides.","","Rule 4, Sec. 3"],
+["Rule 4 does not apply where the parties validly agreed in writing, before filing, on the exclusive venue.","","Rule 4, Sec. 4"],
+["Venue stipulations are permissive unless restrictive words show an intent to make the stipulated venue exclusive.","","Radiowealth Finance v. Nolasco"],
+["A trial court may not dismiss a case motu proprio for improper venue.","","Radiowealth Finance v. Nolasco"],
+["Venue is procedural and may be waived.","","Radiowealth Finance v. Nolasco"],
+["The procedure in the MTCs is the same as in the RTCs, except where a provision applies only to one of them or in cases under summary procedure.","","Rule 5, Sec. 1"],
+["The term Municipal Trial Courts includes Metropolitan Trial Courts, MTCs in Cities, MTCs and Municipal Circuit Trial Courts.","","Rule 5, Sec. 2"],
+["Joinder of a real and a personal action requires two or more causes of action.","","Decena v. Piquero"],
+["No one may be named a co-petitioner without his consent.","An unwilling co-plaintiff is made a defendant instead.","Resident Marine Mammals v. Reyes"]
+],
+F:[
+["A class suit may be filed by any single member, even if the representatives cannot fully protect all concerned.","The representatives must be sufficiently numerous and representative.","Rule 3, Sec. 12"],
+["In a class suit, individual members cannot intervene.","Any party in interest may intervene.","Rule 3, Sec. 12"],
+["A class suit may be dismissed or compromised without court approval.","Court approval is required.","Rule 17, Sec. 2"],
+["Class members who wish to continue a class suit after the representative's death should move for substitution.","They should intervene.","Pulgar v. RTC of Mauban"],
+["Defendants may be joined in the alternative only if the rights to relief against them are consistent.","Joinder is allowed even if the rights to relief are inconsistent.","Rule 3, Sec. 13"],
+["A defendant whose name is unknown cannot be sued until he is identified.","He may be sued as the unknown owner, heir, or similar designation.","Rule 3, Sec. 14"],
+["An entity without juridical personality sued under its common name need not reveal its members in its answer.","Their names and addresses must be revealed.","Rule 3, Sec. 15"],
+["Counsel must inform the court of a party's death within 15 days.","Within 30 days.","Rule 3, Sec. 16"],
+["The heirs of a deceased party may be substituted only after an executor or administrator is appointed.","No appointment is required.","Rule 3, Sec. 16"],
+["A person asserting his own interest in the property may be substituted for a deceased party.","Only heirs or the legal representative may be substituted.","Gonzales v. PAGCOR"],
+["An action for injury to the person survives the death of the plaintiff.","It does not survive.","Gonzales v. PAGCOR"],
+["The opposing party may invoke the lack of substitution of a deceased party's heirs to nullify the proceedings.","Only the heirs may invoke it.","Carandang v. Heirs of De Guzman"],
+["A suit filed by a party as a citizen or taxpayer survives his death and is continued by his heirs.","It is personal and does not survive.","Gonzales v. PAGCOR"],
+["An action against a public officer in his official capacity automatically continues against his successor, without any showing.","A substantial need must be shown within 30 days, with notice to the successor.","Rule 3, Sec. 17"],
+["Upon a transfer of interest, the transferee must always be substituted for the original party.","The action may continue by or against the original party.","Rule 3, Sec. 19"],
+["If the defendant in a contractual money claim dies before final judgment, the action is dismissed and the claim must be filed in the estate proceedings.","The action continues until entry of final judgment.","Rule 3, Sec. 20"],
+["An indigent litigant must pay the exempted docket fees at the end of the case, whatever the outcome.","The fees are a lien only on a favorable judgment.","Rule 3, Sec. 21"],
+["The grant of indigent status may be contested only within 15 days from its grant.","At any time before judgment by the trial court.","Rule 3, Sec. 21"],
+["If a party declared indigent is found to have sufficient income, the case is dismissed outright.","The proper fees are assessed and collected.","Rule 3, Sec. 21"],
+["The court must always require the Solicitor General's appearance in actions involving the validity of a law.","It may, in its discretion.","Rule 3, Sec. 22"],
+["In public suits, the real party in interest rule applies rather than the direct injury test.","The direct injury test applies.","David v. Macapagal-Arroyo"],
+["The direct injury test can never be relaxed.","It may be relaxed for transcendental importance.","David v. Macapagal-Arroyo"],
+["Holders of licenses sought to be cancelled are not indispensable parties.","They are indispensable.","Oposa v. Factoran"],
+["A real action must be filed where the plaintiff resides.","Where the property is situated.","Rule 4, Sec. 1"],
+["A forcible entry action may be filed in the RTC of the place where the plaintiff resides.","It is filed in the MTC where the property is situated.","Rule 4, Sec. 1"],
+["A personal action must be filed only where the defendant resides.","Where either the plaintiff or the defendant resides, at the plaintiff's election.","Rule 4, Sec. 2"],
+["In a personal action, the choice of venue belongs to the defendant.","It belongs to the plaintiff.","Rule 4, Sec. 2"],
+["An action affecting the personal status of a plaintiff against a defendant not found in the Philippines may be filed only where the defendant's property is located.","It may be filed where the plaintiff resides.","Rule 4, Sec. 3"],
+["A written agreement on exclusive venue made after the action is filed displaces Rule 4.","The agreement must be made before filing.","Rule 4, Sec. 4"],
+["A venue stipulation is always exclusive.","It is permissive unless restrictive words show exclusivity.","Radiowealth Finance v. Nolasco"],
+["A trial court may motu proprio dismiss a case for improper venue.","It may not.","Radiowealth Finance v. Nolasco"],
+["Venue, like jurisdiction, is conferred by law and cannot be waived.","Venue may be waived or stipulated.","Radiowealth Finance v. Nolasco"],
+["The procedure in the MTCs is entirely different from that in the RTCs.","It is uniform, with stated exceptions.","Rule 5, Sec. 1"],
+["The term Municipal Trial Courts under Rule 5 excludes the Metropolitan Trial Courts.","It includes them.","Rule 5, Sec. 2"],
+["Joinder of a real and a personal action is possible even with a single cause of action.","Two or more causes of action are required.","Decena v. Piquero"],
+["Venue stipulations restricting suits to a particular place are void as against public policy.","They are valid; they are permissive unless clearly exclusive.","Radiowealth Finance v. Nolasco"],
+["Minors cannot sue on behalf of generations yet unborn.","They may, under intergenerational responsibility.","Oposa v. Factoran"],
+["Once the identity of a defendant sued as an unknown owner is discovered, no amendment of the pleading is needed.","The pleading must be amended.","Rule 3, Sec. 14"],
+["If no legal representative appears within the period, the court must dismiss the action.","The court may order the opposing party to procure the appointment of an executor or administrator.","Rule 3, Sec. 16"],
+["A taxpayer need not show any disbursement of public funds to have standing in a taxpayer's suit.","An illegal disbursement of public funds is required.","Biraogo v. Philippine Truth Commission"]
+]},
+
+{ t:"Kinds of pleadings; parts and contents", c:"Rules 6–7",
+T:[
+["Pleadings are the written statements of the respective claims and defenses of the parties submitted to the court for judgment.","","Rule 6, Sec. 1"],
+["A party's claims are asserted in a complaint, counterclaim, cross-claim, third-party complaint or complaint-in-intervention.","","Rule 6, Sec. 2"],
+["A reply is allowed only if the defending party attaches an actionable document to the answer.","","Rule 6, Secs. 2, 10"],
+["The complaint must state the names and residences of the plaintiff and the defendant.","","Rule 6, Sec. 3"],
+["A negative defense is the specific denial of the material facts essential to the claimant's cause of action.","","Rule 6, Sec. 5(a)"],
+["An affirmative defense hypothetically admits the material allegations but would nevertheless bar recovery.","","Rule 6, Sec. 5(b)"],
+["Payment, release, prescription, estoppel and the statute of frauds are affirmative defenses.","","Rule 6, Sec. 5(b)"],
+["Lack of jurisdiction over the subject matter, litis pendentia and res judicata may be raised as affirmative defenses.","","Rule 6, Sec. 5(b)"],
+["A compulsory counterclaim not raised in the same action is barred, unless otherwise allowed by the Rules.","","Rule 6, Sec. 7"],
+["In an original action before the RTC, a counterclaim may be considered compulsory regardless of the amount.","","Rule 6, Sec. 7"],
+["A counterclaim for damages arising from the filing of a baseless complaint is compulsory.","","Lafarge Cement v. Continental Cement"],
+["One test of a compulsory counterclaim is the logical relationship between the claim and the counterclaim.","","Lafarge Cement v. Continental Cement"],
+["A cross-claim is a claim by one party against a co-party arising out of the transaction that is the subject of the original action or of a counterclaim.","","Rule 6, Sec. 8"],
+["A cross-claim may cover all or part of the original claim.","","Rule 6, Sec. 8"],
+["A counterclaim may be asserted against an original counter-claimant.","","Rule 6, Sec. 9"],
+["All new matters alleged in the answer are deemed controverted.","","Rule 6, Sec. 10"],
+["If the reply attaches an actionable document, the defendant may file a rejoinder based solely on that document.","","Rule 6, Sec. 10"],
+["A third-party complaint may be filed only with leave of court.","","Rule 6, Sec. 11"],
+["A third-party complaint shall be denied admission if the third-party defendant cannot be located within 30 calendar days from the grant of leave.","","Rule 6, Sec. 11"],
+["A third-party complaint shall be denied admission if it would introduce a new and separate controversy into the action.","","Rule 6, Sec. 11"],
+["New parties needed for complete relief on a counterclaim or cross-claim shall be brought in as defendants if jurisdiction over them can be obtained.","","Rule 6, Sec. 12"],
+["Jurisdiction over new parties impleaded in a counterclaim requires service of summons on them.","","Lafarge Cement v. Continental Cement"],
+["A third-party defendant may set up the defenses that the third-party plaintiff has against the original plaintiff's claim.","","Rule 6, Sec. 13"],
+["In subsequent pleadings, it suffices to state the name of the first party on each side, with an indication that there are other parties.","","Rule 7, Sec. 1"],
+["A pleading may add a general prayer for such further relief as may be just or equitable.","","Rule 7, Sec. 2(c)"],
+["Every pleading shall be dated.","","Rule 7, Sec. 2(d)"],
+["Counsel's signature certifies that the pleading is not being presented for an improper purpose, such as to harass or cause delay.","","Rule 7, Sec. 3"],
+["Absent exceptional circumstances, a law firm is jointly and severally liable for a Rule 7, Sec. 3 violation by its partner, associate or employee.","","Rule 7, Sec. 3"],
+["A lawyer or law firm cannot pass on to the client the monetary penalty for a Rule 7, Sec. 3 violation.","","Rule 7, Sec. 3"],
+["Pleadings need not be verified unless specifically required by law or rule.","","Rule 7, Sec. 4"],
+["A verification may be based on personal knowledge or on authentic documents.","","Rule 7, Sec. 4"],
+["A pleading required to be verified whose verification is based on information and belief is treated as an unsigned pleading.","","Rule 7, Sec. 4"],
+["A defective verification is a formal defect that may be corrected.","","Regulus Development v. Dela Cruz"],
+["As a rule, the certification against forum shopping must be signed by the party, not by counsel.","","Marcopper Mining v. Solidbank"],
+["A party must report within 5 calendar days after learning that a similar action has been filed or is pending.","","Rule 7, Sec. 5"],
+["Non-compliance with the certification requirement is not curable by mere amendment and is cause for dismissal without prejudice.","","Rule 7, Sec. 5"],
+["Willful and deliberate forum shopping is a ground for summary dismissal with prejudice and constitutes direct contempt.","","Rule 7, Sec. 5"],
+["Forum shopping exists when litis pendentia or res judicata would apply between the cases.","","Dy v. Mandy Commodities"],
+["Where co-petitioners share a common interest, the signature of one of them on the certification may be substantial compliance.","","Docena v. Lapesura"],
+["Only witnesses whose judicial affidavits are attached to the pleading may be presented at trial, except for meritorious reasons.","","Rule 7, Sec. 6"]
+],
+F:[
+["A motion is a pleading.","A motion is an application for relief other than by a pleading.","Rule 15, Sec. 1"],
+["A reply may be filed to any answer that raises new matters.","Only if an actionable document is attached to the answer.","Rule 6, Sec. 10"],
+["New matters alleged in the answer are deemed admitted if no reply is filed.","They are deemed controverted.","Rule 6, Sec. 10"],
+["An affirmative defense denies the material allegations of the complaint.","That is a negative defense; an affirmative defense confesses and avoids.","Rule 6, Sec. 5"],
+["Payment is a negative defense.","It is an affirmative defense.","Rule 6, Sec. 5(b)"],
+["Lack of jurisdiction over the subject matter cannot be raised as an affirmative defense.","It may be.","Rule 6, Sec. 5(b)"],
+["A compulsory counterclaim not set up in the action may be filed later in a separate action.","It is barred.","Rule 6, Sec. 7; Rule 9, Sec. 2"],
+["In an original action before the RTC, a counterclaim exceeding the RTC's jurisdictional amount is merely permissive.","It may be compulsory regardless of amount.","Rule 6, Sec. 7"],
+["A counterclaim for damages arising from the filing of a baseless complaint is permissive.","It is compulsory.","Lafarge Cement v. Continental Cement"],
+["A compulsory counterclaim requires for its adjudication the presence of third parties over whom the court cannot acquire jurisdiction.","It does not require such third parties.","Rule 6, Sec. 7"],
+["A cross-claim is a claim against an opposing party.","It is against a co-party; a counterclaim is against an opposing party.","Rule 6, Secs. 6, 8"],
+["A cross-claim cannot be filed against an original cross-claimant.","A counter-cross-claim may be filed.","Rule 6, Sec. 9"],
+["The plaintiff may file a reply to deny new matters in the answer even if no actionable document is attached.","New matters are deemed controverted; no reply is allowed.","Rule 6, Sec. 10"],
+["A rejoinder may be filed to any reply.","Only if the reply attaches an actionable document.","Rule 6, Sec. 10"],
+["A third-party complaint may be filed as a matter of right, without leave of court.","Leave is required.","Rule 6, Sec. 11"],
+["A third-party complaint must be admitted even if the third-party defendant cannot be located within 30 days.","It shall be denied admission.","Rule 6, Sec. 11"],
+["A third-party complaint may raise matters extraneous to the issues in the principal case.","Admission shall be denied.","Rule 6, Sec. 11"],
+["New parties to a counterclaim may be impleaded even if jurisdiction over them cannot be obtained.","Only if jurisdiction can be obtained.","Rule 6, Sec. 12"],
+["Impleading new parties in a counterclaim gives the court jurisdiction over them without service of summons.","Summons must be served.","Lafarge Cement v. Continental Cement"],
+["A third-party defendant can never assert a counterclaim against the original plaintiff.","In proper cases he may.","Rule 6, Sec. 13"],
+["In subsequent pleadings, the names of all parties must always be stated in full in the caption.","The first party on each side suffices.","Rule 7, Sec. 1"],
+["A pleading may not contain a general prayer for other relief.","It may.","Rule 7, Sec. 2(c)"],
+["A pleading must be signed by the party personally, never by counsel.","It may be signed by the party or counsel.","Rule 7, Sec. 3"],
+["The court may impose sanctions for a Rule 7, Sec. 3 violation without notice and hearing.","Notice and hearing are required.","Rule 7, Sec. 3(c)"],
+["A law firm may pass on to its client the monetary penalty imposed for a Rule 7 violation.","It cannot.","Rule 7, Sec. 3"],
+["All pleadings must be verified.","Only when required by law or rule.","Rule 7, Sec. 4"],
+["A verification based on knowledge, information and belief is sufficient.","It is treated as an unsigned pleading.","Rule 7, Sec. 4"],
+["A defective certification against forum shopping, like a defective verification, is always curable by amendment.","It is not curable by amendment, save for substantial compliance or compelling reasons.","Rule 7, Sec. 5; Regulus Development v. Dela Cruz"],
+["The certification against forum shopping is jurisdictional.","It is mandatory but not jurisdictional.","Robern Development v. Quitain"],
+["Counsel may, as a rule, sign the certification against forum shopping for the party.","The party must sign it.","Marcopper Mining v. Solidbank"],
+["The duty to report a similar pending action must be complied with within 15 calendar days of learning of it.","Within 5 calendar days.","Rule 7, Sec. 5"],
+["Submitting a false certification against forum shopping constitutes direct contempt.","It is indirect contempt; willful and deliberate forum shopping is direct contempt.","Rule 7, Sec. 5"],
+["Willful and deliberate forum shopping results only in dismissal without prejudice.","It results in summary dismissal with prejudice.","Rule 7, Sec. 5"],
+["Forum shopping requires absolute identity of parties.","Substantial identity suffices.","Rallos v. City of Cebu"],
+["The penalty for willful forum shopping is the dismissal of the later case only.","All the cases involved are dismissed.","Colegio Medico-Farmaceutico v. Lim"],
+["An appeal from a judgment and a certiorari petition against an order of execution pending appeal constitute forum shopping.","They do not.","Vicar International v. FEB Leasing"],
+["Belated submission of a board resolution can never cure a corporate signatory's lack of proof of authority.","It is substantial compliance if the authority existed at filing.","Vicar International v. FEB Leasing"],
+["Hearsay may be the basis of a valid verification.","It must rest on personal knowledge or authentic records.","Garrido v. Gadon"],
+["A pleading need not state the documentary and object evidence supporting its allegations.","It must.","Rule 7, Sec. 6"],
+["Witnesses whose judicial affidavits were not attached to the pleading may be freely presented at trial.","Only for meritorious reasons.","Rule 7, Sec. 6"]
+]},
+
+{ t:"Allegations, affirmative defenses and default", c:"Rules 8–9",
+T:[
+["Every pleading shall state the ultimate facts, including the evidence on which the party relies.","","Rule 8, Sec. 1"],
+["If a claim or defense is based on law, the pertinent provisions and their applicability must be stated.","","Rule 8, Sec. 1"],
+["A party may state claims or defenses alternatively or hypothetically.","","Rule 8, Sec. 2"],
+["A pleading is not made insufficient by the insufficiency of one alternative statement if another is sufficient.","","Rule 8, Sec. 2"],
+["A general averment of the performance or occurrence of all conditions precedent is sufficient.","","Rule 8, Sec. 3"],
+["Facts showing a party's capacity to sue or be sued must be averred.","","Rule 8, Sec. 4"],
+["An issue as to a party's legal existence or capacity to sue in a representative capacity is raised by specific denial.","","Rule 8, Sec. 4"],
+["The circumstances constituting fraud or mistake must be stated with particularity.","","Rule 8, Sec. 5"],
+["Malice, intent or knowledge may be averred generally.","","Rule 8, Sec. 5"],
+["In pleading a judgment, it suffices to aver it without setting forth matters showing jurisdiction to render it.","","Rule 8, Sec. 6"],
+["An authenticated copy of a judgment pleaded shall be attached to the pleading.","","Rule 8, Sec. 6"],
+["When an action is based on a written instrument, its substance must be set forth and the original or a copy attached.","","Rule 8, Sec. 7"],
+["The genuineness and due execution of an actionable document are deemed admitted unless specifically denied under oath.","","Rule 8, Sec. 8"],
+["The oath requirement does not apply when the adverse party does not appear to be a party to the instrument.","","Rule 8, Sec. 8"],
+["A statement that the defendant lacks knowledge sufficient to form a belief as to an averment has the effect of a denial.","","Rule 8, Sec. 10"],
+["A denial for lack of knowledge of matters plainly within the pleader's knowledge is a sham denial.","","Fernando Medical v. Wesleyan University"],
+["Material averments, other than the amount of unliquidated damages, are deemed admitted when not specifically denied.","","Rule 8, Sec. 11"],
+["Improper venue and lack of jurisdiction over the person are among the affirmative defenses under Rule 8, Sec. 12.","","Rule 8, Sec. 12"],
+["Failure to raise affirmative defenses at the earliest opportunity is a waiver.","","Rule 8, Sec. 12(b)"],
+["The court shall motu proprio resolve the Rule 8, Sec. 12 affirmative defenses within 30 calendar days from the filing of the answer.","","Rule 8, Sec. 12(c)"],
+["For the other affirmative defenses, the court may hold a summary hearing within 15 calendar days from the filing of the answer.","","Rule 8, Sec. 12(d)"],
+["Denied affirmative defenses cannot be the subject of a motion for reconsideration or certiorari but may be raised on appeal after judgment.","","Rule 8, Sec. 12(e)"],
+["If no responsive pleading is permitted, a motion to strike may be filed within 20 calendar days after service of the pleading.","","Rule 8, Sec. 13"],
+["The court may, on its own initiative, strike out sham, redundant or scandalous matter at any time.","","Rule 8, Sec. 13"],
+["Defenses and objections not pleaded in a motion to dismiss or in the answer are deemed waived.","","Rule 9, Sec. 1"],
+["The court shall dismiss the claim when the pleadings or the evidence show lack of jurisdiction over the subject matter, litis pendentia, res judicata or prescription.","","Rule 9, Sec. 1"],
+["A compulsory counterclaim or cross-claim not set up is barred.","","Rule 9, Sec. 2"],
+["A declaration of default requires a motion of the claiming party, notice to the defending party, and proof of failure to answer.","","Rule 9, Sec. 3; Sps. Manuel v. Ong"],
+["After a declaration of default, the court may render judgment or, in its discretion, require the claimant to submit evidence, whose reception may be delegated to the clerk of court.","","Rule 9, Sec. 3"],
+["A party in default is entitled to notice of subsequent proceedings but cannot take part in the trial.","","Rule 9, Sec. 3(a)"],
+["A motion to set aside an order of default may be filed at any time after notice and before judgment.","","Rule 9, Sec. 3(b)"],
+["A motion to lift default must be under oath and show fraud, accident, mistake or excusable negligence, and a meritorious defense.","","Rule 9, Sec. 3(b)"],
+["In a partial default, the court tries the case against all defendants upon the answers filed.","","Rule 9, Sec. 3(c)"],
+["A judgment by default cannot exceed the amount or differ in kind from that prayed for.","","Rule 9, Sec. 3(d)"],
+["A judgment by default cannot award unliquidated damages.","","Rule 9, Sec. 3(d)"],
+["No default is allowed in actions for annulment or declaration of nullity of marriage or for legal separation.","","Rule 9, Sec. 3(e)"],
+["In a nullity case where the defendant fails to answer, the Solicitor General or a deputized prosecutor investigates whether there is collusion.","","Rule 9, Sec. 3(e)"],
+["A motion to lift default without an affidavit of merit is pro forma.","","Sps. Manuel v. Ong"],
+["The genuineness and due execution of an actionable document are deemed admitted unless specifically denied under oath, which bars defenses like forgery.","","Fernando Medical v. Wesleyan University"],
+["A motion for reconsideration of the court's action on affirmative defenses is prohibited.","","Rule 15, Sec. 12(c); Colmenar v. Colmenar"]
+],
+F:[
+["A pleading should state only conclusions of law, leaving the facts to be proved at trial.","It must state ultimate facts.","Rule 8, Sec. 1"],
+["Alternative claims are prohibited if they are inconsistent with each other.","They may be stated alternatively or hypothetically.","Rule 8, Sec. 2"],
+["A pleading is rendered insufficient if one of its alternative statements is insufficient, even if another is sufficient.","It is not made insufficient.","Rule 8, Sec. 2"],
+["The performance of each condition precedent must be alleged with particularity.","A general averment suffices.","Rule 8, Sec. 3"],
+["Capacity to sue need not be alleged, since it is presumed.","It must be averred.","Rule 8, Sec. 4"],
+["Fraud may be averred generally, without stating its circumstances.","It must be stated with particularity.","Rule 8, Sec. 5"],
+["Malice and intent must be stated with particularity.","They may be averred generally.","Rule 8, Sec. 5"],
+["In pleading a judgment, the matters showing jurisdiction to render it must be set forth.","It suffices to aver the judgment.","Rule 8, Sec. 6"],
+["In an action based on a written instrument, it is enough to mention the instrument without attaching it.","The original or a copy must be attached.","Rule 8, Sec. 7"],
+["The genuineness and due execution of an actionable document are put in issue by a denial that is not under oath.","The denial must be under oath.","Rule 8, Sec. 8"],
+["The oath requirement applies even to an adverse party who does not appear to be a party to the instrument.","It does not.","Rule 8, Sec. 8"],
+["The oath requirement applies even when the claimant refuses an order to inspect the original instrument.","It does not apply in that case.","Rule 8, Sec. 8"],
+["A general denial suffices to tender an issue.","Specific denial is required.","Rule 8, Sec. 10"],
+["A defendant who wants to deny part of an averment must deny it entirely.","He specifies what is true and denies only the rest.","Rule 8, Sec. 10"],
+["Allegations on the amount of unliquidated damages are deemed admitted if not specifically denied.","They are not deemed admitted.","Rule 8, Sec. 11"],
+["A defendant may validly plead lack of knowledge of facts within his own knowledge.","That is a sham denial.","Fernando Medical v. Wesleyan University"],
+["Failure to state a cause of action is no longer an affirmative defense under the 2019 Rules.","It is one of the listed affirmative defenses.","Rule 8, Sec. 12(a)(4)"],
+["Affirmative defenses not raised in the answer may be raised for the first time on appeal.","They are waived.","Rule 8, Sec. 12(b)"],
+["The court resolves the Rule 8, Sec. 12 affirmative defenses only upon motion of the defendant.","It resolves them motu proprio.","Rule 8, Sec. 12(c)"],
+["The court must resolve the Rule 8, Sec. 12 affirmative defenses within 60 calendar days.","Within 30 calendar days from filing of the answer.","Rule 8, Sec. 12(c)"],
+["A summary hearing on the other affirmative defenses may be held within 30 calendar days from the filing of the answer.","Within 15 calendar days.","Rule 8, Sec. 12(d)"],
+["An order denying affirmative defenses may be challenged by petition for certiorari.","It may not; raise it on appeal.","Rule 8, Sec. 12(e)"],
+["A motion to hear affirmative defenses is allowed.","It is prohibited.","Rule 15, Sec. 12(b)"],
+["A motion to strike may be filed only after the responsive pleading is served.","It is filed before responding.","Rule 8, Sec. 13"],
+["The court may strike out matter from a pleading only on motion of a party.","It may also do so on its own initiative.","Rule 8, Sec. 13"],
+["Defenses not pleaded are never waived as long as they are raised before judgment.","Defenses not pleaded are waived, save the Rule 9, Sec. 1 grounds.","Rule 9, Sec. 1"],
+["The court cannot dismiss a claim on prescription unless prescription is pleaded.","It shall dismiss when prescription appears from the pleadings or evidence.","Rule 9, Sec. 1"],
+["A compulsory counterclaim not set up may be filed as an independent action.","It is barred.","Rule 9, Sec. 2"],
+["The court may declare a defendant in default motu proprio.","A motion is required.","Rule 9, Sec. 3"],
+["A party in default is not entitled to notice of subsequent proceedings.","He is entitled to notice.","Rule 9, Sec. 3(a)"],
+["A motion to set aside an order of default may be filed even after the judgment has become final and executory.","It must be filed before judgment.","Rule 9, Sec. 3(b)"],
+["A motion to lift an order of default need not be under oath.","It must be under oath.","Rule 9, Sec. 3(b)"],
+["In a partial default, judgment against the defaulting defendants is based solely on the complaint.","The case is tried against all upon the answers filed.","Rule 9, Sec. 3(c)"],
+["A judgment by default may award more than what was prayed for if the evidence supports it.","It cannot exceed the prayer.","Rule 9, Sec. 3(d)"],
+["A judgment by default may award unliquidated damages if proved.","It cannot.","Rule 9, Sec. 3(d)"],
+["A defendant in an annulment of marriage case who fails to answer may be declared in default.","No defaults are allowed.","Rule 9, Sec. 3(e)"],
+["A motion to declare a defendant in default is a non-litigious motion.","It is litigious.","Rule 15, Sec. 5(a)"],
+["Reception of evidence after a declaration of default can never be delegated to the clerk of court.","It may be delegated.","Rule 9, Sec. 3"],
+["A motion to lift default that is not supported by an affidavit of merit is sufficient if filed promptly.","It is pro forma.","Sps. Manuel v. Ong"],
+["A motion for reconsideration of the denial of affirmative defenses is allowed if filed within 15 days.","It is prohibited.","Rule 15, Sec. 12(c)"]
+]}
+];
+/* Civil Procedure I — Four-Statement True or False. Sets 6–10. */
+const SETS_B = [
+{ t:"Amendments, responsive pleadings and bill of particulars", c:"Rules 10–12",
+T:[
+["Pleadings may be amended so that the actual merits of the controversy may be speedily determined, without regard to technicalities.","","Rule 10, Sec. 1"],
+["A party may amend his pleading once as a matter of right at any time before a responsive pleading is served.","","Rule 10, Sec. 2"],
+["A reply may be amended as a matter of right within 10 calendar days after it is served.","","Rule 10, Sec. 2"],
+["A motion to dismiss is not a responsive pleading, so the plaintiff may still amend once as a matter of right.","","Eastern Heights v. Tagumpay Realty"],
+["Substantial amendments made after a responsive pleading is served require leave of court.","","Rule 10, Sec. 3"],
+["Leave to amend shall be refused if the motion was made with intent to delay.","","Rule 10, Sec. 3"],
+["Leave to amend shall be refused if the pleading stated no cause of action from the beginning that could be amended.","","Rule 10, Sec. 3"],
+["An amendment may substantially alter the cause of action or defense if it serves substantial justice and is not intended to delay.","","Lisam Enterprises v. Banco de Oro"],
+["Clerical or typographical errors may be corrected by the court at any stage, on its own or on motion, if no prejudice is caused.","","Rule 10, Sec. 4"],
+["Correcting a misnomer that is evident from the annexes is a formal amendment.","","Eastern Heights v. Tagumpay Realty"],
+["Issues not raised in the pleadings but tried with the parties' express or implied consent are treated as if raised in the pleadings.","","Rule 10, Sec. 5"],
+["No amendment is necessary to make the pleadings conform to the evidence on issues tried by consent.","","Rule 10, Sec. 5"],
+["Failure to object to evidence on an unpleaded issue is implied consent to try that issue.","","PNB v. Sps. Manalo"],
+["A supplemental pleading sets forth transactions or events that happened after the date of the pleading it supplements.","","Rule 10, Sec. 6"],
+["The adverse party may plead to a supplemental pleading within 10 calendar days from notice of the order admitting it.","","Rule 10, Sec. 6"],
+["A supplemental pleading must be germane to, and intertwined with, the original cause of action.","","CB Board of Liquidators v. Banco Filipino"],
+["An amended pleading supersedes the pleading that it amends.","","Rule 10, Sec. 8"],
+["Admissions in superseded pleadings may be offered in evidence against the pleader.","","Rule 10, Sec. 8"],
+["Claims or defenses in the superseded pleading that are not incorporated in the amended pleading are deemed waived.","","Rule 10, Sec. 8"],
+["A supplemental pleading stands together with the original pleading.","","Loy v. San Miguel Corp. Employees Union"],
+["The answer to a complaint is due within 30 calendar days after service of summons, unless the court fixes a different period.","","Rule 11, Sec. 1"],
+["A foreign private juridical entity served through the government official designated by law answers within 60 calendar days after its receipt of summons.","","Rule 11, Sec. 2"],
+["An amended complaint filed as a matter of right must be answered within 30 calendar days after service.","","Rule 11, Sec. 3"],
+["An amended complaint filed with leave must be answered within 15 calendar days from notice of the order admitting it.","","Rule 11, Sec. 3"],
+["An answer earlier filed may serve as the answer to an amended complaint if no new answer is filed.","","Rule 11, Sec. 3"],
+["A counterclaim or cross-claim must be answered within 20 calendar days from service.","","Rule 11, Sec. 4"],
+["A reply, if allowed, may be filed within 15 calendar days from service of the pleading responded to.","","Rule 11, Sec. 6"],
+["A supplemental complaint may be answered within 20 calendar days from notice of the order admitting it.","","Rule 11, Sec. 7"],
+["A counterclaim that matured after the answer was served may, with permission of the court, be set up by supplemental pleading before judgment.","","Rule 11, Sec. 9"],
+["A counterclaim omitted through oversight or excusable neglect may be set up by amendment, with leave, before judgment.","","Rule 11, Sec. 10"],
+["A defendant is allowed only one motion for extension of time to answer, for not more than 30 calendar days.","","Rule 11, Sec. 11"],
+["A motion for extension to file any pleading other than an answer is prohibited and is a mere scrap of paper.","","Rule 11, Sec. 11"],
+["A motion for a bill of particulars is filed before responding to a pleading.","","Rule 12, Sec. 1"],
+["A motion for a bill of particulars directed at a reply must be filed within 10 calendar days from its service.","","Rule 12, Sec. 1"],
+["A motion for a bill of particulars must point out the defects, the paragraphs where they appear, and the details desired.","","Rule 12, Sec. 1"],
+["An order for a bill of particulars must be complied with within 10 calendar days from notice, unless a different period is fixed.","","Rule 12, Sec. 3"],
+["If the order for a bill of particulars is not obeyed, the court may order the pleading or the portions concerned stricken out.","","Rule 12, Sec. 4"],
+["After service of the bill or notice of denial of the motion, the movant may file his responsive pleading within his remaining period, which shall not be less than 5 calendar days.","","Rule 12, Sec. 5"],
+["A bill of particulars becomes part of the pleading for which it is intended.","","Rule 12, Sec. 6"],
+["An amendment cannot introduce a cause of action that had not yet accrued when the original complaint was filed.","","CB Board of Liquidators v. Banco Filipino"]
+],
+F:[
+["A party may amend his pleading as a matter of right any number of times before a responsive pleading is served.","Only once.","Rule 10, Sec. 2"],
+["A reply may be amended as a matter of right within 15 calendar days after it is served.","Within 10 calendar days.","Rule 10, Sec. 2"],
+["A motion to dismiss is a responsive pleading that cuts off the right to amend as a matter of right.","It is not a responsive pleading.","Eastern Heights v. Tagumpay Realty"],
+["Leave of court is needed even for the first amendment made before any responsive pleading is served.","That amendment is a matter of right.","Rule 10, Sec. 2"],
+["Leave to amend may be granted to confer jurisdiction on the court.","Leave shall be refused in that case.","Rule 10, Sec. 3"],
+["An amendment may never substantially alter the cause of action.","It may, if it serves substantial justice and is not for delay.","Lisam Enterprises v. Banco de Oro"],
+["A complaint that stated no cause of action from the beginning may be amended with leave to state one.","Leave shall be refused.","Rule 10, Sec. 3"],
+["Clerical errors in a pleading may be corrected only through a formal motion for leave to amend.","The court may summarily correct them.","Rule 10, Sec. 4"],
+["Issues not raised in the pleadings can never be decided, even if tried with the parties' consent.","They are treated as if raised.","Rule 10, Sec. 5"],
+["A formal amendment of the pleadings is required before the court may decide issues tried by implied consent.","No amendment is necessary.","Rule 10, Sec. 5"],
+["A supplemental pleading sets forth facts that occurred before the original pleading was filed.","Those belong in an amended pleading; a supplemental pleading covers later events.","Rule 10, Sec. 6; Loy v. San Miguel Corp. Employees Union"],
+["A supplemental pleading may be filed as a matter of right.","It needs a motion and the court's permission.","Rule 10, Sec. 6"],
+["The adverse party may plead to a supplemental pleading within 15 calendar days from notice of the order admitting it.","Within 10 calendar days.","Rule 10, Sec. 6"],
+["A supplemental pleading replaces the original pleading.","It stands together with the original.","Loy v. San Miguel Corp. Employees Union"],
+["An amended pleading stands together with the original pleading.","It supersedes the original.","Rule 10, Sec. 8"],
+["Admissions in a superseded pleading can no longer be used against the pleader.","They may be offered in evidence against him.","Rule 10, Sec. 8"],
+["Claims in the original pleading that are not carried into the amended pleading survive.","They are deemed waived.","Rule 10, Sec. 8"],
+["An amendment may cure a defective allegation of a cause of action only before any order of dismissal is issued.","It may, even after a dismissal order that is not yet final.","Lisam Enterprises v. Banco de Oro"],
+["The answer to a complaint is due within 15 calendar days after service of summons.","Within 30 calendar days.","Rule 11, Sec. 1"],
+["A foreign private juridical entity served through the designated government official answers within 30 calendar days.","Within 60 calendar days after its receipt of summons.","Rule 11, Sec. 2"],
+["An amended complaint filed as a matter of right must be answered within 15 calendar days.","Within 30 calendar days after service.","Rule 11, Sec. 3"],
+["An amended complaint admitted by leave must be answered within 30 calendar days from notice of the order.","Within 15 calendar days.","Rule 11, Sec. 3"],
+["A new answer is always required for an amended complaint; the earlier answer cannot serve.","The earlier answer may serve if no new answer is filed.","Rule 11, Sec. 3"],
+["A counterclaim must be answered within 30 calendar days from service.","Within 20 calendar days.","Rule 11, Sec. 4"],
+["A reply may be filed within 10 calendar days from service of the answer.","Within 15 calendar days.","Rule 11, Sec. 6"],
+["A supplemental complaint must be answered within 10 calendar days from notice of the order admitting it.","Within 20 calendar days.","Rule 11, Sec. 7"],
+["A counterclaim acquired after serving one's pleading may be set up as a matter of right without permission of the court.","Permission is required.","Rule 11, Sec. 9"],
+["An omitted counterclaim may be set up by amendment even after judgment.","Only before judgment.","Rule 11, Sec. 10"],
+["A defendant may file two motions for extension of time to answer, each for 15 days.","Only one motion, for not more than 30 days.","Rule 11, Sec. 11"],
+["The court may grant a defendant 60 calendar days of extension to file an answer.","Not more than 30 calendar days.","Rule 11, Sec. 11"],
+["A motion for extension of time to file a reply is allowed for meritorious reasons.","Only extensions to answer are allowed.","Rule 11, Sec. 11"],
+["A motion for a bill of particulars may be filed after the answer.","It is filed before responding.","Rule 12, Sec. 1"],
+["A motion for a bill of particulars directed at a reply must be filed within 15 calendar days.","Within 10 calendar days.","Rule 12, Sec. 1"],
+["A general statement that the complaint is vague suffices in a motion for a bill of particulars.","It must point out the defects, paragraphs and details desired.","Rule 12, Sec. 1"],
+["The court must always set a motion for a bill of particulars for hearing before acting on it.","It may grant or deny it outright.","Rule 12, Sec. 2"],
+["An order for a bill of particulars must be complied with within 15 calendar days from notice.","Within 10 calendar days.","Rule 12, Sec. 3"],
+["The only sanction for disobeying an order for a bill of particulars is dismissal of the action.","The court may strike out the pleading or portions, or make another just order.","Rule 12, Sec. 4"],
+["After denial of a motion for a bill of particulars, the movant always gets a fresh full period to answer.","He gets his remaining period, but not less than 5 days.","Rule 12, Sec. 5"],
+["A bill of particulars is a separate pleading independent of the pleading it amplifies.","It becomes part of that pleading.","Rule 12, Sec. 6"],
+["A supplemental pleading may introduce a new cause of action unrelated to the original.","It must be germane to the original cause of action.","CB Board of Liquidators v. Banco Filipino"]
+]},
+
+{ t:"Filing and service; summons", c:"Rules 13–14",
+T:[
+["Filing is the act of submitting the pleading to the court; service is the act of providing a party with a copy.","","Rule 13, Sec. 2"],
+["If a party has appeared by counsel, service shall be made upon counsel, unless the court orders service on both.","","Rule 13, Sec. 2"],
+["When a party is represented by counsel, notice to the party is not notice in law.","","Cervantes v. City Service Corp."],
+["The periods to appeal or to file certiorari run from the receipt by counsel of record.","","Cervantes v. City Service Corp."],
+["Where several counsel appear for one party, the party is entitled to only one copy, served on the lead counsel if one is designated.","","Rule 13, Sec. 2"],
+["Pleadings may be filed personally, by registered mail, by accredited courier, or electronically where authorized.","","Rule 13, Sec. 3"],
+["For filing by registered mail, the date of mailing shown by the post office stamp or registry receipt is the date of filing.","","Rule 13, Sec. 3"],
+["For electronic filing, the date of electronic transmission is the date of filing.","","Rule 13, Sec. 3"],
+["Service by registered mail must instruct the postmaster to return the mail after 10 calendar days if undelivered.","","Rule 13, Sec. 7"],
+["Substituted service of court papers is made by delivery to the clerk of court, with proof of failure of personal service and service by mail.","","Rule 13, Sec. 8"],
+["Service by electronic means or facsimile is made only if the party concerned consents.","","Rule 13, Sec. 9"],
+["Notice of a court setting is presumed if mailed at least 20 calendar days before the hearing to an addressee within the same judicial region.","","Rule 13, Sec. 10"],
+["A party who changes his e-mail address must file a notice of the change within 5 calendar days.","","Rule 13, Sec. 11"],
+["Judgments, final orders and resolutions shall be served personally or by registered mail.","","Rule 13, Sec. 13"],
+["Initiatory pleadings and initial responsive pleadings must be filed and served personally or by registered mail, not electronically, unless the court permits.","","Rule 13, Sec. 14"],
+["Personal service is complete upon actual delivery.","","Rule 13, Sec. 15"],
+["Service by ordinary mail is complete upon the expiration of 10 calendar days after mailing, unless the court provides otherwise.","","Rule 13, Sec. 15"],
+["Service by registered mail is complete upon actual receipt, or 5 calendar days after the addressee received the first postmaster's notice, whichever is earlier.","","Rule 13, Sec. 15"],
+["Electronic service is not complete if the serving party learns that it did not reach the addressee.","","Rule 13, Sec. 15"],
+["Filing by registered mail is proved by the registry receipt and the affidavit of the person who mailed it.","","Rule 13, Sec. 16; Lafarge Cement v. Continental Cement"],
+["A motion without proper proof of service is deemed not filed and does not toll the period to appeal.","","PSBank v. Papa"],
+["A notice of lis pendens may be recorded in an action affecting the title or the right of possession of real property.","","Rule 13, Sec. 19"],
+["A notice of lis pendens may be cancelled only upon order of the court.","","Rule 13, Sec. 19"],
+["A notice of lis pendens creates no new right; it gives constructive notice and binds later purchasers to the judgment.","","Heirs of Lopez v. Enriquez"],
+["Unless the complaint is dismissible on its face, the court directs the issuance of summons within 5 calendar days from receipt of the initiatory pleading and proof of payment of fees.","","Rule 14, Sec. 1"],
+["Summons remains valid until duly served, unless the court recalls it.","","Rule 14, Sec. 4"],
+["If the plaintiff misrepresents that the defendant was served when he was not, the case is dismissed with prejudice.","","Rule 14, Sec. 3"],
+["Where summons is to be served outside the judicial region, the plaintiff shall be authorized to cause its service.","","Rule 14, Sec. 3"],
+["If the defendant refuses to receive and sign for the summons, it may be left within his view and in his presence.","","Rule 14, Sec. 5; Sps. Manuel v. Ong"],
+["Substituted service requires that personal service failed after at least three attempts on two different dates.","","Rule 14, Sec. 6"],
+["Substituted service at the residence must be made on a person at least 18 years of age and of sufficient discretion residing there.","","Rule 14, Sec. 6"],
+["A return stating only that there were several futile attempts does not justify substituted service.","","Yuk Ling Ong v. Co"],
+["Summons on a domestic corporation may be served on its president, managing partner, general manager, corporate secretary, treasurer or in-house counsel.","","Rule 14, Sec. 12"],
+["The enumeration of officers who may receive summons for a domestic corporation is exclusive.","","Green Star Express v. Nissin-Universal Robina"],
+["When spouses are sued jointly, summons must be served on each spouse individually.","","Rule 14, Sec. 11"],
+["Service by publication on a defendant whose whereabouts are unknown requires leave of court.","","Rule 14, Sec. 16"],
+["An order allowing service by publication or extraterritorial service must give the defendant not less than 60 calendar days after notice to answer.","","Rule 14, Secs. 16–17"],
+["The server must complete service within 30 calendar days from issuance and receipt of the summons.","","Rule 14, Sec. 20"],
+["Including in a motion to dismiss grounds other than lack of jurisdiction over the person is deemed a voluntary appearance.","","Rule 14, Sec. 23"],
+["Summons must be served even in actions in rem and quasi in rem, to satisfy due process.","","De Pedro v. Romasan Development"]
+],
+F:[
+["Service on the party himself, even when he is represented by counsel, is what starts the period to appeal.","Service on counsel controls.","Cervantes v. City Service Corp."],
+["Where one counsel appears for several parties, he is entitled to a separate copy for each party.","He is entitled to only one copy.","Rule 13, Sec. 2"],
+["For filing by registered mail, the date the court receives the envelope is the date of filing.","The date of mailing is the date of filing.","Rule 13, Sec. 3"],
+["Personal filing is proved only by the clerk's testimony in court.","It is proved by the clerk's written or stamped acknowledgment.","Rule 13, Sec. 16"],
+["Service by registered mail must instruct the postmaster to return the mail after 30 days if undelivered.","After 10 calendar days.","Rule 13, Sec. 7"],
+["Substituted service of court papers may be made on a neighbor of counsel.","It is made on the clerk of court.","Rule 13, Sec. 8"],
+["Service by electronic means may be made without the consent of the party.","Consent is required.","Rule 13, Sec. 9"],
+["Notice of a court setting is presumed if mailed at least 10 calendar days before the hearing.","At least 20 days (same region) or 30 days (outside).","Rule 13, Sec. 10"],
+["For an addressee outside the judicial region, presumptive notice requires mailing at least 20 calendar days before the hearing.","At least 30 calendar days.","Rule 13, Sec. 10"],
+["A change of e-mail address need only be reported at the next hearing.","Within 5 calendar days from the change.","Rule 13, Sec. 11"],
+["Judgments and final orders may be served by ordinary e-mail as a matter of course.","They are served personally or by registered mail.","Rule 13, Sec. 13"],
+["Initiatory pleadings may be filed electronically without the court's express permission.","They must be filed personally or by registered mail unless permitted.","Rule 13, Sec. 14"],
+["Service by ordinary mail is complete upon mailing.","Upon the expiration of 10 calendar days after mailing.","Rule 13, Sec. 15"],
+["Service by registered mail is complete only upon actual receipt by the addressee.","Or 5 days after the first notice, whichever is earlier.","Rule 13, Sec. 15"],
+["Service by accredited courier is complete only after three attempts to deliver.","After at least two attempts, or 5 days after the first attempt, whichever is earlier.","Rule 13, Sec. 15"],
+["Electronic service is complete even if the sender learns that it never reached the addressee.","It is not effective in that case.","Rule 13, Sec. 15"],
+["A motion filed without proof of service still tolls the period to appeal because filing and service are separate acts.","Filing and service go together; it is deemed not filed.","PSBank v. Papa"],
+["A notice of lis pendens may be recorded in any action for a sum of money.","Only in actions affecting title or possession of real property.","Rule 13, Sec. 19"],
+["A notice of lis pendens may be cancelled by the Register of Deeds upon the defendant's request.","Only upon court order.","Rule 13, Sec. 19"],
+["Any person with an interest in the property, even a non-party, may record a notice of lis pendens.","Only a party to the action may record it.","Heirs of Lopez v. Enriquez"],
+["A notice of lis pendens creates a lien on the property in favor of the party who recorded it.","It creates no new right; it is only constructive notice.","Heirs of Lopez v. Enriquez"],
+["The court must direct the issuance of summons within 15 calendar days from receipt of the complaint.","Within 5 calendar days.","Rule 14, Sec. 1"],
+["Summons expires after 30 days and must be reissued if not served.","It remains valid until duly served unless recalled.","Rule 14, Sec. 4"],
+["If the plaintiff misrepresents that summons was served, the case is dismissed without prejudice.","It is dismissed with prejudice.","Rule 14, Sec. 3"],
+["The plaintiff may never be authorized to serve summons.","He may be, together with the sheriff, or outside the judicial region.","Rule 14, Sec. 3"],
+["The defendant's refusal to receive the summons makes personal service invalid.","Tendering it to a defendant who refuses is personal service.","Sps. Manuel v. Ong"],
+["Substituted service may be resorted to after a single failed attempt at personal service.","At least three attempts on two different dates are required.","Rule 14, Sec. 6"],
+["Substituted service may be made on a 16-year-old household helper residing at the defendant's house.","The person must be at least 18 years old.","Rule 14, Sec. 6"],
+["Substituted service by e-mail may be made without leave of court.","Only if allowed by the court.","Rule 14, Sec. 6(d)"],
+["Summons on a domestic corporation may be served on any employee present at its office.","Only on the officers enumerated.","Rule 14, Sec. 12"],
+["Actual receipt by the corporation of summons served on an unauthorized employee is substantial compliance.","It is not substantial compliance.","Green Star Express v. Nissin-Universal Robina"],
+["When spouses are sued jointly, service on one spouse binds the other.","Each spouse must be served individually.","Rule 14, Sec. 11"],
+["Service by publication on a defendant of unknown whereabouts may be made without leave of court.","Leave is required.","Rule 14, Sec. 16"],
+["An order for extraterritorial service may give the defendant only 30 days to answer.","Not less than 60 calendar days.","Rule 14, Sec. 17"],
+["The server must file the return within 30 calendar days from service.","Within 5 calendar days from service.","Rule 14, Sec. 20"],
+["A return that lacks the details of the attempts at personal service still enjoys the presumption of regularity.","A patently defective return has no presumption of regularity.","Yuk Ling Ong v. Co"],
+["A special appearance to question jurisdiction over the person, with attendance at a hearing, is a voluntary appearance.","It is not, unless affirmative relief is sought.","Frias v. Alcayde"],
+["A motion for extension of time to answer, filed without reserving a special appearance, is not a voluntary appearance.","It is a voluntary appearance.","Carson Realty v. Red Robin Security"],
+["Summons need not be served in actions in rem.","It must be served to satisfy due process.","De Pedro v. Romasan Development"],
+["Ejectment is an action in rem that does not require valid service on the defendant.","It is in personam and requires valid service.","Prudential Bank v. Magdamit"]
+]},
+
+{ t:"Motions, dismissal, pre-trial and intervention", c:"Rules 15, 17, 18, 19",
+T:[
+["A motion is an application for relief other than by a pleading.","","Rule 15, Sec. 1"],
+["All motions shall be in writing except those made in open court or in the course of a hearing or trial.","","Rule 15, Sec. 2"],
+["A motion made in open court shall be resolved immediately in open court, after the adverse party argues his opposition.","","Rule 15, Sec. 2"],
+["Non-litigious motions are not set for hearing and are resolved within 5 calendar days from receipt.","","Rule 15, Sec. 4"],
+["A motion for extension to file an answer and a motion for the issuance of a writ of execution are non-litigious.","","Rule 15, Sec. 4"],
+["A motion for reconsideration and a demurrer to evidence are litigious motions.","","Rule 15, Sec. 5"],
+["The opposing party files an opposition to a litigious motion within 5 calendar days from receipt.","","Rule 15, Sec. 5(c)"],
+["A litigious motion is resolved within 15 calendar days from receipt of the opposition or lapse of the period to file it.","","Rule 15, Sec. 5(c)"],
+["The court may, in its discretion, call a hearing on a litigious motion.","","Rule 15, Sec. 6"],
+["No written motion shall be acted upon without proof of service.","","Rule 15, Sec. 7"],
+["When the court sets a hearing on a litigious motion, it is held on a Friday, except motions requiring immediate action.","","Rule 15, Sec. 8"],
+["An omnibus motion must include all objections then available, and objections not included are waived.","","Rule 15, Sec. 9"],
+["A motion for leave to file a pleading must be accompanied by the pleading sought to be admitted.","","Rule 15, Sec. 10"],
+["A motion to dismiss is allowed only on lack of jurisdiction over the subject matter, litis pendentia, and res judicata or prescription.","","Rule 15, Sec. 12(a)"],
+["A motion to suspend proceedings without a TRO or injunction from a higher court is prohibited.","","Rule 15, Sec. 12(d)"],
+["A motion for postponement must be accompanied by the original official receipt for the postponement fee.","","Rule 15, Sec. 12(f)"],
+["Subject to appeal, an order granting a motion to dismiss on res judicata or prescription bars refiling of the same claim.","","Rule 15, Sec. 13"],
+["A dismissal because the claim was paid, waived, abandoned or otherwise extinguished bars refiling of the same claim.","","Rule 15, Sec. 13"],
+["The nature of a motion is determined by its substance, not its title.","","Bank of Commerce v. Perlas-Bernabe"],
+["A second motion for reconsideration cannot be revived by calling it a motion for clarification or a manifestation.","","SJS Officers v. Lim"],
+["The plaintiff may dismiss by notice at any time before service of the answer or of a motion for summary judgment.","","Rule 17, Sec. 1"],
+["A notice of dismissal operates as an adjudication on the merits if the plaintiff had once dismissed by notice an action on the same claim.","Two-dismissal rule.","Rule 17, Sec. 1"],
+["The two-dismissal rule applies only when both dismissals were by the plaintiff's notice.","","Ching v. Cheng"],
+["After an answer is served, the complaint may be dismissed at the plaintiff's instance only with court approval.","","Rule 17, Sec. 2"],
+["If a counterclaim was pleaded before the plaintiff's motion to dismiss was served, the dismissal is limited to the complaint.","","Rule 17, Sec. 2; Blay v. Baña"],
+["The defendant may, within 15 calendar days from notice of the motion, manifest that he wants the counterclaim resolved in the same action.","","Rule 17, Sec. 2"],
+["A class suit shall not be dismissed or compromised without court approval.","","Rule 17, Sec. 2"],
+["A dismissal for failure to prosecute for an unreasonable length of time has the effect of an adjudication on the merits, unless the court declares otherwise.","","Rule 17, Sec. 3"],
+["A dismissal due to the plaintiff's fault is without prejudice to the defendant's counterclaim in the same or a separate action.","","Rule 17, Sec. 3"],
+["The notice of pre-trial is issued within 5 calendar days from the filing of the last responsive pleading.","","Rule 18, Sec. 1"],
+["The pre-trial shall be set not later than 60 calendar days from the filing of the last responsive pleading.","","Rule 18, Sec. 1"],
+["Non-appearance at court-annexed mediation or judicial dispute resolution is deemed non-appearance at the pre-trial.","","Rule 18, Sec. 3"],
+["A representative may appear for a party at pre-trial if fully authorized in writing to settle and to enter into stipulations.","","Rule 18, Sec. 4"],
+["The plaintiff's unjustified failure to appear at pre-trial causes dismissal of the action, with prejudice unless otherwise ordered.","","Rule 18, Sec. 5"],
+["If the defendant fails to appear at pre-trial, the plaintiff may present evidence ex parte within 10 calendar days from termination of the pre-trial.","","Rule 18, Sec. 5"],
+["Pre-trial briefs must be received by the adverse party at least 3 calendar days before the pre-trial.","","Rule 18, Sec. 6"],
+["Court-annexed mediation shall not exceed 30 calendar days, without further extension.","","Rule 18, Sec. 8"],
+["Judicial dispute resolution is conducted within a non-extendible 15 calendar days from notice of failure of mediation.","","Rule 18, Sec. 9"],
+["A motion to intervene may be filed at any time before the trial court renders judgment.","","Rule 19, Sec. 2"],
+["Intervention is ancillary to the principal action, so the dismissal of the main action for lack of jurisdiction carries the intervention with it.","","Pulgar v. RTC of Mauban"]
+],
+F:[
+["A motion is a pleading that asserts a claim.","It is an application for relief other than by a pleading.","Rule 15, Sec. 1"],
+["All motions must be in writing, without exception.","Motions in open court or during a hearing may be oral.","Rule 15, Sec. 2"],
+["A motion for postponement is a litigious motion.","It is non-litigious.","Rule 15, Sec. 4"],
+["Non-litigious motions must be set for hearing on a Friday.","They are not set for hearing.","Rule 15, Sec. 4"],
+["Non-litigious motions are resolved within 15 calendar days from receipt.","Within 5 calendar days.","Rule 15, Sec. 4"],
+["A motion for intervention is a non-litigious motion.","It is litigious.","Rule 15, Sec. 5(a)"],
+["The opposition to a litigious motion is due within 10 calendar days from receipt.","Within 5 calendar days.","Rule 15, Sec. 5(c)"],
+["The movant may file a reply to the opposition, and the court must consider it.","No other submissions are considered.","Rule 15, Sec. 5(c)"],
+["A hearing on every litigious motion is mandatory.","It is discretionary.","Rule 15, Sec. 6"],
+["The court may act on a written motion without proof of service if the motion is meritorious.","No motion is acted upon without proof of service.","Rule 15, Sec. 7"],
+["Objections not included in an omnibus motion may be raised in a later motion.","They are deemed waived.","Rule 15, Sec. 9"],
+["A motion for leave to file a pleading need not attach the pleading.","The pleading must accompany the motion.","Rule 15, Sec. 10"],
+["A motion to dismiss on the ground of failure to state a cause of action is allowed.","It is a prohibited motion; raise it as an affirmative defense.","Rule 15, Sec. 12(a)"],
+["A motion to dismiss for improper venue is allowed.","It is prohibited; improper venue is an affirmative defense.","Rule 15, Sec. 12(a)"],
+["A motion to suspend proceedings is allowed even without a TRO or injunction from a higher court.","It is prohibited.","Rule 15, Sec. 12(d)"],
+["A motion for extension of time to file an affidavit is allowed.","It is prohibited.","Rule 15, Sec. 12(e)"],
+["A motion for postponement based on counsel's convenience is allowed if the fee is paid.","Only for acts of God, force majeure or a witness's physical inability.","Rule 15, Sec. 12(f)"],
+["A postponement granted on force majeure entitles the movant to new trial dates beyond those agreed upon.","He must still finish on the dates previously agreed upon.","Rule 15, Sec. 12(f)"],
+["An order granting a motion to dismiss on prescription does not bar refiling.","It bars refiling.","Rule 15, Sec. 13"],
+["A dismissal because the claim is unenforceable under the statute of frauds is without prejudice to refiling.","It bars refiling.","Rule 15, Sec. 13"],
+["The plaintiff may dismiss by notice even after the answer has been served.","Only before service of the answer or a motion for summary judgment.","Rule 17, Sec. 1"],
+["A dismissal by notice is with prejudice unless otherwise stated.","It is without prejudice unless otherwise stated.","Rule 17, Sec. 1"],
+["A prior dismissal on the defendant's motion counts toward the two-dismissal rule.","Only dismissals by the plaintiff's notice count.","Ching v. Cheng"],
+["When the plaintiff moves to dismiss after a counterclaim has been pleaded, both the complaint and the counterclaim are dismissed.","Only the complaint is dismissed.","Rule 17, Sec. 2; Blay v. Baña"],
+["A defendant who wants his counterclaim resolved in the same action must so manifest within 30 days.","Within 15 calendar days from notice of the motion.","Rule 17, Sec. 2"],
+["A class suit may be dismissed by the representative's mere notice.","It requires court approval.","Rule 17, Sec. 2"],
+["A dismissal for failure to prosecute is always without prejudice.","It is an adjudication on the merits unless the court declares otherwise.","Rule 17, Sec. 3"],
+["A dismissal due to the plaintiff's fault also extinguishes the defendant's counterclaim.","It is without prejudice to the counterclaim.","Rule 17, Sec. 3"],
+["The notice of pre-trial is issued within 15 calendar days from the filing of the last responsive pleading.","Within 5 calendar days.","Rule 18, Sec. 1"],
+["The pre-trial must be held within 90 calendar days from the filing of the last responsive pleading.","Not later than 60 calendar days.","Rule 18, Sec. 1"],
+["Pre-trial is optional and depends on the agreement of the parties.","It is mandatory.","Rule 18, Sec. 2"],
+["A party's non-appearance at pre-trial may be excused for any reason the court finds reasonable.","Only acts of God, force majeure or duly substantiated physical inability.","Rule 18, Sec. 4"],
+["As a rule, the plaintiff's failure to appear at pre-trial results in dismissal without prejudice.","It is with prejudice unless otherwise ordered.","Rule 18, Sec. 5"],
+["If the defendant fails to appear at pre-trial, the action is dismissed.","The plaintiff presents evidence ex parte.","Rule 18, Sec. 5"],
+["Failure to file a pre-trial brief has no consequence as long as the party appears.","It has the same effect as failure to appear.","Rule 18, Sec. 6"],
+["Court-annexed mediation may be extended for another 30 days upon agreement of the parties.","It cannot be extended.","Rule 18, Sec. 8"],
+["Judicial dispute resolution is conducted by the same judge who will try the case.","The case is referred to another court.","Rule 18, Sec. 9"],
+["Statements made during mediation and JDR may be used as evidence at the trial.","The proceedings are confidential.","Rule 18, Sec. 9"],
+["Intervention is a matter of right for anyone who claims an interest in the case.","It requires leave of court and an actual, material, direct and immediate interest.","Rule 19, Sec. 1"],
+["A motion to intervene may be filed after the trial court's judgment, while the case is on appeal.","Only before the trial court renders judgment.","Rule 19, Sec. 2"]
+]},
+
+{ t:"Calendar, subpoena, computation of time and discovery", c:"Rules 20–29",
+T:[
+["Arrest under Rule 29 is not available against a party who disobeys an order to submit to a physical or mental examination.","","Rule 29, Sec. 3(d)"],
+["Expenses and attorney's fees under Rule 29 are not imposed on the Republic of the Philippines.","","Rule 29, Sec. 6"],
+["A subpoena duces tecum requires a person to bring books, documents or other things under his control.","","Rule 21, Sec. 1"],
+["Any Justice of the Supreme Court or the Court of Appeals may issue a subpoena in any case or investigation pending within the Philippines.","","Rule 21, Sec. 2"],
+["A prisoner sentenced to reclusion perpetua may not be brought outside the penal institution to appear in court without the Supreme Court's authority.","","Rule 21, Sec. 2"],
+["A subpoena duces tecum may be quashed if it is unreasonable and oppressive or the relevancy of the documents does not appear.","","Rule 21, Sec. 4"],
+["A subpoena may be quashed if the witness fees and kilometrage were not tendered when it was served.","","Rule 21, Sec. 4"],
+["A subpoena is served in the same manner as personal or substituted service of summons.","","Rule 21, Sec. 6"],
+["A person present in court may be required to testify as if he were under subpoena.","","Rule 21, Sec. 7"],
+["Unjustified failure to obey a subpoena is a contempt of the court that issued it.","","Rule 21, Sec. 9"],
+["A physical or mental examination may be ordered when the condition of a party is in controversy, on motion for good cause and with notice.","","Rule 28, Secs. 1–2"],
+["In computing a period, the day of the act is excluded and the day of performance is included.","","Rule 22, Sec. 1"],
+["If the last day of a period falls on a Saturday, Sunday or legal holiday, the period runs until the next working day.","","Rule 22, Sec. 1"],
+["The next-working-day rule applies even if court staff are on duty on that Saturday.","","Sps. Leynes v. CA"],
+["An administrative circular cannot amend or prevail over the Rules of Court.","","Sps. Leynes v. CA"],
+["After an interruption, the allowable period starts to run on the day after notice of the cessation of its cause.","","Rule 22, Sec. 2"],
+["A deposition pending action may be taken upon ex parte motion of a party.","","Rule 23, Sec. 1"],
+["The deposition of a person confined in prison may be taken only by leave of court.","","Rule 23, Sec. 1"],
+["A deponent may be examined on any relevant matter that is not privileged.","","Rule 23, Sec. 2"],
+["The deposition of a party may be used by an adverse party for any purpose.","","Rule 23, Sec. 4(b)"],
+["The deposition of a witness may be used for any purpose if the witness resides more than 100 kilometers from the place of trial.","","Rule 23, Sec. 4(c)"],
+["Taking a person's deposition does not make him the witness of the party who took it.","","Rule 23, Sec. 7"],
+["Within the Philippines, depositions may be taken before any judge or notary public.","","Rule 23, Sec. 10"],
+["Abroad, depositions may be taken before a Philippine consular officer, a person appointed by commission or letters rogatory, or a person stipulated in writing.","","Rule 23, Sec. 11; Dulay v. Dulay"],
+["No deposition may be taken before a relative within the sixth degree of a party, or before counsel of a party.","","Rule 23, Sec. 13"],
+["The notice of an oral deposition must state the time and place and the name and address of each person to be examined.","No statement of purpose is required.","Rule 23, Sec. 15; Malonzo v. Sucere Foods"],
+["Errors and irregularities in the notice of deposition are waived unless written objection is promptly served.","","Rule 23, Sec. 29(a)"],
+["Cross-interrogatories may be served within 10 calendar days after service of the written interrogatories for a deposition.","","Rule 23, Sec. 25"],
+["A person may perpetuate testimony before action by filing a verified petition in the court of the residence of any expected adverse party.","","Rule 24, Sec. 1"],
+["Notice of the hearing on a petition to perpetuate testimony must be served at least 20 calendar days before the hearing.","","Rule 24, Sec. 3"],
+["Interrogatories to a corporation are answered by any of its officers competent to testify in its behalf.","","Rule 25, Sec. 1"],
+["Answers to interrogatories are filed and served within 15 calendar days after service, unless the court extends or shortens the time.","","Rule 25, Sec. 2"],
+["Objections to interrogatories may be presented within 10 calendar days after service.","","Rule 25, Sec. 3"],
+["Without leave of court, only one set of interrogatories may be served on the same party.","","Rule 25, Sec. 4"],
+["A party not served with written interrogatories cannot be compelled by the adverse party to testify in open court, absent good cause.","","Rule 25, Sec. 6; Sps. Afulugencia v. Metrobank"],
+["A request for admission may be served at any time after the issues have been joined.","","Rule 26, Sec. 1"],
+["Matters in a request for admission are deemed admitted unless denied under oath within the period, which shall not be less than 15 calendar days.","","Rule 26, Sec. 2"],
+["A request for admission of matters already denied in the pleadings is improper, and silence on it produces no implied admission.","","Limos v. Sps. Odones; Duque v. Sps. Yu"],
+["An admission made under Rule 26 is for the purpose of the pending action only.","","Rule 26, Sec. 3"],
+["An order for production or inspection of documents under Rule 27 requires a motion showing good cause.","","Rule 27, Sec. 1; Limos v. Sps. Odones"]
+],
+F:[
+["Cases may be assigned to branches at the executive judge's choice without raffle.","Assignment is exclusively by raffle in open session.","Rule 20, Sec. 2"],
+["A subpoena ad testificandum requires the witness to bring documents.","That is a subpoena duces tecum.","Rule 21, Sec. 1"],
+["Only the court before which the witness is to appear may issue a subpoena.","Others may also issue it, including SC and CA Justices.","Rule 21, Sec. 2"],
+["A prisoner serving reclusion perpetua may be brought to court on the trial court's subpoena alone.","Supreme Court authorization is needed.","Rule 21, Sec. 2"],
+["A subpoena duces tecum may be quashed only after the time specified in it has passed.","The motion must be made promptly, at or before that time.","Rule 21, Sec. 4"],
+["Non-tender of witness fees is not a ground to quash a subpoena.","It is a ground.","Rule 21, Sec. 4"],
+["A subpoena may be served only by registered mail.","It is served like personal or substituted service of summons.","Rule 21, Sec. 6"],
+["The clerk may issue a subpoena duces tecum for a deposition without a court order.","A court order is required.","Rule 21, Sec. 5"],
+["A witness who fails to obey a subpoena can never be arrested.","A warrant may issue to arrest him.","Rule 21, Sec. 8"],
+["A witness residing 150 kilometers away may be arrested for disobeying a subpoena.","Arrest and contempt do not apply beyond 100 kilometers.","Rule 21, Sec. 10"],
+["In computing a period, both the first day and the last day are excluded.","The first day is excluded and the last day included.","Rule 22, Sec. 1"],
+["If the last day falls on a Saturday, the period ends that Saturday if the court is open.","It runs until the next working day.","Sps. Leynes v. CA"],
+["An administrative circular may amend a provision of the Rules of Court.","It cannot.","Sps. Leynes v. CA"],
+["After an interruption, the period resumes on the same day notice of its cessation is received.","On the day after notice.","Rule 22, Sec. 2"],
+["A deposition pending action always requires leave of court.","It may be taken upon ex parte motion.","Rule 23, Sec. 1"],
+["The deposition of a prisoner may be taken without leave of court.","Leave of court is required.","Rule 23, Sec. 1"],
+["A deponent may be examined on privileged matters if they are relevant.","Only matters not privileged.","Rule 23, Sec. 2"],
+["The deposition of a witness may be used for any purpose whenever the offering party prefers not to present the witness.","Only on the grounds in Rule 23, Sec. 4(c).","Rule 23, Sec. 4"],
+["Taking a person's deposition makes him the witness of the party who took it.","It does not.","Rule 23, Sec. 7"],
+["Within the Philippines, depositions may be taken only before a judge.","Also before a notary public or a stipulated person.","Rule 23, Sec. 10"],
+["Abroad, depositions may be taken only before a Philippine consul.","Also by commission, letters rogatory or stipulation.","Rule 23, Sec. 11"],
+["After notice of an oral deposition, the court can never order that it be taken only on written interrogatories.","The court may so order for good cause.","Rule 23, Sec. 16(c)"],
+["The notice of an oral deposition must state its purpose.","No statement of purpose is required.","Malonzo v. Sucere Foods"],
+["Objections to the competency of a witness are waived if not made during the deposition, whatever the ground.","They are not waived unless the ground could have been obviated then.","Rule 23, Sec. 29(c)"],
+["Cross-interrogatories must be served within 5 calendar days.","Within 10 calendar days.","Rule 23, Sec. 25"],
+["A petition to perpetuate testimony is filed in the court of the petitioner's residence.","In the court of the residence of any expected adverse party.","Rule 24, Sec. 1"],
+["Interrogatories to a corporation must be answered by its president personally.","By any competent officer.","Rule 25, Sec. 1; Republic v. Sandiganbayan"],
+["Answers to interrogatories are due within 10 calendar days.","Within 15 calendar days.","Rule 25, Sec. 2"],
+["A party may serve any number of sets of interrogatories on the same party without leave.","Only one set without leave.","Rule 25, Sec. 4"],
+["A party who calls the adverse party as a witness is not bound by his testimony.","He is bound by it.","Sps. Afulugencia v. Metrobank"],
+["The State, when it sues, is exempt from the modes of discovery.","A party, including the State, that sues submits to discovery.","Republic v. Sandiganbayan"],
+["A request for admission may be served before the issues have been joined.","Only after issues are joined.","Rule 26, Sec. 1"],
+["The period to answer a request for admission may be fixed at 10 calendar days.","It shall not be less than 15 calendar days.","Rule 26, Sec. 2"],
+["An admission made under Rule 26 may be used against the party in any other proceeding.","It is for the pending action only.","Rule 26, Sec. 3"],
+["An admission made under Rule 26 can never be withdrawn.","The court may allow withdrawal or amendment.","Rule 26, Sec. 4"],
+["A request for admission may be used by either side in criminal proceedings.","It cannot be used in criminal proceedings.","People v. Ang"],
+["A motion for the production of all documents relating to the case sufficiently designates the documents.","Documents must be designated with particularity.","Solidbank v. Gateway Electronics"],
+["A physical or mental examination may be ordered ex parte without notice to the party.","It requires a motion for good cause and notice.","Rule 28, Sec. 2"],
+["By requesting and obtaining the examining physician's report, the examined party waives no privilege.","He waives the privilege as to others who examined him on the same condition.","Rule 28, Sec. 4"],
+["A party who refuses to obey an order to submit to a physical examination may be arrested.","Arrest is excluded for that order.","Rule 29, Sec. 3(d)"]
+]},
+
+{ t:"Trial, demurrer, judgments on pleadings and summary judgment; Expedited Rules", c:"Rules 30–35 · A.M. No. 08-8-7-SC",
+T:[
+["The initial presentation of the plaintiff's evidence is set not later than 30 calendar days after the termination of the pre-trial.","","Rule 30, Sec. 1(a)"],
+["The plaintiff presents evidence within 90 calendar days, which includes the date of judicial dispute resolution.","","Rule 30, Sec. 1(a)"],
+["The initial presentation of the defendant's evidence is set not later than 30 calendar days after the ruling on the plaintiff's formal offer.","","Rule 30, Sec. 1(a)"],
+["All evidence must be presented within 300 calendar days, or 180 calendar days if there is no third-party claim, counterclaim or cross-claim.","","Rule 30, Sec. 1(b)"],
+["The court decides within 90 calendar days from submission of the case for resolution, with or without memoranda.","","Rule 30, Sec. 1(c)"],
+["A trial may not be adjourned for more than one month for each adjournment, nor more than three months in all, unless the Court Administrator authorizes it in writing.","","Rule 30, Sec. 2"],
+["A motion to postpone for illness requires an affidavit or sworn certification that the party's or counsel's presence is indispensable.","","Rule 30, Sec. 3"],
+["Trials are held Monday to Thursday, and hearings on motions on Fridays.","","Rule 30, Sec. 4"],
+["The offer of evidence, the objection and the ruling are made orally.","","Rule 30, Sec. 6"],
+["Parties may submit the case for judgment on an agreed statement of facts, without introducing evidence.","","Rule 30, Sec. 7"],
+["In default or ex parte hearings, reception of evidence may be delegated to a clerk of court who is a member of the bar.","","Rule 30, Sec. 9"],
+["The clerk of court receiving evidence has no power to rule on objections.","","Rule 30, Sec. 9"],
+["Actions involving a common question of law or fact may be consolidated, even across branches or courts.","","Rule 31, Sec. 1; Bank of Commerce v. Perlas-Bernabe"],
+["The court may order a separate trial of any claim or issue in furtherance of convenience or to avoid prejudice.","","Rule 31, Sec. 2"],
+["By written consent of both parties, issues may be referred to a commissioner.","","Rule 32, Sec. 1"],
+["The court may refer an issue to a commissioner even without consent when trial requires the examination of a long account.","","Rule 32, Sec. 2"],
+["The commissioner may rule on the admissibility of evidence, unless the order of reference provides otherwise.","","Rule 32, Sec. 3"],
+["The parties have 10 calendar days from notice of the filing of the commissioner's report to object to its findings.","","Rule 32, Sec. 10"],
+["When the parties stipulate that the commissioner's findings of fact are final, only questions of law are considered.","","Rule 32, Sec. 12"],
+["A demurrer to evidence is filed after the plaintiff rests, on the ground that the plaintiff has shown no right to relief.","","Rule 33, Sec. 1"],
+["If the demurrer is denied, the defendant may present evidence.","","Rule 33, Sec. 1"],
+["If the demurrer is granted but reversed on appeal, the defendant loses the right to present evidence.","","Rule 33, Sec. 1"],
+["When the grant of a demurrer is reversed on appeal, the appellate court renders judgment on the plaintiff's evidence instead of remanding.","","Radiowealth Finance v. Sps. Del Rosario"],
+["An order denying a demurrer is not subject to appeal or certiorari before judgment.","","Rule 33, Sec. 2"],
+["Judgment on the pleadings is proper when the answer fails to tender an issue or admits the material allegations.","","Rule 34, Sec. 1"],
+["In actions for nullity or annulment of marriage or for legal separation, the material facts must always be proved.","","Rule 34, Sec. 1"],
+["The court may render judgment on the pleadings motu proprio when the answer clearly fails to tender an issue.","","Rule 34, Sec. 2"],
+["A claimant may move for summary judgment at any time after the answer has been served.","","Rule 35, Sec. 1"],
+["A defending party may move for summary judgment at any time.","","Rule 35, Sec. 2"],
+["The adverse party may oppose a motion for summary judgment within a non-extendible period of 5 calendar days.","","Rule 35, Sec. 3"],
+["A genuine issue is one that requires the presentation of evidence.","","Asian Construction v. Sannaedle"],
+["Issues that are sham, fictitious or contrived do not prevent summary judgment.","","Bell Carpets v. CA"],
+["Judgment on the pleadings rests on the facts as pleaded; summary judgment rests on facts summarily proven by affidavits, depositions or admissions.","","Narra Integrated v. CA"],
+["A summary judgment that disposes of the case on the merits is a final judgment, and the remedy is appeal.","","Narra Integrated v. CA"],
+["Affidavits supporting or opposing summary judgment must be made on personal knowledge.","","Rule 35, Sec. 5"],
+["Under the Expedited Rules, small claims cover purely money claims not exceeding ₱1,000,000.","","A.M. No. 08-8-7-SC"],
+["In small claims cases, lawyers may not appear for the parties at the hearing.","","A.M. No. 08-8-7-SC"],
+["A small claims decision is final, executory and unappealable.","Grave abuse is reviewed by certiorari with the RTC.","A.M. No. 08-8-7-SC; A.L. Ang Network v. Mondejar"],
+["Under summary procedure, failure to answer leads to judgment on the complaint, without need of a declaration of default.","","A.M. No. 08-8-7-SC"],
+["A case filed under the wrong procedure is re-docketed under the correct one, not dismissed.","","A.M. No. 08-8-7-SC"]
+],
+F:[
+["The initial presentation of the plaintiff's evidence must be set within 60 days after the pre-trial.","Not later than 30 calendar days.","Rule 30, Sec. 1(a)"],
+["The defendant has 180 calendar days to present its evidence.","Three months or 90 calendar days.","Rule 30, Sec. 1(a)"],
+["The presentation of all evidence must end within one year.","Within 300 calendar days (or 180).","Rule 30, Sec. 1(b)"],
+["The 90-day period to decide starts only after the memoranda are filed.","From submission, with or without memoranda.","Rule 30, Sec. 1(c)"],
+["A trial may be adjourned for up to three months per adjournment.","One month per adjournment, three months in all.","Rule 30, Sec. 2"],
+["A motion to postpone for illness of counsel need not be supported by affidavit.","An affidavit or sworn certification is required.","Rule 30, Sec. 3"],
+["Trials and hearings on motions are held on the same days, Monday to Friday.","Trials Monday to Thursday; motions on Fridays.","Rule 30, Sec. 4"],
+["The formal offer of evidence must always be in writing.","It is made orally.","Rule 30, Sec. 6"],
+["The clerk of court may rule on objections during an ex parte reception of evidence.","He has no power to rule on objections.","Rule 30, Sec. 9"],
+["Reception of evidence may be delegated to a clerk of court who is not a lawyer.","The clerk must be a member of the bar.","Rule 30, Sec. 9"],
+["Consolidation is allowed only for cases pending in the same branch.","It may extend across branches or courts.","Bank of Commerce v. Perlas-Bernabe"],
+["The court cannot order a separate trial of a counterclaim.","It may.","Rule 31, Sec. 2"],
+["Reference to a commissioner always requires the consent of both parties.","The court may order it in the cases listed.","Rule 32, Sec. 2"],
+["A commissioner can never rule on the admissibility of evidence.","He may, unless the order provides otherwise.","Rule 32, Sec. 3"],
+["Objections to the commissioner's report must be filed within 15 calendar days.","Within 10 calendar days.","Rule 32, Sec. 10"],
+["The court is bound to adopt the commissioner's report in full.","It may adopt, modify, reject or recommit it.","Rule 32, Sec. 11"],
+["A demurrer to evidence may be filed before the plaintiff rests.","Only after the plaintiff rests.","Rule 33, Sec. 1; Gonzales v. Bugaay"],
+["If a demurrer is denied, the defendant loses the right to present evidence.","He may present evidence.","Rule 33, Sec. 1"],
+["If the grant of a demurrer is reversed on appeal, the case is remanded so the defendant may present evidence.","The defendant loses that right; the appellate court decides.","Radiowealth Finance v. Sps. Del Rosario"],
+["An order denying a demurrer may be challenged by certiorari before judgment.","It may not.","Rule 33, Sec. 2"],
+["A demurrer to evidence is a non-litigious motion.","It is litigious and subject to Rule 15.","Rule 15, Sec. 5; Rule 33, Sec. 2"],
+["Judgment on the pleadings is proper even when the answer specifically denies the material allegations.","Only when the answer fails to tender an issue or admits them.","Rule 34, Sec. 1"],
+["In legal separation cases, judgment on the pleadings may be based on the defendant's admissions.","The material facts must always be proved.","Rule 34, Sec. 1"],
+["The court's action on a motion for judgment on the pleadings may be appealed at once.","It is not subject to appeal or certiorari.","Rule 34, Sec. 2"],
+["A claimant may move for summary judgment before the answer is served.","Only after the answer has been served.","Rule 35, Sec. 1"],
+["The adverse party has 10 calendar days, extendible once, to oppose a motion for summary judgment.","A non-extendible 5 calendar days.","Rule 35, Sec. 3"],
+["Summary judgment is proper even if there is a genuine issue as to a material fact, as long as damages are undisputed.","There must be no genuine issue as to any material fact.","Rule 35, Sec. 3"],
+["A pending third-party complaint always bars summary judgment on the main claim.","Not where the plaintiff has no interest in the third-party claim.","Kho v. Camacho"],
+["A trial court may disapprove a notice of appeal on the ground that only questions of law are involved.","That belongs to the appellate court.","Kho v. Camacho"],
+["An answer that admits the obligation and only offers excuses for non-payment tenders a genuine issue.","It does not; judgment on the pleadings is proper.","Kho v. Camacho"],
+["Judgment on the pleadings and summary judgment are both based solely on the facts as pleaded.","Summary judgment rests on facts summarily proven.","Narra Integrated v. CA"],
+["The remedy against a summary judgment that disposes of the whole case is certiorari.","It is a final judgment; the remedy is appeal.","Narra Integrated v. CA"],
+["Affidavits supporting a motion for summary judgment may be based on information and belief.","They must be made on personal knowledge.","Rule 35, Sec. 5"],
+["Small claims cover money claims of up to ₱2,000,000.","Up to ₱1,000,000.","A.M. No. 08-8-7-SC"],
+["Juridical entities may be represented by lawyers at the small claims hearing.","They may not be represented by lawyers in any capacity.","A.M. No. 08-8-7-SC"],
+["A small claims decision may be appealed to the RTC.","It is final and unappealable; certiorari lies for grave abuse.","A.M. No. 08-8-7-SC"],
+["Under summary procedure, a motion for reconsideration of the judgment is allowed.","It is a prohibited motion.","A.M. No. 08-8-7-SC"],
+["Under summary procedure, a defendant who fails to answer must first be declared in default.","Judgment is rendered on the complaint; a motion to declare default is prohibited.","A.M. No. 08-8-7-SC"],
+["A case filed under the wrong procedure under the Expedited Rules is dismissed.","It is re-docketed under the correct procedure.","A.M. No. 08-8-7-SC"],
+["In small claims, if both parties fail to appear, the claim is dismissed without prejudice.","Both the claim and counterclaim are dismissed with prejudice.","A.M. No. 08-8-7-SC"]
+]}
+];
+const SETS = SETS_A.concat(SETS_B);
+
+(function(){
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const LIMIT = 15 * 60, KEY = "rr-civpro-4stmt-best", ROM = ["I","II","III","IV"], LET = ["A","B","C","D"];
+  let best = {}; try { best = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) { best = {}; }
+  const saveBest = () => { try { localStorage.setItem(KEY, JSON.stringify(best)); } catch(e){} };
+  const shuffle = a => { a = a.slice(); for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random()*(k+1)); [a[k], a[j]] = [a[j], a[k]]; } return a; };
+  // a subset of {I..IV} is a 4-bit mask
+  const label = m => {
+    const xs = ROM.filter((_, k) => m & (1 << k));
+    if (!xs.length) return "None of the statements";
+    if (xs.length === 4) return "All of the statements";
+    if (xs.length === 1) return xs[0] + " only";
+    return xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1] + " only";
+  };
+  const dist = (a, b) => { let x = a ^ b, c = 0; while (x){ c += x & 1; x >>= 1; } return c; };
+  function options(key){
+    const near = shuffle([...Array(16).keys()].filter(m => m !== key && dist(m, key) === 1));
+    const mid = shuffle([...Array(16).keys()].filter(m => m !== key && dist(m, key) === 2));
+    const picks = [key, near[0], near[1], Math.random() < 0.5 ? mid[0] : near[2]];
+    return shuffle(picks);
+  }
+  let cur = null;
+
+  function showHome(){
+    $("#home").hidden = false; $("#quiz").hidden = true; $("#results").hidden = true;
+    $("#grid").innerHTML = SETS.map((s,i) => {
+      const b = best[i];
+      return `<button class="set" data-i="${i}"><span class="n">Set ${i+1} · ${esc(s.c)}</span><span class="t">${esc(s.t)}</span>
+        <span class="m"><span>20 questions · 15 min</span>${b != null ? `<span class="best">Best ${b}/20</span>` : `<span class="best none">Not taken</span>`}</span></button>`;
+    }).join("");
+    window.scrollTo({top:0});
+  }
+
+  function build(i){
+    const s = SETS[i];
+    const pool = shuffle(s.T.map(x => [...x, true]).concat(s.F.map(x => [...x, false])));
+    const qs = [];
+    for (let k = 0; k < 20; k++){
+      const st = pool.slice(4*k, 4*k + 4);
+      const key = st.reduce((m, x, n) => x[3] ? m | (1 << n) : m, 0);
+      qs.push({st, key, opts: options(key)});
+    }
+    return qs;
+  }
+
+  function start(i){
+    const s = SETS[i];
+    cur = { set:i, qs: build(i), ans: Array(20).fill(null), timed: $("#useTimer").checked, deadline: Date.now() + LIMIT*1000 };
+    $("#home").hidden = true; $("#results").hidden = true; $("#quiz").hidden = false;
+    $("#qcov").textContent = `Set ${i+1} · ${s.c}`;
+    $("#qtitle").textContent = s.t;
+    $("#list").innerHTML = cur.qs.map((q,n) => `<div class="item" data-n="${n}">
+        <div class="st"><span class="no">${n+1}</span><span class="stmts">${q.st.map((x,k) => `<span class="stmt"><span class="r">${ROM[k]}</span><span>${esc(x[0])}</span></span>`).join("")}</span></div>
+        <div class="mc">${q.opts.map((m,k) => `<button class="opt" data-v="${m}"><b>${LET[k]}</b>${label(m)}</button>`).join("")}</div></div>`).join("");
+    $("#quit").textContent = "Quit"; $("#quit").classList.remove("arm");
+    updateProg(); clearInterval(cur.tick);
+    if (cur.timed) { tick(); cur.tick = setInterval(tick, 250); } else { $("#timer").textContent = "No timer"; $("#timer").className = "timer off"; }
+    window.scrollTo({top:0});
+  }
+
+  function tick(){
+    const left = Math.max(0, Math.round((cur.deadline - Date.now())/1000)), t = $("#timer");
+    t.textContent = `${String(Math.floor(left/60)).padStart(2,"0")}:${String(left%60).padStart(2,"0")}`;
+    t.className = "timer" + (left <= 60 ? " crit" : left <= 180 ? " warn" : "");
+    if (left <= 0) submit(true);
+  }
+
+  function updateProg(){
+    const done = cur.ans.filter(x => x != null).length;
+    $("#prog").innerHTML = `<b>${done}</b>/20 <span class="pw">answered</span>`;
+    const un = 20 - done;
+    $("#unans").textContent = un ? `${un} question${un>1?"s":""} unanswered` : "All questions answered";
+  }
+
+  function submit(auto){
+    if (cur.done) return; cur.done = true;
+    clearInterval(cur.tick);
+    $("#quiz").hidden = true; $("#results").hidden = false; $("#timeup").hidden = !auto;
+    cur.used = cur.timed ? Math.min(LIMIT, LIMIT - Math.max(0, Math.round((cur.deadline - Date.now())/1000))) : null;
+    cur.score = cur.qs.filter((q,n) => cur.ans[n] === q.key).length;
+    if (best[cur.set] == null || cur.score > best[cur.set]) { best[cur.set] = cur.score; saveBest(); }
+    renderResults("all"); window.scrollTo({top:0});
+  }
+
+  function renderResults(filter){
+    const s = SETS[cur.set], score = cur.score;
+    $("#big").innerHTML = `${score}<small>/20</small>`;
+    const pct = score/20;
+    $("#verdict").textContent = pct >= .9 ? "Recit-ready." : pct >= .75 ? "Solid. Review the misses below." : pct >= .5 ? "Getting there. Read the explanations, then retake." : "Back to the Rules for this one, then retake.";
+    $("#rmeta").textContent = `Set ${cur.set+1} · ${s.c}` + (cur.used != null ? ` · time used ${Math.floor(cur.used/60)}:${String(cur.used%60).padStart(2,"0")}` : "");
+    $$("#filters button").forEach(b => b.classList.toggle("on", b.dataset.f === filter));
+    const stmt = (r, x) => `<span class="stmt"><span class="r">${r}</span><span>${esc(x[0])}</span><span class="vt ${x[3]?"t":"f"}">${x[3]?"TRUE":"FALSE"}</span></span>
+      <div class="sx">${x[1] ? esc(x[1]) + " " : ""}<span class="src">${esc(x[2])}</span></div>`;
+    $("#rlist").innerHTML = cur.qs.map((q,n) => ({q,n,ok: cur.ans[n] === q.key})).filter(r => filter === "all" || !r.ok).map(({q,n,ok}) => {
+      const mine = cur.ans[n];
+      const letterOf = m => LET[q.opts.indexOf(m)];
+      return `<div class="item ${ok?"ok":"no-"}"><div class="st"><span class="no">${n+1}</span><span class="stmts">${q.st.map((x,k) => stmt(ROM[k], x)).join("")}</span></div>
+        <div class="mc">${q.opts.map((m,k) => `<button class="opt ${m===q.key?"key":""} ${m===mine&&!ok?"bad":""}" disabled><b>${LET[k]}</b>${label(m)}</button>`).join("")}</div>
+        <div class="res"><div class="row"><span class="k">Your answer</span>${mine != null ? `<span class="pill ${ok?"g":"b"}">${letterOf(mine)}</span>` : '<span class="pill n">No answer</span>'} <span class="k" style="min-width:0;margin-left:10px">Answer</span><span class="pill g">${letterOf(q.key)} · ${label(q.key)}</span></div></div></div>`;
+    }).join("") || `<p class="note" style="padding:0 2px">Nothing here. Nice.</p>`;
+  }
+
+  $("#grid").addEventListener("click", e => { const b = e.target.closest(".set"); if (b) start(+b.dataset.i); });
+  $("#list").addEventListener("click", e => {
+    const b = e.target.closest(".opt"); if (!b) return;
+    const box = b.closest(".item"), n = +box.dataset.n;
+    cur.ans[n] = +b.dataset.v;
+    box.querySelectorAll(".opt").forEach(x => x.classList.toggle("on", x === b));
+    updateProg();
+  });
+  $("#submit").addEventListener("click", () => submit(false));
+  $("#submit2").addEventListener("click", () => submit(false));
+  $("#quit").addEventListener("click", () => {
+    const q = $("#quit");
+    if (!q.classList.contains("arm")) { q.classList.add("arm"); q.textContent = "Tap again to quit"; setTimeout(() => { q.classList.remove("arm"); q.textContent = "Quit"; }, 3000); return; }
+    clearInterval(cur.tick); showHome();
+  });
+  $("#filters").addEventListener("click", e => { const b = e.target.closest("button"); if (b) renderResults(b.dataset.f); });
+  $("#retake").addEventListener("click", () => start(cur.set));
+  $("#home2").addEventListener("click", showHome);
+  window.__rr = () => cur;
+  showHome();
+})();
+</script>
+<div style="font:13px/1.6 system-ui,-apple-system,'Segoe UI',sans-serif;color:#5B665A;text-align:center;padding:14px 16px 22px">
+<a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
+<a href="https://sites.google.com/view/recit-ready/report-an-error" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
+<a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Support RecitReady</title>
+<meta name="description" content="RecitReady drills are free. If they helped you, you can buy me a coffee.">
+<script>
+/* ============ EDIT THESE TWO LINES ============
+   KOFI: your Ko-fi page name (the part after ko-fi.com/), or leave "" to hide the Ko-fi button.
+   QR:   the file name of your GCash or Maya QR image uploaded next to this page, or leave "" to hide it. */
+var KOFI = "";
+var QR = "gcash-qr.png";
+/* ============================================== */
+</script>
+<style>
+:root{--paper:#F7F2E6;--card:#FFFDF7;--line:#E4DCC6;--ink:#2E382F;--ink2:#5B665A;--sage:#6F8466;--sage-d:#4D6450;--sage-dd:#36493A;--gold:#B8923A;--gold-d:#94742A;--gold-l:#FAF3E2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:620px;margin:0 auto;padding:30px 16px 40px}
+a{color:var(--sage-d)}
+.brand{font:700 15px Georgia,serif;letter-spacing:.08em;color:var(--sage-dd);text-decoration:none}
+h1{font:700 32px/1.15 Georgia,serif;color:var(--sage-dd);margin:18px 0 8px}
+.lead{font-size:16px;color:var(--ink2);margin:0 0 22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 14px}
+.card h2{font:600 18px Georgia,serif;margin:0 0 4px;color:var(--ink)}
+.card p{margin:0 0 12px;color:var(--ink2);font-size:14px}
+.qr{display:block;width:100%;max-width:260px;margin:4px auto 10px;border-radius:10px;border:1px solid var(--line);background:#fff}
+.amts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:2px 0 4px}
+.amt{background:var(--gold-l);border:1px solid #E9D9AE;border-radius:999px;padding:4px 12px;font-size:13px;color:var(--gold-d)}
+.kofi{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;text-decoration:none;font-weight:600;border-radius:10px;padding:10px 16px}
+.kofi:hover{background:var(--gold-d)}
+.free{font-size:13px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px;margin-top:22px}
+.center{text-align:center}
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="index.html">← RECITREADY</a>
+  <h1>Keep RecitReady free ☕</h1>
+  <p class="lead">Every drill on RecitReady is free, and it will stay free. I build them between work and law school.
+  If a drill helped you get through a recit or an exam, you can buy me a coffee. Any amount helps me keep building new ones.</p>
+
+  <div class="card center" id="qrCard">
+    <h2>GCash or Maya</h2>
+    <p>Open GCash or Maya, tap <b>Scan QR</b>, and scan or upload this code. You can add a note telling me which drill helped or what to build next.</p>
+    <img class="qr" id="qrImg" alt="GCash or Maya QR code for RecitReady">
+    <div class="amts"><span class="amt">₱20 · a 3-in-1</span><span class="amt">₱50 · a kapeng barako</span><span class="amt">₱100 · a café latte</span></div>
+  </div>
+
+  <div class="card center" id="kofiCard">
+    <h2>Card or PayPal</h2>
+    <p>Abroad, or prefer a card? Send a coffee through Ko-fi.</p>
+    <a class="kofi" id="kofiBtn" href="#" target="_blank" rel="noopener">☕ Buy me a coffee on Ko-fi</a>
+  </div>
+
+  <div class="card center" id="soonCard" style="display:none">
+    <h2>Coming soon</h2>
+    <p>The tip jar is being set up. Thank you for wanting to help!</p>
+  </div>
+
+  <p class="free">Tips are optional and don't unlock anything. All drills remain free for everyone.
+  Questions or errors? Use the <a href="https://sites.google.com/view/recit-ready/report-an-error" target="_blank" rel="noopener">Report an error</a> page on the <a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener">RecitReady site</a>.</p>
+</main>
+<script>
+(function(){
+  var shown = 0;
+  var k = document.getElementById("kofiCard");
+  if (KOFI && KOFI.trim()) { document.getElementById("kofiBtn").href = "https://ko-fi.com/" + encodeURIComponent(KOFI.trim()); shown++; }
+  else k.style.display = "none";
+  var q = document.getElementById("qrCard"), img = document.getElementById("qrImg");
+  function soon(){ if (!shown) document.getElementById("soonCard").style.display = ""; }
+  if (QR && QR.trim()) {
+    shown++;
+    img.onerror = function(){ q.style.display = "none"; shown--; soon(); };
+    img.src = QR.trim();
+  } else { q.style.display = "none"; }
+  soon();
+})();
+</script>
+</body>
+</html>
