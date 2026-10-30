@@ -143,7 +143,7 @@ h1{font-family:var(--serif-d);font-weight:700;font-size:28px;line-height:1.1;mar
   .qhead,.foot,.score,.filters{padding-left:14px;padding-right:14px}
 }
 </style>
-<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"></head>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head>
 <body>
 <div id="rr-nav" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:600 13px/1.3 system-ui,-apple-system,'Segoe UI',sans-serif;background:#36493A;color:#fff;padding:7px 14px">
 <a href="index.html" style="color:#fff;text-decoration:none;letter-spacing:.08em;font-family:Georgia,serif;font-size:14px">RECITREADY</a>
@@ -796,5 +796,14 @@ F:[
 <a href="https://sites.google.com/view/recit-ready" target="_blank" rel="noopener" style="color:#4D6450;font-weight:600;text-decoration:none">RecitReady</a> ·
 <a href="https://docs.google.com/forms/d/e/1FAIpQLSevIs1UsXAis_NB8qKYjPxivTeN8Dr-HQ0Tyqonnw5Try-xoQ/viewform?usp=pp_url&amp;entry.174327743=Law+on+Sales+%28T%2FF+quiz%29" target="_blank" rel="noopener" style="color:#4D6450;text-decoration:none">Report an error</a> ·
 <a href="support.html" target="_blank" rel="noopener" style="color:#94742A;font-weight:600;text-decoration:none">☕ Buy me a coffee</a></div>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script></body>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script><script>(function(){
+  function drill(){ var s=document.getElementById('rr-switch'); return s && s.selectedIndex>=0 ? s.options[s.selectedIndex].text : document.title; }
+  function send(extra){ try{ var p={drill_name: drill()}; for (var k in extra) p[k]=extra[k]; gtag('event','drill_completed',p); }catch(e){} }
+  var r=document.getElementById('result');
+  if (r){ var was=r.classList.contains('show');
+    new MutationObserver(function(){ var now=r.classList.contains('show'); if(now && !was) send({}); was=now; }).observe(r,{attributes:true,attributeFilter:['class']}); }
+  var q=document.getElementById('results');
+  if (q){ var hid=q.hidden;
+    new MutationObserver(function(){ if(hid && !q.hidden){ var m=document.getElementById('rmeta'); send({quiz_set: m ? (m.textContent.split(' · ')[0]||'') : ''}); } hid=q.hidden; }).observe(q,{attributes:true,attributeFilter:['hidden']}); }
+})();</script></body>
 </html>
