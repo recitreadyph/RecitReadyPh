@@ -33,7 +33,7 @@ h1{font:700 32px/1.15 Georgia,serif;color:var(--sage-dd);margin:18px 0 8px}
 .free{font-size:13px;color:var(--ink2);border-top:1px solid var(--line);padding-top:14px;margin-top:22px}
 .center{text-align:center}
 </style>
-</head>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"></head>
 <body>
 <main>
   <a class="brand" href="index.html">← RECITREADY</a>
@@ -78,5 +78,5 @@ h1{font:700 32px/1.15 Georgia,serif;color:var(--sage-dd);margin:18px 0 8px}
   soon();
 })();
 </script>
-</body>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script></body>
 </html>
