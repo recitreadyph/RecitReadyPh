@@ -1,41 +1,217 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RecitReady · Drills</title>
-<meta name="description" content="Free codal drills, elements drills, practice quizzes and procedure maps for Philippine law students.">
-<style>
-:root{--paper:#F7F2E6;--card:#FFFDF7;--line:#E4DCC6;--ink:#2E382F;--ink2:#5B665A;--sage:#6F8466;--sage-d:#4D6450;--sage-dd:#36493A;--gold-d:#94742A}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:960px;margin:0 auto;padding:28px 16px 40px}
-h1{font:700 30px/1.1 Georgia,serif;letter-spacing:.04em;color:var(--sage-dd);margin:0}
-.tag{font:italic 16px Georgia,serif;color:var(--gold-d);margin:2px 0 18px}
-h2{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sage-d);margin:26px 0 10px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
-.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink)}
-.card:hover{border-color:var(--sage)}.card b{display:block;font:600 16px Georgia,serif;margin-bottom:2px}.card span{font-size:13px;color:var(--ink2)}
-.support{display:flex;gap:14px;align-items:center;margin-top:30px;background:#FAF3E2;border:1px solid #E9D9AE;border-radius:12px;padding:14px 16px;text-decoration:none;color:var(--ink)}
-.support:hover{border-color:#B8923A}.support .cup{font-size:30px}.support b{display:block;font:600 17px Georgia,serif;color:#94742A}.support span{font-size:14px}
-.offline{display:flex;gap:14px;align-items:flex-start;margin:0 0 6px;background:#F1F4EC;border:1px solid #d3dccb;border-radius:12px;padding:14px 16px;color:var(--ink)}
-.offline .cup{font-size:28px}.offline b{display:block;font:600 17px Georgia,serif;color:var(--sage-dd)}.offline span{font-size:14px}
-.offline b.sm{display:inline;font:600 13.5px system-ui,sans-serif;color:var(--ink)}
-.offline button{margin-top:10px;background:var(--sage-dd);color:#fff;border:0;border-radius:10px;padding:9px 14px;font:600 14px system-ui,sans-serif;cursor:pointer}
-footer{font-size:13px;color:var(--ink2);margin-top:30px;border-top:1px solid var(--line);padding-top:14px}footer a{color:var(--sage-d)}
-</style><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#36493A"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head><body><main>
-<h1>RECITREADY</h1><div class="tag">Drills for recitations, exams and the bar</div>
-<div class="offline" id="offlineCard"><span class="cup">📲</span><span>
-<b>Use RecitReady offline</b>
-<span id="offStatus">Saving the drills on this device…</span>
-<span class="how" id="offHow"><br><b class="sm">Android (Chrome):</b> tap ⋮ then <i>Install app</i> or <i>Add to Home screen</i>.
-<br><b class="sm">iPhone (Safari):</b> tap Share ⬆ then <i>Add to Home Screen</i>.</span>
-<button id="installBtn" hidden>Install RecitReady</button></span></div>
-<h2>Codal Drills</h2><div class="grid"><a class="card" href="codal-persons-and-family-relations.html"><b>Persons and Family Relations</b><span>Civil Code Arts. 1–51 and the Family Code</span></a><a class="card" href="codal-constitution.html"><b>1987 Philippine Constitution</b><span>Preamble and Articles I–XVIII</span></a><a class="card" href="codal-criminal-law-1.html"><b>Criminal Law I</b><span>Revised Penal Code, Book One</span></a><a class="card" href="codal-criminal-law-2.html"><b>Criminal Law II</b><span>Revised Penal Code, Book Two</span></a><a class="card" href="codal-property.html"><b>Property, Ownership and its Modifications</b><span>Civil Code Arts. 414–773</span></a><a class="card" href="codal-obligations-and-contracts.html"><b>Obligations and Contracts</b><span>Civil Code Arts. 1156–1439</span></a><a class="card" href="codal-sales.html"><b>Law on Sales</b><span>Civil Code Arts. 1458–1637</span></a><a class="card" href="codal-partnership-agency-trusts.html"><b>Partnership, Agency and Trusts</b><span>Civil Code Arts. 1767–1932, 1440–1457</span></a><a class="card" href="codal-corporation-code.html"><b>Revised Corporation Code</b><span>R.A. No. 11232</span></a><a class="card" href="codal-civil-procedure.html"><b>Civil Procedure</b><span>Rules 1–71 and 144, with a Periods tab</span></a><a class="card" href="codal-criminal-procedure.html"><b>Criminal Procedure</b><span>Rules 110–127, with a Periods tab</span></a><a class="card" href="codal-evidence.html"><b>Evidence</b><span>Rules 128–133 (2026 amendments highlighted) + Judicial Affidavit, E-Evidence, Child Witness and DNA Rules</span></a></div><h2>Elements Drills</h2><div class="grid"><a class="card" href="elements-criminal-law-2.html"><b>Criminal Law II · Elements of Crimes</b><span>Book Two, with the codal provision after every article</span></a></div><h2>Practice Quizzes</h2><div class="grid"><a class="card" href="quizzes-civil-procedure-tf.html"><b>Civil Procedure (T/F)</b><span>200 items · four-statement true or false · 15 min per set</span></a><a class="card" href="quizzes-sales-tf.html"><b>Law on Sales (T/F)</b><span>200 items · two-statement true or false · 15 min per set</span></a><a class="card" href="quizzes-corporation-code-tf.html"><b>Corporation Code (T/F)</b><span>200 items · four-statement true or false · Secs. 1–34 · 15 min per set</span></a><a class="card" href="quizzes-corporation-code-mcq.html"><b>Corporation Code (Bar MCQ)</b><span>200 bar-type multiple choice · Secs. 1–34 · 10 min per 20 items</span></a><a class="card" href="essays-corporation-code-bar.html"><b>Corporation Code · Bar Essays</b><span>30 situational problems · 5 min each · ALAC suggested answers</span></a><a class="card" href="quizzes-property-tf.html"><b>Property (T/F)</b><span>150 items · four-statement true or false · 12 min per set</span></a><a class="card" href="essays-property-bar.html"><b>Property · Bar Essays</b><span>25 situational problems · 5 min each · ALAC suggested answers</span></a></div><h2>Procedure Maps</h2><div class="grid"><a class="card" href="maps-procedure-maps.html"><b>Procedure Maps</b><span>Civil and criminal actions, step by step, with periods</span></a></div>
-<a class="support" href="support.html"><span class="cup">☕</span><span><b>Keep RecitReady free</b>Every drill stays free. If one helped you survive a recit, you can buy me a coffee.</span></a>
-<footer><b>Study aid only.</b> These drills may contain errors and may not reflect the latest amendments. Always check against an official source.
-See the <a href="https://sites.google.com/view/recit-ready">RecitReady site</a> for the full disclaimer, copyright and privacy notice · <a href="https://docs.google.com/forms/d/e/1FAIpQLSevIs1UsXAis_NB8qKYjPxivTeN8Dr-HQ0Tyqonnw5Try-xoQ/viewform" target="_blank" rel="noopener">Report an error</a></footer>
-</main><script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script><script>
+<title>RecitReady · Codal drills and bar practice</title>
+<meta name="description" content="Free codal fill-in-the-blank drills, bar-type T/F, MCQ and essays for Philippine law students. Works offline.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,500&family=Lora:wght@600;700&family=DM+Sans:wght@400;600;700&display=swap" media="print" onload="this.media='all'"><style>
+:root{--bg:#F7F4EE;--card:#fff;--subtle:#EFEAE1;--soft:#F4EFE6;--line:#E4DDD0;--line2:#CFC4B0;--ink:#1E2024;--mut:#57534E;--soft2:#78716C;
+--accent:#0F3B33;--navy:#0C1B33;--gold:#A8833A;--goldbg:#FBF4E4;--goldln:#E6D3A5;--good:#1E7A4C;
+--display:"Cormorant Garamond",Georgia,serif;--sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px -14px rgba(20,25,20,.14)}
+.btn{display:inline-flex;align-items:center;gap:6px;border-radius:12px;padding:10px 16px;font:700 14px var(--sans);border:1px solid var(--line2);background:#fff;color:var(--ink);white-space:nowrap;text-decoration:none;cursor:pointer}
+.btn.pri{background:linear-gradient(135deg,#E6C57E,#C99A45);border:0;color:#0C1B33}
+.btn.ghost{background:rgba(255,255,255,.06);border-color:rgba(212,175,97,.6);color:#F7F4EE}
+.eyebrow{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mut)}
+header.top{background:linear-gradient(100deg,#0B2A23 0%,#143039 50%,#0C1B33 100%);color:#F8FAFC;position:relative;box-shadow:0 4px 12px -6px rgba(0,0,0,.35)}
+header.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,97,.7),transparent)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 14px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand svg{width:44px;height:44px;flex:none}
+.wm .a{font:700 26px/1 var(--display);letter-spacing:.01em}.wm .a i{font-style:normal;color:#D4AF61;position:relative}
+.wm .a i::after{content:"";position:absolute;left:1px;right:1px;bottom:-4px;height:1.5px;background:currentColor;border-radius:2px}
+.wm .b{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.72;margin-top:9px}
+nav.links{display:flex;gap:2px;padding:4px;border-radius:12px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.1)}
+nav.links a{color:#F8FAFC;text-decoration:none;font-size:13.5px;padding:6px 12px;border-radius:9px;opacity:.85;white-space:nowrap}
+nav.links a.on{background:linear-gradient(135deg,#E6C57E,#C99A45);color:#0C1B33;opacity:1;font-weight:700}
+nav.links a:hover{opacity:1}
+.cof{font:700 12.5px var(--sans);color:#0C1B33;background:linear-gradient(135deg,#E6C57E,#C99A45);padding:8px 12px;border-radius:9px;text-decoration:none}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;margin-top:22px}
+.intro{padding:30px 32px 42px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0B2A23 0%,#143039 55%,#0C1B33 100%);border-color:#0C1B33;color:#F7F4EE}
+.intro::after{content:"";position:absolute;left:32px;right:32px;bottom:18px;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,97,.75),transparent)}
+.intro::before{content:"";position:absolute;left:50%;bottom:15px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#D4AF61;z-index:1}
+.intro h1{font:700 44px/1.05 var(--display);margin:6px 0 10px}.intro h1 i{font-weight:500;color:#D4AF61}
+.intro p{margin:0 0 18px;color:#C9D3CF;font-size:15.5px;max-width:520px}
+.intro .acts{display:flex;gap:10px;flex-wrap:wrap}
+.facts{display:flex;gap:20px;margin-top:22px;flex-wrap:wrap}
+.facts div{font-size:12.5px;color:#A9B8B3}.facts b{display:block;font:700 21px/1.1 var(--sans);color:#D4AF61}
+.today{padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.today .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.today h2{font:700 24px var(--display);margin:0}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kp div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--soft)}
+.kp b{display:block;font:700 23px/1.15 var(--sans)}.kp b small{font-size:13px;color:var(--mut);font-weight:600}.kp > div > span{font-size:11.5px;color:var(--mut)}.kp b span{font:inherit;color:inherit}
+.kp .f{background:var(--goldbg);border-color:var(--goldln)}.kp .f b{color:var(--gold)}
+.cont{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1.5px solid var(--accent);border-radius:12px;padding:11px 14px;background:#EEF4F1;text-decoration:none}
+.cont small{display:block;font-size:11.5px;color:var(--mut)}.cont b{font-size:14.5px}.cont .go{font-weight:700;color:var(--accent);white-space:nowrap}
+.recent{display:flex;gap:6px;flex-wrap:wrap}
+.recent a{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:#fff;text-decoration:none}
+.recent a:hover{border-color:var(--accent)}
+.newbie{font-size:14px;color:var(--mut);line-height:1.6;background:var(--soft);border:1px dashed var(--line2);border-radius:12px;padding:12px 14px}
+.finder{margin-top:18px;padding:12px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 280px;display:flex;align-items:center;gap:8px;background:var(--subtle);border:1px solid var(--line);border-radius:12px;padding:3px 6px 3px 13px}
+.search input{flex:1;border:0;background:none;font:15px var(--sans);padding:7px 0;outline:none;min-width:0;color:var(--ink)}
+.search:focus-within{border-color:#B47B22}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{font:600 12.5px var(--sans);padding:6px 11px;border-radius:999px;border:1px solid var(--line2);background:#fff;cursor:pointer;color:var(--ink)}
+.chips button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.hits{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.hits a{display:inline-flex;gap:6px;align-items:center;font-size:13.5px;font-weight:700;text-decoration:none;border-radius:10px;padding:8px 12px;background:var(--accent);color:#fff}
+.sec{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:26px 4px 10px}
+.sec h3{font:700 25px var(--display);margin:0;color:var(--accent);display:flex;align-items:center;gap:12px}
+.sec h3::after{content:"";width:60px;height:1px;background:linear-gradient(90deg,#B47B22,transparent)}
+.sec span{font-size:12.5px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.subj{padding:15px 16px;display:flex;flex-direction:column;gap:9px}
+.subj .h{display:flex;gap:11px;align-items:flex-start}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;font-size:18px;background:var(--soft);border:1px solid var(--line)}
+.subj .nm{font:700 16.5px/1.25 Lora,Georgia,serif;text-decoration:none}
+.subj .cv{font-size:12.5px;color:var(--mut)}
+.fm{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.fm a{font-size:11.5px;font-weight:700;padding:5px 10px;border-radius:8px;text-decoration:none;border:1px solid var(--line2);background:#fff}
+.fm a.c{background:var(--accent);border-color:var(--accent);color:#fff}
+.fm a.q{background:var(--goldbg);border-color:var(--goldln);color:var(--gold)}
+.fm a:hover{filter:brightness(1.08)}
+.mb{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mut)}
+.mb .tr{flex:1;height:6px;border-radius:9px;background:var(--line);overflow:hidden}.mb .tr i{display:block;height:100%;background:#B47B22;border-radius:9px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.prac{padding:15px 16px;text-decoration:none;display:flex;flex-direction:column;gap:6px;border-color:var(--goldln);background:linear-gradient(180deg,#fff,#FDF9EF)}
+.prac:hover{border-color:#B47B22}
+.prac b{font:700 17px Lora,Georgia,serif}.prac span{font-size:12.5px;color:var(--mut)}.prac em{font-style:normal;font-size:12px;font-weight:700;color:var(--gold)}
+.duo{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tool{padding:16px 18px;display:flex;gap:12px;align-items:flex-start;text-decoration:none}
+.tool b{display:block;font:700 17px Lora,Georgia,serif;margin-bottom:2px}.tool span{font-size:13px;color:var(--mut)}
+.tool.sup{background:var(--goldbg);border-color:var(--goldln)}.tool.sup b{color:var(--gold)}
+.offline{display:flex;gap:12px;align-items:flex-start;padding:16px 18px}
+.offline .cup{font-size:20px;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;background:var(--soft);border:1px solid var(--line)}
+.offline b{display:block;font:700 17px Lora,Georgia,serif;margin-bottom:2px}.offline span{font-size:13px;color:var(--mut)}
+.offline b.sm{display:inline;font:700 12.5px var(--sans);color:var(--ink)}
+.offline button{margin-top:10px;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:8px 13px;font:700 13px var(--sans);cursor:pointer}
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:18px}
+footer{margin:30px 0 32px;font-size:12.5px;color:var(--soft2);text-align:center;line-height:1.7}
+footer .hl{display:block;width:260px;height:1px;margin:0 auto 14px;background:linear-gradient(90deg,transparent,#B47B22,transparent)}
+footer a{color:var(--accent);font-weight:600;text-decoration:none}
+[hidden]{display:none!important}
+@media (max-width:900px){.grid,.duo{grid-template-columns:1fr 1fr}.pgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){
+  nav.links{order:3;width:100%;overflow-x:auto}nav.links a{flex:1;text-align:center;padding:6px 8px;font-size:12.5px}
+  .cof{display:none}.wm .b{display:none}.brand svg{width:38px;height:38px}.wm .a{font-size:23px}
+  .hero{grid-template-columns:1fr}.intro{padding:22px 20px 40px}.intro h1{font-size:34px}
+  .grid,.duo{grid-template-columns:1fr}
+  .chips{overflow-x:auto;flex-wrap:nowrap;width:100%;padding-bottom:2px}.chips button{flex:none}
+  .sec span,.today .top .eyebrow{display:none}
+  .cont{flex-wrap:wrap}
+}
+</style><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0C1B33"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head><body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rrE-bg" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#0E3329"/><stop offset=".55" stop-color="#143039"/><stop offset="1" stop-color="#0C1B33"/></linearGradient><linearGradient id="rrE-gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EBCB86"/><stop offset=".5" stop-color="#D4AF61"/><stop offset="1" stop-color="#A8833A"/></linearGradient><linearGradient id="rrE-cr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF8F2"/><stop offset="1" stop-color="#E8E0D0"/></linearGradient><!-- the column, drawn in a 20 x 30 box --><symbol id="rrE" viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="15" fill="url(#rrE-bg)"/><rect x="2.6" y="2.6" width="58.8" height="58.8" rx="13.4" fill="none" stroke="#D4AF61" stroke-opacity=".6" stroke-width="1.1"/><rect x="22" y="10" width="31" height="40" rx="4" fill="#F7F4EE" fill-opacity=".14" stroke="#F7F4EE" stroke-opacity=".45" stroke-width="1" transform="rotate(9 37.5 30)"/><path d="M25 12H34c9 0 14 4.6 14 11.4 0 5.6-3.4 9.4-8.8 10.6L50 52h-8.6l-9.8-16.4h-6.6v-7h9c3.9 0 6.2-1.7 6.2-4.6s-2.3-4.6-6.2-4.6h-9z" fill="url(#rrE-gd)"/><g fill="url(#rrE-gd)"><rect x="13.2" y="12" width="16" height="3" rx="1"/><path d="M14.6 15h13.2l-1.6 2.4H16.2z"/><rect x="16.2" y="17.2" width="11" height="27.8"/><rect x="15" y="44.8" width="13.4" height="2.4" rx=".8"/><rect x="13.2" y="47.6" width="16" height="4.4" rx="1.2"/></g><g fill="#143039"><rect x="18.6" y="19.2" width="1.1" height="23.8" rx=".5"/><rect x="21.2" y="19.2" width="1.1" height="23.8" rx=".5"/><rect x="23.8" y="19.2" width="1.1" height="23.8" rx=".5"/></g></symbol></defs></svg>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html"><svg viewBox="0 0 64 64" aria-hidden="true"><use href="#rrE"/></svg><div class="wm"><div class="a">Recit<i>Ready</i></div><div class="b">Codal drills · Bar practice</div></div></a>
+  <nav class="links"><a class="on" href="index.html">Home</a><a href="#subjects">Codal Drills</a><a href="#practice">Bar Practice</a><a href="maps-procedure-maps.html">Procedure Maps</a></nav>
+  <a class="cof" href="support.html">☕ Support</a>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div class="card intro">
+      <span class="eyebrow" style="color:#D4AF61">Free for Philippine law students · On call. Every class.</span>
+      <h1>Drills for recitations, exams <i>and the bar.</i></h1>
+      <p>Fill-in-the-blank codal drills, bar-type T/F, MCQ and essays with suggested ALAC answers. Works on your phone, even offline.</p>
+      <div class="acts"><a class="btn pri" href="#subjects">Start a codal drill →</a><a class="btn ghost" href="#practice">Bar practice</a></div>
+      <div class="facts"><div><b>12</b>codal subjects</div><div><b>3,100+</b>articles and sections</div><div><b>950</b>practice items</div><div><b>55</b>essay problems</div></div>
+    </div>
+    <div class="card today">
+      <div class="top"><h2>Your study today</h2><span class="eyebrow">Saved on this device</span></div>
+      <div class="kp"><div class="f"><b>🔥 <span id="kStreak">0</span></b><span>day streak</span></div><div><b><span id="kToday">0</span> <small>/ <span id="kGoal">20</span></small></b><span>done today</span></div><div><b id="kDue">0</b><span>due for review</span></div></div>
+      <a class="cont" id="cont" href="#subjects" hidden><div><small>Continue where you left off</small><b id="contName"></b></div><span class="go">Resume →</span></a>
+      <div class="newbie" id="newbie">Your streak, review list and last drill show up here once you start. Everything is saved only on this device; no sign-up needed.</div>
+      <div id="recentBox" hidden><div class="eyebrow" style="margin-bottom:6px">Recently opened</div><div class="recent" id="recent"></div></div>
+    </div>
+  </section>
+
+  <section class="card finder">
+    <label class="search">🔎<input id="q" type="search" placeholder="Find a subject, or type “Art. 1544”, “Rule 39”, “Sec. 23”…" aria-label="Find a subject or provision"></label>
+    <div class="chips"><button class="on" data-g="all">All</button><button data-g="Civil Law">Civil Law</button><button data-g="Remedial Law">Remedial Law</button><button data-g="Criminal Law">Criminal Law</button><button data-g="Political Law">Political Law</button><button data-g="Commercial Law">Commercial Law</button></div>
+    <div class="hits" id="hits" hidden></div>
+  </section>
+
+  <div id="subjects"><section class="gsec"><div class="sec"><h3>Civil Law</h3><span>Codal drill = fill-in-the-blanks · gold = bar practice (T/F, MCQ, essays)</span></div><div class="grid"><div class="card subj" data-g="Civil Law" data-p="prop" data-n="360" data-t="property, ownership and its modifications civil code arts. 414–773 civil law codal drill t/f essays" data-r='[["a", 414, 773]]'><div class="h"><div class="ico">🏠</div><div><a class="nm" href="codal-property.html">Property, Ownership and its Modifications</a><div class="cv">Civil Code Arts. 414–773</div></div></div><div class="fm"><a class="c" href="codal-property.html">Codal drill</a><a class="q" href="practice-property.html#tf">T/F</a><a class="q" href="practice-property.html#essay">Essays</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Civil Law" data-p="pfr" data-n="306" data-t="persons and family relations civil code arts. 1–51 and the family code civil law codal drill" data-r='[["a", 1, 257]]'><div class="h"><div class="ico">👪</div><div><a class="nm" href="codal-persons-and-family-relations.html">Persons and Family Relations</a><div class="cv">Civil Code Arts. 1–51 and the Family Code</div></div></div><div class="fm"><a class="c" href="codal-persons-and-family-relations.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Civil Law" data-p="oblicon" data-n="284" data-t="obligations and contracts civil code arts. 1156–1439 civil law codal drill" data-r='[["a", 1156, 1439]]'><div class="h"><div class="ico">🤝</div><div><a class="nm" href="codal-obligations-and-contracts.html">Obligations and Contracts</a><div class="cv">Civil Code Arts. 1156–1439</div></div></div><div class="fm"><a class="c" href="codal-obligations-and-contracts.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Civil Law" data-p="sales" data-n="180" data-t="law on sales civil code arts. 1458–1637 civil law codal drill t/f" data-r='[["a", 1458, 1637]]'><div class="h"><div class="ico">🏷️</div><div><a class="nm" href="codal-sales.html">Law on Sales</a><div class="cv">Civil Code Arts. 1458–1637</div></div></div><div class="fm"><a class="c" href="codal-sales.html">Codal drill</a><a class="q" href="practice-sales.html#tf">T/F</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Civil Law" data-p="pat" data-n="184" data-t="partnership, agency and trusts civil code arts. 1767–1932, 1440–1457 civil law codal drill" data-r='[["a", 1767, 1932], ["a", 1440, 1457]]'><div class="h"><div class="ico">📜</div><div><a class="nm" href="codal-partnership-agency-trusts.html">Partnership, Agency and Trusts</a><div class="cv">Civil Code Arts. 1767–1932, 1440–1457</div></div></div><div class="fm"><a class="c" href="codal-partnership-agency-trusts.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div></div></section><section class="gsec"><div class="sec"><h3>Remedial Law</h3></div><div class="grid"><div class="card subj" data-g="Remedial Law" data-p="civpro" data-n="641" data-t="civil procedure rules 1–71 and 144 remedial law codal drill periods t/f" data-r='[["r", 1, 71], ["r", 144, 144]]'><div class="h"><div class="ico">⚖️</div><div><a class="nm" href="codal-civil-procedure.html">Civil Procedure</a><div class="cv">Rules 1–71 and 144</div></div></div><div class="fm"><a class="c" href="codal-civil-procedure.html">Codal drill</a><a class="c" href="codal-civil-procedure.html#periods">Periods</a><a class="q" href="practice-civil-procedure.html#tf">T/F</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Remedial Law" data-p="crimpro" data-n="187" data-t="criminal procedure rules 110–127 remedial law codal drill periods" data-r='[["r", 110, 127]]'><div class="h"><div class="ico">🚔</div><div><a class="nm" href="codal-criminal-procedure.html">Criminal Procedure</a><div class="cv">Rules 110–127</div></div></div><div class="fm"><a class="c" href="codal-criminal-procedure.html">Codal drill</a><a class="c" href="codal-criminal-procedure.html#periods">Periods</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Remedial Law" data-p="evid" data-n="205" data-t="evidence rules 128–133 and pertinent rules · 2026 amendments remedial law codal drill" data-r='[["r", 128, 133]]'><div class="h"><div class="ico">🔍</div><div><a class="nm" href="codal-evidence.html">Evidence</a><div class="cv">Rules 128–133 and pertinent rules · 2026 amendments</div></div></div><div class="fm"><a class="c" href="codal-evidence.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div></div></section><section class="gsec"><div class="sec"><h3>Criminal Law</h3></div><div class="grid"><div class="card subj" data-g="Criminal Law" data-p="crim1" data-n="108" data-t="criminal law i revised penal code, book one · arts. 1–113 criminal law codal drill" data-r='[["a", 1, 113]]'><div class="h"><div class="ico">🗡️</div><div><a class="nm" href="codal-criminal-law-1.html">Criminal Law I</a><div class="cv">Revised Penal Code, Book One · Arts. 1–113</div></div></div><div class="fm"><a class="c" href="codal-criminal-law-1.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div><div class="card subj" data-g="Criminal Law" data-p="crim2" data-n="242" data-t="criminal law ii revised penal code, book two · arts. 114–367 criminal law codal drill elements" data-r='[["a", 114, 367]]'><div class="h"><div class="ico">⛓️</div><div><a class="nm" href="codal-criminal-law-2.html">Criminal Law II</a><div class="cv">Revised Penal Code, Book Two · Arts. 114–367</div></div></div><div class="fm"><a class="c" href="codal-criminal-law-2.html">Codal drill</a><a class="e" href="elements-criminal-law-2.html">Elements</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div></div></section><section class="gsec"><div class="sec"><h3>Political Law</h3></div><div class="grid"><div class="card subj" data-g="Political Law" data-p="consti" data-n="307" data-t="1987 philippine constitution preamble and articles i–xviii political law codal drill" data-r='[]'><div class="h"><div class="ico">🏛️</div><div><a class="nm" href="codal-constitution.html">1987 Philippine Constitution</a><div class="cv">Preamble and Articles I–XVIII</div></div></div><div class="fm"><a class="c" href="codal-constitution.html">Codal drill</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div></div></section><section class="gsec"><div class="sec"><h3>Commercial Law</h3></div><div class="grid"><div class="card subj" data-g="Commercial Law" data-p="rcc" data-n="188" data-t="revised corporation code r.a. no. 11232 commercial law codal drill t/f mcq essays" data-r='[["s", 1, 188]]'><div class="h"><div class="ico">🏢</div><div><a class="nm" href="codal-corporation-code.html">Revised Corporation Code</a><div class="cv">R.A. No. 11232</div></div></div><div class="fm"><a class="c" href="codal-corporation-code.html">Codal drill</a><a class="q" href="practice-corporation-code.html#tf">T/F</a><a class="q" href="practice-corporation-code.html#mcq">MCQ</a><a class="q" href="practice-corporation-code.html#essay">Essays</a></div><div class="mb"><span class="tr"><i style="width:0"></i></span><span class="mt">Not started</span></div></div></div></section><div class="card empty" id="none" hidden>Nothing matches yet. Try another word, or clear the search.</div></div>
+
+  <section id="practice"><div class="sec"><h3>Bar Practice</h3><span>True/false, bar MCQ and essays · timed like the bar or with instant feedback</span></div>
+    <div class="pgrid"><a class="card prac" href="practice-corporation-code.html" data-k="rcc"><b>🏢 Corporation Code</b><span>Four-statement T/F · bar MCQ · essays</span><em>Tutor or Exam mode</em></a><a class="card prac" href="practice-property.html" data-k="prop"><b>🏠 Property</b><span>Four-statement T/F · essays</span><em>Tutor or Exam mode</em></a><a class="card prac" href="practice-civil-procedure.html" data-k="civpro"><b>⚖️ Civil Procedure</b><span>Four-statement T/F</span><em>Tutor or Exam mode</em></a><a class="card prac" href="practice-sales.html" data-k="sales"><b>🏷️ Law on Sales</b><span>Two-statement T/F</span><em>Tutor or Exam mode</em></a></div></section>
+
+  <section><div class="sec"><h3>More</h3></div>
+  <div class="duo">
+    <a class="card tool" href="maps-procedure-maps.html"><div class="ico">🗺️</div><div><b>Procedure Maps</b><span>Civil and criminal actions, step by step, with periods.</span></div></a>
+    <div class="card offline" id="offlineCard"><span class="cup">📲</span><span><b>Use RecitReady offline</b><span id="offStatus">Saving the drills on this device…</span>
+      <span class="how" id="offHow"><br><b class="sm">Android (Chrome):</b> tap ⋮ then <i>Install app</i>.<br><b class="sm">iPhone (Safari):</b> tap Share ⬆ then <i>Add to Home Screen</i>.</span>
+      <button id="installBtn" hidden>Install RecitReady</button></span></div>
+    <a class="card tool sup" href="support.html"><div class="ico">☕</div><div><b>Keep RecitReady free</b><span>If a drill saved your recit, you can buy me a coffee.</span></div></a>
+  </div></section>
+
+  <footer><span class="hl"></span><b>Study aid only.</b> The drills may contain errors and may not reflect the latest amendments; always check against an official source.<br>
+  <a href="https://sites.google.com/view/recit-ready">RecitReady site</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLSevIs1UsXAis_NB8qKYjPxivTeN8Dr-HQ0Tyqonnw5Try-xoQ/viewform" target="_blank" rel="noopener">Report an error</a> · recitready2026@gmail.com</footer>
+</main>
+<script>
+(function(){
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+  function get(k, d){ try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } }
+  var D = new Date(), today = Math.floor((D.getTime() - D.getTimezoneOffset() * 60000) / 86400000);
+  /* streak, today, due */
+  var A = get("rr-activity", {days: {}, goal: 20}), n = 0, d = today; if (!A.days[d]) d--; while (A.days[d]){ n++; d--; }
+  var due = 0, keys = []; try { for (var i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i)); } catch(e){}
+  keys.forEach(function(k){ if (/^rr-(studio|wb)-.+-srs$/.test(k)){ var m = get(k, {}); for (var x in m) if (m[x] && m[x].due <= today) due++; } });
+  $("#kStreak").textContent = n; $("#kToday").textContent = A.days[today] || 0; $("#kGoal").textContent = A.goal || 20; $("#kDue").textContent = due;
+  /* continue + recently opened */
+  var R = get("rr-recent", []).filter(function(r){ return r && r.h && r.n; });
+  if (R.length){
+    var r0 = R[0], det = get("rr-detail:" + r0.h, "");
+    $("#cont").href = r0.h; $("#contName").textContent = r0.n + (det ? " · " + det : "");
+    $("#cont").hidden = false; $("#newbie").hidden = true;
+    var rest = R.slice(1, 5); $("#recentBox").hidden = !rest.length;
+    $("#recent").innerHTML = rest.map(function(r){ return '<a href="' + r.h + '">' + r.n.replace(/[<&]/g, "") + "</a>"; }).join("");
+  }
+  /* mastery per subject (codal drill: articles at 90%+ on the first try) */
+  $$(".subj[data-p]").forEach(function(c){
+    var p = c.getAttribute("data-p"), tot = +c.getAttribute("data-n");
+    var best = get("rr-studio-" + p + "-codal-best", null) || get("rr-" + p + "-best", {}), m = 0;
+    for (var k in best) if (best[k] >= 90) m++;
+    var pct = tot ? Math.min(100, Math.round(100 * m / tot)) : 0;
+    c.querySelector(".tr i").style.width = pct + "%";
+    c.querySelector(".mt").textContent = m ? pct + "% mastered" : "Not started";
+  });
+  $$(".prac[data-k]").forEach(function(c){
+    var b = get("rr-wb-" + c.getAttribute("data-k") + "-hist", []);
+    if (b.length) c.querySelector("em").textContent = b.length + " set" + (b.length === 1 ? "" : "s") + " done";
+  });
+  /* search and filters */
+  var grp = "all";
+  function apply(){
+    var q = $("#q").value.trim().toLowerCase(), hits = [], num = q.match(/^(art(?:icle)?s?|sec(?:tion)?s?|rules?)\.?\s*(\d+)/i);
+    $$(".subj").forEach(function(c){
+      var okG = grp === "all" || c.getAttribute("data-g") === grp, txt = c.getAttribute("data-t"), okQ = !q || txt.indexOf(q) >= 0, href = null;
+      if (num){
+        var kind = num[1][0].toLowerCase(), v = +num[2], rg = JSON.parse(c.getAttribute("data-r") || "[]");
+        okQ = rg.some(function(x){ return x[0] === kind && v >= x[1] && v <= x[2]; });
+        if (okQ){ var base = c.querySelector(".fm a.c").getAttribute("href").split("#")[0], lab = kind === "r" ? "Rule " + v : (kind === "a" ? "Art. " : "Sec. ") + v;
+          hits.push('<a href="' + base + "#" + kind + "=" + v + '">' + lab + " · " + c.querySelector(".nm").textContent + " →</a>"); }
+      }
+      c.hidden = !(okG && okQ);
+    });
+    $$(".gsec").forEach(function(s){ s.hidden = !s.querySelector(".subj:not([hidden])"); });
+    $("#hits").innerHTML = hits.join(""); $("#hits").hidden = !hits.length;
+    $("#none").hidden = !!document.querySelector(".subj:not([hidden])");
+  }
+  $("#q").addEventListener("input", apply);
+  $("#q").addEventListener("keydown", function(e){ if (e.key === "Enter"){ var a = document.querySelector("#hits a"); if (a) location.href = a.href; } });
+  $$(".chips button").forEach(function(b){ b.onclick = function(){ grp = b.getAttribute("data-g"); $$(".chips button").forEach(function(x){ x.classList.toggle("on", x === b); }); apply(); }; });
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script><script>
 (function(){
   var st = document.getElementById('offStatus'), btn = document.getElementById('installBtn'), ev = null;
   if (!('serviceWorker' in navigator) || !window.caches) { st.textContent = 'Your browser does not support offline mode. Try Chrome or Safari.'; return; }
-  var N = 23;
+  var N = 27;
   function check(){
     caches.keys().then(function(ks){
       var k = ks.filter(function(x){ return x.indexOf('rr-') === 0 && x !== 'rr-fonts'; })[0];
