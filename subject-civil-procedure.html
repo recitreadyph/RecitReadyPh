@@ -1,0 +1,324 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F4F1E8">
+<title>Civil Procedure · RecitReady</title><meta name="description" content="Civil Procedure: codal drills, bar practice and your progress.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<script id="rr-theme">(function(){var d=document.documentElement,L={};try{L=JSON.parse(localStorage.getItem("rr-look")||"{}")||{}}catch(e){}
+if(!L.pal){var o=null;try{o=localStorage.getItem("rr-studio-theme")}catch(e){}L.pal=o==="parchment"?"oxford":"chambers";if(!L.app&&(o==="chambers-night"||o==="midnight"))L.app="dark"}
+L.app=L.app||"auto";L.page=L.page||"paper";if(L.fs==null)L.fs=1;var mq=null;try{mq=matchMedia("(prefers-color-scheme: dark)")}catch(e){}
+function apply(){var dk=L.app==="dark"||(L.app==="auto"&&mq&&mq.matches);d.setAttribute("data-pal",L.pal);d.setAttribute("data-page",L.page);d.setAttribute("data-fs",L.fs);if(dk)d.setAttribute("data-dark","");else d.removeAttribute("data-dark");
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",dk?"#06120F":"#F4F1E8")}
+apply();try{mq.addEventListener("change",apply)}catch(e){}
+window.RRLook={get:function(k){return L[k]},set:function(k,v){L[k]=v;try{localStorage.setItem("rr-look",JSON.stringify(L))}catch(e){}apply();try{document.dispatchEvent(new Event("rr:look"))}catch(e){}},dark:function(){return d.hasAttribute("data-dark")}}})();</script>
+<style>/* RecitReady design system v2: iPhone-style layout, Inter, three palettes (Chambers default, Cool, Oxford Navy),
+   light/dark, four reading pages. Palette, dark mode, page and text size are set as attributes on <html> by rr2-look.js. */
+:root{
+  --bg:#F4F1E8; --card:#FFFFFF; --fg:#13231E; --sec:#5E6B64; --ter:#9AA199; --tint:#FBF8F0;
+  --sep:rgba(60,70,60,.14); --fill:rgba(118,128,118,.12); --fill2:rgba(118,128,118,.22);
+  --wash1:rgba(15,91,74,.15); --wash2:rgba(212,175,97,.20); --ring:rgba(201,162,79,.38); --glow:0 10px 28px -14px rgba(15,59,51,.40);
+  --acc:#0F5B4A; --acc2:#0C1B33; --gold:#C9A24F; --goldd:#9A7630; --goldbg:rgba(212,175,97,.17); --accbg:rgba(15,91,74,.10); --onacc:#FFFFFF;
+  --grad:linear-gradient(135deg,#0F3B33 0%,#143039 50%,#0C1B33 100%); --grad2:linear-gradient(90deg,#C9A24F,#E2C27A);
+  --btngold:linear-gradient(135deg,#E6C57E,#C99A45); --ongold:#0C1B33;
+  --good:#1F7A4D; --goodbg:rgba(31,122,77,.12); --bad:#C2413A; --badbg:rgba(194,65,58,.11);
+  --bar:rgba(246,243,236,.86); --shadow:0 1px 2px rgba(15,25,20,.06),0 0 0 .5px rgba(15,25,20,.07);
+  --sheetshadow:0 -10px 30px rgba(20,30,25,.12); --scrim:rgba(10,15,12,.34); --thumb:#FFFFFF;
+  --page:#FBF9F4; --ink:#1F2430; --inkSec:#6B6457; --pageline:rgba(120,100,60,.15);
+  --ui:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; --read:var(--ui);
+  --fs:18px;
+  /* names used by older markup */
+  --accent:var(--acc); --accent-text:var(--onacc); --text-main:var(--fg); --text-muted:var(--sec); --text-soft:var(--ter);
+  --bg-page:var(--bg); --bg-surface:var(--card); --bg-subtle:var(--fill); --bg-accent-soft:var(--accbg);
+  --border-main:var(--sep); --border-strong:var(--fill2); --gold-bg:var(--goldbg); --gold-border:var(--ring);
+  --good-fg:var(--good); --good-bg:var(--goodbg); --bad-fg:var(--bad); --bad-bg:var(--badbg);
+}
+:root[data-fs="0"]{--fs:16px}:root[data-fs="2"]{--fs:20.5px}
+/* Chambers dark */
+:root[data-dark]{
+  --bg:#06120F; --card:#0F201C; --fg:#EEF0EA; --sec:#9AA7A0; --ter:#5F6E68; --tint:#13281F;
+  --sep:rgba(160,180,170,.15); --fill:rgba(140,160,150,.16); --fill2:rgba(140,160,150,.26);
+  --wash1:rgba(20,90,75,.38); --wash2:rgba(212,175,97,.11); --ring:rgba(212,175,97,.34); --glow:0 10px 30px -12px rgba(0,0,0,.6);
+  --acc:#E2C27A; --acc2:#9BC9B6; --gold:#E2C27A; --goldd:#E2C27A; --goldbg:rgba(226,194,122,.13); --accbg:rgba(226,194,122,.13);
+  --grad:linear-gradient(135deg,#17594B 0%,#143039 50%,#0C1B33 100%);
+  --good:#55C98E; --goodbg:rgba(85,201,142,.15); --bad:#F2877C; --badbg:rgba(242,135,124,.14);
+  --bar:rgba(10,22,19,.86); --shadow:0 0 0 .5px rgba(255,255,255,.07); --sheetshadow:0 -10px 30px rgba(0,0,0,.55); --scrim:rgba(0,0,0,.55); --thumb:#2B3A35;
+  --page:#1B1A17; --ink:#ECE6DA; --inkSec:#A39A8A; --pageline:rgba(236,230,218,.13);
+  color-scheme:dark}
+/* Cool */
+:root[data-pal="cool"]{
+  --bg:#EEF3FA; --fg:#0B1424; --sec:#5F6B80; --ter:#9EA9BC; --tint:#F4F7FE; --sep:rgba(60,70,90,.13); --fill:rgba(118,128,150,.12); --fill2:rgba(118,128,150,.2);
+  --wash1:rgba(52,120,246,.16); --wash2:rgba(20,184,196,.13); --ring:rgba(52,120,246,.22); --glow:0 10px 28px -12px rgba(52,120,246,.35);
+  --acc:#3478F6; --acc2:#5E5CE6; --gold:#14B3C2; --goldd:#0E8F9C; --goldbg:rgba(20,179,194,.13); --accbg:rgba(52,120,246,.10);
+  --grad:linear-gradient(135deg,#3478F6 0%,#5E5CE6 100%); --grad2:linear-gradient(90deg,#14B3C2,#3478F6);
+  --btngold:linear-gradient(135deg,#3478F6,#5E5CE6); --ongold:#FFFFFF;
+  --good:#0F9C8C; --goodbg:rgba(20,179,166,.14); --bad:#E5484D; --badbg:rgba(229,72,77,.11); --bar:rgba(244,247,252,.86)}
+:root[data-pal="cool"][data-dark]{
+  --bg:#04070D; --card:#121722; --fg:#F1F5FB; --sec:#8E9AAE; --ter:#566176; --tint:#162033; --sep:rgba(150,160,180,.16); --fill:rgba(130,140,160,.18); --fill2:rgba(130,140,160,.28);
+  --wash1:rgba(76,141,255,.20); --wash2:rgba(63,208,217,.12); --ring:rgba(76,141,255,.30); --glow:0 10px 30px -12px rgba(76,141,255,.45);
+  --acc:#5B97FF; --acc2:#8A88FF; --gold:#3FD0D9; --goldd:#3FD0D9; --goldbg:rgba(63,208,217,.13); --accbg:rgba(76,141,255,.17);
+  --grad:linear-gradient(135deg,#4C8DFF 0%,#7D7BFF 100%); --grad2:linear-gradient(90deg,#3FD0D9,#4C8DFF);
+  --btngold:linear-gradient(135deg,#4C8DFF,#7D7BFF);
+  --good:#36D1BE; --goodbg:rgba(54,209,190,.15); --bad:#FF6369; --badbg:rgba(255,99,105,.15); --bar:rgba(14,18,26,.86); --thumb:#2E3442}
+/* Oxford Navy */
+:root[data-pal="oxford"]{
+  --bg:#F2EFE6; --card:#FFFDF8; --fg:#0C1B33; --sec:#5B6577; --ter:#A0A7B3; --tint:#FAF6EC; --sep:rgba(40,55,80,.13);
+  --wash1:rgba(29,58,107,.15); --wash2:rgba(212,175,97,.18); --ring:rgba(176,138,58,.38); --glow:0 10px 28px -14px rgba(12,27,51,.40);
+  --acc:#1D3A6B; --acc2:#0C1B33; --gold:#B08A3A; --goldd:#94722A; --accbg:rgba(29,58,107,.10);
+  --grad:linear-gradient(135deg,#1D3A6B 0%,#0C1B33 100%); --grad2:linear-gradient(90deg,#B08A3A,#E2C27A); --bar:rgba(244,241,234,.86)}
+:root[data-pal="oxford"][data-dark]{
+  --bg:#050A15; --card:#0E1728; --fg:#EEF1F7; --sec:#95A0B5; --ter:#59647A; --tint:#15213A; --sep:rgba(150,165,190,.15);
+  --wash1:rgba(42,76,134,.40); --wash2:rgba(212,175,97,.10); --ring:rgba(212,175,97,.34); --glow:0 10px 30px -12px rgba(0,0,0,.6);
+  --acc:#E2C27A; --acc2:#8FA9D6; --gold:#E2C27A; --goldd:#E2C27A; --accbg:rgba(226,194,122,.14);
+  --grad:linear-gradient(135deg,#2A4C86 0%,#0C1B33 100%); --bar:rgba(8,14,26,.86); --thumb:#26324A}
+/* reading pages */
+:root[data-page="mist"]{--page:#F7FAFE;--ink:#1E2633;--inkSec:#5F6B80;--pageline:rgba(70,100,150,.13)}
+:root[data-page="sepia"]{--page:#F5ECD9;--ink:#3B2F22;--inkSec:#7A6852;--pageline:rgba(110,80,40,.16)}
+:root[data-page="night"],:root[data-page="night"][data-dark]{--page:#0B1220;--ink:#E6EAF2;--inkSec:#8E9AB0;--pageline:rgba(200,215,240,.13)}
+:root[data-page="mist"][data-dark]{--page:#121A27;--ink:#E6EBF3;--inkSec:#93A0B5;--pageline:rgba(200,215,240,.12)}
+:root[data-page="sepia"][data-dark]{--page:#231D15;--ink:#E8D9BE;--inkSec:#A8977B;--pageline:rgba(232,217,190,.12)}
+
+/* ---------- base ---------- */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--ui);font-size:15px;line-height:1.5;color:var(--fg);-webkit-font-smoothing:antialiased;letter-spacing:-.01em;min-height:100vh;
+  background:radial-gradient(90% 360px at 10% -80px,var(--wash1),transparent 70%),radial-gradient(70% 320px at 100% 0,var(--wash2),transparent 70%),var(--bg);
+  background-repeat:no-repeat;background-color:var(--bg);overflow-x:clip}
+button,select,input,textarea{font:inherit;color:inherit;letter-spacing:inherit}
+button{cursor:pointer;background:none;border:0}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+[hidden]{display:none!important}
+a{color:inherit}
+kbd{font-family:var(--ui);font-size:11.5px;padding:1px 6px;border-radius:6px;background:var(--fill);color:var(--fg)}
+
+/* nav bar */
+.nav{position:sticky;top:0;z-index:30;height:54px;display:flex;align-items:center;background:var(--bar);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);
+  border-bottom:.5px solid var(--sep);padding:0 max(14px,env(safe-area-inset-left,0px))}
+.navin{width:100%;max-width:1320px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0}
+.back{display:flex;align-items:center;gap:4px;color:var(--acc);font-size:17px;text-decoration:none;white-space:nowrap;padding:6px 2px;min-width:0}
+.back svg{width:12px;height:20px;flex:none}
+.brand2{display:flex;align-items:center;gap:9px;font-weight:700;font-size:19px;letter-spacing:-.02em;text-decoration:none;color:var(--fg);white-space:nowrap}
+.brand2 svg{width:30px;height:30px;flex:none}.brand2 i{font-style:normal;color:var(--goldd)}
+.navt{font-weight:600;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;text-align:center;opacity:0;transition:opacity .2s}
+.nav.scrolled .navt{opacity:1}
+.navr{display:flex;gap:10px;align-items:center;flex:none}
+.cbtn{width:34px;height:34px;border-radius:50%;background:var(--accbg);display:grid;place-items:center;color:var(--acc);font-weight:600;font-size:14px;flex:none}
+.cbtn svg{width:18px;height:18px}
+.rrfs{color:var(--acc);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+
+/* text */
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc)}
+.eyebrow.dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--grad2);flex:none}
+.eyebrow.gold{color:var(--goldd)}
+.lt{font-size:32px;font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:4px 0 2px;text-wrap:balance}
+.subt{color:var(--sec);font-size:15px;margin:2px 0 0;text-wrap:balance}
+.legend{font-size:13px;color:var(--sec)}
+.sh{font-size:13px;font-weight:600;color:var(--sec);text-transform:uppercase;letter-spacing:.04em;margin:26px 14px 8px;display:flex;justify-content:space-between;gap:10px}
+
+/* surfaces */
+.card{background:var(--card);border-radius:18px;box-shadow:var(--shadow)}
+.group{background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.reading{background:var(--page);color:var(--ink)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:9px 15px;font-size:14.5px;font-weight:600;background:var(--accbg);color:var(--acc);white-space:nowrap;transition:transform .1s,opacity .15s;text-decoration:none}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.pri{background:var(--grad);color:var(--onacc);box-shadow:var(--glow)}
+.btn.gold{background:var(--btngold);color:var(--ongold)}
+.btn.plain{background:var(--fill);color:var(--fg)}
+.btn.sm{padding:6px 11px;font-size:13px;border-radius:10px}
+.pillbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13.5px;font-weight:500;white-space:nowrap}
+
+/* segmented control */
+.seg{display:flex;background:var(--fill);border-radius:10px;padding:2px;gap:0}
+.seg button{flex:1;text-align:center;font-size:14px;font-weight:500;padding:7px 8px;border-radius:8px;color:var(--fg);white-space:nowrap;transition:background .2s,color .2s}
+.seg button.on{background:var(--thumb);color:var(--acc);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)}
+.seg button .n{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:9px;background:var(--acc);color:var(--card);font-size:11px;line-height:17px;text-align:center;font-weight:600}
+
+/* sheets and dialogs */
+.scrim{position:fixed;inset:0;background:var(--scrim);z-index:60;display:flex;align-items:flex-end;justify-content:center;animation:rrfade .2s}
+@keyframes rrfade{from{opacity:0}}
+.modal{width:100%;max-width:560px;background:var(--bg);border-radius:24px 24px 0 0;padding:8px max(18px,env(safe-area-inset-left,0px)) calc(26px + env(safe-area-inset-bottom,0px));animation:rrup .3s cubic-bezier(.2,.8,.2,1);max-height:90vh;overflow:auto}
+@media (min-width:700px){.scrim{align-items:center}.modal{border-radius:24px;max-height:86vh}}
+@keyframes rrup{from{transform:translateY(40px);opacity:.4}}
+.grab{width:38px;height:5px;border-radius:3px;background:var(--ter);opacity:.5;margin:0 auto 12px}
+.mh{display:flex;justify-content:space-between;align-items:center;margin:4px 0 6px}
+.mh h2{margin:0;font-size:20px;font-weight:700}
+.mh button{color:var(--acc);font-weight:600;font-size:16px}
+.glab{font-size:12.5px;color:var(--sec);text-transform:uppercase;letter-spacing:.04em;margin:18px 14px 7px}
+.swrow{display:flex;align-items:center;gap:12px;padding:12px 14px;font-size:16px;position:relative;cursor:pointer;user-select:none}
+.swrow+.swrow::before{content:"";position:absolute;left:14px;right:0;top:0;height:.5px;background:var(--sep)}
+.swrow input{position:absolute;opacity:0;pointer-events:none}
+.sw{order:2;margin-left:auto;width:51px;height:31px;border-radius:99px;background:var(--fill2);position:relative;flex:none;transition:background .2s}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:transform .2s}
+.swrow input:checked+.sw{background:var(--acc)}
+.swrow input:checked+.sw::after{transform:translateX(20px)}
+.swrow input:focus-visible+.sw{outline:2px solid var(--acc);outline-offset:2px}
+.selrow{display:flex;align-items:center;gap:12px;padding:10px 14px;font-size:16px}
+.selrow select{margin-left:auto;max-width:62%;border:0;border-radius:10px;background:var(--fill);padding:7px 10px;font-size:14.5px;font-weight:500;color:var(--fg)}
+.swt{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(0,0,0,.2)}
+
+/* rings and bars */
+.ring{display:inline-block;width:34px;height:34px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:10px;font-weight:600;color:var(--sec)}
+.lbar{height:5px;border-radius:3px;background:var(--fill);overflow:hidden}
+.lbar i{display:block;height:100%;background:var(--grad2);border-radius:3px;transition:width .3s}
+
+/* list rows */
+.row{display:flex;align-items:center;gap:13px;padding:11px 14px;position:relative;text-decoration:none;color:inherit}
+.row+.row::before{content:"";position:absolute;left:63px;right:0;top:0;height:.5px;background:var(--sep)}
+.row:hover{background:var(--fill)}
+.ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;flex:none;font-weight:700;font-size:13px;letter-spacing:.02em}
+.ic svg{width:19px;height:19px}
+.rt{flex:1;min-width:0}.rt b{display:block;font-weight:600;font-size:15.5px}.rt span{display:block;font-size:13px;color:var(--sec);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chev{color:var(--ter);font-size:22px;font-weight:300;line-height:1}
+.rt .tags,.tags{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap}
+.rt .tag,.tag{display:inline-block;width:auto;font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--fill);color:var(--sec);white-space:nowrap}
+.tag.g{background:var(--goldbg);color:var(--goldd)}
+
+.toast2{position:fixed;left:50%;top:calc(64px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:70;background:var(--card);box-shadow:0 8px 30px rgba(0,0,0,.18);border-radius:99px;padding:10px 18px;font-weight:600;font-size:14.5px;animation:rrfade .2s}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--fill2);border-radius:999px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+.page{max-width:1240px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 40px}
+.nav .navt{opacity:0}.nav.scrolled .navt{opacity:1}
+.search{display:flex;align-items:center;gap:8px;height:44px;border-radius:12px;background:var(--fill);padding:0 12px;color:var(--sec)}
+.search svg{width:17px;flex:none}.search input{flex:1;min-width:0;border:0;background:none;outline:none;font-size:16px;color:var(--fg)}
+.search input::placeholder{color:var(--sec)}
+.chipsrow{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px}.chipsrow::-webkit-scrollbar{display:none}
+.chipsrow button{flex:none;padding:7px 14px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:14px;font-weight:500}
+.chipsrow button.on{background:var(--grad);color:var(--onacc);box-shadow:var(--glow)}
+.hits{display:flex;flex-direction:column;gap:0;margin-top:10px}
+.hits a{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;text-decoration:none;font-weight:600;color:var(--acc);border-top:.5px solid var(--sep)}
+.hits a:first-child{border-top:0}
+.w3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.w{padding:12px 13px;border-radius:18px;background:var(--card);box-shadow:var(--shadow);min-width:0}
+.w .n{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1.2}.w .n small{font-size:14px;color:var(--sec);font-weight:500}
+.w .l{font-size:12.5px;color:var(--sec)}
+.contc{display:block;border-radius:22px;padding:18px;box-shadow:var(--glow);position:relative;overflow:hidden;background:var(--grad);color:#fff;text-decoration:none}
+.contc::after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,97,.35),transparent 70%);pointer-events:none}
+.contc .k{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#E2C27A}
+.contc .t{font-size:19px;font-weight:700;margin-top:6px;line-height:1.25}.contc .s{font-size:14px;opacity:.8;margin-top:3px}
+.contc .go{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:13.5px;gap:10px}
+.gpill{display:inline-flex;align-items:center;padding:8px 16px;border-radius:99px;font-weight:600;font-size:14.5px;background:linear-gradient(135deg,#E6C57E,#C99A45);color:#0C1B33;flex:none}
+.newbie{border-radius:22px;padding:18px;background:var(--card);box-shadow:var(--shadow);font-size:14.5px;color:var(--sec);line-height:1.55}
+.newbie b{display:block;color:var(--fg);font-size:17px;margin-bottom:4px}
+.recent{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px}.recent::-webkit-scrollbar{display:none}
+.recent a{flex:none;padding:7px 13px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13.5px;text-decoration:none;color:var(--fg)}
+.offl{display:flex;gap:13px;padding:13px 14px;align-items:flex-start}
+.offl .ic{color:#fff}.offl b{display:block;font-size:15.5px;font-weight:600}.offl span{font-size:13px;color:var(--sec)}
+.offl .how{display:block;margin-top:4px;line-height:1.55}.offl b.sm{display:inline;font-size:13px}
+.offl button{margin-top:10px}
+.foot2{font-size:12.5px;color:var(--sec);text-align:center;line-height:1.7;margin-top:30px}
+.foot2 a{color:var(--acc);text-decoration:none;font-weight:600}
+.empty2{padding:18px;text-align:center;color:var(--sec)}
+@media (min-width:700px){.nav .navt{opacity:1}}
+
+.hd2{display:flex;gap:16px;align-items:center;margin-top:20px}
+.bigring{width:96px;height:96px;flex:none;position:relative}.bigring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.bigring b{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.bigring small{position:absolute;bottom:21px;left:0;right:0;text-align:center;font-size:9.5px;color:var(--sec);font-weight:600;letter-spacing:.04em}
+.st2{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.st2 span{padding:7px 12px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13px;color:var(--sec)}.st2 b{color:var(--fg)}
+.duebar{display:flex;align-items:center;gap:12px;padding:14px 16px;margin-top:14px;background:var(--goldbg);border-radius:16px;box-shadow:0 0 0 1px var(--ring) inset;text-decoration:none;color:var(--fg)}
+.duebar b{display:block}.duebar span{font-size:13px;color:var(--sec)}.duebar .gpill{margin-left:auto}
+.opts2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt2{padding:14px;border-radius:18px;display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--fg);transition:transform .1s,box-shadow .15s}
+.opt2:hover{box-shadow:var(--shadow),var(--glow)}.opt2:active{transform:scale(.98)}
+.opt2 .oi{width:38px;height:38px;border-radius:11px;background:var(--accbg);color:var(--acc);display:grid;place-items:center;margin-bottom:8px}
+.opt2 b{font-size:16px;font-weight:600}.opt2 span{font-size:13px;color:var(--sec);line-height:1.35}.opt2 em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--goldd);margin-top:6px}
+.opt2.big{grid-column:1/-1;background:var(--grad);color:#fff;box-shadow:var(--glow);flex-direction:row;align-items:center;gap:14px;padding:16px}
+.opt2.big .oi{background:rgba(226,194,122,.18);color:#E2C27A;margin:0}.opt2.big span{color:rgba(255,255,255,.75)}.opt2.big em{color:#E2C27A;margin:0 0 0 auto}
+.opt2.big .tx{display:flex;flex-direction:column;gap:2px;min-width:0}
+.prs{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px}
+.pr{padding:14px 12px;text-align:center;text-decoration:none;color:var(--fg)}.pr .n{font-size:22px;font-weight:700;letter-spacing:-.03em;color:var(--acc)}
+.pr b{display:block;font-size:14px;font-weight:600;margin-top:2px}.pr span{display:block;font-size:12px;color:var(--sec);margin-top:2px}
+.chrow .ic{background:var(--accbg);color:var(--acc);font-size:12px}
+.chrow .lbar{margin-top:7px;max-width:240px}
+.chrow .pct{font-size:13px;color:var(--sec);font-variant-numeric:tabular-nums;min-width:38px;text-align:right}
+.ogl{font-size:12px;font-weight:600;color:var(--goldd);padding:12px 14px 4px;text-transform:uppercase;letter-spacing:.04em}
+@media (min-width:1000px){.page{padding:0 32px 48px}.cols2{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:start}.lt{font-size:40px}.chapcol{position:sticky;top:70px}}
+</style><link rel="icon" type="image/svg+xml" href="favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"><link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0C1B33"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="RecitReady"><script async src="https://www.googletagmanager.com/gtag/js?id=G-06BLD9VJNF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-06BLD9VJNF');</script></head><body data-p="civpro" data-n="641">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rrE-bg" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#0E3329"/><stop offset=".55" stop-color="#143039"/><stop offset="1" stop-color="#0C1B33"/></linearGradient><linearGradient id="rrE-gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EBCB86"/><stop offset=".5" stop-color="#D4AF61"/><stop offset="1" stop-color="#A8833A"/></linearGradient><linearGradient id="rrE-cr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF8F2"/><stop offset="1" stop-color="#E8E0D0"/></linearGradient><!-- the column, drawn in a 20 x 30 box --><symbol id="rrE" viewBox="0 0 64 64"><rect x="1" y="1" width="62" height="62" rx="15" fill="url(#rrE-bg)"/><rect x="2.6" y="2.6" width="58.8" height="58.8" rx="13.4" fill="none" stroke="#D4AF61" stroke-opacity=".6" stroke-width="1.1"/><rect x="22" y="10" width="31" height="40" rx="4" fill="#F7F4EE" fill-opacity=".14" stroke="#F7F4EE" stroke-opacity=".45" stroke-width="1" transform="rotate(9 37.5 30)"/><path d="M25 12H34c9 0 14 4.6 14 11.4 0 5.6-3.4 9.4-8.8 10.6L50 52h-8.6l-9.8-16.4h-6.6v-7h9c3.9 0 6.2-1.7 6.2-4.6s-2.3-4.6-6.2-4.6h-9z" fill="url(#rrE-gd)"/><g fill="url(#rrE-gd)"><rect x="13.2" y="12" width="16" height="3" rx="1"/><path d="M14.6 15h13.2l-1.6 2.4H16.2z"/><rect x="16.2" y="17.2" width="11" height="27.8"/><rect x="15" y="44.8" width="13.4" height="2.4" rx=".8"/><rect x="13.2" y="47.6" width="16" height="4.4" rx="1.2"/></g><g fill="#143039"><rect x="18.6" y="19.2" width="1.1" height="23.8" rx=".5"/><rect x="21.2" y="19.2" width="1.1" height="23.8" rx=".5"/><rect x="23.8" y="19.2" width="1.1" height="23.8" rx=".5"/></g></symbol></defs></svg><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="rg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2C27A"/><stop offset="1" stop-color="#0F5B4A"/></linearGradient></defs></svg>
+<header class="nav" id="hdr"><div class="navin">
+  <a class="back" href="index.html"><svg viewBox="0 0 12 20" aria-hidden="true"><path d="M10 2 2 10l8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Home</span></a>
+  <span class="navt">Civil Procedure</span>
+  <span class="navr"><button class="cbtn" id="setBtn" type="button" aria-label="Appearance" title="Appearance"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="19" cy="12" r="2" fill="currentColor"/></svg></button></span>
+</div></header>
+<div class="page"><div class="cols2"><div>
+  <div class="hd2"><div style="flex:1;min-width:0"><span class="eyebrow dot">Remedial Law</span><h1 class="lt">Civil Procedure</h1><p class="subt">Rules 1–71 and 144</p></div>
+    <div class="bigring" id="bigRing"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15.5" fill="none" stroke="var(--fill)" stroke-width="3"/><circle class="rv" cx="18" cy="18" r="15.5" fill="none" stroke="url(#rg2)" stroke-width="3" stroke-linecap="round" stroke-dasharray="0 97.4" opacity="0"/></svg><b>0%</b><small>MASTERED</small></div></div>
+  <div class="st2"><span><b id="sM">0</b> of 641 sections mastered</span><span>⭐ <b id="sStar">0</b> starred</span><span>⚡ Best sprint <b id="sSprint">0</b></span></div>
+  <a class="duebar" id="dueBar" href="codal-civil-procedure.html#m=cloze&amp;due" hidden><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="14" height="15" rx="3" fill="var(--goldd)" opacity=".45"/><rect x="7" y="3" width="14" height="15" rx="3" fill="var(--goldd)"/></svg><span><b id="dueN"></b><span>Spaced review of the ones you missed</span></span><span class="gpill">Review</span></a>
+  <div class="sh">Codal drills</div><div class="opts2"><a class="opt2 big" href="codal-civil-procedure.html#m=cloze"><span class="oi"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h7M4 12h4M14 12h6M4 17h9"/><rect x="13" y="5" width="7" height="4" rx="1.5" fill="currentColor"/></svg></span><span class="tx"><b>Cloze drill</b><span>Fill in the blanks, one paragraph at a time</span></span><em>Start ›</em></a><a class="opt2 card" href="codal-civil-procedure.html#m=cards"><span class="oi"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><b>Cold recit</b><span>Recite from memory, then grade yourself</span><em>Spaced review</em></a><a class="opt2 card" href="codal-civil-procedure.html#m=sprint"><span class="oi"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><b>60s sprint</b><span>Pick the missing word, fast</span><em id="oSprint">Beat your best score</em></a><a class="opt2 card" href="codal-civil-procedure.html#m=reader"><span class="oi"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1zM12 6v14"/></svg></span><b>Read the text</b><span>Full text with search and highlights</span><em>641 sections</em></a><a class="opt2 card" href="codal-civil-procedure.html#m=cloze&amp;starred"><span class="oi" style="background:var(--goldbg);color:var(--goldd)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></span><b>Starred</b><span>Drill only the ones you starred</span><em id="oStar"></em></a><a class="opt2 card" href="codal-civil-procedure.html#m=cloze&amp;periods"><span class="oi"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 9v4l3 2M9 2h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><b>Periods</b><span>Every period and deadline in the Rules</span><em>Fill in the days</em></a></div>
+  <div class="sh">Bar practice</div><div class="prs"><a class="pr card" href="practice-civil-procedure.html#tf" data-k="civpro" data-f="tf"><div class="n">T/F</div><b>True or false</b><span>10 sets</span><span class="pd" style="color:var(--goldd);font-weight:600"></span></a></div>
+</div>
+<div class="chapcol"><div class="sh"><span>Rules</span><a href="codal-civil-procedure.html#m=cloze" style="color:var(--acc);text-decoration:none;text-transform:none;letter-spacing:0">Open drill ›</a></div><div class="group"><a class="row chrow" href="codal-civil-procedure.html#ch=0" data-ri="0" data-n="6"><span class="ic">1</span><span class="rt"><b>General Provisions</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=1" data-ri="1" data-n="6"><span class="ic">2</span><span class="rt"><b>Cause of Action</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=2" data-ri="2" data-n="22"><span class="ic">3</span><span class="rt"><b>Parties to Civil Actions</b><span>Secs. 1–22</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=3" data-ri="3" data-n="4"><span class="ic">4</span><span class="rt"><b>Venue of Actions</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=4" data-ri="4" data-n="2"><span class="ic">5</span><span class="rt"><b>Uniform Procedure in Trial Courts</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=5" data-ri="5" data-n="13"><span class="ic">6</span><span class="rt"><b>Kinds of Pleadings</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=6" data-ri="6" data-n="6"><span class="ic">7</span><span class="rt"><b>Parts and Contents of a Pleading</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=7" data-ri="7" data-n="13"><span class="ic">8</span><span class="rt"><b>Manner of Making Allegations in Pleadings</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=8" data-ri="8" data-n="3"><span class="ic">9</span><span class="rt"><b>Effect of Failure to Plead</b><span>Secs. 1–3</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=9" data-ri="9" data-n="8"><span class="ic">10</span><span class="rt"><b>Amended and Supplemental Pleadings</b><span>Secs. 1–8</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=10" data-ri="10" data-n="11"><span class="ic">11</span><span class="rt"><b>When to File Responsive Pleadings</b><span>Secs. 1–11</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=11" data-ri="11" data-n="6"><span class="ic">12</span><span class="rt"><b>Bill of Particulars</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=12" data-ri="12" data-n="19"><span class="ic">13</span><span class="rt"><b>Filing and Service of Pleadings, Judgments and Other Papers</b><span>Secs. 1–19</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=13" data-ri="13" data-n="23"><span class="ic">14</span><span class="rt"><b>Summons</b><span>Secs. 1–23</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=14" data-ri="14" data-n="13"><span class="ic">15</span><span class="rt"><b>Motions</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=15" data-ri="15" data-n="0"><span class="ic">16</span><span class="rt"><b>Motion to Dismiss</b><span></span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=16" data-ri="16" data-n="4"><span class="ic">17</span><span class="rt"><b>Dismissal of Actions</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=17" data-ri="17" data-n="10"><span class="ic">18</span><span class="rt"><b>Pre-trial</b><span>Secs. 1–10</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=18" data-ri="18" data-n="4"><span class="ic">19</span><span class="rt"><b>Intervention</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=19" data-ri="19" data-n="2"><span class="ic">20</span><span class="rt"><b>Calendar of Cases</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=20" data-ri="20" data-n="10"><span class="ic">21</span><span class="rt"><b>Subpoena</b><span>Secs. 1–10</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=21" data-ri="21" data-n="2"><span class="ic">22</span><span class="rt"><b>Computation of Time</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=22" data-ri="22" data-n="29"><span class="ic">23</span><span class="rt"><b>Depositions Pending Actions</b><span>Secs. 1–29</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=23" data-ri="23" data-n="7"><span class="ic">24</span><span class="rt"><b>Depositions Before Action or Pending Appeal</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=24" data-ri="24" data-n="6"><span class="ic">25</span><span class="rt"><b>Interrogatories to Parties</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=25" data-ri="25" data-n="5"><span class="ic">26</span><span class="rt"><b>Admission by Adverse Party</b><span>Secs. 1–5</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=26" data-ri="26" data-n="1"><span class="ic">27</span><span class="rt"><b>Production or Inspection of Documents or Things</b><span>Sec. 1</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=27" data-ri="27" data-n="4"><span class="ic">28</span><span class="rt"><b>Physical and Mental Examination of Persons</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=28" data-ri="28" data-n="6"><span class="ic">29</span><span class="rt"><b>Refusal to Comply with Modes of Discovery</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=29" data-ri="29" data-n="9"><span class="ic">30</span><span class="rt"><b>Trial</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=30" data-ri="30" data-n="2"><span class="ic">31</span><span class="rt"><b>Consolidation or Severance</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=31" data-ri="31" data-n="13"><span class="ic">32</span><span class="rt"><b>Trial by Commissioner</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=32" data-ri="32" data-n="2"><span class="ic">33</span><span class="rt"><b>Demurrer to Evidence</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=33" data-ri="33" data-n="2"><span class="ic">34</span><span class="rt"><b>Judgment on the Pleadings</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=34" data-ri="34" data-n="6"><span class="ic">35</span><span class="rt"><b>Summary Judgments</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=35" data-ri="35" data-n="6"><span class="ic">36</span><span class="rt"><b>Judgments, Final Orders and Entry Thereof</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=36" data-ri="36" data-n="9"><span class="ic">37</span><span class="rt"><b>New Trial or Reconsideration</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=37" data-ri="37" data-n="7"><span class="ic">38</span><span class="rt"><b>Relief from Judgments, Orders, or Other Proceedings</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=38" data-ri="38" data-n="48"><span class="ic">39</span><span class="rt"><b>Execution, Satisfaction and Effect of Judgments</b><span>Secs. 1–48</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=39" data-ri="39" data-n="9"><span class="ic">40</span><span class="rt"><b>Appeal from Municipal Trial Courts to the Regional Trial Courts</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=40" data-ri="40" data-n="13"><span class="ic">41</span><span class="rt"><b>Appeal from the Regional Trial Courts</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=41" data-ri="41" data-n="9"><span class="ic">42</span><span class="rt"><b>Petition for Review from the Regional Trial Courts to the Court of Appeals</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=42" data-ri="42" data-n="13"><span class="ic">43</span><span class="rt"><b>Appeals from the Court of Tax Appeals and Quasi-judicial Agencies to the Court of Appeals</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=43" data-ri="43" data-n="15"><span class="ic">44</span><span class="rt"><b>Ordinary Appealed Cases</b><span>Secs. 1–15</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=44" data-ri="44" data-n="9"><span class="ic">45</span><span class="rt"><b>Appeal by Certiorari to the Supreme Court</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=45" data-ri="45" data-n="7"><span class="ic">46</span><span class="rt"><b>Original Cases</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=46" data-ri="46" data-n="10"><span class="ic">47</span><span class="rt"><b>Annulment of Judgments or Final Orders and Resolutions</b><span>Secs. 1–10</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=47" data-ri="47" data-n="3"><span class="ic">48</span><span class="rt"><b>Preliminary Conference</b><span>Secs. 1–3</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=48" data-ri="48" data-n="3"><span class="ic">49</span><span class="rt"><b>Oral Argument</b><span>Secs. 1–3</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=49" data-ri="49" data-n="3"><span class="ic">50</span><span class="rt"><b>Dismissal of Appeal</b><span>Secs. 1–3</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=50" data-ri="50" data-n="11"><span class="ic">51</span><span class="rt"><b>Judgment</b><span>Secs. 1–11</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=51" data-ri="51" data-n="4"><span class="ic">52</span><span class="rt"><b>Motion for Reconsideration</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=52" data-ri="52" data-n="4"><span class="ic">53</span><span class="rt"><b>New Trial</b><span>Secs. 1–4</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=53" data-ri="53" data-n="2"><span class="ic">54</span><span class="rt"><b>Internal Business</b><span>Secs. 1–2</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=54" data-ri="54" data-n="3"><span class="ic">55</span><span class="rt"><b>Publication of Judgments and Final Resolutions</b><span>Secs. 1–3</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=55" data-ri="55" data-n="7"><span class="ic">56</span><span class="rt"><b>Procedure in the Supreme Court</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=56" data-ri="56" data-n="20"><span class="ic">57</span><span class="rt"><b>Preliminary Attachment</b><span>Secs. 1–20</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=57" data-ri="57" data-n="9"><span class="ic">58</span><span class="rt"><b>Preliminary Injunction</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=58" data-ri="58" data-n="9"><span class="ic">59</span><span class="rt"><b>Receivership</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=59" data-ri="59" data-n="10"><span class="ic">60</span><span class="rt"><b>Replevin</b><span>Secs. 1–10</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=60" data-ri="60" data-n="7"><span class="ic">61</span><span class="rt"><b>Support Pendente Lite</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=61" data-ri="61" data-n="7"><span class="ic">62</span><span class="rt"><b>Interpleader</b><span>Secs. 1–7</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=62" data-ri="62" data-n="6"><span class="ic">63</span><span class="rt"><b>Declaratory Relief and Similar Remedies</b><span>Secs. 1–6</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=63" data-ri="63" data-n="9"><span class="ic">64</span><span class="rt"><b>Review of Judgments and Final Orders or Resolutions of the Commission on Elections and the Commission on Audit</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=64" data-ri="64" data-n="9"><span class="ic">65</span><span class="rt"><b>Certiorari, Prohibition and Mandamus</b><span>Secs. 1–9</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=65" data-ri="65" data-n="12"><span class="ic">66</span><span class="rt"><b>Quo Warranto</b><span>Secs. 1–12</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=66" data-ri="66" data-n="14"><span class="ic">67</span><span class="rt"><b>Expropriation</b><span>Secs. 1–14</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=67" data-ri="67" data-n="8"><span class="ic">68</span><span class="rt"><b>Foreclosure of Real Estate Mortgage</b><span>Secs. 1–8</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=68" data-ri="68" data-n="13"><span class="ic">69</span><span class="rt"><b>Partition</b><span>Secs. 1–13</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=69" data-ri="69" data-n="21"><span class="ic">70</span><span class="rt"><b>Forcible Entry and Unlawful Detainer</b><span>Secs. 1–21</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=70" data-ri="70" data-n="12"><span class="ic">71</span><span class="rt"><b>Contempt</b><span>Secs. 1–12</span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a><a class="row chrow" href="codal-civil-procedure.html#ch=71" data-ri="71" data-n="1"><span class="ic">144</span><span class="rt"><b>Effectiveness</b><span></span><div class="lbar"><i style="width:0"></i></div></span><span class="pct">0%</span><span class="chev">›</span></a></div></div>
+</div>
+<footer class="foot2"><b>Study aid only.</b> Progress is saved only on this device.</footer>
+</div>
+<script>/* shared UI helpers: bottom/center sheet, toast, the look settings (color, reading page, appearance, text size) */
+const RRUI = (() => {
+  const PAL = [["chambers", "Chambers"], ["cool", "Cool"], ["oxford", "Oxford Navy"]];
+  const PAGES = [["paper", "Paper", "#FBF9F4", "#1B1A17"], ["mist", "Mist", "#F7FAFE", "#121A27"], ["sepia", "Sepia", "#F5ECD9", "#231D15"], ["night", "Night", "#0B1220", "#0B1220"]];
+  const look = (k, d) => (window.RRLook && RRLook.get(k)) ?? d;
+  function seg(id, val, opts){ return `<div class="seg" data-g="${id}">${opts.map(([v, l]) => `<button type="button" data-v="${v}" class="${String(v) === String(val) ? "on" : ""}">${l}</button>`).join("")}</div>`; }
+  function lookHTML(){
+    const dk = window.RRLook && RRLook.dark();
+    return `<div class="glab">Color</div>${seg("pal", look("pal", "chambers"), PAL)}
+      <div class="glab">Reading page</div>${seg("page", look("page", "paper"), PAGES.map(([v, l, a, b]) => [v, `<span class="swt" style="background:${dk ? b : a}"></span>${l}`]))}
+      <div class="pgprev reading" style="margin-top:10px;padding:12px 14px;border-radius:14px;font-size:var(--fs);line-height:1.6;box-shadow:var(--shadow)">Regular meetings of stockholders or members shall be held annually on a date fixed in the bylaws…</div>
+      <div class="glab">Appearance</div>${seg("app", look("app", "auto"), [["auto", "Auto"], ["light", "Light"], ["dark", "Dark"]])}
+      <div class="glab">Text size</div>${seg("fs", look("fs", 1), [[0, "Small"], [1, "Medium"], [2, "Large"]])}`;
+  }
+  function wireLook(root){
+    root.querySelectorAll(".seg[data-g]").forEach(g => g.querySelectorAll("button").forEach(b => b.addEventListener("click", () => {
+      const k = g.dataset.g; if (!["pal", "page", "app", "fs"].includes(k)) return;
+      g.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b));
+      window.RRLook && RRLook.set(k, k === "fs" ? +b.dataset.v : b.dataset.v);
+      if (k === "app"){ const dk = RRLook.dark(); root.querySelectorAll('[data-g="page"] .swt').forEach((w, i) => w.style.background = PAGES[i][dk ? 3 : 2]); }
+    })));
+  }
+  function sheet(html, opts = {}){
+    const sc = document.createElement("div"); sc.className = "scrim";
+    sc.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-label="${opts.label || "Settings"}"><div class="grab"></div>${html}</div>`;
+    document.body.appendChild(sc);
+    const close = () => { sc.remove(); opts.onClose && opts.onClose(); document.removeEventListener("keydown", esc); };
+    const esc = e => { if (e.key === "Escape") close(); };
+    document.addEventListener("keydown", esc);
+    sc.addEventListener("click", e => { if (e.target === sc || e.target.closest("[data-close]")) close(); });
+    return {el: sc, close};
+  }
+  let tt; function toast(m){ document.querySelectorAll(".toast2").forEach(e => e.remove()); const t = document.createElement("div"); t.className = "toast2"; t.textContent = m; document.body.appendChild(t); clearTimeout(tt); tt = setTimeout(() => t.remove(), 1500); }
+  function scrolled(nav){ const f = () => nav.classList.toggle("scrolled", scrollY > 80); addEventListener("scroll", f, {passive: true}); f(); }
+  return {seg, lookHTML, wireLook, sheet, toast, scrolled};
+})();
+
+(function(){ var b = document.getElementById("setBtn"); if (!b) return;
+  b.onclick = function(){ var s = RRUI.sheet('<div class="mh"><h2>Appearance</h2><button type="button" data-close>Done</button></div>' + RRUI.lookHTML(), {label: "Appearance"}); RRUI.wireLook(s.el); };
+  RRUI.scrolled(document.getElementById("hdr")); })();
+
+function get(k, d){ try { var v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch(e){ return d; } }
+var D0 = new Date(), today = Math.floor((D0.getTime() - D0.getTimezoneOffset() * 60000) / 86400000);
+function setRing(el, pct){ if (!el) return; var c = 97.4; el.querySelector(".rv").setAttribute("stroke-dasharray", (pct / 100 * c).toFixed(1) + " " + c); el.querySelector(".rv").setAttribute("opacity", pct ? 1 : 0); el.querySelector("b").textContent = pct ? pct : ""; }
+function bestOf(p){ return get("rr-studio-" + p + "-codal-best", null) || {}; }
+function mastered(best){ var m = 0; for (var k in best) if (best[k] >= 90) m++; return m; }
+function dueOf(key){ var m = get(key, {}), n = 0; for (var x in m) if (m[x] && m[x].due <= today) n++; return n; }
+
+(function(){
+  var b = document.body, p = b.getAttribute("data-p"), tot = +b.getAttribute("data-n");
+  var best = bestOf(p), m = mastered(best), pct = tot ? Math.min(100, Math.round(100 * m / tot)) : 0;
+  var big = document.getElementById("bigRing"), c = 97.4; big.querySelector(".rv").setAttribute("stroke-dasharray", (pct / 100 * c).toFixed(1) + " " + c); big.querySelector(".rv").setAttribute("opacity", pct ? 1 : 0); big.querySelector("b").textContent = pct + "%";
+  document.getElementById("sM").textContent = m;
+  var star = get("rr-studio-" + p + "-codal-starred", {}), sc = 0; for (var k in star) if (star[k]) sc++;
+  document.getElementById("sStar").textContent = sc; document.getElementById("oStar").textContent = sc ? sc + " starred" : "Star sections while you drill";
+  var sp = get("rr-studio-" + p + "-codal-sprintBest", 0); document.getElementById("sSprint").textContent = sp; document.getElementById("oSprint").textContent = sp ? "Best " + sp + " pts" : "Beat your best score";
+  var due = dueOf("rr-studio-" + p + "-codal-srs"); if (due){ document.getElementById("dueN").textContent = due + " section" + (due === 1 ? "" : "s") + " due today"; document.getElementById("dueBar").hidden = false; }
+  Array.prototype.forEach.call(document.querySelectorAll(".chrow[data-ri]"), function(r){
+    var ri = r.getAttribute("data-ri") + ":", n = +r.getAttribute("data-n"), mm = 0; for (var k in best) if (k.indexOf(ri) === 0 && best[k] >= 90) mm++;
+    var q = n ? Math.min(100, Math.round(100 * mm / n)) : 0; r.querySelector(".lbar i").style.width = q + "%"; r.querySelector(".pct").textContent = q + "%"; });
+  Array.prototype.forEach.call(document.querySelectorAll(".pr[data-k]"), function(t){ var h = get("rr-wb-" + t.getAttribute("data-k") + "-hist", []).filter(function(x){ return x.f === t.getAttribute("data-f"); });
+    if (h.length) t.querySelector(".pd").textContent = h.length + " done"; });
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){});});}</script></body></html>
