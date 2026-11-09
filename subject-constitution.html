@@ -1,5 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#F4F1E8">
 <title>1987 Philippine Constitution · RecitReady</title><meta name="description" content="1987 Philippine Constitution: codal drills and your progress.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -132,6 +133,7 @@ kbd{font-family:var(--ui);font-size:11.5px;padding:1px 6px;border-radius:6px;bac
 /* segmented control */
 .seg{display:flex;background:var(--fill);border-radius:10px;padding:2px;gap:0}
 .seg button{flex:1;text-align:center;font-size:14px;font-weight:500;padding:7px 8px;border-radius:8px;color:var(--fg);white-space:nowrap;transition:background .2s,color .2s}
+.seg button{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .seg button.on{background:var(--thumb);color:var(--acc);font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.12),0 0 0 .5px rgba(0,0,0,.04)}
 .seg button .n{display:inline-block;min-width:18px;padding:0 5px;margin-left:5px;border-radius:9px;background:var(--acc);color:var(--card);font-size:11px;line-height:17px;text-align:center;font-weight:600}
 
@@ -192,7 +194,7 @@ kbd{font-family:var(--ui);font-size:11.5px;padding:1px 6px;border-radius:6px;bac
 .hits{display:flex;flex-direction:column;gap:0;margin-top:10px}
 .hits a{display:flex;justify-content:space-between;gap:10px;padding:12px 14px;text-decoration:none;font-weight:600;color:var(--acc);border-top:.5px solid var(--sep)}
 .hits a:first-child{border-top:0}
-.w3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.w3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .w{padding:12px 13px;border-radius:18px;background:var(--card);box-shadow:var(--shadow);min-width:0}
 .w .n{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-top:6px;font-variant-numeric:tabular-nums;line-height:1.2}.w .n small{font-size:14px;color:var(--sec);font-weight:500}
 .w .l{font-size:12.5px;color:var(--sec)}
@@ -205,7 +207,7 @@ kbd{font-family:var(--ui);font-size:11.5px;padding:1px 6px;border-radius:6px;bac
 .newbie{border-radius:22px;padding:18px;background:var(--card);box-shadow:var(--shadow);font-size:14.5px;color:var(--sec);line-height:1.55}
 .newbie b{display:block;color:var(--fg);font-size:17px;margin-bottom:4px}
 .recent{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-top:10px}.recent::-webkit-scrollbar{display:none}
-.recent a{flex:none;padding:7px 13px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13.5px;text-decoration:none;color:var(--fg)}
+.recent a{flex:none;max-width:72vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:7px 13px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13.5px;text-decoration:none;color:var(--fg)}
 .offl{display:flex;gap:13px;padding:13px 14px;align-items:flex-start}
 .offl .ic{color:#fff}.offl b{display:block;font-size:15.5px;font-weight:600}.offl span{font-size:13px;color:var(--sec)}
 .offl .how{display:block;margin-top:4px;line-height:1.55}.offl b.sm{display:inline;font-size:13px}
@@ -222,7 +224,8 @@ kbd{font-family:var(--ui);font-size:11.5px;padding:1px 6px;border-radius:6px;bac
 .st2{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.st2 span{padding:7px 12px;border-radius:99px;background:var(--card);box-shadow:var(--shadow);font-size:13px;color:var(--sec)}.st2 b{color:var(--fg)}
 .duebar{display:flex;align-items:center;gap:12px;padding:14px 16px;margin-top:14px;background:var(--goldbg);border-radius:16px;box-shadow:0 0 0 1px var(--ring) inset;text-decoration:none;color:var(--fg)}
 .duebar b{display:block}.duebar span{font-size:13px;color:var(--sec)}.duebar .gpill{margin-left:auto}
-.opts2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opts2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cols2>*{min-width:0}
 .opt2{padding:14px;border-radius:18px;display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--fg);transition:transform .1s,box-shadow .15s}
 .opt2:hover{box-shadow:var(--shadow),var(--glow)}.opt2:active{transform:scale(.98)}
 .opt2 .oi{width:38px;height:38px;border-radius:11px;background:var(--accbg);color:var(--acc);display:grid;place-items:center;margin-bottom:8px}
